@@ -1,0 +1,19 @@
+Finite State Machine :
+	blocked|released|operate|release_b,	prepare_period|release_period|operate_t,	blocked|prepare_block|operate|released_b,	none|none
+	blocked|blocked|operate|blocked_a,	||standby_t,	attention|attention|standby|blocked_a,	none|none
+	blocked|blocked|operate|blocked_b,	prepare_period||safe_period,	blocked|released|operate|release_b,	none|none
+	attention|attention|standby|blocked_a,	prepare_period|prepare_period|turn_off,	off|off|contr_off|blocked_a,	none|none
+	blocked|blocked|operate|blocked_a,	prepare_period|prepare_period|standby_t,	attention|attention|standby|blocked_a,	none|none
+	attention|attention|standby|blocked_a,	||turn_off,	off|off|contr_off|blocked_a,	none|none
+	prepare_block|blocked|operate|released_a,	prepare_period||operate_t,	blocked|blocked|operate|blocked_b,	none|none
+	off|off|contr_off|blocked_a,	||turn_on,	attention|attention|standby|blocked_a,	none|none
+	attention|attention|standby|blocked_a,	||operate_t,	blocked|blocked|operate|blocked_a,	none|none
+	blocked|prepare_block|operate|released_b,	prepare_period|prepare_period|operate_t,	blocked|blocked|operate|blocked_a,	none|none
+	blocked|blocked|operate|blocked_a,	||safe_period,	released|blocked|operate|release_a,	none|none
+	released|blocked|operate|release_a,	release_period||operate_t,	prepare_block|blocked|operate|released_a,	none|none
+Set of Sequences :
+||turn_on ||operate_t ||standby_t ||turn_off 
+||turn_on ||operate_t ||safe_period release_period||operate_t prepare_period||operate_t prepare_period||safe_period prepare_period|release_period|operate_t prepare_period|prepare_period|operate_t prepare_period|prepare_period|standby_t prepare_period|prepare_period|turn_off 
+
+Information of Sequences :
+0

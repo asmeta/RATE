@@ -1,0 +1,119 @@
+//TURN_ON -> OPERATE_T -> 
+	//SAFE_PERIOD
+		//RELEASE_PERIOD -> PREPARE_PERIOD traffic light A
+	//SAFE_PERIOD
+		//RELEASE_PERIOD -> PREPARE_PERIOD traffic light B
+//STANDBY_T -> TURN_OFF
+scenario scenario22
+load TrafficLight_2.asm
+
+check statusB = OFF;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+set transitionC := TURN_ON;
+set transitionB := undef;
+set transitionA := undef;
+step
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = ATTENTION;
+check statusCOperate = BLOCKED_A;
+set transitionC := OPERATE_T;
+set transitionB := undef;
+set transitionA := undef;
+step
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_A;
+set transitionC := SAFE_PERIOD;
+set transitionB := undef;
+set transitionA := undef;
+step
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+set transitionB := undef;
+step
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = PREPARE_BLOCK;
+check statusCOperate = RELEASED_A;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := undef;
+step
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_B;
+set transitionC := SAFE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+set transitionB := undef;
+step
+check statusC = OPERATE;
+check statusB = RELEASED;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = BLOCKED;
+check statusCOperate = RELEASE_B;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := RELEASE_PERIOD;
+step
+check statusC = OPERATE;
+check statusB = PREPARE_BLOCK;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = BLOCKED;
+check statusCOperate = RELEASED_B;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_A;
+set transitionC := STANDBY_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = ATTENTION;
+check statusCOperate = BLOCKED_A;
+set transitionC := TURN_OFF;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check lightsA = NONE;
+check lightsB = NONE;
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := undef;
+set transitionA := undef;
+set transitionB := undef;
+step

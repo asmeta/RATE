@@ -1,0 +1,25 @@
+GeneratorModel for yakindu::java {
+
+	const PROJECT : string = "trafficlightcontroller"
+
+	const FOLDER : string = "src-gen"
+
+	statechart TrafficLight {
+
+		feature Outlet {
+			targetProject = PROJECT
+			targetFolder = FOLDER
+			libraryTargetFolder = "src"
+		}
+	}
+
+	statechart TwoWayTrafficControl {
+
+		feature Outlet {
+			targetProject = PROJECT
+			targetFolder = FOLDER
+			libraryTargetFolder = "src"
+		}
+	}
+
+}

@@ -1,0 +1,8 @@
+Finite State Machine :
+	off|off|contr_off|blocked_a,	prepare_period||turn_on,	attention|attention|standby|blocked_a,	none|none
+	attention|attention|standby|blocked_a,	prepare_period||operate_t,	blocked|blocked|operate|blocked_a,	none|none
+Set of Sequences :
+prepare_period||turn_on prepare_period||operate_t 
+
+Information of Sequences :
+0

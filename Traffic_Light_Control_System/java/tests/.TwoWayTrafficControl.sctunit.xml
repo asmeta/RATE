@@ -1,0 +1,4 @@
+<testsuite name="TwoWayTrafficControl" time="">
+  <testcase name="testStartUp" classname="platform:/resource/com.yakindu.sct.examples.trafficlight.multism/tests/TwoWayTrafficControl.sctunit#TwoWayTrafficControl.testStartUp" time="">
+  </testcase>
+</testsuite>

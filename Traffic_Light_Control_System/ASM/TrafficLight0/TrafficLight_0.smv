@@ -1,0 +1,47 @@
+--file F:\Dati-Andrea\GitHub\ProTestUTA\trafficlightcontroller\ASM\TrafficLight0\TrafficLight_0.smv
+-- options: flatten? true
+MODULE main
+	VAR
+		lightsA: {LIGHTS_UNDEF, NONE}; --controlled
+		lightsB: {LIGHTS_UNDEF, NONE}; --controlled
+		statusA: {ATTENTION, BLOCKED, LIGHTSTATUS_UNDEF, OFF}; --controlled
+		statusB: {ATTENTION, BLOCKED, LIGHTSTATUS_UNDEF, OFF}; --controlled
+		statusC: {CONTROLLERSTATUS_UNDEF, CONTR_OFF, OPERATE, STANDBY}; --controlled
+		transitionC: {OPERATE_T, STANDBY_T, TURN_OFF, TURN_ON}; --monitored
+	CONSTANTS LIGHTSTATUS_UNDEF, ATTENTION, BLOCKED, OFF, CONTROLLERSTATUS_UNDEF, CONTR_OFF, OPERATE, STANDBY, CONTROLLERTRANSITION_UNDEF, OPERATE_T, STANDBY_T, TURN_OFF, TURN_ON, LIGHTS_UNDEF, NONE;
+	ASSIGN
+		init(lightsA) := NONE;
+		init(lightsB) := NONE;
+		init(statusA) := OFF;
+		init(statusB) := OFF;
+		init(statusC) := CONTR_OFF;
+		next(lightsA) := lightsA;
+		next(lightsB) := lightsB;
+		next(statusA) :=
+			case
+				((transitionC = OPERATE_T) & (statusC = STANDBY)): BLOCKED;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): ATTENTION;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): OFF;
+				TRUE: statusA;
+			esac;
+		next(statusB) :=
+			case
+				((transitionC = OPERATE_T) & (statusC = STANDBY)): BLOCKED;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): ATTENTION;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): OFF;
+				TRUE: statusB;
+			esac;
+		next(statusC) :=
+			case
+				((transitionC = OPERATE_T) & (statusC = STANDBY)): OPERATE;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): STANDBY;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): CONTR_OFF;
+				TRUE: statusC;
+			esac;
+--LTL properties
+LTLSPEC NAME ltl0 := G(!((((statusB = OFF) & (statusA = ATTENTION)) & (lightsB = NONE)) & X(TRUE)));
+--CTL properties
+CTLSPEC NAME ctl0 := AG((((statusC = OPERATE) | (statusC = STANDBY)) -> EF((statusC = CONTR_OFF))));
+CTLSPEC NAME ctl1 := AG(((statusC = CONTR_OFF) -> ((statusB = OFF) & (statusA = OFF))));
+CTLSPEC NAME ctl2 := AG(((statusC = STANDBY) -> ((statusA = ATTENTION) & (statusB = ATTENTION))));
+CTLSPEC NAME ctl3 := AG(((lightsA = NONE) & (lightsB = NONE)));

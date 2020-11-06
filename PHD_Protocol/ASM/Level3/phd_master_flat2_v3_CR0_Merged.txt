@@ -1,0 +1,19 @@
+Finite State Machine :
+	unassociated,	rx_abrt,	unassociated,	no response
+	unassociated,	rx_aarq_acceptable_and_known_configuration,	operating,	rx_aare
+	unassociated,	rx_aarq_acceptable_and_unknown_configuration,	waiting_for_config,	rx_aare
+	checking_config,	req_agent_supplied_unknown_configuration,	waiting_for_config,	rx_prst
+	waiting_for_config,	rx_rors,	waiting_for_config,	no response
+	waiting_for_config,	rx_roiv_confirmed_event_report,	checking_config,	no response
+	operating,	req_assoc_rel,	disassociating,	rx_rlrq
+	operating,	rx_abrt,	unassociated,	no response
+	disassociating,	rx_rlrq,	disassociating,	rx_rlre
+Set of Sequences :
+rx_abrt 
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_abrt 
+rx_abrt rx_aarq_acceptable_and_unknown_configuration rx_rors 
+rx_abrt rx_aarq_acceptable_and_known_configuration req_assoc_rel rx_rlrq 
+rx_abrt rx_aarq_acceptable_and_unknown_configuration rx_roiv_confirmed_event_report req_agent_supplied_unknown_configuration 
+
+Information of Sequences :
+0

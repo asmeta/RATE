@@ -1,0 +1,14 @@
+GeneratorModel for sctunit::java {
+
+	const PROJECT : string = "trafficlightcontroller"
+
+	const FOLDER : string = "test"
+
+	test TwoWayTrafficControlTest {
+
+		feature Outlet {
+			targetProject = PROJECT
+			targetFolder = FOLDER
+		}
+	}
+}

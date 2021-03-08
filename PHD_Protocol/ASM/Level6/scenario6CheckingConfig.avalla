@@ -1,5 +1,5 @@
 scenario scenario6CheckingConfig
-load ../phd_master_flat2_v6.asm
+load phd_master_flat2_v6.asm
 
 check status = UNASSOCIATED;
 set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;

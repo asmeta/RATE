@@ -1,4 +1,6 @@
 asm TrafficLight_4
+//====================================NEW====================================
+//Added three substates when controller is in OPERATE state: BLOCKED_B, RELEASE_B, RELEASED_B
  
 import ../StandardLibrary
 import ../CTLlibrary
@@ -108,26 +110,6 @@ definitions:
 	 		endif
 	 	endpar
 	
-
-// The traffic light can be turned off 
-	CTLSPEC ag((statusC = OPERATE or statusC = STANDBY) implies ef(statusC = CONTR_OFF))
-// When controller is off traffic lights are off
-	CTLSPEC ag((statusC = CONTR_OFF) implies (statusA = OFF and statusB = OFF))
-// When controller is standby traffic lights are in attention
-	CTLSPEC ag((statusC = STANDBY) implies (statusA = ATTENTION and statusB = ATTENTION))
-// When controller is All blocked A traffic light are blocked
-	CTLSPEC ag((statusC = OPERATE and statusCOperate = BLOCKED_A) implies (statusA = BLOCKED and statusB = BLOCKED))
-// When controller is Release A traffic light A is released and traffic light B is blocked
-	CTLSPEC ag((statusC = OPERATE and statusCOperate = RELEASE_A) implies (statusA = RELEASED and statusB = BLOCKED))
-// When controller is Released A traffic light A is preparing for block and traffic light B is blocked
-	CTLSPEC ag((statusC = OPERATE and statusCOperate = RELEASED_A) implies (statusA = PREPARE_BLOCK and statusB = BLOCKED))		
-// When controller is All blocked B traffic light are blocked
-	CTLSPEC ag((statusC = OPERATE and statusCOperate = BLOCKED_B) implies (statusA = BLOCKED and statusB = BLOCKED))
-// When controller is Release B traffic light B is released and traffic light A is blocked
-	CTLSPEC ag((statusC = OPERATE and statusCOperate = RELEASE_B) implies (statusA = BLOCKED and statusB = RELEASED))
-// When controller is Released B traffic light B is preparing for block and traffic light A is blocked
-	CTLSPEC ag((statusC = OPERATE and statusCOperate = RELEASED_B) implies (statusA = BLOCKED and statusB = PREPARE_BLOCK))		
-
 	
 	main rule r_Main =
 		par

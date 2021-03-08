@@ -1,5 +1,5 @@
 scenario scenario4Disassociating
-load ../phd_master_flat2_v4.asm
+load phd_master_flat2_v4.asm
 //equals to scenario3Disassociating
 
 check status = UNASSOCIATED;

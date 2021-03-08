@@ -1,5 +1,5 @@
 scenario scenario2Unassociated
-load ../phd_master_flat2_v2.asm
+load phd_master_flat2_v2.asm
 
 check status = UNASSOCIATED;
 set transition := REQ_ASSOC_REL;

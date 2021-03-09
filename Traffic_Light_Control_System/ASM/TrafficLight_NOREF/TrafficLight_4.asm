@@ -1,6 +1,5 @@
 asm TrafficLight_4
-//====================================NEW====================================
-//Added three substates when controller is in OPERATE state: BLOCKED_B, RELEASE_B, RELEASED_B
+// ANGELO
  
 import ../StandardLibrary
 import ../CTLlibrary
@@ -14,134 +13,163 @@ signature:
 	enum domain LightTransition = {RELEASE_PERIOD | PREPARE_PERIOD}
 	enum domain LightStatus = {OFF | ATTENTION | BLOCKED | RELEASED | PREPARE_BLOCK}
 	// FUNCTIONS
-	controlled lightsA: Lights // traffic light A
-	controlled lightsB: Lights // traffic light B
 	controlled statusC: ControllerStatus
 	controlled statusCOperate : ControllerSubStatusOperate
 	monitored transitionC: ControllerTransition
-	monitored transitionA: LightTransition 
+	// lights
+	controlled lightsA: Lights // traffic light A
+	controlled lightsB: Lights // traffic light B
 	controlled statusA: LightStatus
 	controlled statusB: LightStatus	
+	monitored transitionA: LightTransition 
 	monitored transitionB: LightTransition 
 
 
 definitions:
-	
-	rule r_setLightsStatusA($lA in Lights, $sA in LightStatus) = 
+	// traffic light
+	// in event li traduco con regole ogni evento in una regola 
+	// entry action con un update opportuno
+	// switchOn	
+	rule r_raise_switchOn($s in LightStatus, $l in Lights) =
+		if $s = OFF then 
+			par 
+				$s := ATTENTION
+				//entryAttention
+				$l:= BLINK_YELLOW
+			endpar		
+		endif 
+	// switchOff	
+	rule r_raise_switchOff($s in LightStatus, $l in Lights) =
+		if $s = ATTENTION or  $s = BLOCKED or $s = RELEASED or $s = PREPARE_BLOCK then 
+			par 
+				$s := OFF
+				//entryOFF
+				$l:= ALL_OFF
+			endpar		
+		endif 
+	// attention
+	rule r_raise_attention($s in LightStatus, $l in Lights) =
+	if $s = BLOCKED then 
 		par 
-			lightsA := $lA
-			statusA := $sA
-		endpar
+			$s := ATTENTION
+			//entryAttention
+			$l:= BLINK_YELLOW
+		endpar		
+	endif 
+
+	// eventi che il controllore subisce (raised by the traffic light)
+	rule r_raise_blocked =  
+		par
+			if  statusCOperate = RELEASED_B then statusCOperate := BLOCKED_A endif
+			if  statusCOperate = RELEASED_A then statusCOperate := BLOCKED_B endif
+		endpar	
 	
-	rule r_setLightsStatusB($lB in Lights, $sB in LightStatus) = 
+	rule r_raise_released = 
+		par
+			if  statusCOperate = RELEASE_A then statusCOperate := RELEASED_A endif
+			if  statusCOperate = RELEASE_B then statusCOperate := RELEASED_B endif
+		endpar	
+
+
+
+	// block
+	rule r_raise_block($s in LightStatus, $l in Lights) =
+	if $s = ATTENTION then 
 		par 
-			lightsB := $lB
-			statusB := $sB
-		endpar
-	
-	rule r_setLightsStatus($lA in Lights, $lB in Lights, $sA in LightStatus, $sB in LightStatus) = 
+			$s := BLOCKED
+			//entryBlocked
+			$l:= RED
+			// raise the event 
+			r_raise_blocked[]
+		endpar		
+	endif 
+	// release
+	rule r_raise_release($s in LightStatus, $l in Lights) =
+	if $s = BLOCKED then 
 		par 
-			r_setLightsStatusA[$lA,$sA]
-			r_setLightsStatusB[$lB,$sB]
-		endpar
-	
-	rule r_setCOperateA($lA in Lights, $sA in LightStatus, $cO in ControllerSubStatusOperate)=
+			$s := RELEASED
+			//entryRELEASED
+			$l:= GREEN
+		endpar		
+	endif 
+	// le transizioni interne invece le metto come regole a sè
+	rule r_TrafficLightA($l in Lights, $s in LightStatus) =
 		par
-			r_setLightsStatusA[$lA, $sA]
-			statusCOperate := $cO
+			if $s = RELEASED then if  transitionA = RELEASE_PERIOD then par
+					$s := PREPARE_BLOCK
+					// entry prepare block
+					$l:= YELLOW 
+					// raise the event (moved from entry to exit)
+					r_raise_released[]					
+					endpar endif endif
+			if $s = PREPARE_BLOCK then if   transitionA = PREPARE_PERIOD then par
+					$s := BLOCKED
+					// entry blocked
+					$l:= RED
+					// raise the event 
+					r_raise_blocked[]  endpar endif endif
 		endpar
-	
-	rule r_setCOperateB($lB in Lights, $sB in LightStatus, $cO in ControllerSubStatusOperate)=
+	rule r_TrafficLightB($l in Lights, $s in LightStatus) =
 		par
-			r_setLightsStatusB[$lB, $sB]
-			statusCOperate := $cO
+			if $s = RELEASED then if  transitionB = RELEASE_PERIOD then par
+					$s := PREPARE_BLOCK
+					// entry prepare block
+					$l:= YELLOW 
+					// raise the event (moved from entry to exit)
+					r_raise_released[]
+					endpar endif endif					
+			if $s = PREPARE_BLOCK then if  transitionB = PREPARE_PERIOD then par
+					$s := BLOCKED
+					// entry blocked
+					$l:= RED
+					// raise the event 
+					r_raise_blocked[]  endpar endif endif
 		endpar
-		
-	rule r_blockedA =
-		if transitionC = SAFE_PERIOD then
-			r_setCOperateA[GREEN, RELEASED, RELEASE_A]
-		endif
-	
-	rule r_releaseA =
-		if statusA = RELEASED and transitionA = RELEASE_PERIOD then
-	 		r_setCOperateA[YELLOW, PREPARE_BLOCK, RELEASED_A]
-	 	endif
-		 	
-	rule r_releasedA =
-	 	if statusA = PREPARE_BLOCK and transitionA = PREPARE_PERIOD then
-	 		r_setCOperateA[RED, BLOCKED, BLOCKED_B]
-	 	endif
-	
-	rule r_blockedB =
-		if transitionC = SAFE_PERIOD then
-			r_setCOperateB[GREEN, RELEASED, RELEASE_B]
-		endif
-	
-	rule r_releaseB =
-		if statusB = RELEASED and transitionB = RELEASE_PERIOD then
-	 		r_setCOperateB[YELLOW, PREPARE_BLOCK, RELEASED_B]
-	 	endif
-		 	
-	rule r_releasedB =
-	 	if statusB = PREPARE_BLOCK and transitionB = PREPARE_PERIOD then
-	 		r_setCOperateB[RED, BLOCKED, BLOCKED_A]
-	 	endif
-		
-	//If controller is in operate state check the substate
-	rule r_operateSubState =
+	// controller
+	// 	 in event invece sono delle monitorate, quindi 	
+	rule r_Controller =
+	par
+	// OFF -> STANDBY
+	if statusC = CONTR_OFF and transitionC = TURN_ON then
+		par 
+			statusC := STANDBY
+			// exit
+			r_raise_switchOn[statusA,lightsA]
+			r_raise_switchOn[statusB,lightsB]
+			// entry
+			r_raise_attention[statusA,lightsA]
+			r_raise_attention[statusB,lightsB]
+		endpar endif
+	// STANDBY -> OPERATE	 
+	if statusC = STANDBY and transitionC = OPERATE_T then
 		par
-	 		if statusCOperate = BLOCKED_A then
-	 			r_blockedA[]
-	 		endif
-	 		if statusCOperate = RELEASE_A then
-	 			r_releaseA[]
-	 		endif
-	 		if statusCOperate = RELEASED_A then
-	 			r_releasedA[]
-	 		endif
-	 		if statusCOperate = BLOCKED_B then
-	 			r_blockedB[]
-	 		endif
-	 		if statusCOperate = RELEASE_B then
-	 			r_releaseB[]
-	 		endif
-	 		if statusCOperate = RELEASED_B then
-	 			r_releasedB[]
-	 		endif
-	 	endpar
+			statusC := OPERATE
+			statusCOperate := BLOCKED_A
+			r_raise_block[statusA,lightsA]
+			r_raise_block[statusB,lightsB]
+		endpar endif
+	// BLOCKED_A -> release A
+	if statusC = OPERATE and statusCOperate = BLOCKED_A and transitionC = SAFE_PERIOD then
+		par
+			statusCOperate := RELEASE_A
+			r_raise_release[statusA,lightsA]
+			skip
+		endpar endif
+	if statusC = OPERATE and statusCOperate = BLOCKED_B and transitionC = SAFE_PERIOD then
+		par
+			statusCOperate := RELEASE_B
+			r_raise_release[statusB,lightsB]
+			skip
+		endpar endif
+	// 
+	endpar
 	
 	
 	main rule r_Main =
 		par
-			if statusC = CONTR_OFF and transitionC = TURN_ON then
-				par
-					r_setLightsStatus[BLINK_YELLOW, BLINK_YELLOW, ATTENTION, ATTENTION]
-					statusC := STANDBY
-				endpar
-			endif 
-			if statusC = STANDBY and transitionC = TURN_OFF  then
-				par
-					r_setLightsStatus[ALL_OFF, ALL_OFF, OFF, OFF]
-					statusC := CONTR_OFF
-				endpar
-			endif
-			if statusC = STANDBY and transitionC = OPERATE_T then
-				par
-					r_setLightsStatus[RED, RED, BLOCKED, BLOCKED]
-					statusC := OPERATE
-					statusCOperate := BLOCKED_A
-				endpar
-			endif
-			if (statusC = OPERATE) then
-				if transitionC = STANDBY_T then
-					par
-						r_setLightsStatus[BLINK_YELLOW, BLINK_YELLOW, ATTENTION, ATTENTION]
-						statusC := STANDBY
-					endpar
-				else
-					r_operateSubState[]
-				endif	
-			endif
+			r_TrafficLightA[lightsA, statusA]
+			r_TrafficLightB[lightsB, statusB]
+			r_Controller[]
 		endpar
 
 

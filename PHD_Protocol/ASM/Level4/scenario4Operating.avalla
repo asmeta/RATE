@@ -1,5 +1,5 @@
 scenario scenario4Operating
-load ../phd_master_flat2_v4.asm
+load phd_master_flat2_v4.asm
 //equals to scenario3Operating
 
 check status = UNASSOCIATED;

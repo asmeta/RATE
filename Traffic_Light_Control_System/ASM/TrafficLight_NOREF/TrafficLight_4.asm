@@ -49,7 +49,9 @@ definitions:
 		endif 
 	// attention
 	rule r_raise_attention($s in LightStatus, $l in Lights) =
-	if $s = BLOCKED then 
+	// spec originale yakindu
+	//if $s = BLOCKED then 
+	if $s = BLOCKED or $s = RELEASED or $s = PREPARE_BLOCK then
 		par 
 			$s := ATTENTION
 			//entryAttention
@@ -93,37 +95,21 @@ definitions:
 		endpar		
 	endif 
 	// le transizioni interne invece le metto come regole a sè
-	rule r_TrafficLightA($l in Lights, $s in LightStatus) =
+	rule r_TrafficLight($l in Lights, $s in LightStatus, $t in LightTransition) =
 		par
-			if $s = RELEASED then if  transitionA = RELEASE_PERIOD then par
+			if $s = RELEASED and transitionC != STANDBY_T and $t = RELEASE_PERIOD then par
 					$s := PREPARE_BLOCK
 					// entry prepare block
 					$l:= YELLOW 
 					// raise the event (moved from entry to exit)
 					r_raise_released[]					
-					endpar endif endif
-			if $s = PREPARE_BLOCK then if   transitionA = PREPARE_PERIOD then par
+					endpar endif 
+			if $s = PREPARE_BLOCK and  transitionC != STANDBY_T and $t = PREPARE_PERIOD then par
 					$s := BLOCKED
 					// entry blocked
 					$l:= RED
 					// raise the event 
-					r_raise_blocked[]  endpar endif endif
-		endpar
-	rule r_TrafficLightB($l in Lights, $s in LightStatus) =
-		par
-			if $s = RELEASED then if  transitionB = RELEASE_PERIOD then par
-					$s := PREPARE_BLOCK
-					// entry prepare block
-					$l:= YELLOW 
-					// raise the event (moved from entry to exit)
-					r_raise_released[]
-					endpar endif endif					
-			if $s = PREPARE_BLOCK then if  transitionB = PREPARE_PERIOD then par
-					$s := BLOCKED
-					// entry blocked
-					$l:= RED
-					// raise the event 
-					r_raise_blocked[]  endpar endif endif
+					r_raise_blocked[]  endpar endif 
 		endpar
 	// controller
 	// 	 in event invece sono delle monitorate, quindi 	
@@ -148,27 +134,48 @@ definitions:
 			r_raise_block[statusA,lightsA]
 			r_raise_block[statusB,lightsB]
 		endpar endif
-	// BLOCKED_A -> release A
-	if statusC = OPERATE and statusCOperate = BLOCKED_A and transitionC = SAFE_PERIOD then
+	
+	if statusC = OPERATE and transitionC != STANDBY_T then
+		// internal conditions 
+		par 
+		// BLOCKED_A -> release A
+		if statusCOperate = BLOCKED_A and transitionC = SAFE_PERIOD then
 		par
 			statusCOperate := RELEASE_A
 			r_raise_release[statusA,lightsA]
-			skip
 		endpar endif
-	if statusC = OPERATE and statusCOperate = BLOCKED_B and transitionC = SAFE_PERIOD then
+		if statusCOperate = BLOCKED_B and transitionC = SAFE_PERIOD then
 		par
 			statusCOperate := RELEASE_B
 			r_raise_release[statusB,lightsB]
-			skip
 		endpar endif
+	endpar endif
 	// 
+	if statusC = OPERATE and transitionC = STANDBY_T then
+		// be careful, stand by has precedence
+		par
+			statusC := STANDBY
+			// entry
+			r_raise_attention[statusA,lightsA]
+			r_raise_attention[statusB,lightsB]
+		endpar endif
+	// switch off
+	if statusC = STANDBY and transitionC = TURN_OFF then
+		par
+			statusC := CONTR_OFF
+			// entry
+			r_raise_switchOff[statusA,lightsA]
+			r_raise_switchOff[statusB,lightsB]
+		endpar endif		
 	endpar
-	
+
+// The traffic light can be turned off 
+	CTLSPEC ag(statusC = STANDBY implies (statusA = ATTENTION and statusB = ATTENTION) )	
 	
 	main rule r_Main =
 		par
-			r_TrafficLightA[lightsA, statusA]
-			r_TrafficLightB[lightsB, statusB]
+			r_TrafficLight[lightsA, statusA, transitionA]
+			r_TrafficLight[lightsB, statusB, transitionB]
 			r_Controller[]
 		endpar
 

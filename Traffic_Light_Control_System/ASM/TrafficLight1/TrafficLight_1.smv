@@ -1,4 +1,4 @@
---file F:\Dati-Andrea\GitHub\ProTestUTA\trafficlightcontroller\ASM\TrafficLight1\TrafficLight_1.smv
+--file D:\AgHome\progettidaSVNGIT\RATE\Traffic_Light_Control_System\ASM\TrafficLight1\TrafficLight_1.smv
 -- options: flatten? true
 MODULE main
 	VAR
@@ -10,7 +10,7 @@ MODULE main
 		statusCOperate: {BLOCKED_A, CONTROLLERSUBSTATUSOPERATE_UNDEF, RELEASED_A, RELEASE_A}; --controlled
 		transitionA: {PREPARE_PERIOD, RELEASE_PERIOD}; --monitored
 		transitionC: {OPERATE_T, SAFE_PERIOD, STANDBY_T, TURN_OFF, TURN_ON}; --monitored
-	CONSTANTS CONTROLLERTRANSITION_UNDEF, OPERATE_T, SAFE_PERIOD, STANDBY_T, TURN_OFF, TURN_ON, LIGHTTRANSITION_UNDEF, PREPARE_PERIOD, RELEASE_PERIOD, CONTROLLERSUBSTATUSOPERATE_UNDEF, BLOCKED_A, RELEASED_A, RELEASE_A, LIGHTSTATUS_UNDEF, ATTENTION, BLOCKED, OFF, PREPARE_BLOCK, RELEASED, CONTROLLERSTATUS_UNDEF, CONTR_OFF, OPERATE, STANDBY, LIGHTS_UNDEF, NONE;
+	CONSTANTS CONTROLLERTRANSITION_UNDEF, OPERATE_T, SAFE_PERIOD, STANDBY_T, TURN_OFF, TURN_ON, LIGHTS_UNDEF, NONE, LIGHTTRANSITION_UNDEF, PREPARE_PERIOD, RELEASE_PERIOD, CONTROLLERSTATUS_UNDEF, CONTR_OFF, OPERATE, STANDBY, CONTROLLERSUBSTATUSOPERATE_UNDEF, BLOCKED_A, RELEASED_A, RELEASE_A, LIGHTSTATUS_UNDEF, ATTENTION, BLOCKED, OFF, PREPARE_BLOCK, RELEASED;
 	ASSIGN
 		init(lightsA) := NONE;
 		init(lightsB) := NONE;
@@ -50,8 +50,6 @@ MODULE main
 				((((statusC = OPERATE) & !(transitionC = STANDBY_T)) & (statusCOperate = BLOCKED_A)) & (transitionC = SAFE_PERIOD)): RELEASE_A;
 				TRUE: statusCOperate;
 			esac;
---LTL properties
-LTLSPEC NAME ltl0 := G(!((((statusB = OFF) & (statusA = ATTENTION)) & (lightsB = NONE)) & X(TRUE)));
 --CTL properties
 CTLSPEC NAME ctl0 := AG((((statusC = OPERATE) | (statusC = STANDBY)) -> EF((statusC = CONTR_OFF))));
 CTLSPEC NAME ctl1 := AG(((statusC = CONTR_OFF) -> ((statusB = OFF) & (statusA = OFF))));
@@ -60,3 +58,4 @@ CTLSPEC NAME ctl3 := AG((((statusC = OPERATE) & (statusCOperate = BLOCKED_A)) ->
 CTLSPEC NAME ctl4 := AG((((statusC = OPERATE) & (statusCOperate = RELEASE_A)) -> ((statusA = RELEASED) & (statusB = BLOCKED))));
 CTLSPEC NAME ctl5 := AG((((statusC = OPERATE) & (statusCOperate = RELEASED_A)) -> ((statusA = PREPARE_BLOCK) & (statusB = BLOCKED))));
 CTLSPEC NAME ctl6 := AG(((lightsA = NONE) & (lightsB = NONE)));
+CTLSPEC NAME ctl7 := AG(!((statusC = OPERATE) & (!(transitionC = STANDBY_T) & ((statusCOperate = RELEASED_A) & ((statusA = PREPARE_BLOCK) & ((transitionA = PREPARE_PERIOD) & (statusCOperate != BLOCKED_A)))))));

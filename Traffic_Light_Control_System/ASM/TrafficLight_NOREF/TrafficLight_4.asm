@@ -62,14 +62,14 @@ definitions:
 	// eventi che il controllore subisce (raised by the traffic light)
 	rule r_raise_blocked =  
 		par
-			if  statusCOperate = RELEASED_B then statusCOperate := BLOCKED_A endif
-			if  statusCOperate = RELEASED_A then statusCOperate := BLOCKED_B endif
+			if  statusCOperate = RELEASED_B and statusC = OPERATE then statusCOperate := BLOCKED_A endif
+			if  statusCOperate = RELEASED_A and statusC = OPERATE then statusCOperate := BLOCKED_B endif
 		endpar	
 	
 	rule r_raise_released = 
 		par
-			if  statusCOperate = RELEASE_A then statusCOperate := RELEASED_A endif
-			if  statusCOperate = RELEASE_B then statusCOperate := RELEASED_B endif
+			if  statusCOperate = RELEASE_A and statusC = OPERATE then statusCOperate := RELEASED_A endif
+			if  statusCOperate = RELEASE_B and statusC = OPERATE then statusCOperate := RELEASED_B endif
 		endpar	
 
 

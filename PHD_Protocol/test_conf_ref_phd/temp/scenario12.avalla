@@ -1,0 +1,31 @@
+scenario scenario12
+
+load ./../ASM/Level6/phd_master_flat2_v6.asm
+
+//// test name test@BR_r_Main_TT37
+//// generated for (test goal): BR_r_Main_TT37: (transition = RX_RLRE) and (status = DISASSOCIATING)
+check message = undef;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
+set transition := RX_ABRT;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := REQ_ASSOC_REL;
+set invokeIdValid := true;
+step
+check message = MSG_RX_RLRQ;
+check status = DISASSOCIATING;
+set transition := RX_RLRE;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step

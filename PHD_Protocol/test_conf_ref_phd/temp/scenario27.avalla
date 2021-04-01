@@ -1,0 +1,31 @@
+scenario scenario27
+
+load ./../ASM/Level6/phd_master_flat2_v6.asm
+
+//// test name test@BR_r_Main_TT12
+//// generated for (test goal): BR_r_Main_TT12: (transition = REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION) and (status = CHECKING_CONFIG)
+check message = undef;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
+set transition := RX_ABRT;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
+set transition := REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check message = MSG_RX_PRST;
+check status = CHECKING_CONFIG;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step

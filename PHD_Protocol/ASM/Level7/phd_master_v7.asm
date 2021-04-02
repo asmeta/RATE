@@ -49,8 +49,11 @@ definitions:
 						r_setStatusMsg[DISASSOCIATING,MSG_NO_RESPONSE]
 					endif
 				endpar
+			endif
+			if transition = RX_ABRT then
+				r_setStatusMsg[UNASSOCIATED,MSG_NO_RESPONSE]
 			endif 
-			if transition = REQ_ASSOC_ABORT or transition = RX_AARE or transition = RX_ABRT then
+			if transition = REQ_ASSOC_ABORT or transition = RX_AARE then
 				if status = UNASSOCIATED or status = WAITING_FOR_CONFIG or status = CHECKING_CONFIG or status = OPERATING or status = DISASSOCIATING then
 				 	r_setStatusMsg[UNASSOCIATED,MSG_RX_ABRT]
 				endif
@@ -165,12 +168,16 @@ definitions:
 			endif
 			if transition = REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION then
 				if status = CHECKING_CONFIG then
-					r_setStatusMsg[CHECKING_CONFIG, MSG_RX_PRST]
+					r_setStatusMsg[WAITING_FOR_CONFIG, MSG_RX_PRST]
+				else
+					r_setStatusMsg[UNASSOCIATED, MSG_RX_ABRT]
 				endif
 			endif
 			if transition = REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION then
 				if status = CHECKING_CONFIG then
 					r_setStatusMsg[OPERATING, MSG_RX_PRST]
+				else
+					r_setStatusMsg[UNASSOCIATED, MSG_RX_ABRT]
 				endif
 			endif
 		endpar

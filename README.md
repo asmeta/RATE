@@ -2,18 +2,19 @@
 
 RATE is a model-based testing approach that combines model Refinement and Test Execution.
 
-### repository content
+### Repository content
 
-The repository contains all the results  we have obtained by applying RATE to two case studies
+The repository contains all the results we have obtained by applying RATE to two case studies
 
-* PHD: .....
+* PHD_Protocol: the PHD Protocol
   * ASM: all the asmeta specications
-  * state machines and sequences: all the state machines that are given as inputs to ProTest
-  * results
-  * avalla (manual tests)
+  * Avalla: the scenario used for manual test
+  * Results: the coverage results and data analysis
+  * StateMachines and Sequences: all the state machines that are given as inputs to ProTest, and the corresponging test sequences 
+  
 
-* TLC: traffic light 
-  * ASM
+* Traffic_Light_Control_System: the Traffic Light Control System, taken from the examples proposed by Yakindu SCT 
+  * ASM: all the asmeta specications
   * test executor
-  * results
+  * Results: the coverage results and data analysis
   * avalla 

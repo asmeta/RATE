@@ -1,0 +1,49 @@
+Finite State Machine :
+	unassociated,	rx_aarq_acceptable_and_known_configuration,	operating,	rx_aare
+	unassociated,	req_assoc_abort,	unassociated,	rx_abrt
+	unassociated,	rx_abrt,	unassociated,	no response
+	unassociated,	req_assoc_rel,	unassociated,	no response
+	unassociated,	rx_rlre,	unassociated,	no response
+	unassociated,	rx_rlrq,	unassociated,	rx_abrt
+	unassociated,	rx_aare,	unassociated,	rx_abrt
+	operating,	rx_aare,	unassociated,	rx_abrt
+	operating,	rx_rlrq,	unassociated,	rx_rlre
+	operating,	req_assoc_rel,	disassociating,	rx_rlrq
+	operating,	rx_abrt,	unassociated,	no response
+	operating,	rx_rlre,	unassociated,	rx_abrt
+	operating,	rx_aarq,	unassociated,	rx_abrt
+	disassociating,	rx_aarq,	unassociated,	rx_abrt
+	disassociating,	rx_aare,	unassociated,	rx_abrt
+	disassociating,	req_assoc_abort,	unassociated,	rx_abrt
+	disassociating,	rx_abrt,	unassociated,	no response
+	disassociating,	rx_rlrq,	disassociating,	rx_rlre
+	disassociating,	req_assoc_rel,	disassociating,	no response
+	disassociating,	rx_rlre,	unassociated,	no response
+Set of Sequences :
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_aarq 
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_rlrq req_assoc_rel 
+rx_abrt req_assoc_abort req_assoc_rel 
+rx_abrt rx_aarq_acceptable_and_known_configuration req_assoc_rel rx_abrt 
+rx_abrt rx_aarq_acceptable_and_known_configuration req_assoc_rel req_assoc_rel rx_aarq 
+rx_abrt rx_aarq_acceptable_and_known_configuration req_assoc_rel rx_aare 
+rx_abrt rx_rlrq rx_aare 
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_rlrq rx_aarq_acceptable_and_known_configuration 
+rx_abrt rx_aarq_acceptable_and_known_configuration req_assoc_rel rx_rlrq rx_aare 
+rx_abrt rx_rlrq 
+rx_abrt req_assoc_rel 
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_rlrq req_assoc_abort 
+rx_abrt rx_aarq_acceptable_and_known_configuration req_assoc_rel req_assoc_rel req_assoc_abort 
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_rlre 
+rx_abrt rx_aarq_acceptable_and_known_configuration req_assoc_rel req_assoc_abort 
+rx_abrt rx_aarq_acceptable_and_known_configuration req_assoc_rel rx_aarq 
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_aare 
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_rlrq rx_abrt 
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_rlrq rx_rlrq 
+rx_abrt rx_rlrq rx_rlrq 
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_abrt 
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_rlrq rx_rlre 
+rx_abrt rx_aarq_acceptable_and_known_configuration req_assoc_rel rx_rlre 
+rx_abrt rx_aarq_acceptable_and_known_configuration req_assoc_rel rx_rlrq rx_aarq 
+
+Information of Sequences :
+0

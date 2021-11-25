@@ -1,4 +1,4 @@
-package test_conf_ref_phd;
+package crossvalidation_PHD
 
 import java.io.File;
 
@@ -13,24 +13,24 @@ import atgt.testseqexport.toAvalla;
 public class TestPHD {
 
 	public static void main(String[] args) throws Exception {
-		// genera i tests per PHD
-		String asmPath = "../ASM/Level7/phd_master_v7.asm";
+		// Generates the tests for the PHD case study
+		String asmPath = "../ASM/LevelNR/phd_master_v7_1.asm";
 		String asmPath2 = "../ASM/Level6/phd_master_flat2_v6.asm";
 		NuSMVtestGenerator nuSMVtestGenerator = new NuSMVtestGenerator(asmPath);
 		TestGenerationWithNuSMV.useLTLandBMC = true;
 		AsmTestSuite result = nuSMVtestGenerator.generateAbstractTests(Integer.MAX_VALUE, ".*");
-		// export ain avalla
+		// Export in avalla
 		int counter = 0;
 		for (AsmTestSequence tc : result.getTests()) {
 			if (tc.numberOfStates() ==0) {
-				System.err.println(" scenario vuopto !!!");
+				System.err.println(" Empty scenario !!!");
 				continue;
 			}
 			// Create the new avalla file
 			new toAvalla(new File("temp/scenario" + counter + ".avalla"), tc, asmPath2).save();
 			counter++;
 		}
-		// esegui tutti gli scenari
+		// Executes all the scenarios
 		AsmetaV.execValidation("temp", false);
 
 	}

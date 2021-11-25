@@ -9,6 +9,7 @@ The repository contains all the results we have obtained by applying RATE to two
 * PHD_Protocol: the PHD Protocol
   * ASM: all the asmeta specications
   * Avalla: the scenarios used for manual test
+  * Crossvalidation_PHD: the java project used for crossvalidating the ASM specification written with and without refinement
   * Results: the coverage results and data analysis
   * StateMachines and Sequences: all the state machines that are given as inputs to ProTest, and the corresponging test sequences   
 

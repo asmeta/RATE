@@ -15,7 +15,7 @@ The repository contains all the results we have obtained by applying RATE to two
 * Traffic_Light_Control_System: the Traffic Light Control System, taken from the examples proposed by Yakindu SCT 
   * ASM: all the asmeta specications
   * Avalla: the scenarios used for manual test
-  * java: all the java code of the TLCS
+  * java: all the java code of the TLCS (as given by the example of Yakindu SCT)
 	* Test/TestExecutor.java: the test executor to be used for applying RATE to the TLCS case study
   * Results: the coverage results and data analysis
   * StateMachines and Sequences: all the state machines that are given as inputs to the test executor, and the corresponging test sequences 

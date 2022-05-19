@@ -1,0 +1,60 @@
+scenario scenario6WaitingForConfigInvalidInvokeID
+load ..\phd_master_flat2_v6.asm
+
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_RORS;
+set invokeIdValid := false;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_ROER;
+set invokeIdValid := false;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_RORJ;
+set invokeIdValid := false;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_RORS_GET;
+set invokeIdValid := false;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_RORS_CONFIRMED_SET;
+set invokeIdValid := false;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_RORS_CONFIRMED_ACTION;
+set invokeIdValid := false;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step

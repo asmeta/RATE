@@ -102,7 +102,7 @@ public class AbstractTestsGenerator {
 	public void generateAbstractTests() throws Exception {
 		// XXX select configuration to execute (only one at a time!!)
 		Logger.getLogger(StdPairwiseCovBuild.class).setLevel(Level.ALL);
-		generateAbstractTests(filesToProcess.get(15));	
+		generateAbstractTests(filesToProcess.get(0));	
 	}
 	
 	/**
@@ -126,9 +126,6 @@ public class AbstractTestsGenerator {
 		// Generate the abstract tests
 		modelName = c.asmPath.substring(0, c.asmPath.lastIndexOf("."));
 		outputFileNames = new GenerateTestsFromFSM().saveFSMWithAvallaTests(modelName, c.asmPath, c.useMonitoring, c.criteria);	
-		
-		// Open the FSM file
-		String path = new File(outputFileName).getAbsolutePath();
 	}
 	
 }

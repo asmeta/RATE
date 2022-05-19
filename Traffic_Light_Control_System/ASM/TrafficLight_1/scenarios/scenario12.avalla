@@ -4,7 +4,7 @@
 	//SAFE_PERIOD
 //STANDBY_T -> TURN_OFF
 scenario scenario12
-load TrafficLight_1.asm
+load ..\TrafficLight_1.asm
 
 check statusB = OFF;
 check lightsA = NONE;

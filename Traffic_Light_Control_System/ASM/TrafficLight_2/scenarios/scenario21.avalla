@@ -1,9 +1,9 @@
 //TURN_ON -> OPERATE_T -> STANDBY_T -> TURN_OFF
-scenario scenario31
-load TrafficLight_3.asm
+scenario scenario21
+load ..\TrafficLight_2.asm
 
-check lightsA = ALL_OFF;
-check lightsB = ALL_OFF;
+check lightsA = NONE;
+check lightsB = NONE;
 check statusA = OFF;
 check statusB = OFF;
 check statusCOperate = BLOCKED_A;
@@ -14,8 +14,8 @@ set transitionB := undef;
 step
 check statusC = STANDBY;
 check statusB = ATTENTION;
-check lightsA = BLINK_YELLOW;
-check lightsB = BLINK_YELLOW;
+check lightsA = NONE;
+check lightsB = NONE;
 check statusA = ATTENTION;
 check statusCOperate = BLOCKED_A;
 set transitionC := OPERATE_T;
@@ -24,8 +24,8 @@ set transitionB := undef;
 step
 check statusC = OPERATE;
 check statusB = BLOCKED;
-check lightsA = RED;
-check lightsB = RED;
+check lightsA = NONE;
+check lightsB = NONE;
 check statusA = BLOCKED;
 check statusCOperate = BLOCKED_A;
 set transitionC := STANDBY_T;
@@ -34,8 +34,8 @@ set transitionB := undef;
 step
 check statusC = STANDBY;
 check statusB = ATTENTION;
-check lightsA = BLINK_YELLOW;
-check lightsB = BLINK_YELLOW;
+check lightsA = NONE;
+check lightsB = NONE;
 check statusA = ATTENTION;
 check statusCOperate = BLOCKED_A;
 set transitionC := TURN_OFF;
@@ -44,8 +44,8 @@ set transitionB := undef;
 step
 check statusC = CONTR_OFF;
 check statusB = OFF;
-check lightsA = ALL_OFF;
-check lightsB = ALL_OFF;
+check lightsA = NONE;
+check lightsB = NONE;
 check statusA = OFF;
 check statusCOperate = BLOCKED_A;
 set transitionA := undef;

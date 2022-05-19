@@ -4,12 +4,12 @@
 	//SAFE_PERIOD
 		//RELEASE_PERIOD -> PREPARE_PERIOD traffic light B
 //STANDBY_T -> TURN_OFF
-scenario scenario22
-load TrafficLight_2.asm
+scenario scenario32
+load ..\TrafficLight_3.asm
 
 check statusB = OFF;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = ALL_OFF;
+check lightsB = ALL_OFF;
 check statusA = OFF;
 check statusCOperate = BLOCKED_A;
 check statusC = CONTR_OFF;
@@ -19,8 +19,8 @@ set transitionA := undef;
 step
 check statusC = STANDBY;
 check statusB = ATTENTION;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = BLINK_YELLOW;
+check lightsB = BLINK_YELLOW;
 check statusA = ATTENTION;
 check statusCOperate = BLOCKED_A;
 set transitionC := OPERATE_T;
@@ -29,8 +29,8 @@ set transitionA := undef;
 step
 check statusC = OPERATE;
 check statusB = BLOCKED;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = RED;
+check lightsB = RED;
 check statusA = BLOCKED;
 check statusCOperate = BLOCKED_A;
 set transitionC := SAFE_PERIOD;
@@ -39,8 +39,8 @@ set transitionA := undef;
 step
 check statusC = OPERATE;
 check statusB = BLOCKED;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = GREEN;
+check lightsB = RED;
 check statusA = RELEASED;
 check statusCOperate = RELEASE_A;
 set transitionC := OPERATE_T;
@@ -49,8 +49,8 @@ set transitionB := undef;
 step
 check statusC = OPERATE;
 check statusB = BLOCKED;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = YELLOW;
+check lightsB = RED;
 check statusA = PREPARE_BLOCK;
 check statusCOperate = RELEASED_A;
 set transitionC := OPERATE_T;
@@ -59,8 +59,8 @@ set transitionB := undef;
 step
 check statusC = OPERATE;
 check statusB = BLOCKED;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = RED;
+check lightsB = RED;
 check statusA = BLOCKED;
 check statusCOperate = BLOCKED_B;
 set transitionC := SAFE_PERIOD;
@@ -69,8 +69,8 @@ set transitionB := undef;
 step
 check statusC = OPERATE;
 check statusB = RELEASED;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = RED;
+check lightsB = GREEN;
 check statusA = BLOCKED;
 check statusCOperate = RELEASE_B;
 set transitionC := OPERATE_T;
@@ -79,8 +79,8 @@ set transitionB := RELEASE_PERIOD;
 step
 check statusC = OPERATE;
 check statusB = PREPARE_BLOCK;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = RED;
+check lightsB = YELLOW;
 check statusA = BLOCKED;
 check statusCOperate = RELEASED_B;
 set transitionC := OPERATE_T;
@@ -89,8 +89,8 @@ set transitionB := PREPARE_PERIOD;
 step
 check statusC = OPERATE;
 check statusB = BLOCKED;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = RED;
+check lightsB = RED;
 check statusA = BLOCKED;
 check statusCOperate = BLOCKED_A;
 set transitionC := STANDBY_T;
@@ -99,8 +99,8 @@ set transitionB := PREPARE_PERIOD;
 step
 check statusC = STANDBY;
 check statusB = ATTENTION;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = BLINK_YELLOW;
+check lightsB = BLINK_YELLOW;
 check statusA = ATTENTION;
 check statusCOperate = BLOCKED_A;
 set transitionC := TURN_OFF;
@@ -109,8 +109,8 @@ set transitionB := PREPARE_PERIOD;
 step
 check statusC = CONTR_OFF;
 check statusB = OFF;
-check lightsA = NONE;
-check lightsB = NONE;
+check lightsA = ALL_OFF;
+check lightsB = ALL_OFF;
 check statusA = OFF;
 check statusCOperate = BLOCKED_A;
 set transitionC := undef;

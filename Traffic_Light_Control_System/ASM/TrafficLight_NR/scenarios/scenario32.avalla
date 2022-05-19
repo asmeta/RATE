@@ -5,7 +5,7 @@
 		//RELEASE_PERIOD -> PREPARE_PERIOD traffic light B
 //STANDBY_T -> TURN_OFF
 scenario scenario32
-load TrafficLight_3.asm
+load ..\TrafficLight_4.asm
 
 check statusB = OFF;
 check lightsA = ALL_OFF;

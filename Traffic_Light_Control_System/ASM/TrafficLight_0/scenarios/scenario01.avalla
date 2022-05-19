@@ -1,6 +1,6 @@
 //TURN_ON -> OPERATE_T -> STANDBY_T -> TURN_OFF
 scenario scenario01
-load TrafficLight_0.asm
+load ..\TrafficLight_0.asm
 
 check statusB = OFF;
 check lightsA = NONE;

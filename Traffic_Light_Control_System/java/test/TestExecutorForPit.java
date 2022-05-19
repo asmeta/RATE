@@ -1,7 +1,5 @@
-
 import static org.junit.Assert.*;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import org.junit.After;
@@ -14,17 +12,19 @@ import com.yakindu.core.VirtualTimer.CycleTimeEventTask;
 import trafficlightcontroller.test.util.DataMaker;
 import trafficlightcontroller.test.util.FSMEntry;
 
-public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
+public class TestExecutorForPit extends TwoWayTrafficControl {
 
 	private TwoWayTrafficControl statemachine;
 	private VirtualTimer timer;
-	private static String sequenceFile = "F:\\Dati-Andrea\\GitHub\\ProTestUTA\\trafficlightcontroller\\ASM\\TrafficLight3\\TrafficLight_3_BR_2WISE_CR_MCDC_RG_UR_3WISE0_Merged.txt";
+	//private static String sequenceFile = "..\\StateMachines and Sequences\\TrafficLight3\\TrafficLight_3_BR_2WISE_CR_MCDC_RG_UR_3WISE0_Merged.txt";
 	//private static String sequenceFile = "..\\StateMachines and Sequences\\TrafficLight_NOREF\\TrafficLight_4_BR_2WISE_CR_MCDC_RG_UR_3WISE_Merged.txt";
 	//private static String sequenceFile = "..\\StateMachines and Sequences\\TrafficLight2\\TrafficLight_2_BR_2WISE_CR_MCDC_RG_UR_3WISE0_Merged.txt";
 	//private static String sequenceFile = "..\\StateMachines and Sequences\\TrafficLight1\\TrafficLight_1_BR_2WISE_CR_MCDC_RG_UR_3WISE0_Merged.txt";
-	//private String initialState = "off|off|contr_off|"; // Lv 0
-	private String initialState = "off|off|contr_off|blocked_a"; // Lv 1 and Lv 2
-	private int nTrafficLights = 2;
+	private static String sequenceFile = "..\\StateMachines and Sequences\\TrafficLight0\\TrafficLight_0_BR_2WISE_CR_MCDC_RG_UR_3WISE0_Merged.txt";
+	private String initialState = "off|off|contr_off|"; // Lv 0
+	//private String initialState = "off|off|contr_off|blocked_a"; // Lv 1 and Lv 2
+	//private int nTrafficLights = 2;
+	private int nTrafficLights = 1;
 
 	@Before
 	public void twoWayTrafficControlTest_setUp() {
@@ -60,86 +60,6 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 	}
 
 	@Test
-	public void testAllLevel0() throws IOException {
-		String seqsFile = "F:\\Dati-Andrea\\GitHub\\ProTestUTA\\trafficlightcontroller\\ASM\\TrafficLight0\\";
-
-		File f = new File(seqsFile);
-
-		// For each pathname in the pathnames array
-		for (String pathname : f.list()) {
-			if (pathname.endsWith("_Merged.txt")) {
-				initialState = "off|off|contr_off|";
-				nTrafficLights = 2;
-				launchTest(seqsFile + pathname);
-			}
-		}
-	}
-
-	@Test
-	public void testAllLevel1() throws IOException {
-		String seqsFile = "F:\\Dati-Andrea\\GitHub\\ProTestUTA\\trafficlightcontroller\\ASM\\TrafficLight1\\";
-
-		File f = new File(seqsFile);
-
-		// For each pathname in the pathnames array
-		for (String pathname : f.list()) {
-			if (pathname.endsWith("_Merged.txt")) {
-				initialState = "off|off|contr_off|blocked_a";
-				nTrafficLights = 1;
-				launchTest(seqsFile + pathname);
-			}
-		}
-	}
-
-	@Test
-	public void testAllLevel2() throws IOException {
-		String seqsFile = "F:\\Dati-Andrea\\GitHub\\ProTestUTA\\trafficlightcontroller\\ASM\\TrafficLight2\\";
-
-		File f = new File(seqsFile);
-
-		// For each pathname in the pathnames array
-		for (String pathname : f.list()) {
-			if (pathname.endsWith("_Merged.txt")) {
-				initialState = "off|off|contr_off|blocked_a";
-				nTrafficLights = 2;
-				launchTest(seqsFile + pathname);
-			}
-		}
-	}
-	
-	@Test
-	public void testAllLevel3() throws IOException {
-		String seqsFile = "F:\\Dati-Andrea\\GitHub\\ProTestUTA\\trafficlightcontroller\\ASM\\TrafficLight3\\";
-
-		File f = new File(seqsFile);
-
-		// For each pathname in the pathnames array
-		for (String pathname : f.list()) {
-			if (pathname.endsWith("_Merged.txt")) {
-				initialState = "off|off|contr_off|blocked_a";
-				nTrafficLights = 2;
-				launchTest(seqsFile + pathname);
-			}
-		}
-	}
-	
-	@Test
-	public void testAllAutomata() throws IOException {
-		String seqsFile = "F:\\Dati-Andrea\\GitHub\\ProTestUTA\\trafficlightcontroller\\AUTOMATA\\";
-
-		File f = new File(seqsFile);
-
-		// For each pathname in the pathnames array
-		for (String pathname : f.list()) {
-			if (pathname.endsWith(".txt")) {
-				initialState = "off|off|contr_off|blocked_a";
-				nTrafficLights = 2;
-				launchTest(seqsFile + pathname);
-			}
-		}
-	}
-
-	@Test
 	public void launchOneTest() throws IOException {
 		launchTest(sequenceFile);
 	}
@@ -168,7 +88,8 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 					// Get the final state
 					String finalState = StateGetter.getFinalState(thisInitialState, msg, entries);
 					Boolean[] output = OutputGetter.getOutput(thisInitialState, msg, entries);
-					boolean allowSafePeriod = statemachine.isStateActive(State.MAIN_OPERATE_R_ALL_BLOCKED_BEFORE_A) || statemachine.isStateActive(State.MAIN_OPERATE_R_ALL_BLOCKED_BEFORE_B);
+					boolean allowSafePeriod = statemachine.isStateActive(State.MAIN_OPERATE_R_ALL_BLOCKED_BEFORE_A) 
+							|| statemachine.isStateActive(State.MAIN_OPERATE_R_ALL_BLOCKED_BEFORE_B);
 
 					// Execute all the transitions in the composed one
 					String[] subMsg = msg.split("\\|");

@@ -27,7 +27,7 @@
 						<param>TwoWayTrafficControl</param>
 					</targetClasses>
 					<targetTests>
-						<param>TestExecutorForTrafficLight</param>
+						<param>TestExecutorForPit</param>
 					</targetTests>
 				</configuration>
 			</plugin>

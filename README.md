@@ -18,7 +18,6 @@ The repository contains all the results we have obtained by applying RATE to two
   * ASM: the project containing ASMETA files
 	* ./TrafficLight_X/: the ASMETA specifications for each level X
 	* ./TrafficLight_X/scenarios: the scenarios used for manual test on the specification of level X
-  * ASM: all the asmeta specications
   * Avalla: the scenarios used for manual test
   * java: all the java code of the TLCS (as given by the example of Yakindu SCT)
 	* Test/TestExecutor.java: the test executor to be used for applying RATE to the TLCS case study
@@ -26,3 +25,6 @@ The repository contains all the results we have obtained by applying RATE to two
   * StateMachines and Sequences: all the state machines that are given as inputs to the test executor, and the corresponging test sequences 
 
 * MVM: The [Milano Ventilatore Meccanico](http://mvm.care/it/home-it/) case study 
+  * ASM: the project containing ASMETA files
+	* ./MVM_X/: the ASMETA specifications for each level X
+	* ./MVM_X/scenarios: the scenarios used for manual test on the specification of level X

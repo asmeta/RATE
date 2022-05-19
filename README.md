@@ -7,8 +7,9 @@ RATE is a model-based testing approach that combines model Refinement and Test E
 The repository contains all the results we have obtained by applying RATE to two case studies
 
 * PHD_Protocol: the PHD Protocol
-  * ASM: all the asmeta specications
-	* ./PHD_Protocol_X/scenarios: the scenarios used for manual test
+  * ASM: the project containing ASMETA files
+	* ./PHD_Protocol_X/: the ASMETA specifications for each level X
+	* ./PHD_Protocol_X/scenarios: the scenarios used for manual test on the specification of level X
   * Crossvalidation_PHD: the java project used for crossvalidating the ASM specification written with and without refinement
   * Results: the coverage results and data analysis
   * StateMachines and Sequences: all the state machines that are given as inputs to ProTest, and the corresponging test sequences   

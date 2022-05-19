@@ -18,8 +18,7 @@ The repository contains all the results we have obtained by applying RATE to two
   * ASM: the project containing ASMETA files
 	* ./TrafficLight_X/: the ASMETA specifications for each level X
 	* ./TrafficLight_X/scenarios: the scenarios used for manual test on the specification of level X
-  * Avalla: the scenarios used for manual test
-  * java: all the java code of the TLCS (as given by the example of Yakindu SCT)
+  * SUT: all the java code of the TLCS (as given by the example of Yakindu SCT)
 	* Test/TestExecutor.java: the test executor to be used for applying RATE to the TLCS case study
   * Results: the coverage results and data analysis
   * StateMachines and Sequences: all the state machines that are given as inputs to the test executor, and the corresponging test sequences 

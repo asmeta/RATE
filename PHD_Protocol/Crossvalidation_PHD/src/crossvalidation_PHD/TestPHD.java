@@ -14,8 +14,8 @@ public class TestPHD {
 
 	public static void main(String[] args) throws Exception {
 		// Generates the tests for the PHD case study
-		String asmPath = "../ASM/LevelNR/phd_master_v7_1.asm";
-		String asmPath2 = "../ASM/Level6/phd_master_flat2_v6.asm";
+		String asmPath = "../ASM/PHD_Protocol_NR/phd_master_v7_1.asm";
+		String asmPath2 = "../ASM/PHD_Protocol_6/phd_master_flat2_v6.asm";
 		NuSMVtestGenerator nuSMVtestGenerator = new NuSMVtestGenerator(asmPath);
 		TestGenerationWithNuSMV.useLTLandBMC = true;
 		AsmTestSuite result = nuSMVtestGenerator.generateAbstractTests(Integer.MAX_VALUE, ".*");
@@ -32,7 +32,6 @@ public class TestPHD {
 		}
 		// Executes all the scenarios
 		AsmetaV.execValidation("temp", false);
-
 	}
 	
 }

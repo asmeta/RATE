@@ -18,7 +18,10 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 
 	private TwoWayTrafficControl statemachine;
 	private VirtualTimer timer;
-	private static String sequenceFile = "F:\\Dati-Andrea\\GitHub\\ProTestUTA\\trafficlightcontroller\\ASM\\TrafficLight3\\scenario31_Merged.txt";
+	//private static String sequenceFile = "F:\\Dati-Andrea\\GitHub\\ProTestUTA\\trafficlightcontroller\\ASM\\TrafficLight3\\TrafficLight_3_BR_2WISE_CR_MCDC_RG_UR_3WISE0_Merged.txt";
+	//private static String sequenceFile = "..\\StateMachines and Sequences\\TrafficLight_NOREF\\TrafficLight_4_BR_2WISE_CR_MCDC_RG_UR_3WISE_Merged.txt";
+	//private static String sequenceFile = "..\\StateMachines and Sequences\\TrafficLight2\\TrafficLight_2_BR_2WISE_CR_MCDC_RG_UR_3WISE0_Merged.txt";
+	private static String sequenceFile = "..\\StateMachines and Sequences\\TrafficLight1\\TrafficLight_1_BR_2WISE_CR_MCDC_RG_UR_3WISE0_Merged.txt";
 	//private String initialState = "off|off|contr_off|"; // Lv 0
 	private String initialState = "off|off|contr_off|blocked_a"; // Lv 1 and Lv 2
 	private int nTrafficLights = 2;

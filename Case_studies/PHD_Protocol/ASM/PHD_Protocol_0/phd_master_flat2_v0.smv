@@ -1,0 +1,34 @@
+--file ..\Case_studies\PHD_Protocol\ASM\PHD_Protocol_0\phd_master_flat2_v0.smv
+-- options: flatten? false
+MODULE main
+	VAR
+		message: {MESSAGE_UNDEF, MSG_NO_RESPONSE, MSG_RX_AARE, MSG_RX_ABRT, MSG_RX_RLRE, MSG_RX_RLRQ}; --controlled
+		status: {DISASSOCIATING, OPERATING, STATUS_UNDEF, UNASSOCIATED}; --controlled
+		transition: {REQ_ASSOC_ABORT, REQ_ASSOC_REL, RX_AARE, RX_AARQ, RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION, RX_ABRT, RX_RLRE, RX_RLRQ}; --monitored
+	CONSTANTS TRANSITION_UNDEF, REQ_ASSOC_ABORT, REQ_ASSOC_REL, RX_AARE, RX_AARQ, RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION, RX_ABRT, RX_RLRE, RX_RLRQ, STATUS_UNDEF, DISASSOCIATING, OPERATING, UNASSOCIATED, MESSAGE_UNDEF, MSG_NO_RESPONSE, MSG_RX_AARE, MSG_RX_ABRT, MSG_RX_RLRE, MSG_RX_RLRQ;
+	ASSIGN
+		init(message) := MESSAGE_UNDEF;
+		init(status) := UNASSOCIATED;
+		init(transition) := RX_ABRT;
+		next(message) :=
+			case
+				(((status = DISASSOCIATING) & (transition = RX_ABRT)) | ((((transition = REQ_ASSOC_REL) & (status = DISASSOCIATING)) | (((((transition = REQ_ASSOC_REL) & (status = UNASSOCIATED)) | ((transition = RX_RLRE) & (status = UNASSOCIATED))) | ((transition = RX_ABRT) & (status = UNASSOCIATED))) | ((status = OPERATING) & (transition = RX_ABRT)))) | ((transition = RX_RLRE) & (status = DISASSOCIATING)))): MSG_NO_RESPONSE;
+				(((((status = DISASSOCIATING) & (transition = REQ_ASSOC_ABORT)) | (((status = OPERATING) & (transition = RX_RLRE)) | (((status = OPERATING) & (transition = RX_AARE)) | ((((status = OPERATING) & (transition = REQ_ASSOC_ABORT)) | (((transition = RX_RLRQ) & (status = UNASSOCIATED)) | (((transition = REQ_ASSOC_ABORT) & (status = UNASSOCIATED)) | ((transition = RX_AARE) & (status = UNASSOCIATED))))) | ((status = OPERATING) & (transition = RX_AARQ)))))) | ((transition = RX_AARQ) & (status = DISASSOCIATING))) | ((transition = RX_AARE) & (status = DISASSOCIATING))): MSG_RX_ABRT;
+				((status = OPERATING) & (transition = REQ_ASSOC_REL)): MSG_RX_RLRQ;
+				((transition = RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION) & (status = UNASSOCIATED)): MSG_RX_AARE;
+				(((transition = RX_RLRQ) & (status = DISASSOCIATING)) | ((status = OPERATING) & (transition = RX_RLRQ))): MSG_RX_RLRE;
+				TRUE: message;
+			esac;
+		next(status) :=
+			case
+				(((status = DISASSOCIATING) & (transition = RX_ABRT)) | (((transition = RX_RLRE) & (status = DISASSOCIATING)) | ((((((status = OPERATING) & (transition = RX_ABRT)) | (((status = OPERATING) & (transition = RX_RLRE)) | ((((((status = OPERATING) & (transition = REQ_ASSOC_ABORT)) | (((transition = RX_ABRT) & (status = UNASSOCIATED)) | ((((transition = RX_RLRQ) & (status = UNASSOCIATED)) | (((transition = RX_AARE) & (status = UNASSOCIATED)) | (((transition = REQ_ASSOC_ABORT) & (status = UNASSOCIATED)) | ((transition = REQ_ASSOC_REL) & (status = UNASSOCIATED))))) | ((transition = RX_RLRE) & (status = UNASSOCIATED))))) | ((status = OPERATING) & (transition = RX_AARQ))) | ((status = OPERATING) & (transition = RX_AARE))) | ((status = OPERATING) & (transition = RX_RLRQ))))) | ((status = DISASSOCIATING) & (transition = REQ_ASSOC_ABORT))) | ((transition = RX_AARQ) & (status = DISASSOCIATING))) | ((transition = RX_AARE) & (status = DISASSOCIATING))))): UNASSOCIATED;
+				((transition = RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION) & (status = UNASSOCIATED)): OPERATING;
+				((((status = OPERATING) & (transition = REQ_ASSOC_REL)) | ((transition = REQ_ASSOC_REL) & (status = DISASSOCIATING))) | ((transition = RX_RLRQ) & (status = DISASSOCIATING))): DISASSOCIATING;
+				TRUE: status;
+			esac;
+--INVAR constraints
+INVAR ((status = DISASSOCIATING) -> ((((transition = RX_RLRQ) | (((transition = RX_AARQ) | ((transition = REQ_ASSOC_REL) | (transition = REQ_ASSOC_ABORT))) | (transition = RX_AARE))) | (transition = RX_RLRE)) | (transition = RX_ABRT)));
+INVAR ((status = OPERATING) -> ((((transition = RX_RLRQ) | (((transition = RX_AARQ) | ((transition = REQ_ASSOC_REL) | (transition = REQ_ASSOC_ABORT))) | (transition = RX_AARE))) | (transition = RX_RLRE)) | (transition = RX_ABRT)));
+INVAR ((status = UNASSOCIATED) -> ((transition = RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION) | (((transition = RX_RLRE) | ((transition = RX_RLRQ) | ((transition = RX_AARE) | ((transition = REQ_ASSOC_REL) | (transition = REQ_ASSOC_ABORT))))) | (transition = RX_ABRT))));
+--LTL properties
+LTLSPEC NAME ltl0 := G(!(((status = DISASSOCIATING) & (transition = RX_RLRE)) & X(TRUE)));

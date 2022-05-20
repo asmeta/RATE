@@ -1,0 +1,16 @@
+scenario testBR_r_Main_TBR_r_Unassociated__RX_RLRQ_T1
+
+load ./..\..\ASM\PHD_Protocol_1\phd_master_flat2_v1.asm
+
+//// test name test@BR_r_Main_TBR_r_Unassociated__RX_RLRQ_T1
+//// generated for (test goal): BR_r_Main_TBR_r_Unassociated__RX_RLRQ_T1: (status = UNASSOCIATED) and (transition = RX_RLRQ)
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_RLRQ;
+step
+check message = MSG_RX_ABRT;
+set transition := RX_ABRT;
+step

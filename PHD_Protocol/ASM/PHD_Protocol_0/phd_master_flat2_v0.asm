@@ -2,8 +2,9 @@
 
 asm phd_master_flat2_v0
 
-import StandardLibrary
-import CTLlibrary
+import ../StandardLibrary
+import ../CTLlibrary
+import ../LTLlibrary
 
 signature:
 	// DOMAINS

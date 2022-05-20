@@ -1,8 +1,8 @@
 asm Ventilatore2
 
-import StandardLibrary
-import CTLlibrary
-import LTLlibrary
+import ../StandardLibrary
+import ../CTLlibrary
+import ../LTLlibrary
 
 
 signature:

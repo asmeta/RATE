@@ -1,6 +1,6 @@
 asm phd_master_v7_1
 
-import StandardLibrary
+import ../StandardLibrary
 
 signature:
 	// DOMAINS

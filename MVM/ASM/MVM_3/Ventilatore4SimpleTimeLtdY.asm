@@ -10,9 +10,9 @@
 
 asm Ventilatore4SimpleTimeLtdY
 
-import CTLlibrary
-import LTLlibrary
-import StandardLibrary
+import ../StandardLibrary
+import ../CTLlibrary
+import ../LTLlibrary
 
 signature:
 

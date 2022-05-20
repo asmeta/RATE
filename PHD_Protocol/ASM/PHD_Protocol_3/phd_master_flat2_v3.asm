@@ -2,7 +2,7 @@
 
 asm phd_master_flat2_v3
 
-import StandardLibrary
+import ../StandardLibrary
 
 signature:
 	// DOMAINS

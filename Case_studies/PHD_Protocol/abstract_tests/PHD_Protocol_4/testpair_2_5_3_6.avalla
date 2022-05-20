@@ -23,5 +23,5 @@ check message = MSG_RX_ABRT;
 set transition := RX_RORS;
 step
 check message = MSG_NO_RESPONSE;
-set transition := RX_AARE;
+set transition := RX_ABRT;
 step

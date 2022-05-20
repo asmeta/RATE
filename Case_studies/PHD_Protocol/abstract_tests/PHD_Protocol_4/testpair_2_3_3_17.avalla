@@ -20,5 +20,5 @@ check message = MSG_RX_RLRE;
 set transition := RX_AARE;
 step
 check message = MSG_RX_ABRT;
-set transition := RX_AARQ_EXTERNAL;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step

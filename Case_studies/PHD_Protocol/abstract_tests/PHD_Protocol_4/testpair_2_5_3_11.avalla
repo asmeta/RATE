@@ -24,5 +24,5 @@ set transition := RX_ROIV;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_PRST;
-set transition := RX_AARQ_EXTERNAL;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step

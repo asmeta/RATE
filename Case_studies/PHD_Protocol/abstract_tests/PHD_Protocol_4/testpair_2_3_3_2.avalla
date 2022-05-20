@@ -20,5 +20,5 @@ check message = MSG_RX_RLRE;
 set transition := RX_AARQ_INVALID;
 step
 check message = MSG_RX_AARE;
-set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+set transition := REQ_ASSOC_ABORT;
 step

@@ -25,5 +25,5 @@ set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
-set transition := RX_ABRT;
+set transition := RX_RLRQ;
 step

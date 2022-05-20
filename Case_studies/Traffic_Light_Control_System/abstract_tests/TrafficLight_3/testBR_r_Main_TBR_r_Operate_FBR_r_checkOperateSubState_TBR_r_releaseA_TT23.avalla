@@ -1,0 +1,40 @@
+scenario testBR_r_Main_TBR_r_Operate_FBR_r_checkOperateSubState_TBR_r_releaseA_TT23
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@BR_r_Main_TBR_r_Operate_FBR_r_checkOperateSubState_TBR_r_releaseA_TT23
+//// generated for (test goal): BR_r_Main_TBR_r_Operate_FBR_r_checkOperateSubState_TBR_r_releaseA_TT23: (statusC = OPERATE) and ((transitionC != STANDBY_T) and ((statusCOperate = RELEASE_A) and ((statusA = RELEASED) and (transitionA = RELEASE_PERIOD))))
+check statusB = OFF;
+check lightsB = ALL_OFF;
+check lightsA = ALL_OFF;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := TURN_ON;
+step
+check statusB = ATTENTION;
+check lightsB = BLINK_YELLOW;
+check lightsA = BLINK_YELLOW;
+check statusA = ATTENTION;
+check statusC = STANDBY;
+set transitionC := OPERATE_T;
+step
+check statusB = BLOCKED;
+check lightsB = RED;
+check lightsA = RED;
+check statusA = BLOCKED;
+check statusC = OPERATE;
+set transitionC := SAFE_PERIOD;
+step
+check lightsA = GREEN;
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+set transitionA := RELEASE_PERIOD;
+set transitionC := OPERATE_T;
+step
+check lightsA = YELLOW;
+check statusA = PREPARE_BLOCK;
+check statusCOperate = RELEASED_A;
+set transitionA := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+step

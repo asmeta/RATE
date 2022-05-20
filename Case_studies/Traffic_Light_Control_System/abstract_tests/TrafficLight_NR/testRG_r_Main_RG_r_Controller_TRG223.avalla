@@ -1,0 +1,60 @@
+scenario testRG_r_Main_RG_r_Controller_TRG223
+
+load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
+
+//// test name test@RG_r_Main_RG_r_Controller_TRG223
+//// generated for (test goal): RG_r_Main_RG_r_Controller_TRG223: ((statusC = STANDBY) and (transitionC = OPERATE_T)) and (statusCOperate != BLOCKED_A)
+check statusA = OFF;
+check statusB = OFF;
+check statusC = CONTR_OFF;
+check lightsA = ALL_OFF;
+check lightsB = ALL_OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = ATTENTION;
+check statusB = ATTENTION;
+check statusC = STANDBY;
+check lightsA = BLINK_YELLOW;
+check lightsB = BLINK_YELLOW;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check statusB = BLOCKED;
+check statusC = OPERATE;
+check lightsA = RED;
+check lightsB = RED;
+set transitionC := SAFE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = RELEASED;
+check lightsA = GREEN;
+check statusCOperate = RELEASE_A;
+set transitionC := STANDBY_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = ATTENTION;
+check statusB = ATTENTION;
+check statusC = STANDBY;
+check lightsA = BLINK_YELLOW;
+check lightsB = BLINK_YELLOW;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check statusB = BLOCKED;
+check statusC = OPERATE;
+check lightsA = RED;
+check lightsB = RED;
+check statusCOperate = BLOCKED_A;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step

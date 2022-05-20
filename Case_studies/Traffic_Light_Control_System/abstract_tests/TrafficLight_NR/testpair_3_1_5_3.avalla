@@ -1,0 +1,6 @@
+scenario testpair_3_1_5_3
+
+load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
+
+//// test name test@pair_3_1_5_3
+//// generated for (test goal): statusC=OPERATE - lightsA=BLINK_YELLOW

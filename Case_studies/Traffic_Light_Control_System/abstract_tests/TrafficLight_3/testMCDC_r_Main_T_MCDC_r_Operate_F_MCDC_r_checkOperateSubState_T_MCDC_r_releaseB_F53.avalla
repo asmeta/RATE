@@ -1,0 +1,6 @@
+scenario testMCDC_r_Main_T_MCDC_r_Operate_F_MCDC_r_checkOperateSubState_T_MCDC_r_releaseB_F53
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Operate_F_MCDC_r_checkOperateSubState_T_MCDC_r_releaseB_F53
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Operate_F_MCDC_r_checkOperateSubState_T_MCDC_r_releaseB_F53: (statusC = OPERATE) and ((transitionC != STANDBY_T) and ((statusCOperate = RELEASE_B) and (statusB != RELEASED)))

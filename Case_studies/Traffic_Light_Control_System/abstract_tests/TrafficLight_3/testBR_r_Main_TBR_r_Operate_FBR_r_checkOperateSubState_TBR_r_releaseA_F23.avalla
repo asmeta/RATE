@@ -1,0 +1,6 @@
+scenario testBR_r_Main_TBR_r_Operate_FBR_r_checkOperateSubState_TBR_r_releaseA_F23
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@BR_r_Main_TBR_r_Operate_FBR_r_checkOperateSubState_TBR_r_releaseA_F23
+//// generated for (test goal): BR_r_Main_TBR_r_Operate_FBR_r_checkOperateSubState_TBR_r_releaseA_F23: (statusC = OPERATE) and ((transitionC != STANDBY_T) and ((statusCOperate = RELEASE_A) and (statusA != RELEASED)))

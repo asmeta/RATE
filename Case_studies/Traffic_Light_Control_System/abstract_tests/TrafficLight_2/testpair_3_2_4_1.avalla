@@ -5,9 +5,9 @@ load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
 //// test name test@pair_3_2_4_1
 //// generated for (test goal): statusC=STANDBY - transitionC=SAFE_PERIOD
 check statusA = OFF;
-check statusCOperate = BLOCKED_A;
 check statusB = OFF;
 check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
 set transitionC := TURN_ON;
 step
 check statusA = ATTENTION;

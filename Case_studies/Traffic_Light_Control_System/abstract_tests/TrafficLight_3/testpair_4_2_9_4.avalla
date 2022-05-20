@@ -1,0 +1,6 @@
+scenario testpair_4_2_9_4
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@pair_4_2_9_4
+//// generated for (test goal): lightsB=GREEN - statusCOperate=RELEASED_A

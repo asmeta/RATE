@@ -1,0 +1,34 @@
+scenario testCR_r_Main_CR_r_Controller_T23
+
+load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
+
+//// test name test@CR_r_Main_CR_r_Controller_T23
+//// generated for (test goal): CR_r_Main_CR_r_Controller_T23: ((statusC = STANDBY) and (transitionC = OPERATE_T)) and ((statusC != OPERATE) or (statusCOperate != BLOCKED_A))
+check statusA = OFF;
+check lightsB = ALL_OFF;
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check lightsA = ALL_OFF;
+set transitionA := PREPARE_PERIOD;
+set transitionC := TURN_ON;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = ATTENTION;
+check lightsB = BLINK_YELLOW;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check lightsA = BLINK_YELLOW;
+set transitionA := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check lightsB = RED;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check lightsA = RED;
+set transitionA := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+step

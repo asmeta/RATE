@@ -1,0 +1,6 @@
+scenario test3-wise___l_R__l_A__t_S
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@3-wise___l_R__l_A__t_S
+//// generated for (test goal): [lightsB, lightsA, transitionC]-->[RED, ALL_OFF, STANDBY_T]

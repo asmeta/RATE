@@ -1,0 +1,6 @@
+scenario test3-wise___s_C__s_P__s_B
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@3-wise___s_C__s_P__s_B
+//// generated for (test goal): [statusC, statusB, statusA]-->[CONTR_OFF, PREPARE_BLOCK, BLOCKED]

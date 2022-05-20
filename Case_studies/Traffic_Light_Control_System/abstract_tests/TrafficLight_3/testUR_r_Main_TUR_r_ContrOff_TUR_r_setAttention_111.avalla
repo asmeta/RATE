@@ -1,0 +1,21 @@
+scenario testUR_r_Main_TUR_r_ContrOff_TUR_r_setAttention_111
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@UR_r_Main_TUR_r_ContrOff_TUR_r_setAttention_111
+//// generated for (test goal): UR_r_Main_TUR_r_ContrOff_TUR_r_setAttention_111: (statusC = CONTR_OFF) and ((transitionC = TURN_ON) and (lightsA != BLINK_YELLOW))
+check statusA = OFF;
+check lightsB = ALL_OFF;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check statusCOperate = BLOCKED_A;
+check lightsA = ALL_OFF;
+set transitionC := TURN_ON;
+step
+check statusA = ATTENTION;
+check lightsB = BLINK_YELLOW;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check lightsA = BLINK_YELLOW;
+set transitionC := OPERATE_T;
+step

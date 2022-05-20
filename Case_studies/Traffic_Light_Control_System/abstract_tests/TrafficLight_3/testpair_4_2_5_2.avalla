@@ -1,0 +1,6 @@
+scenario testpair_4_2_5_2
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@pair_4_2_5_2
+//// generated for (test goal): lightsB=GREEN - lightsA=GREEN

@@ -1,0 +1,25 @@
+scenario testUR_r_Main_UR_r_Controller_T113
+
+load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
+
+//// test name test@UR_r_Main_UR_r_Controller_T113
+//// generated for (test goal): UR_r_Main_UR_r_Controller_T113: ((statusC = CONTR_OFF) and (transitionC = TURN_ON)) and (statusC != STANDBY)
+check statusCOperate = BLOCKED_A;
+check statusB = OFF;
+check lightsA = ALL_OFF;
+check statusC = CONTR_OFF;
+check lightsB = ALL_OFF;
+check statusA = OFF;
+set transitionC := TURN_ON;
+set transitionB := RELEASE_PERIOD;
+set transitionA := RELEASE_PERIOD;
+step
+check statusB = ATTENTION;
+check lightsA = BLINK_YELLOW;
+check statusC = STANDBY;
+check lightsB = BLINK_YELLOW;
+check statusA = ATTENTION;
+set transitionC := OPERATE_T;
+set transitionB := RELEASE_PERIOD;
+set transitionA := RELEASE_PERIOD;
+step

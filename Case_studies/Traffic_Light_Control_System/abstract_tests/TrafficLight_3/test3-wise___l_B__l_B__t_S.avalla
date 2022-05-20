@@ -1,0 +1,23 @@
+scenario test3-wise___l_B__l_B__t_S
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@3-wise___l_B__l_B__t_S
+//// generated for (test goal): [lightsB, lightsA, transitionC]-->[BLINK_YELLOW, BLINK_YELLOW, SAFE_PERIOD]
+check statusC = CONTR_OFF;
+check statusA = OFF;
+check lightsA = ALL_OFF;
+check statusB = OFF;
+check lightsB = ALL_OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := TURN_ON;
+step
+check statusC = STANDBY;
+check statusA = ATTENTION;
+check lightsA = BLINK_YELLOW;
+check statusB = ATTENTION;
+check lightsB = BLINK_YELLOW;
+set transitionC := SAFE_PERIOD;
+step
+set transitionC := OPERATE_T;
+step

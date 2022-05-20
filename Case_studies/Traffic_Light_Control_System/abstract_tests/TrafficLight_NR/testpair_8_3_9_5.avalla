@@ -1,0 +1,6 @@
+scenario testpair_8_3_9_5
+
+load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
+
+//// test name test@pair_8_3_9_5
+//// generated for (test goal): statusA=BLOCKED - statusCOperate=RELEASE_A

@@ -1,0 +1,55 @@
+scenario testMCDC_r_Main_MCDC_r_Controller_T_TF233
+
+load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
+
+//// test name test@MCDC_r_Main_MCDC_r_Controller_T_TF233
+//// generated for (test goal): MCDC_r_Main_MCDC_r_Controller_T_TF233: ((statusC = OPERATE) and (transitionC != STANDBY_T)) and ((statusCOperate = BLOCKED_B) and (transitionC != SAFE_PERIOD))
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check lightsB = ALL_OFF;
+check statusB = OFF;
+check statusCOperate = BLOCKED_A;
+check lightsA = ALL_OFF;
+set transitionC := TURN_ON;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = ATTENTION;
+check statusC = STANDBY;
+check lightsB = BLINK_YELLOW;
+check statusB = ATTENTION;
+check lightsA = BLINK_YELLOW;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check statusC = OPERATE;
+check lightsB = RED;
+check statusB = BLOCKED;
+check lightsA = RED;
+set transitionC := SAFE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+check lightsA = GREEN;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := RELEASE_PERIOD;
+step
+check statusA = PREPARE_BLOCK;
+check statusCOperate = RELEASED_A;
+check lightsA = YELLOW;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_B;
+check lightsA = RED;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step

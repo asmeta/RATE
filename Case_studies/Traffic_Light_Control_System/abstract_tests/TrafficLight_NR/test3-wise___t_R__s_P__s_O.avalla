@@ -1,0 +1,6 @@
+scenario test3-wise___t_R__s_P__s_O
+
+load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
+
+//// test name test@3-wise___t_R__s_P__s_O
+//// generated for (test goal): [transitionB, statusB, statusA]-->[RELEASE_PERIOD, PREPARE_BLOCK, OFF]

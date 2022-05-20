@@ -1,0 +1,6 @@
+scenario testpair_4_5_7_4
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@pair_4_5_7_4
+//// generated for (test goal): lightsB=ALL_OFF - statusB=ATTENTION

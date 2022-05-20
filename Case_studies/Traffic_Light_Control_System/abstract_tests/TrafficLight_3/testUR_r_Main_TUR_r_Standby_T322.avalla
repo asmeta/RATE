@@ -1,0 +1,48 @@
+scenario testUR_r_Main_TUR_r_Standby_T322
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@UR_r_Main_TUR_r_Standby_T322
+//// generated for (test goal): UR_r_Main_TUR_r_Standby_T322: (statusC = STANDBY) and ((transitionC = OPERATE_T) and (statusCOperate != BLOCKED_A))
+check statusA = OFF;
+check lightsB = ALL_OFF;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check statusCOperate = BLOCKED_A;
+check lightsA = ALL_OFF;
+set transitionC := TURN_ON;
+step
+check statusA = ATTENTION;
+check lightsB = BLINK_YELLOW;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check lightsA = BLINK_YELLOW;
+set transitionC := OPERATE_T;
+step
+check statusA = BLOCKED;
+check lightsB = RED;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check lightsA = RED;
+set transitionC := SAFE_PERIOD;
+step
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+check lightsA = GREEN;
+set transitionC := STANDBY_T;
+step
+check statusA = ATTENTION;
+check lightsB = BLINK_YELLOW;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check lightsA = BLINK_YELLOW;
+set transitionC := OPERATE_T;
+step
+check statusA = BLOCKED;
+check lightsB = RED;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check statusCOperate = BLOCKED_A;
+check lightsA = RED;
+set transitionC := OPERATE_T;
+step

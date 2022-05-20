@@ -1,0 +1,29 @@
+scenario testMCDC_r_Main_MCDC_r_Controller_FT13
+
+load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
+
+//// test name test@MCDC_r_Main_MCDC_r_Controller_FT13
+//// generated for (test goal): MCDC_r_Main_MCDC_r_Controller_FT13: (statusC != CONTR_OFF) and (transitionC = TURN_ON)
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check lightsB = ALL_OFF;
+check statusB = OFF;
+check statusCOperate = BLOCKED_A;
+check lightsA = ALL_OFF;
+set transitionC := TURN_ON;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = ATTENTION;
+check statusC = STANDBY;
+check lightsB = BLINK_YELLOW;
+check statusB = ATTENTION;
+check lightsA = BLINK_YELLOW;
+set transitionC := TURN_ON;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step

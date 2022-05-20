@@ -18,82 +18,86 @@ public class AbstractTestsGenerator {
 		String asmPath;
 		List<CriteriaEnum> criteria;
 		boolean useMonitoring;
+		int level;
 		
-		public TLCSConfiguration(String asmPath, List<CriteriaEnum> criteria) {
+		public TLCSConfiguration(String asmPath, List<CriteriaEnum> criteria, int level) {
 			this.asmPath = asmPath;
 			this.criteria = criteria;
 			this.useMonitoring = true;
+			this.level = level;
 		}
 		
-		public TLCSConfiguration(String asmPath, boolean useMonitoring, List<CriteriaEnum> criteria) {
+		public TLCSConfiguration(String asmPath, boolean useMonitoring, List<CriteriaEnum> criteria, int level) {
 			this.asmPath = asmPath;
 			this.criteria = criteria;
 			this.useMonitoring = useMonitoring;
+			this.level = level;
 		}
 		
-		public TLCSConfiguration(String asmPath, CriteriaEnum ... criteria) {
-			this(asmPath,Arrays.asList(criteria));
+		public TLCSConfiguration(String asmPath, int level, CriteriaEnum ... criteria) {
+			this(asmPath,Arrays.asList(criteria), level);
 		}
 		
-		public TLCSConfiguration(String asmPath, boolean useMonitoring, CriteriaEnum ... criteria) {
-			this(asmPath,useMonitoring,Arrays.asList(criteria));
+		public TLCSConfiguration(String asmPath, boolean useMonitoring, int level, CriteriaEnum ... criteria) {
+			this(asmPath,useMonitoring,Arrays.asList(criteria), level);
 		}
 	}
 
-	static String ASM_PHD_FOLDER = "../../ASM/TrafficLight_";
+	static String ASM_FOLDER = "../../ASM/TrafficLight_";
+	static String ABSTRACT_TESTS_FOLDER = "../../ASM/TrafficLight_";
 
 	List<TLCSConfiguration> filesToProcess = new ArrayList<TLCSConfiguration>() {
 		
 		private static final long serialVersionUID = 5014712752302397500L;
 		{
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "0/TrafficLight_0.asm", CriteriaEnum.BASIC_RULE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "0/TrafficLight_0.asm", CriteriaEnum.COMBINATORIAL_ALL));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "0/TrafficLight_0.asm", CriteriaEnum.COMPLETE_RULE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "0/TrafficLight_0.asm", CriteriaEnum.MCDC));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "0/TrafficLight_0.asm", CriteriaEnum.RULE_GUARD));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "0/TrafficLight_0.asm", CriteriaEnum.RULE_UPDATE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "0/TrafficLight_0.asm", CriteriaEnum.THREEWISE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "0/TrafficLight_0.asm", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
+			add(new TLCSConfiguration(ASM_FOLDER + "0/TrafficLight_0.asm", 0, CriteriaEnum.BASIC_RULE));
+			add(new TLCSConfiguration(ASM_FOLDER + "0/TrafficLight_0.asm", 0, CriteriaEnum.COMBINATORIAL_ALL));
+			add(new TLCSConfiguration(ASM_FOLDER + "0/TrafficLight_0.asm", 0, CriteriaEnum.COMPLETE_RULE));
+			add(new TLCSConfiguration(ASM_FOLDER + "0/TrafficLight_0.asm", 0, CriteriaEnum.MCDC));
+			add(new TLCSConfiguration(ASM_FOLDER + "0/TrafficLight_0.asm", 0, CriteriaEnum.RULE_GUARD));
+			add(new TLCSConfiguration(ASM_FOLDER + "0/TrafficLight_0.asm", 0, CriteriaEnum.RULE_UPDATE));
+			add(new TLCSConfiguration(ASM_FOLDER + "0/TrafficLight_0.asm", 0, CriteriaEnum.THREEWISE));
+			add(new TLCSConfiguration(ASM_FOLDER + "0/TrafficLight_0.asm", 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "1/TrafficLight_1.asm", CriteriaEnum.BASIC_RULE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "1/TrafficLight_1.asm", CriteriaEnum.COMBINATORIAL_ALL));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "1/TrafficLight_1.asm", CriteriaEnum.COMPLETE_RULE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "1/TrafficLight_1.asm", CriteriaEnum.MCDC));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "1/TrafficLight_1.asm", CriteriaEnum.RULE_GUARD));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "1/TrafficLight_1.asm", CriteriaEnum.RULE_UPDATE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "1/TrafficLight_1.asm", CriteriaEnum.THREEWISE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "1/TrafficLight_1.asm", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
+			add(new TLCSConfiguration(ASM_FOLDER + "1/TrafficLight_1.asm", 1, CriteriaEnum.BASIC_RULE));
+			add(new TLCSConfiguration(ASM_FOLDER + "1/TrafficLight_1.asm", 1, CriteriaEnum.COMBINATORIAL_ALL));
+			add(new TLCSConfiguration(ASM_FOLDER + "1/TrafficLight_1.asm", 1, CriteriaEnum.COMPLETE_RULE));
+			add(new TLCSConfiguration(ASM_FOLDER + "1/TrafficLight_1.asm", 1, CriteriaEnum.MCDC));
+			add(new TLCSConfiguration(ASM_FOLDER + "1/TrafficLight_1.asm", 1, CriteriaEnum.RULE_GUARD));
+			add(new TLCSConfiguration(ASM_FOLDER + "1/TrafficLight_1.asm", 1, CriteriaEnum.RULE_UPDATE));
+			add(new TLCSConfiguration(ASM_FOLDER + "1/TrafficLight_1.asm", 1, CriteriaEnum.THREEWISE));
+			add(new TLCSConfiguration(ASM_FOLDER + "1/TrafficLight_1.asm", 1, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "2/TrafficLight_2.asm", CriteriaEnum.BASIC_RULE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "2/TrafficLight_2.asm", CriteriaEnum.COMBINATORIAL_ALL));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "2/TrafficLight_2.asm", CriteriaEnum.COMPLETE_RULE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "2/TrafficLight_2.asm", CriteriaEnum.MCDC));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "2/TrafficLight_2.asm", CriteriaEnum.RULE_GUARD));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "2/TrafficLight_2.asm", CriteriaEnum.RULE_UPDATE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "2/TrafficLight_2.asm", CriteriaEnum.THREEWISE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "2/TrafficLight_2.asm", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
+			add(new TLCSConfiguration(ASM_FOLDER + "2/TrafficLight_2.asm", 2, CriteriaEnum.BASIC_RULE));
+			add(new TLCSConfiguration(ASM_FOLDER + "2/TrafficLight_2.asm", 2, CriteriaEnum.COMBINATORIAL_ALL));
+			add(new TLCSConfiguration(ASM_FOLDER + "2/TrafficLight_2.asm", 2, CriteriaEnum.COMPLETE_RULE));
+			add(new TLCSConfiguration(ASM_FOLDER + "2/TrafficLight_2.asm", 2, CriteriaEnum.MCDC));
+			add(new TLCSConfiguration(ASM_FOLDER + "2/TrafficLight_2.asm", 2, CriteriaEnum.RULE_GUARD));
+			add(new TLCSConfiguration(ASM_FOLDER + "2/TrafficLight_2.asm", 2, CriteriaEnum.RULE_UPDATE));
+			add(new TLCSConfiguration(ASM_FOLDER + "2/TrafficLight_2.asm", 2, CriteriaEnum.THREEWISE));
+			add(new TLCSConfiguration(ASM_FOLDER + "2/TrafficLight_2.asm", 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 						
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "3/TrafficLight_3.asm", CriteriaEnum.BASIC_RULE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "3/TrafficLight_3.asm", CriteriaEnum.COMBINATORIAL_ALL));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "3/TrafficLight_3.asm", CriteriaEnum.COMPLETE_RULE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "3/TrafficLight_3.asm", CriteriaEnum.MCDC));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "3/TrafficLight_3.asm", CriteriaEnum.RULE_GUARD));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "3/TrafficLight_3.asm", CriteriaEnum.RULE_UPDATE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "3/TrafficLight_3.asm", CriteriaEnum.THREEWISE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "3/TrafficLight_3.asm", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
+			add(new TLCSConfiguration(ASM_FOLDER + "3/TrafficLight_3.asm", 3, CriteriaEnum.BASIC_RULE));
+			add(new TLCSConfiguration(ASM_FOLDER + "3/TrafficLight_3.asm", 3, CriteriaEnum.COMBINATORIAL_ALL));
+			add(new TLCSConfiguration(ASM_FOLDER + "3/TrafficLight_3.asm", 3, CriteriaEnum.COMPLETE_RULE));
+			add(new TLCSConfiguration(ASM_FOLDER + "3/TrafficLight_3.asm", 3, CriteriaEnum.MCDC));
+			add(new TLCSConfiguration(ASM_FOLDER + "3/TrafficLight_3.asm", 3, CriteriaEnum.RULE_GUARD));
+			add(new TLCSConfiguration(ASM_FOLDER + "3/TrafficLight_3.asm", 3, CriteriaEnum.RULE_UPDATE));
+			add(new TLCSConfiguration(ASM_FOLDER + "3/TrafficLight_3.asm", 3, CriteriaEnum.THREEWISE));
+			add(new TLCSConfiguration(ASM_FOLDER + "3/TrafficLight_3.asm", 3, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "NR/TrafficLight_4.asm", CriteriaEnum.BASIC_RULE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "NR/TrafficLight_4.asm", CriteriaEnum.COMBINATORIAL_ALL));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "NR/TrafficLight_4.asm", CriteriaEnum.COMPLETE_RULE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "NR/TrafficLight_4.asm", CriteriaEnum.MCDC));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "NR/TrafficLight_4.asm", CriteriaEnum.RULE_GUARD));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "NR/TrafficLight_4.asm", CriteriaEnum.RULE_UPDATE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "NR/TrafficLight_4.asm", CriteriaEnum.THREEWISE));
-			add(new TLCSConfiguration(ASM_PHD_FOLDER + "NR/TrafficLight_4.asm", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
+			add(new TLCSConfiguration(ASM_FOLDER + "NR/TrafficLight_4.asm", 4, CriteriaEnum.BASIC_RULE));
+			add(new TLCSConfiguration(ASM_FOLDER + "NR/TrafficLight_4.asm", 4, CriteriaEnum.COMBINATORIAL_ALL));
+			add(new TLCSConfiguration(ASM_FOLDER + "NR/TrafficLight_4.asm", 4, CriteriaEnum.COMPLETE_RULE));
+			add(new TLCSConfiguration(ASM_FOLDER + "NR/TrafficLight_4.asm", 4, CriteriaEnum.MCDC));
+			add(new TLCSConfiguration(ASM_FOLDER + "NR/TrafficLight_4.asm", 4, CriteriaEnum.RULE_GUARD));
+			add(new TLCSConfiguration(ASM_FOLDER + "NR/TrafficLight_4.asm", 4, CriteriaEnum.RULE_UPDATE));
+			add(new TLCSConfiguration(ASM_FOLDER + "NR/TrafficLight_4.asm", 4, CriteriaEnum.THREEWISE));
+			add(new TLCSConfiguration(ASM_FOLDER + "NR/TrafficLight_4.asm", 4, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 		}
 	};	
@@ -119,13 +123,11 @@ public class AbstractTestsGenerator {
 
 	
 	public void generateAbstractTests(TLCSConfiguration c) throws Exception {
-		String outputFileName = null;
-		String[] outputFileNames = null;
 		String modelName = "";
 		
 		// Generate the abstract tests
 		modelName = c.asmPath.substring(0, c.asmPath.lastIndexOf("."));
-		outputFileNames = new GenerateTestsFromFSM().saveFSMWithAvallaTests(modelName, c.asmPath, c.useMonitoring, c.criteria);	
+		new GenerateTestsFromFSM().saveFSMWithAvallaTests(modelName, c.asmPath, c.useMonitoring, c.criteria);	
 	}
 	
 }

@@ -43,8 +43,8 @@ public class AbstractTestsGenerator {
 		}
 	}
 
-	static String ASM_FOLDER = "../ASM/TrafficLight_";
-	static String ABSTRACT_TESTS_FOLDER = "../abstract_tests/TrafficLight_";
+	static String ASM_FOLDER = "../Case_studies/Traffic_Light_Control_System/ASM/TrafficLight_";
+	static String ABSTRACT_TESTS_FOLDER = "../Case_studies/Traffic_Light_Control_System/abstract_tests/TrafficLight_";
 
 	List<Configuration> filesToProcess = new ArrayList<Configuration>() {
 		

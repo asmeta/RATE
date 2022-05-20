@@ -1,0 +1,16 @@
+scenario TrafficLight_0_BR0
+
+load ./F:\Dati-Andrea\GitHub\RATE\Traffic_Light_Control_System\abstract_tests\Generator\..\..\ASM\TrafficLight_0\TrafficLight_0.asm
+
+//// test name test@BR_r_Main_TBR_r_ContrOff_T1
+//// generated for (test goal): BR_r_Main_TBR_r_ContrOff_T1: (statusC = CONTR_OFF) and (transitionC = TURN_ON)
+check statusB = OFF;
+check statusC = CONTR_OFF;
+check statusA = OFF;
+set transitionC := TURN_ON;
+step
+check statusB = ATTENTION;
+check statusC = STANDBY;
+check statusA = ATTENTION;
+set transitionC := TURN_ON;
+step

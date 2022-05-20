@@ -44,7 +44,7 @@ public class AbstractTestsGenerator {
 	}
 
 	static String ASM_FOLDER = "../../ASM/TrafficLight_";
-	static String ABSTRACT_TESTS_FOLDER = "../../ASM/TrafficLight_";
+	static String ABSTRACT_TESTS_FOLDER = "../../abstract_tests/TrafficLight_";
 
 	List<TLCSConfiguration> filesToProcess = new ArrayList<TLCSConfiguration>() {
 		
@@ -127,7 +127,7 @@ public class AbstractTestsGenerator {
 		
 		// Generate the abstract tests
 		modelName = c.asmPath.substring(0, c.asmPath.lastIndexOf("."));
-		new GenerateTestsFromFSM().saveFSMWithAvallaTests(modelName, c.asmPath, c.useMonitoring, c.criteria);	
+		new GenerateTestsFromFSM().saveFSMWithAvallaTests(modelName, c.asmPath, c.useMonitoring, c.criteria, ABSTRACT_TESTS_FOLDER + c.level + "/");	
 	}
 	
 }

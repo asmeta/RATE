@@ -1,4 +1,4 @@
---file F:\Dati-Andrea\GitHub\RATE\Traffic_Light_Control_System\abstract_tests\Generator\..\..\ASM\TrafficLight_0\TrafficLight_0.smv
+--file ..\..\ASM\TrafficLight_0\TrafficLight_0.smv
 -- options: flatten? false
 MODULE main
 	VAR
@@ -33,4 +33,4 @@ MODULE main
 				TRUE: statusC;
 			esac;
 --LTL properties
-LTLSPEC NAME ltl0 := G(!((((statusC = CONTR_OFF) & (statusB = OFF)) & (statusA = ATTENTION)) & X(TRUE)));
+LTLSPEC NAME ltl0 := G(!(((statusC = OPERATE) & (transitionC = STANDBY_T)) & X(TRUE)));

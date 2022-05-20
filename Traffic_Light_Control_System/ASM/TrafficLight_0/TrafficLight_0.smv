@@ -1,0 +1,36 @@
+--file F:\Dati-Andrea\GitHub\RATE\Traffic_Light_Control_System\abstract_tests\Generator\..\..\ASM\TrafficLight_0\TrafficLight_0.smv
+-- options: flatten? false
+MODULE main
+	VAR
+		statusA: {ATTENTION, BLOCKED, LIGHTSTATUS_UNDEF, OFF}; --controlled
+		statusB: {ATTENTION, BLOCKED, LIGHTSTATUS_UNDEF, OFF}; --controlled
+		statusC: {CONTROLLERSTATUS_UNDEF, CONTR_OFF, OPERATE, STANDBY}; --controlled
+		transitionC: {OPERATE_T, STANDBY_T, TURN_OFF, TURN_ON}; --monitored
+	CONSTANTS CONTROLLERTRANSITION_UNDEF, OPERATE_T, STANDBY_T, TURN_OFF, TURN_ON, LIGHTSTATUS_UNDEF, ATTENTION, BLOCKED, OFF, CONTROLLERSTATUS_UNDEF, CONTR_OFF, OPERATE, STANDBY;
+	ASSIGN
+		init(statusA) := OFF;
+		init(statusB) := OFF;
+		init(statusC) := CONTR_OFF;
+		next(statusA) :=
+			case
+				((transitionC = OPERATE_T) & (statusC = STANDBY)): BLOCKED;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): ATTENTION;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): OFF;
+				TRUE: statusA;
+			esac;
+		next(statusB) :=
+			case
+				((transitionC = OPERATE_T) & (statusC = STANDBY)): BLOCKED;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): ATTENTION;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): OFF;
+				TRUE: statusB;
+			esac;
+		next(statusC) :=
+			case
+				((transitionC = OPERATE_T) & (statusC = STANDBY)): OPERATE;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): STANDBY;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): CONTR_OFF;
+				TRUE: statusC;
+			esac;
+--LTL properties
+LTLSPEC NAME ltl0 := G(!((((statusC = CONTR_OFF) & (statusB = OFF)) & (statusA = ATTENTION)) & X(TRUE)));

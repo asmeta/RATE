@@ -106,7 +106,7 @@ public class AbstractTestsGenerator {
 	public void generateAbstractTests() throws Exception {
 		// XXX select configuration to execute (only one at a time!!)
 		Logger.getLogger(StdPairwiseCovBuild.class).setLevel(Level.ALL);
-		generateAbstractTests(filesToProcess.get(0));	
+		generateAbstractTests(filesToProcess.get(1));	
 	}
 	
 	/**

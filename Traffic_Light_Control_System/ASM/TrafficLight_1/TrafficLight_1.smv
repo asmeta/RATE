@@ -1,0 +1,48 @@
+--file F:\Dati-Andrea\GitHub\RATE\Traffic_Light_Control_System\abstract_tests\Generator\..\..\ASM\TrafficLight_1\TrafficLight_1.smv
+-- options: flatten? false
+MODULE main
+	VAR
+		statusA: {ATTENTION, BLOCKED, LIGHTSTATUS_UNDEF, OFF, PREPARE_BLOCK, RELEASED}; --controlled
+		statusB: {ATTENTION, BLOCKED, LIGHTSTATUS_UNDEF, OFF, PREPARE_BLOCK, RELEASED}; --controlled
+		statusC: {CONTROLLERSTATUS_UNDEF, CONTR_OFF, OPERATE, STANDBY}; --controlled
+		statusCOperate: {BLOCKED_A, CONTROLLERSUBSTATUSOPERATE_UNDEF, RELEASED_A, RELEASE_A}; --controlled
+		transitionA: {PREPARE_PERIOD, RELEASE_PERIOD}; --monitored
+		transitionC: {OPERATE_T, SAFE_PERIOD, STANDBY_T, TURN_OFF, TURN_ON}; --monitored
+	CONSTANTS CONTROLLERSTATUS_UNDEF, CONTR_OFF, OPERATE, STANDBY, CONTROLLERSUBSTATUSOPERATE_UNDEF, BLOCKED_A, RELEASED_A, RELEASE_A, CONTROLLERTRANSITION_UNDEF, OPERATE_T, SAFE_PERIOD, STANDBY_T, TURN_OFF, TURN_ON, LIGHTTRANSITION_UNDEF, PREPARE_PERIOD, RELEASE_PERIOD, LIGHTSTATUS_UNDEF, ATTENTION, BLOCKED, OFF, PREPARE_BLOCK, RELEASED;
+	ASSIGN
+		init(statusA) := OFF;
+		init(statusB) := OFF;
+		init(statusC) := CONTR_OFF;
+		init(statusCOperate) := BLOCKED_A;
+		next(statusA) :=
+			case
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): ATTENTION;
+				((statusC = OPERATE) & (statusA = RELEASED) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASE_A) & (transitionA = RELEASE_PERIOD)): PREPARE_BLOCK;
+				(((statusA = PREPARE_BLOCK) & (statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASED_A) & (transitionA = PREPARE_PERIOD)) | ((transitionC = OPERATE_T) & (statusC = STANDBY))): BLOCKED;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): OFF;
+				((statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = BLOCKED_A) & (transitionC = SAFE_PERIOD)): RELEASED;
+				TRUE: statusA;
+			esac;
+		next(statusB) :=
+			case
+				((transitionC = OPERATE_T) & (statusC = STANDBY)): BLOCKED;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): ATTENTION;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): OFF;
+				TRUE: statusB;
+			esac;
+		next(statusC) :=
+			case
+				((transitionC = OPERATE_T) & (statusC = STANDBY)): OPERATE;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): STANDBY;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): CONTR_OFF;
+				TRUE: statusC;
+			esac;
+		next(statusCOperate) :=
+			case
+				((statusC = OPERATE) & (statusA = RELEASED) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASE_A) & (transitionA = RELEASE_PERIOD)): RELEASED_A;
+				(((statusA = PREPARE_BLOCK) & (statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASED_A) & (transitionA = PREPARE_PERIOD)) | ((transitionC = OPERATE_T) & (statusC = STANDBY))): BLOCKED_A;
+				((statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = BLOCKED_A) & (transitionC = SAFE_PERIOD)): RELEASE_A;
+				TRUE: statusCOperate;
+			esac;
+--LTL properties
+LTLSPEC NAME ltl0 := G(!((((statusC = CONTR_OFF) & (statusB = OFF)) & (statusA = ATTENTION)) & X(TRUE)));

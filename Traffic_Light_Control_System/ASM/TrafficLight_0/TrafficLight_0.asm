@@ -16,11 +16,11 @@ signature:
 	// DOMAINS
 	enum domain ControllerStatus = {CONTR_OFF | STANDBY | OPERATE}
 	enum domain ControllerTransition = {TURN_ON | TURN_OFF | OPERATE_T | STANDBY_T}
-	enum domain Lights = {NONE}
+	//enum domain Lights = {NONE}
 	enum domain LightStatus = {OFF | ATTENTION | BLOCKED}
 	// FUNCTIONS
-	controlled lightsA: Lights // traffic light A
-	controlled lightsB: Lights // traffic light B
+	//controlled lightsA: Lights // traffic light A
+	//controlled lightsB: Lights // traffic light B
 	controlled statusC: ControllerStatus
 	monitored transitionC: ControllerTransition
 	controlled statusA: LightStatus
@@ -86,7 +86,7 @@ definitions:
 // When controller is standby traffic lights are in attention
 	CTLSPEC ag((statusC = STANDBY) implies (statusA = ATTENTION and statusB = ATTENTION))
 // The lights are always NONE
-	CTLSPEC ag(lightsA=NONE and lightsB=NONE)
+//	CTLSPEC ag(lightsA=NONE and lightsB=NONE)
 	main rule r_Main =
 		par
 			if (statusC = CONTR_OFF) then
@@ -103,8 +103,8 @@ definitions:
 
 // INITIAL STATE
 default init s0:
-	function lightsA = NONE
-	function lightsB = NONE
+//	function lightsA = NONE
+//	function lightsB = NONE
 	function statusC = CONTR_OFF
 	function statusA = OFF
 	function statusB = OFF

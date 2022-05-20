@@ -15,12 +15,12 @@ signature:
 	enum domain ControllerStatus = {CONTR_OFF | STANDBY | OPERATE}
 	enum domain ControllerSubStatusOperate = {BLOCKED_A | RELEASE_A | RELEASED_A}
 	enum domain ControllerTransition = {TURN_ON | TURN_OFF | OPERATE_T | STANDBY_T | SAFE_PERIOD}
-	enum domain Lights = {NONE}
+	//enum domain Lights = {NONE}
 	enum domain LightTransition = {RELEASE_PERIOD | PREPARE_PERIOD}
 	enum domain LightStatus = {OFF | ATTENTION | BLOCKED | RELEASED | PREPARE_BLOCK}
 	// FUNCTIONS
-	controlled lightsA: Lights // traffic light A
-	controlled lightsB: Lights // traffic light B
+	//controlled lightsA: Lights // traffic light A
+	//controlled lightsB: Lights // traffic light B
 	controlled statusC: ControllerStatus
 	controlled statusCOperate : ControllerSubStatusOperate
 	monitored transitionC: ControllerTransition
@@ -141,7 +141,7 @@ definitions:
 // When controller is Released A traffic light A is preparing for block and traffic light B is blocked
 	CTLSPEC ag((statusC = OPERATE and statusCOperate = RELEASED_A) implies (statusA = PREPARE_BLOCK and statusB = BLOCKED))		
 // The lights are always NONE
-	CTLSPEC ag(lightsA=NONE and lightsB=NONE)
+//	CTLSPEC ag(lightsA=NONE and lightsB=NONE)
 			
 	main rule r_Main =
 		par
@@ -159,8 +159,8 @@ definitions:
 
 // INITIAL STATE
 default init s0:
-	function lightsA = NONE
-	function lightsB = NONE
+//	function lightsA = NONE
+//	function lightsB = NONE
 	function statusC = CONTR_OFF
 	function statusCOperate = BLOCKED_A
 	function statusA = OFF

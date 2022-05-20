@@ -1,0 +1,76 @@
+--file F:\Dati-Andrea\GitHub\RATE\Traffic_Light_Control_System\abstract_tests\Generator\..\..\ASM\TrafficLight_3\TrafficLight_3.smv
+-- options: flatten? false
+MODULE main
+	VAR
+		lightsA: {ALL_OFF, BLINK_YELLOW, GREEN, LIGHTS_UNDEF, RED, YELLOW}; --controlled
+		lightsB: {ALL_OFF, BLINK_YELLOW, GREEN, LIGHTS_UNDEF, RED, YELLOW}; --controlled
+		statusA: {ATTENTION, BLOCKED, LIGHTSTATUS_UNDEF, OFF, PREPARE_BLOCK, RELEASED}; --controlled
+		statusB: {ATTENTION, BLOCKED, LIGHTSTATUS_UNDEF, OFF, PREPARE_BLOCK, RELEASED}; --controlled
+		statusC: {CONTROLLERSTATUS_UNDEF, CONTR_OFF, OPERATE, STANDBY}; --controlled
+		statusCOperate: {BLOCKED_A, BLOCKED_B, CONTROLLERSUBSTATUSOPERATE_UNDEF, RELEASED_A, RELEASED_B, RELEASE_A, RELEASE_B}; --controlled
+		transitionA: {PREPARE_PERIOD, RELEASE_PERIOD}; --monitored
+		transitionB: {PREPARE_PERIOD, RELEASE_PERIOD}; --monitored
+		transitionC: {OPERATE_T, SAFE_PERIOD, STANDBY_T, TURN_OFF, TURN_ON}; --monitored
+	CONSTANTS LIGHTS_UNDEF, ALL_OFF, BLINK_YELLOW, GREEN, RED, YELLOW, CONTROLLERSUBSTATUSOPERATE_UNDEF, BLOCKED_A, BLOCKED_B, RELEASED_A, RELEASED_B, RELEASE_A, RELEASE_B, CONTROLLERTRANSITION_UNDEF, OPERATE_T, SAFE_PERIOD, STANDBY_T, TURN_OFF, TURN_ON, LIGHTTRANSITION_UNDEF, PREPARE_PERIOD, RELEASE_PERIOD, CONTROLLERSTATUS_UNDEF, CONTR_OFF, OPERATE, STANDBY, LIGHTSTATUS_UNDEF, ATTENTION, BLOCKED, OFF, PREPARE_BLOCK, RELEASED;
+	ASSIGN
+		init(lightsA) := ALL_OFF;
+		init(lightsB) := ALL_OFF;
+		init(statusA) := OFF;
+		init(statusB) := OFF;
+		init(statusC) := CONTR_OFF;
+		init(statusCOperate) := BLOCKED_A;
+		next(lightsA) :=
+			case
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): BLINK_YELLOW;
+				((statusC = OPERATE) & (statusA = RELEASED) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASE_A) & (transitionA = RELEASE_PERIOD)): YELLOW;
+				(((statusA = PREPARE_BLOCK) & (statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASED_A) & (transitionA = PREPARE_PERIOD)) | ((transitionC = OPERATE_T) & (statusC = STANDBY))): RED;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): ALL_OFF;
+				((statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = BLOCKED_A) & (transitionC = SAFE_PERIOD)): GREEN;
+				TRUE: lightsA;
+			esac;
+		next(lightsB) :=
+			case
+				(((transitionC = OPERATE_T) & (statusC = STANDBY)) | ((statusC = OPERATE) & (transitionB = PREPARE_PERIOD) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASED_B) & (statusB = PREPARE_BLOCK))): RED;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): BLINK_YELLOW;
+				((statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = BLOCKED_B) & (transitionC = SAFE_PERIOD)): GREEN;
+				((statusC = OPERATE) & (transitionB = RELEASE_PERIOD) & (statusB = RELEASED) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASE_B)): YELLOW;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): ALL_OFF;
+				TRUE: lightsB;
+			esac;
+		next(statusA) :=
+			case
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): ATTENTION;
+				((statusC = OPERATE) & (statusA = RELEASED) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASE_A) & (transitionA = RELEASE_PERIOD)): PREPARE_BLOCK;
+				(((statusA = PREPARE_BLOCK) & (statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASED_A) & (transitionA = PREPARE_PERIOD)) | ((transitionC = OPERATE_T) & (statusC = STANDBY))): BLOCKED;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): OFF;
+				((statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = BLOCKED_A) & (transitionC = SAFE_PERIOD)): RELEASED;
+				TRUE: statusA;
+			esac;
+		next(statusB) :=
+			case
+				(((transitionC = OPERATE_T) & (statusC = STANDBY)) | ((statusC = OPERATE) & (transitionB = PREPARE_PERIOD) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASED_B) & (statusB = PREPARE_BLOCK))): BLOCKED;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): ATTENTION;
+				((statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = BLOCKED_B) & (transitionC = SAFE_PERIOD)): RELEASED;
+				((statusC = OPERATE) & (transitionB = RELEASE_PERIOD) & (statusB = RELEASED) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASE_B)): PREPARE_BLOCK;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): OFF;
+				TRUE: statusB;
+			esac;
+		next(statusC) :=
+			case
+				((transitionC = OPERATE_T) & (statusC = STANDBY)): OPERATE;
+				(((statusC = OPERATE) & (transitionC = STANDBY_T)) | ((statusC = CONTR_OFF) & (transitionC = TURN_ON))): STANDBY;
+				((transitionC = TURN_OFF) & (statusC = STANDBY)): CONTR_OFF;
+				TRUE: statusC;
+			esac;
+		next(statusCOperate) :=
+			case
+				(((transitionC = OPERATE_T) & (statusC = STANDBY)) | ((statusC = OPERATE) & (transitionB = PREPARE_PERIOD) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASED_B) & (statusB = PREPARE_BLOCK))): BLOCKED_A;
+				((statusA = PREPARE_BLOCK) & (statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASED_A) & (transitionA = PREPARE_PERIOD)): BLOCKED_B;
+				((statusC = OPERATE) & (statusA = RELEASED) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASE_A) & (transitionA = RELEASE_PERIOD)): RELEASED_A;
+				((statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = BLOCKED_B) & (transitionC = SAFE_PERIOD)): RELEASE_B;
+				((statusC = OPERATE) & (transitionB = RELEASE_PERIOD) & (statusB = RELEASED) & !(transitionC = STANDBY_T) & (statusCOperate = RELEASE_B)): RELEASED_B;
+				((statusC = OPERATE) & !(transitionC = STANDBY_T) & (statusCOperate = BLOCKED_A) & (transitionC = SAFE_PERIOD)): RELEASE_A;
+				TRUE: statusCOperate;
+			esac;
+--LTL properties
+LTLSPEC NAME ltl0 := G(!((((lightsB = GREEN) & (transitionC = TURN_OFF)) & (transitionB = RELEASE_PERIOD)) & X(TRUE)));

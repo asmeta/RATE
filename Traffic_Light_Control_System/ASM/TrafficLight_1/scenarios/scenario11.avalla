@@ -3,8 +3,8 @@ scenario scenario11
 load ..\TrafficLight_1.asm
 
 check statusB = OFF;
-check lightsA = NONE;
-check lightsB = NONE;
+//check lightsA = NONE;
+//check lightsB = NONE;
 check statusA = OFF;
 check statusCOperate = BLOCKED_A;
 check statusC = CONTR_OFF;
@@ -13,8 +13,8 @@ set transitionA := undef;
 step
 check statusC = STANDBY;
 check statusB = ATTENTION;
-check lightsA = NONE;
-check lightsB = NONE;
+//check lightsA = NONE;
+//check lightsB = NONE;
 check statusCOperate = BLOCKED_A;
 check statusA = ATTENTION;
 set transitionC := OPERATE_T;
@@ -22,8 +22,8 @@ set transitionA := undef;
 step
 check statusC = OPERATE;
 check statusB = BLOCKED;
-check lightsA = NONE;
-check lightsB = NONE;
+//check lightsA = NONE;
+//check lightsB = NONE;
 check statusA = BLOCKED;
 check statusCOperate = BLOCKED_A;
 set transitionC := STANDBY_T;
@@ -31,8 +31,8 @@ set transitionA := undef;
 step
 check statusC = STANDBY;
 check statusB = ATTENTION;
-check lightsA = NONE;
-check lightsB = NONE;
+//check lightsA = NONE;
+//check lightsB = NONE;
 check statusA = ATTENTION;
 check statusCOperate = BLOCKED_A;
 set transitionC := TURN_OFF;
@@ -40,8 +40,8 @@ set transitionA := undef;
 step
 check statusC = CONTR_OFF;
 check statusB = OFF;
-check lightsA = NONE;
-check lightsB = NONE;
+//check lightsA = NONE;
+//check lightsB = NONE;
 check statusA = OFF;
 check statusCOperate = BLOCKED_A;
 set transitionC := undef;

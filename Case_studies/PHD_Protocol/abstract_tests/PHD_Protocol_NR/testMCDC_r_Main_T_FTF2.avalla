@@ -1,0 +1,24 @@
+scenario testMCDC_r_Main_T_FTF2
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@MCDC_r_Main_T_FTF2
+//// generated for (test goal): MCDC_r_Main_T_FTF2: ((transition = REQ_ASSOC_ABORT) or (transition = RX_AARE)) and ((not((((status = UNASSOCIATED) or (status = ASSOCIATING)) or (status = WAITING_FOR_CONFIG)) or (status = CHECKING_CONFIG)) and (status = OPERATING)) and (status != DISASSOCIATING))
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ;
+step
+check status = ASSOCIATING;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step
+check status = OPERATING;
+check message = MSG_RX_AARE;
+set transition := RX_AARE;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_RORS_CONFIRMED_SET;
+step

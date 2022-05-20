@@ -1,0 +1,24 @@
+scenario testpair_2_2_3_1
+
+load ./..\..\ASM\PHD_Protocol_5\phd_master_flat2_v5.asm
+
+//// test name test@pair_2_2_3_1
+//// generated for (test goal): message=MSG_RX_PRST - transition=RX_AARQ_EXTERNAL
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = OPERATING;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check message = MSG_RX_PRST;
+set transition := RX_AARQ_EXTERNAL;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

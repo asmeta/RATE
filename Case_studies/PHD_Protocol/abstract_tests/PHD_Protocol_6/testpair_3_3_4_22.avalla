@@ -1,0 +1,24 @@
+scenario testpair_3_3_4_22
+
+load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
+
+//// test name test@pair_3_3_4_22
+//// generated for (test goal): message=MSG_RX_RLRE - transition=REQ_ASSOC_REL
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step
+check status = OPERATING;
+check message = MSG_RX_AARE;
+set transition := RX_RLRQ;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_RLRE;
+set transition := REQ_ASSOC_REL;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_RORS_CONFIRMED_SET;
+step

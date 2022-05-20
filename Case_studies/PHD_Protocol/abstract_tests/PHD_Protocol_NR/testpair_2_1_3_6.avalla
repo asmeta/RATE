@@ -1,0 +1,6 @@
+scenario testpair_2_1_3_6
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@pair_2_1_3_6
+//// generated for (test goal): status=ASSOCIATING - message=MSG_RX_AARE

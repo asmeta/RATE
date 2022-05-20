@@ -1,0 +1,24 @@
+scenario testMCDC_r_Main_T_FF111
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@MCDC_r_Main_T_FF111
+//// generated for (test goal): MCDC_r_Main_T_FF111: (transition = RX_ROIV) and ((status != UNASSOCIATED) and (status != ASSOCIATING))
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ;
+step
+check status = ASSOCIATING;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_ROIV;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

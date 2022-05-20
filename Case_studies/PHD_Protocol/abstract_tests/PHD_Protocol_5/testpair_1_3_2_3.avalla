@@ -1,0 +1,6 @@
+scenario testpair_1_3_2_3
+
+load ./..\..\ASM\PHD_Protocol_5\phd_master_flat2_v5.asm
+
+//// test name test@pair_1_3_2_3
+//// generated for (test goal): status=CHECKING_CONFIG - message=MSG_RX_RLRE

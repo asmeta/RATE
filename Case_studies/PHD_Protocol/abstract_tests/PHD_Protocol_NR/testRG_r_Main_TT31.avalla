@@ -1,0 +1,24 @@
+scenario testRG_r_Main_TT31
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@RG_r_Main_TT31
+//// generated for (test goal): RG_r_Main_TT31: (transition = REQ_ASSOC_REL) and (((status = WAITING_FOR_CONFIG) or (status = CHECKING_CONFIG)) or (status = OPERATING))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ;
+step
+check status = ASSOCIATING;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = OPERATING;
+set transition := REQ_ASSOC_REL;
+step
+check message = MSG_RX_RLRQ;
+check status = DISASSOCIATING;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

@@ -1,0 +1,28 @@
+scenario testRG_r_Main_TT311
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@RG_r_Main_TT311
+//// generated for (test goal): RG_r_Main_TT311: (transition = RX_ROIV) and (status = CHECKING_CONFIG)
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ;
+step
+check status = ASSOCIATING;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
+set transition := RX_ROIV;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := RX_RORS_CONFIRMED_SET;
+step

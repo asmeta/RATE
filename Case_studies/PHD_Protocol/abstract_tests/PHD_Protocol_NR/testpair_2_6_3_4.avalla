@@ -1,0 +1,6 @@
+scenario testpair_2_6_3_4
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@pair_2_6_3_4
+//// generated for (test goal): status=UNASSOCIATED - message=MSG_RX_RLRQ

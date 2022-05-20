@@ -1,0 +1,6 @@
+scenario testUR_r_Main_TUR_r_Waiting_For_Config__RX_RORS_CONFIRMED_SET_TT12
+
+load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
+
+//// test name test@UR_r_Main_TUR_r_Waiting_For_Config__RX_RORS_CONFIRMED_SET_TT12
+//// generated for (test goal): UR_r_Main_TUR_r_Waiting_For_Config__RX_RORS_CONFIRMED_SET_TT12: (status = WAITING_FOR_CONFIG) and ((transition = RX_RORS_CONFIRMED_SET) and ((invokeIdValid = true) and (status != WAITING_FOR_CONFIG)))

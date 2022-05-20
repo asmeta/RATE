@@ -1,0 +1,20 @@
+scenario testUR_r_Main_TUR_r_Operating__RX_ROIV_T24
+
+load ./..\..\ASM\PHD_Protocol_4\phd_master_flat2_v4.asm
+
+//// test name test@UR_r_Main_TUR_r_Operating__RX_ROIV_T24
+//// generated for (test goal): UR_r_Main_TUR_r_Operating__RX_ROIV_T24: (status = OPERATING) and ((transition = RX_ROIV) and (message != MSG_RX_PRST))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = OPERATING;
+set transition := RX_ROIV;
+step
+check message = MSG_RX_PRST;
+set transition := RX_ABRT;
+step

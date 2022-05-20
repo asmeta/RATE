@@ -1,0 +1,25 @@
+scenario testBR_r_Main_TBR_r_Checking_Config__RX_AARQ_T3
+
+load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
+
+//// test name test@BR_r_Main_TBR_r_Checking_Config__RX_AARQ_T3
+//// generated for (test goal): BR_r_Main_TBR_r_Checking_Config__RX_AARQ_T3: (status = CHECKING_CONFIG) and (transition = RX_AARQ)
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
+set transition := RX_AARQ;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

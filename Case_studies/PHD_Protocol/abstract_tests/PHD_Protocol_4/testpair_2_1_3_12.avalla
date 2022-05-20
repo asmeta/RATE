@@ -1,0 +1,6 @@
+scenario testpair_2_1_3_12
+
+load ./..\..\ASM\PHD_Protocol_4\phd_master_flat2_v4.asm
+
+//// test name test@pair_2_1_3_12
+//// generated for (test goal): message=MSG_RX_AARQ_UNACCEPTABLE_CONFIGURATION - transition=RX_AARQ

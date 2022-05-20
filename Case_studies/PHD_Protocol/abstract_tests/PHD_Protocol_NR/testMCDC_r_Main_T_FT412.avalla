@@ -1,0 +1,20 @@
+scenario testMCDC_r_Main_T_FT412
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@MCDC_r_Main_T_FT412
+//// generated for (test goal): MCDC_r_Main_T_FT412: ((((((transition = RX_ROER) or (transition = RX_RORJ)) or (transition = RX_RORS)) or (transition = RX_RORS_GET)) or (transition = RX_RORS_CONFIRMED_SET)) or (transition = RX_RORS_CONFIRMED_ACTION)) and (not((status = DISASSOCIATING) or (status = UNASSOCIATED)) and (status = ASSOCIATING))
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ;
+step
+check status = ASSOCIATING;
+set transition := RX_ROER;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_RORJ;
+step

@@ -1,0 +1,16 @@
+scenario testRG_r_Main_TT2
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@RG_r_Main_TT2
+//// generated for (test goal): RG_r_Main_TT2: ((transition = REQ_ASSOC_ABORT) or (transition = RX_AARE)) and ((((((status = UNASSOCIATED) or (status = ASSOCIATING)) or (status = WAITING_FOR_CONFIG)) or (status = CHECKING_CONFIG)) or (status = OPERATING)) or (status = DISASSOCIATING))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARE;
+step
+check message = MSG_RX_ABRT;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

@@ -1,0 +1,22 @@
+scenario testCR_r_Main_T2
+
+load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
+
+//// test name test@CR_r_Main_T2
+//// generated for (test goal): CR_r_Main_T2: (statusC = STANDBY) and (((transitionC = TURN_OFF) and (((statusA != OFF) or (statusB != OFF)) or (statusC != CONTR_OFF))) or ((transitionC = OPERATE_T) and ((((statusA != BLOCKED) or (statusB != BLOCKED)) or (statusC != OPERATE)) or (statusCOperate != BLOCKED_A))))
+check statusB = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
+check statusA = OFF;
+set transitionC := TURN_ON;
+step
+check statusB = ATTENTION;
+check statusC = STANDBY;
+check statusA = ATTENTION;
+set transitionC := TURN_OFF;
+step
+check statusB = OFF;
+check statusC = CONTR_OFF;
+check statusA = OFF;
+set transitionC := OPERATE_T;
+step

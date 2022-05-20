@@ -1,0 +1,14 @@
+scenario testpair_2_2_4_2
+
+load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
+
+//// test name test@pair_2_2_4_2
+//// generated for (test goal): transitionA=RELEASE_PERIOD - transitionC=STANDBY_T
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+check statusB = OFF;
+check statusC = CONTR_OFF;
+set transitionC := STANDBY_T;
+step
+set transitionC := OPERATE_T;
+step

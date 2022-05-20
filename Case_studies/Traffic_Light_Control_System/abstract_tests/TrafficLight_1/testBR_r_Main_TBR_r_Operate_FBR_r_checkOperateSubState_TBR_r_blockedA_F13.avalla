@@ -1,0 +1,22 @@
+scenario testBR_r_Main_TBR_r_Operate_FBR_r_checkOperateSubState_TBR_r_blockedA_F13
+
+load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
+
+//// test name test@BR_r_Main_TBR_r_Operate_FBR_r_checkOperateSubState_TBR_r_blockedA_F13
+//// generated for (test goal): BR_r_Main_TBR_r_Operate_FBR_r_checkOperateSubState_TBR_r_blockedA_F13: (statusC = OPERATE) and ((transitionC != STANDBY_T) and ((statusCOperate = BLOCKED_A) and (transitionC != SAFE_PERIOD)))
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
+check statusB = OFF;
+set transitionC := TURN_ON;
+step
+check statusA = ATTENTION;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+set transitionC := OPERATE_T;
+step
+check statusA = BLOCKED;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+set transitionC := OPERATE_T;
+step

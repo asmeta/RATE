@@ -1,0 +1,35 @@
+scenario testRG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_TRG_r_releasedA_TF33
+
+load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
+
+//// test name test@RG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_TRG_r_releasedA_TF33
+//// generated for (test goal): RG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_TRG_r_releasedA_TF33: (statusC = OPERATE) and ((transitionC != STANDBY_T) and ((statusCOperate = RELEASED_A) and ((statusA = PREPARE_BLOCK) and (transitionA != PREPARE_PERIOD))))
+check statusA = OFF;
+check statusB = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := TURN_ON;
+step
+check statusA = ATTENTION;
+check statusB = ATTENTION;
+check statusC = STANDBY;
+set transitionC := OPERATE_T;
+step
+check statusA = BLOCKED;
+check statusB = BLOCKED;
+check statusC = OPERATE;
+set transitionC := SAFE_PERIOD;
+step
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+step
+check statusA = PREPARE_BLOCK;
+check statusCOperate = RELEASED_A;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+step
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step

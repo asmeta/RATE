@@ -1,0 +1,6 @@
+scenario testpair_1_1_5_2
+
+load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
+
+//// test name test@pair_1_1_5_2
+//// generated for (test goal): transitionA=PREPARE_PERIOD - statusB=RELEASED

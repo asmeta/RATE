@@ -1,0 +1,21 @@
+scenario testBR_r_Main_TBR_r_Standby_T22
+
+load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
+
+//// test name test@BR_r_Main_TBR_r_Standby_T22
+//// generated for (test goal): BR_r_Main_TBR_r_Standby_T22: (statusC = STANDBY) and (transitionC = OPERATE_T)
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+set transitionC := TURN_ON;
+step
+check statusA = ATTENTION;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+set transitionC := OPERATE_T;
+step
+check statusA = BLOCKED;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+set transitionC := OPERATE_T;
+step

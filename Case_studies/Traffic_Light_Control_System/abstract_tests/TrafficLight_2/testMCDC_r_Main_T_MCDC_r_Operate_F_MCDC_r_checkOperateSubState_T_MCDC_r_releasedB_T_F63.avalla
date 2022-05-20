@@ -1,0 +1,49 @@
+scenario testMCDC_r_Main_T_MCDC_r_Operate_F_MCDC_r_checkOperateSubState_T_MCDC_r_releasedB_T_F63
+
+load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Operate_F_MCDC_r_checkOperateSubState_T_MCDC_r_releasedB_T_F63
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Operate_F_MCDC_r_checkOperateSubState_T_MCDC_r_releasedB_T_F63: (statusC = OPERATE) and ((transitionC != STANDBY_T) and ((statusCOperate = RELEASED_B) and ((statusB = PREPARE_BLOCK) and (transitionB != PREPARE_PERIOD))))
+check statusB = OFF;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := TURN_ON;
+step
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusC = STANDBY;
+set transitionC := OPERATE_T;
+step
+check statusB = BLOCKED;
+check statusA = BLOCKED;
+check statusC = OPERATE;
+set transitionC := SAFE_PERIOD;
+step
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+set transitionA := RELEASE_PERIOD;
+set transitionC := OPERATE_T;
+step
+check statusA = PREPARE_BLOCK;
+check statusCOperate = RELEASED_A;
+set transitionA := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+step
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_B;
+set transitionC := SAFE_PERIOD;
+step
+check statusB = RELEASED;
+check statusCOperate = RELEASE_B;
+set transitionB := RELEASE_PERIOD;
+set transitionC := OPERATE_T;
+step
+check statusB = PREPARE_BLOCK;
+check statusCOperate = RELEASED_B;
+set transitionB := RELEASE_PERIOD;
+set transitionC := OPERATE_T;
+step
+set transitionB := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+step

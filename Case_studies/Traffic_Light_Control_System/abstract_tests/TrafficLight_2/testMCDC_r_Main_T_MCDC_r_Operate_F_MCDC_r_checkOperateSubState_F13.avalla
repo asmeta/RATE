@@ -1,0 +1,27 @@
+scenario testMCDC_r_Main_T_MCDC_r_Operate_F_MCDC_r_checkOperateSubState_F13
+
+load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Operate_F_MCDC_r_checkOperateSubState_F13
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Operate_F_MCDC_r_checkOperateSubState_F13: (statusC = OPERATE) and ((transitionC != STANDBY_T) and (statusCOperate != BLOCKED_A))
+check statusB = OFF;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := TURN_ON;
+step
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusC = STANDBY;
+set transitionC := OPERATE_T;
+step
+check statusB = BLOCKED;
+check statusA = BLOCKED;
+check statusC = OPERATE;
+set transitionC := SAFE_PERIOD;
+step
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+set transitionA := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+step

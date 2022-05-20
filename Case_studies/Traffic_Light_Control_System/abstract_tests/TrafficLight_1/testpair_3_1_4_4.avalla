@@ -1,0 +1,24 @@
+scenario testpair_3_1_4_4
+
+load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
+
+//// test name test@pair_3_1_4_4
+//// generated for (test goal): statusC=OPERATE - transitionC=TURN_OFF
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
+check statusB = OFF;
+set transitionC := TURN_ON;
+step
+check statusA = ATTENTION;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+set transitionC := OPERATE_T;
+step
+check statusA = BLOCKED;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+set transitionC := TURN_OFF;
+step
+set transitionC := OPERATE_T;
+step

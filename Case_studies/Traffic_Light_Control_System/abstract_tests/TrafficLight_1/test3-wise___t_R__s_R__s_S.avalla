@@ -1,0 +1,37 @@
+scenario test3-wise___t_R__s_R__s_S
+
+load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
+
+//// test name test@3-wise___t_R__s_R__s_S
+//// generated for (test goal): [transitionA, statusCOperate, statusC]-->[RELEASE_PERIOD, RELEASE_A, STANDBY]
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
+check statusB = OFF;
+set transitionC := TURN_ON;
+step
+check statusA = ATTENTION;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+set transitionC := OPERATE_T;
+step
+check statusA = BLOCKED;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+set transitionC := SAFE_PERIOD;
+step
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+set transitionC := STANDBY_T;
+step
+check statusA = ATTENTION;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+set transitionC := OPERATE_T;
+step
+check statusA = BLOCKED;
+check statusC = OPERATE;
+check statusCOperate = BLOCKED_A;
+check statusB = BLOCKED;
+set transitionC := OPERATE_T;
+step

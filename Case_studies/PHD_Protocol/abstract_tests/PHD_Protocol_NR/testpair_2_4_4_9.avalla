@@ -4,8 +4,8 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@pair_2_4_4_9
 //// generated for (test goal): status=CHECKING_CONFIG - transition=RX_RORJ
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
@@ -14,12 +14,12 @@ step
 check status = ASSOCIATING;
 set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
-check message = MSG_RX_AARE;
 check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
 set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
-check message = MSG_NO_RESPONSE;
 check status = CHECKING_CONFIG;
+check message = MSG_NO_RESPONSE;
 set transition := RX_RORJ;
 step
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;

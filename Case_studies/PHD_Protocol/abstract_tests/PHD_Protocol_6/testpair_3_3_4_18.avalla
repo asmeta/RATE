@@ -20,5 +20,5 @@ check message = MSG_RX_RLRE;
 set transition := RX_AARQ_UNACCEPTABLE_CONFIGURATION;
 step
 check message = MSG_RX_AARE;
-set transition := RX_ROER;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

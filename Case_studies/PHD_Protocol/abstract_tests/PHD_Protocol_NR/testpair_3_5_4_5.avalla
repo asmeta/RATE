@@ -4,12 +4,12 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@pair_3_5_4_5
 //// generated for (test goal): message=MSG_RX_ABRT - transition=RX_RORS_CONFIRMED_ACTION
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := RX_ROER;
 step
 check message = MSG_RX_ABRT;
 set transition := RX_RORS_CONFIRMED_ACTION;

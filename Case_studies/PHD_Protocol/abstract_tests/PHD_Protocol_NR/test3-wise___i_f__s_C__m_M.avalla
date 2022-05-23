@@ -1,0 +1,6 @@
+scenario test3-wise___i_f__s_C__m_M
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@3-wise___i_f__s_C__m_M
+//// generated for (test goal): [invokeIdValid, status, message]-->[false, CHECKING_CONFIG, MSG_NO_RESPONSE]

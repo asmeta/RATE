@@ -4,8 +4,8 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@pair_2_1_4_2
 //// generated for (test goal): status=ASSOCIATING - transition=RX_AARQ_INVALID
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
@@ -14,7 +14,7 @@ step
 check status = ASSOCIATING;
 set transition := RX_AARQ_INVALID;
 step
-check message = MSG_RX_AARE;
 check status = UNASSOCIATED;
-set transition := RX_ROER;
+check message = MSG_RX_AARE;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

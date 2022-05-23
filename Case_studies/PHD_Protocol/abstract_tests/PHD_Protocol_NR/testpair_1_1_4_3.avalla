@@ -4,22 +4,22 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@pair_1_1_4_3
 //// generated for (test goal): invokeIdValid=false - transition=RX_RORS_GET
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
 set transition := RX_AARQ;
 step
 check status = ASSOCIATING;
-set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
+check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
-check status = OPERATING;
-set transition := RX_RORS_GET;
 set invokeIdValid := false;
+set transition := RX_RORS_GET;
 step
-check message = MSG_RX_ABRT;
 check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

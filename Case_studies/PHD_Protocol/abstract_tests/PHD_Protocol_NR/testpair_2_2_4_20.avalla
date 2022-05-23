@@ -4,25 +4,25 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@pair_2_2_4_20
 //// generated for (test goal): status=DISASSOCIATING - transition=RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
 set transition := RX_AARQ;
 step
 check status = ASSOCIATING;
-set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
+check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
-check status = OPERATING;
 set transition := REQ_ASSOC_REL;
 step
-check message = MSG_RX_RLRQ;
 check status = DISASSOCIATING;
+check message = MSG_RX_RLRQ;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
-check message = MSG_RX_ABRT;
 check status = UNASSOCIATED;
-set transition := RX_RORS_CONFIRMED_SET;
+check message = MSG_RX_ABRT;
+set transition := RX_RORS;
 step

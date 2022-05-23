@@ -20,5 +20,5 @@ set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
-set transition := RX_RORS;
+set transition := RX_RORS_CONFIRMED_SET;
 step

@@ -13,7 +13,7 @@ set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
 check status = OPERATING;
 check message = MSG_RX_AARE;
-set transition := RX_ROER;
+set transition := RX_RORJ;
 step
 check message = MSG_NO_RESPONSE;
 set transition := REQ_ASSOC_REL;

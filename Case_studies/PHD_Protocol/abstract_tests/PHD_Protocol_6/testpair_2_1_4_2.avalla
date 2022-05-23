@@ -21,5 +21,5 @@ set transition := RX_AARQ_INVALID;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
-set transition := RX_RORS_CONFIRMED_SET;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

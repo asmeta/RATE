@@ -20,5 +20,5 @@ check message = MSG_RX_RLRE;
 set transition := RX_RORS;
 step
 check message = MSG_RX_ABRT;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := RX_RORS;
 step

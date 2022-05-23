@@ -30,4 +30,4 @@ MODULE main
 				TRUE: status;
 			esac;
 --LTL properties
-LTLSPEC NAME ltl0 := G(!((((status = UNASSOCIATED) & (message = MSG_NO_RESPONSE)) & (transition = RX_ABRT)) & X(TRUE)));
+LTLSPEC NAME ltl0 := G(!((((status = UNASSOCIATED) & (message = MSG_NO_RESPONSE)) & (transition = REQ_ASSOC_REL)) & X(TRUE)));

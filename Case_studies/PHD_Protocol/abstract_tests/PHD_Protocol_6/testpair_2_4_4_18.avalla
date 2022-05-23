@@ -17,5 +17,5 @@ set transition := RX_AARQ_UNACCEPTABLE_CONFIGURATION;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := RX_ROER;
 step

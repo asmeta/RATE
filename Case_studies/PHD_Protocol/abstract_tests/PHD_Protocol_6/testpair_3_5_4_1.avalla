@@ -9,7 +9,7 @@ check message = undef;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
-set transition := RX_ROER;
+set transition := RX_AARE;
 step
 check message = MSG_RX_ABRT;
 set transition := RX_AARQ_EXTERNAL;

@@ -25,5 +25,5 @@ step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_PRST;
 set invokeIdValid := false;
-set transition := RX_RORS;
+set transition := RX_RORS_CONFIRMED_SET;
 step

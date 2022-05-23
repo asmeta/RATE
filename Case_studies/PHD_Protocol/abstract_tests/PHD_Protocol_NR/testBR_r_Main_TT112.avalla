@@ -17,7 +17,7 @@ step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
 set invokeIdValid := false;
-set transition := RX_ROER;
+set transition := RX_RORJ;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;

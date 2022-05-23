@@ -12,7 +12,7 @@ public class OutputGetter {
 		for (FSMEntry entry : entries) {
 			if (entry.getStateFrom().equals(initialState) && entry.getReceivedMessage().equals(msg)) {
 				msgOut = entry.getSentMessage();
-				if (msgOut.contains("|") && !msgOut.contains("none")) {
+				if (msgOut.contains("|") && !msgOut.contains("none") && msgOut != null && !msgOut.equals("|")) {
 					output[0] = (msgOut.split("\\|")[0].equals("red")) ? true : false;
 					output[1] = (msgOut.split("\\|")[0].equals("green")) ? true : false;
 					output[2] = (msgOut.split("\\|")[0].equals("yellow")) ? true : false;

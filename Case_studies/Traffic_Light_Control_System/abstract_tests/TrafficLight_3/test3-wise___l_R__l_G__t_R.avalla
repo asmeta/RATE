@@ -5,36 +5,52 @@ load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
 //// test name test@3-wise___l_R__l_G__t_R
 //// generated for (test goal): [lightsB, lightsA, transitionB]-->[RED, GREEN, RELEASE_PERIOD]
 check statusC = CONTR_OFF;
-check statusA = OFF;
-check lightsA = ALL_OFF;
-check statusB = OFF;
 check lightsB = ALL_OFF;
+check statusB = OFF;
 check statusCOperate = BLOCKED_A;
+check lightsA = ALL_OFF;
+check statusA = OFF;
+set transitionB := PREPARE_PERIOD;
 set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
 step
 check statusC = STANDBY;
-check statusA = ATTENTION;
-check lightsA = BLINK_YELLOW;
-check statusB = ATTENTION;
 check lightsB = BLINK_YELLOW;
+check statusB = ATTENTION;
+check lightsA = BLINK_YELLOW;
+check statusCOperate = BLOCKED_A;
+check statusA = ATTENTION;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
 step
 check statusC = OPERATE;
-check statusA = BLOCKED;
-check lightsA = RED;
-check statusB = BLOCKED;
 check lightsB = RED;
+check statusB = BLOCKED;
+check lightsA = RED;
+check statusCOperate = BLOCKED_A;
+check statusA = BLOCKED;
+set transitionB := PREPARE_PERIOD;
 set transitionC := SAFE_PERIOD;
+set transitionA := PREPARE_PERIOD;
 step
-check statusA = RELEASED;
-check lightsA = GREEN;
+check statusC = OPERATE;
+check lightsB = RED;
+check statusB = BLOCKED;
 check statusCOperate = RELEASE_A;
-set transitionC := STANDBY_T;
-step
-check statusC = STANDBY;
-check statusA = ATTENTION;
-check lightsA = BLINK_YELLOW;
-check statusB = ATTENTION;
-check lightsB = BLINK_YELLOW;
+check lightsA = GREEN;
+check statusA = RELEASED;
+set transitionB := RELEASE_PERIOD;
 set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step
+check statusC = OPERATE;
+check lightsB = RED;
+check statusB = BLOCKED;
+check statusCOperate = RELEASE_A;
+check lightsA = GREEN;
+check statusA = RELEASED;
+set transitionB := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
 step

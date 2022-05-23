@@ -4,21 +4,31 @@ load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
 
 //// test name test@pair_4_5_6_3
 //// generated for (test goal): transitionC=TURN_ON - statusA=BLOCKED
-check statusA = OFF;
 check statusC = CONTR_OFF;
 check statusCOperate = BLOCKED_A;
+check statusA = OFF;
 check statusB = OFF;
 set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
 step
-check statusA = ATTENTION;
 check statusC = STANDBY;
+check statusCOperate = BLOCKED_A;
+check statusA = ATTENTION;
 check statusB = ATTENTION;
 set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
 step
-check statusA = BLOCKED;
 check statusC = OPERATE;
+check statusCOperate = BLOCKED_A;
+check statusA = BLOCKED;
 check statusB = BLOCKED;
 set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
 step
+check statusC = OPERATE;
+check statusCOperate = BLOCKED_A;
+check statusA = BLOCKED;
+check statusB = BLOCKED;
 set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
 step

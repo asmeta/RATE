@@ -4,46 +4,75 @@ load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
 
 //// test name test@pair_4_4_5_1
 //// generated for (test goal): transitionC=TURN_OFF - statusB=PREPARE_BLOCK
-check statusA = OFF;
 check statusB = OFF;
-check statusC = CONTR_OFF;
+check statusA = OFF;
 check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
 set transitionC := TURN_ON;
 step
-check statusA = ATTENTION;
 check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusCOperate = BLOCKED_A;
 check statusC = STANDBY;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
 step
-check statusA = BLOCKED;
 check statusB = BLOCKED;
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_A;
 check statusC = OPERATE;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
 set transitionC := SAFE_PERIOD;
 step
+check statusB = BLOCKED;
 check statusA = RELEASED;
 check statusCOperate = RELEASE_A;
+check statusC = OPERATE;
 set transitionA := RELEASE_PERIOD;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
 step
+check statusB = BLOCKED;
 check statusA = PREPARE_BLOCK;
 check statusCOperate = RELEASED_A;
+check statusC = OPERATE;
 set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
 step
+check statusB = BLOCKED;
 check statusA = BLOCKED;
 check statusCOperate = BLOCKED_B;
+check statusC = OPERATE;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
 set transitionC := SAFE_PERIOD;
 step
 check statusB = RELEASED;
 check statusCOperate = RELEASE_B;
+check statusA = BLOCKED;
+check statusC = OPERATE;
+set transitionA := PREPARE_PERIOD;
 set transitionB := RELEASE_PERIOD;
 set transitionC := OPERATE_T;
 step
 check statusB = PREPARE_BLOCK;
 check statusCOperate = RELEASED_B;
+check statusA = BLOCKED;
+check statusC = OPERATE;
+set transitionA := PREPARE_PERIOD;
 set transitionB := RELEASE_PERIOD;
 set transitionC := TURN_OFF;
 step
+check statusB = PREPARE_BLOCK;
+check statusA = BLOCKED;
+check statusCOperate = RELEASED_B;
+check statusC = OPERATE;
+set transitionA := PREPARE_PERIOD;
 set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
 step

@@ -4,58 +4,93 @@ load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
 
 //// test name test@3-wise___l_A__s_B__t_T
 //// generated for (test goal): [lightsB, statusCOperate, transitionC]-->[ALL_OFF, BLOCKED_B, TURN_OFF]
-check statusB = OFF;
 check lightsB = ALL_OFF;
-check lightsA = ALL_OFF;
-check statusA = OFF;
+check statusB = OFF;
 check statusC = CONTR_OFF;
+check statusA = OFF;
+check lightsA = ALL_OFF;
 check statusCOperate = BLOCKED_A;
+set transitionB := PREPARE_PERIOD;
 set transitionC := TURN_ON;
-step
-check statusB = ATTENTION;
-check lightsB = BLINK_YELLOW;
-check lightsA = BLINK_YELLOW;
-check statusA = ATTENTION;
-check statusC = STANDBY;
-set transitionC := OPERATE_T;
-step
-check statusB = BLOCKED;
-check lightsB = RED;
-check lightsA = RED;
-check statusA = BLOCKED;
-check statusC = OPERATE;
-set transitionC := SAFE_PERIOD;
-step
-check lightsA = GREEN;
-check statusA = RELEASED;
-check statusCOperate = RELEASE_A;
-set transitionA := RELEASE_PERIOD;
-set transitionC := OPERATE_T;
-step
-check lightsA = YELLOW;
-check statusA = PREPARE_BLOCK;
-check statusCOperate = RELEASED_A;
 set transitionA := PREPARE_PERIOD;
-set transitionC := OPERATE_T;
 step
-check lightsA = RED;
-check statusA = BLOCKED;
-check statusCOperate = BLOCKED_B;
-set transitionC := STANDBY_T;
-step
-check statusB = ATTENTION;
 check lightsB = BLINK_YELLOW;
-check lightsA = BLINK_YELLOW;
-check statusA = ATTENTION;
+check statusB = ATTENTION;
 check statusC = STANDBY;
-set transitionC := TURN_OFF;
-step
-check statusB = OFF;
-check lightsB = ALL_OFF;
-check lightsA = ALL_OFF;
-check statusA = OFF;
-check statusC = CONTR_OFF;
-set transitionC := TURN_OFF;
-step
+check statusA = ATTENTION;
+check lightsA = BLINK_YELLOW;
+check statusCOperate = BLOCKED_A;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step
+check lightsB = RED;
+check statusB = BLOCKED;
+check statusC = OPERATE;
+check statusA = BLOCKED;
+check lightsA = RED;
+check statusCOperate = BLOCKED_A;
+set transitionB := PREPARE_PERIOD;
+set transitionC := SAFE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check lightsB = RED;
+check statusB = BLOCKED;
+check statusC = OPERATE;
+check statusA = RELEASED;
+check lightsA = GREEN;
+check statusCOperate = RELEASE_A;
+set transitionB := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+step
+check lightsB = RED;
+check statusB = BLOCKED;
+check statusC = OPERATE;
+check statusA = PREPARE_BLOCK;
+check lightsA = YELLOW;
+check statusCOperate = RELEASED_A;
+set transitionB := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step
+check lightsB = RED;
+check statusB = BLOCKED;
+check statusC = OPERATE;
+check statusA = BLOCKED;
+check lightsA = RED;
+check statusCOperate = BLOCKED_B;
+set transitionB := PREPARE_PERIOD;
+set transitionC := STANDBY_T;
+set transitionA := PREPARE_PERIOD;
+step
+check lightsB = BLINK_YELLOW;
+check statusB = ATTENTION;
+check statusC = STANDBY;
+check statusA = ATTENTION;
+check lightsA = BLINK_YELLOW;
+check statusCOperate = BLOCKED_B;
+set transitionB := PREPARE_PERIOD;
+set transitionC := TURN_OFF;
+set transitionA := PREPARE_PERIOD;
+step
+check lightsB = ALL_OFF;
+check statusB = OFF;
+check statusC = CONTR_OFF;
+check statusA = OFF;
+check lightsA = ALL_OFF;
+check statusCOperate = BLOCKED_B;
+set transitionB := PREPARE_PERIOD;
+set transitionC := TURN_OFF;
+set transitionA := PREPARE_PERIOD;
+step
+check lightsB = ALL_OFF;
+check statusB = OFF;
+check statusC = CONTR_OFF;
+check statusA = OFF;
+check lightsA = ALL_OFF;
+check statusCOperate = BLOCKED_B;
+set transitionB := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
 step

@@ -4,13 +4,13 @@ load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
 
 //// test name test@RG_r_Main_TRG_r_ContrOff_TRG_r_setAttention_RG111
 //// generated for (test goal): RG_r_Main_TRG_r_ContrOff_TRG_r_setAttention_RG111: (statusC = CONTR_OFF) and ((transitionC = TURN_ON) and (statusA != ATTENTION))
-check statusC = CONTR_OFF;
 check statusA = OFF;
 check statusB = OFF;
+check statusC = CONTR_OFF;
 set transitionC := TURN_ON;
 step
-check statusC = STANDBY;
 check statusA = ATTENTION;
 check statusB = ATTENTION;
+check statusC = STANDBY;
 set transitionC := TURN_ON;
 step

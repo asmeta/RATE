@@ -4,9 +4,19 @@ load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
 
 //// test name test@MCDC_r_Main_T_MCDC_r_ContrOff_F1
 //// generated for (test goal): MCDC_r_Main_T_MCDC_r_ContrOff_F1: (statusC = CONTR_OFF) and (transitionC != TURN_ON)
-check statusB = OFF;
+check statusCOperate = BLOCKED_A;
 check statusA = OFF;
 check statusC = CONTR_OFF;
-check statusCOperate = BLOCKED_A;
+check statusB = OFF;
 set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+set transitionB := RELEASE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+set transitionB := RELEASE_PERIOD;
 step

@@ -4,11 +4,23 @@ load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
 
 //// test name test@RG_r_Main_TRG_r_ContrOff_F1
 //// generated for (test goal): RG_r_Main_TRG_r_ContrOff_F1: (statusC = CONTR_OFF) and (transitionC != TURN_ON)
-check lightsA = ALL_OFF;
-check lightsB = ALL_OFF;
 check statusC = CONTR_OFF;
-check statusCOperate = BLOCKED_A;
-check statusA = OFF;
+check lightsA = ALL_OFF;
 check statusB = OFF;
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+check lightsB = ALL_OFF;
+set transitionB := RELEASE_PERIOD;
 set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+step
+check statusC = CONTR_OFF;
+check lightsA = ALL_OFF;
+check statusB = OFF;
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+check lightsB = ALL_OFF;
+set transitionB := RELEASE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
 step

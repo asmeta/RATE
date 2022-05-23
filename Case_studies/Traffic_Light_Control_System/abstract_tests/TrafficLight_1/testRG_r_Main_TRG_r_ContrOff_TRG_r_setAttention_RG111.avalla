@@ -8,10 +8,13 @@ check statusCOperate = BLOCKED_A;
 check statusB = OFF;
 check statusA = OFF;
 check statusC = CONTR_OFF;
+set transitionA := RELEASE_PERIOD;
 set transitionC := TURN_ON;
 step
+check statusCOperate = BLOCKED_A;
 check statusB = ATTENTION;
 check statusA = ATTENTION;
 check statusC = STANDBY;
+set transitionA := RELEASE_PERIOD;
 set transitionC := OPERATE_T;
 step

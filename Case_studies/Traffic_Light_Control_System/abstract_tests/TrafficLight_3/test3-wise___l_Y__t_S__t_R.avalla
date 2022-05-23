@@ -4,43 +4,63 @@ load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
 
 //// test name test@3-wise___l_Y__t_S__t_R
 //// generated for (test goal): [lightsA, transitionC, transitionA]-->[YELLOW, STANDBY_T, RELEASE_PERIOD]
-check statusB = OFF;
 check lightsB = ALL_OFF;
-check lightsA = ALL_OFF;
-check statusA = OFF;
+check statusB = OFF;
 check statusC = CONTR_OFF;
+check statusA = OFF;
+check lightsA = ALL_OFF;
 check statusCOperate = BLOCKED_A;
+set transitionB := PREPARE_PERIOD;
 set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
 step
-check statusB = ATTENTION;
 check lightsB = BLINK_YELLOW;
-check lightsA = BLINK_YELLOW;
-check statusA = ATTENTION;
+check statusB = ATTENTION;
 check statusC = STANDBY;
+check statusA = ATTENTION;
+check lightsA = BLINK_YELLOW;
+check statusCOperate = BLOCKED_A;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
 step
-check statusB = BLOCKED;
 check lightsB = RED;
-check lightsA = RED;
-check statusA = BLOCKED;
+check statusB = BLOCKED;
 check statusC = OPERATE;
+check statusA = BLOCKED;
+check lightsA = RED;
+check statusCOperate = BLOCKED_A;
+set transitionB := PREPARE_PERIOD;
 set transitionC := SAFE_PERIOD;
+set transitionA := PREPARE_PERIOD;
 step
-check lightsA = GREEN;
+check lightsB = RED;
+check statusB = BLOCKED;
+check statusC = OPERATE;
 check statusA = RELEASED;
+check lightsA = GREEN;
 check statusCOperate = RELEASE_A;
+set transitionB := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
 set transitionA := RELEASE_PERIOD;
-set transitionC := OPERATE_T;
 step
-check lightsA = YELLOW;
+check lightsB = RED;
+check statusB = BLOCKED;
+check statusC = OPERATE;
 check statusA = PREPARE_BLOCK;
+check lightsA = YELLOW;
 check statusCOperate = RELEASED_A;
+set transitionB := PREPARE_PERIOD;
 set transitionC := STANDBY_T;
+set transitionA := RELEASE_PERIOD;
 step
-check statusB = ATTENTION;
 check lightsB = BLINK_YELLOW;
-check lightsA = BLINK_YELLOW;
-check statusA = ATTENTION;
+check statusB = ATTENTION;
 check statusC = STANDBY;
+check statusA = ATTENTION;
+check lightsA = BLINK_YELLOW;
+check statusCOperate = RELEASED_A;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
 step

@@ -6,27 +6,41 @@ load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
 //// generated for (test goal): RG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_TRG_r_releaseA_TTRG123: (statusC = OPERATE) and ((transitionC != STANDBY_T) and ((statusCOperate = RELEASE_A) and ((statusA = RELEASED) and ((transitionA = RELEASE_PERIOD) and (statusA != PREPARE_BLOCK)))))
 check statusA = OFF;
 check statusB = OFF;
-check statusC = CONTR_OFF;
 check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+set transitionB := PREPARE_PERIOD;
 set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
 step
 check statusA = ATTENTION;
 check statusB = ATTENTION;
+check statusCOperate = BLOCKED_A;
 check statusC = STANDBY;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
 step
 check statusA = BLOCKED;
 check statusB = BLOCKED;
+check statusCOperate = BLOCKED_A;
 check statusC = OPERATE;
+set transitionB := PREPARE_PERIOD;
 set transitionC := SAFE_PERIOD;
+set transitionA := PREPARE_PERIOD;
 step
 check statusA = RELEASED;
+check statusB = BLOCKED;
 check statusCOperate = RELEASE_A;
+check statusC = OPERATE;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
 set transitionA := RELEASE_PERIOD;
 step
 check statusA = PREPARE_BLOCK;
+check statusB = BLOCKED;
 check statusCOperate = RELEASED_A;
+check statusC = OPERATE;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
 set transitionA := PREPARE_PERIOD;
 step

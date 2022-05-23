@@ -4,71 +4,83 @@ load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
 
 //// test name test@pair_3_2_9_3
 //// generated for (test goal): statusC=STANDBY - statusCOperate=BLOCKED_B
-check lightsA = ALL_OFF;
-check statusB = OFF;
-check statusC = CONTR_OFF;
-check statusCOperate = BLOCKED_A;
 check statusA = OFF;
-check lightsB = ALL_OFF;
-set transitionC := TURN_ON;
-set transitionA := PREPARE_PERIOD;
-set transitionB := PREPARE_PERIOD;
-step
-check lightsA = BLINK_YELLOW;
-check statusB = ATTENTION;
-check statusC = STANDBY;
-check statusA = ATTENTION;
-check lightsB = BLINK_YELLOW;
-set transitionC := OPERATE_T;
-set transitionA := PREPARE_PERIOD;
-set transitionB := PREPARE_PERIOD;
-step
-check lightsA = RED;
-check statusB = BLOCKED;
-check statusC = OPERATE;
-check statusA = BLOCKED;
-check lightsB = RED;
-set transitionC := SAFE_PERIOD;
-set transitionA := PREPARE_PERIOD;
-set transitionB := PREPARE_PERIOD;
-step
-check lightsA = GREEN;
-check statusCOperate = RELEASE_A;
-check statusA = RELEASED;
-set transitionC := OPERATE_T;
-set transitionA := RELEASE_PERIOD;
-set transitionB := PREPARE_PERIOD;
-step
-check lightsA = YELLOW;
-check statusCOperate = RELEASED_A;
-check statusA = PREPARE_BLOCK;
-set transitionC := OPERATE_T;
-set transitionA := PREPARE_PERIOD;
-set transitionB := PREPARE_PERIOD;
-step
-check lightsA = RED;
-check statusCOperate = BLOCKED_B;
-check statusA = BLOCKED;
-set transitionC := STANDBY_T;
-set transitionA := PREPARE_PERIOD;
-set transitionB := PREPARE_PERIOD;
-step
-check lightsA = BLINK_YELLOW;
-check statusB = ATTENTION;
-check statusC = STANDBY;
-check statusA = ATTENTION;
-check lightsB = BLINK_YELLOW;
-set transitionC := OPERATE_T;
-set transitionA := PREPARE_PERIOD;
-set transitionB := PREPARE_PERIOD;
-step
-check lightsA = RED;
-check statusB = BLOCKED;
-check statusC = OPERATE;
 check statusCOperate = BLOCKED_A;
-check statusA = BLOCKED;
-check lightsB = RED;
-set transitionC := OPERATE_T;
-set transitionA := PREPARE_PERIOD;
+check lightsA = ALL_OFF;
+check statusC = CONTR_OFF;
+check lightsB = ALL_OFF;
+check statusB = OFF;
+set transitionC := TURN_ON;
 set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = ATTENTION;
+check statusCOperate = BLOCKED_A;
+check lightsA = BLINK_YELLOW;
+check statusC = STANDBY;
+check lightsB = BLINK_YELLOW;
+check statusB = ATTENTION;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_A;
+check lightsA = RED;
+check statusC = OPERATE;
+check lightsB = RED;
+check statusB = BLOCKED;
+set transitionC := SAFE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+check lightsA = GREEN;
+check statusC = OPERATE;
+check lightsB = RED;
+check statusB = BLOCKED;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := RELEASE_PERIOD;
+step
+check statusA = PREPARE_BLOCK;
+check statusCOperate = RELEASED_A;
+check lightsA = YELLOW;
+check statusC = OPERATE;
+check lightsB = RED;
+check statusB = BLOCKED;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_B;
+check lightsA = RED;
+check statusC = OPERATE;
+check lightsB = RED;
+check statusB = BLOCKED;
+set transitionC := STANDBY_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = ATTENTION;
+check statusCOperate = BLOCKED_B;
+check lightsA = BLINK_YELLOW;
+check statusC = STANDBY;
+check lightsB = BLINK_YELLOW;
+check statusB = ATTENTION;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_A;
+check lightsA = RED;
+check statusC = OPERATE;
+check lightsB = RED;
+check statusB = BLOCKED;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
 step

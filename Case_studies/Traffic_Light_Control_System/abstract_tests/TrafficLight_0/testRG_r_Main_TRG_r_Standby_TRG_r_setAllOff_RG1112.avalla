@@ -4,18 +4,18 @@ load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
 
 //// test name test@RG_r_Main_TRG_r_Standby_TRG_r_setAllOff_RG1112
 //// generated for (test goal): RG_r_Main_TRG_r_Standby_TRG_r_setAllOff_RG1112: (statusC = STANDBY) and ((transitionC = TURN_OFF) and (statusA != OFF))
-check statusC = CONTR_OFF;
 check statusA = OFF;
 check statusB = OFF;
+check statusC = CONTR_OFF;
 set transitionC := TURN_ON;
 step
-check statusC = STANDBY;
 check statusA = ATTENTION;
 check statusB = ATTENTION;
+check statusC = STANDBY;
 set transitionC := TURN_OFF;
 step
-check statusC = CONTR_OFF;
 check statusA = OFF;
 check statusB = OFF;
+check statusC = CONTR_OFF;
 set transitionC := OPERATE_T;
 step

@@ -4,19 +4,27 @@ load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
 
 //// test name test@BR_r_Main_TBR_r_Standby_T12
 //// generated for (test goal): BR_r_Main_TBR_r_Standby_T12: (statusC = STANDBY) and (transitionC = TURN_OFF)
-check statusA = OFF;
 check statusB = OFF;
-check statusC = CONTR_OFF;
+check statusA = OFF;
 check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
 set transitionC := TURN_ON;
 step
-check statusA = ATTENTION;
 check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusCOperate = BLOCKED_A;
 check statusC = STANDBY;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
 set transitionC := TURN_OFF;
 step
-check statusA = OFF;
 check statusB = OFF;
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
 check statusC = CONTR_OFF;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
 step

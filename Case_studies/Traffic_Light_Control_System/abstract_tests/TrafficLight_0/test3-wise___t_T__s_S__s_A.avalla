@@ -5,14 +5,17 @@ load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
 //// test name test@3-wise___t_T__s_S__s_A
 //// generated for (test goal): [transitionC, statusC, statusB]-->[TURN_ON, STANDBY, ATTENTION]
 check statusA = OFF;
-check statusB = OFF;
 check statusC = CONTR_OFF;
+check statusB = OFF;
 set transitionC := TURN_ON;
 step
 check statusA = ATTENTION;
-check statusB = ATTENTION;
 check statusC = STANDBY;
+check statusB = ATTENTION;
 set transitionC := TURN_ON;
 step
+check statusA = ATTENTION;
+check statusC = STANDBY;
+check statusB = ATTENTION;
 set transitionC := OPERATE_T;
 step

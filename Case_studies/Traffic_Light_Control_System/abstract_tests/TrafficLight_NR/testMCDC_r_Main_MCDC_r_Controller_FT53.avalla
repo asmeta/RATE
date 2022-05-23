@@ -4,17 +4,23 @@ load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
 
 //// test name test@MCDC_r_Main_MCDC_r_Controller_FT53
 //// generated for (test goal): MCDC_r_Main_MCDC_r_Controller_FT53: (statusC != STANDBY) and (transitionC = TURN_OFF)
-check statusA = OFF;
+check statusB = OFF;
 check statusC = CONTR_OFF;
 check lightsB = ALL_OFF;
-check statusB = OFF;
+check statusA = OFF;
 check statusCOperate = BLOCKED_A;
 check lightsA = ALL_OFF;
+set transitionA := RELEASE_PERIOD;
+set transitionB := RELEASE_PERIOD;
 set transitionC := TURN_OFF;
-set transitionB := RELEASE_PERIOD;
-set transitionA := RELEASE_PERIOD;
 step
-set transitionC := OPERATE_T;
-set transitionB := RELEASE_PERIOD;
+check statusB = OFF;
+check statusC = CONTR_OFF;
+check lightsB = ALL_OFF;
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+check lightsA = ALL_OFF;
 set transitionA := RELEASE_PERIOD;
+set transitionB := RELEASE_PERIOD;
+set transitionC := OPERATE_T;
 step

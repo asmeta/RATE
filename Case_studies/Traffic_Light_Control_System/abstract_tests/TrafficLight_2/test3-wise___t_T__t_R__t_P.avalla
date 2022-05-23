@@ -4,14 +4,19 @@ load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
 
 //// test name test@3-wise___t_T__t_R__t_P
 //// generated for (test goal): [transitionC, transitionB, transitionA]-->[TURN_ON, RELEASE_PERIOD, PREPARE_PERIOD]
-check statusB = OFF;
-check statusC = CONTR_OFF;
 check statusA = OFF;
 check statusCOperate = BLOCKED_A;
+check statusB = OFF;
+check statusC = CONTR_OFF;
 set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
+set transitionB := RELEASE_PERIOD;
 step
+check statusA = ATTENTION;
+check statusCOperate = BLOCKED_A;
 check statusB = ATTENTION;
 check statusC = STANDBY;
-check statusA = ATTENTION;
 set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+set transitionB := RELEASE_PERIOD;
 step

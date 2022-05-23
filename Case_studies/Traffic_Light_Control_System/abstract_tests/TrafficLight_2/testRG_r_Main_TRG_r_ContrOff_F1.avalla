@@ -6,7 +6,17 @@ load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
 //// generated for (test goal): RG_r_Main_TRG_r_ContrOff_F1: (statusC = CONTR_OFF) and (transitionC != TURN_ON)
 check statusA = OFF;
 check statusB = OFF;
-check statusC = CONTR_OFF;
 check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+set transitionB := RELEASE_PERIOD;
 set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+step
+check statusA = OFF;
+check statusB = OFF;
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+set transitionB := RELEASE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
 step

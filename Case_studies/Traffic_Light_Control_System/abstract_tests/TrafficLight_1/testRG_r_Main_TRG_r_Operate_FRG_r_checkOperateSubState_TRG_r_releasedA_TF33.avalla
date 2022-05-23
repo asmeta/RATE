@@ -8,28 +8,41 @@ check statusCOperate = BLOCKED_A;
 check statusB = OFF;
 check statusA = OFF;
 check statusC = CONTR_OFF;
+set transitionA := PREPARE_PERIOD;
 set transitionC := TURN_ON;
 step
+check statusCOperate = BLOCKED_A;
 check statusB = ATTENTION;
 check statusA = ATTENTION;
 check statusC = STANDBY;
+set transitionA := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
 step
+check statusCOperate = BLOCKED_A;
 check statusB = BLOCKED;
 check statusA = BLOCKED;
 check statusC = OPERATE;
+set transitionA := PREPARE_PERIOD;
 set transitionC := SAFE_PERIOD;
 step
 check statusCOperate = RELEASE_A;
+check statusB = BLOCKED;
 check statusA = RELEASED;
-set transitionC := OPERATE_T;
+check statusC = OPERATE;
 set transitionA := RELEASE_PERIOD;
+set transitionC := OPERATE_T;
 step
 check statusCOperate = RELEASED_A;
+check statusB = BLOCKED;
 check statusA = PREPARE_BLOCK;
-set transitionC := OPERATE_T;
+check statusC = OPERATE;
 set transitionA := RELEASE_PERIOD;
-step
 set transitionC := OPERATE_T;
+step
+check statusCOperate = RELEASED_A;
+check statusB = BLOCKED;
+check statusA = PREPARE_BLOCK;
+check statusC = OPERATE;
 set transitionA := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
 step

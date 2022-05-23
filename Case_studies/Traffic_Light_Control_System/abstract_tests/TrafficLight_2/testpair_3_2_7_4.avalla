@@ -1,0 +1,62 @@
+scenario testpair_3_2_7_4
+
+load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
+
+//// test name test@pair_3_2_7_4
+//// generated for (test goal): statusC=STANDBY - statusCOperate=RELEASED_A
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
+check statusB = OFF;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+set transitionC := TURN_ON;
+step
+check statusA = ATTENTION;
+check statusC = STANDBY;
+check statusCOperate = BLOCKED_A;
+check statusB = ATTENTION;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+step
+check statusA = BLOCKED;
+check statusC = OPERATE;
+check statusCOperate = BLOCKED_A;
+check statusB = BLOCKED;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+set transitionC := SAFE_PERIOD;
+step
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+set transitionA := RELEASE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+step
+check statusA = PREPARE_BLOCK;
+check statusCOperate = RELEASED_A;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+set transitionC := STANDBY_T;
+step
+check statusA = ATTENTION;
+check statusC = STANDBY;
+check statusCOperate = RELEASED_A;
+check statusB = ATTENTION;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+set transitionC := TURN_OFF;
+step
+check statusA = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = RELEASED_A;
+check statusB = OFF;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+step

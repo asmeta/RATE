@@ -19,3 +19,8 @@ check statusC = OPERATE;
 check statusA = BLOCKED;
 set transitionC := OPERATE_T;
 step
+check statusC = OPERATE;
+check statusA = BLOCKED;
+check statusB = BLOCKED;
+set transitionC := OPERATE_T;
+step

@@ -4,18 +4,18 @@ load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
 
 //// test name test@UR_r_Main_TUR_r_Standby_TUR_r_setBlock_1122
 //// generated for (test goal): UR_r_Main_TUR_r_Standby_TUR_r_setBlock_1122: (statusC = STANDBY) and ((transitionC = OPERATE_T) and (statusA != BLOCKED))
-check statusC = CONTR_OFF;
 check statusB = OFF;
 check statusA = OFF;
+check statusC = CONTR_OFF;
 set transitionC := TURN_ON;
 step
-check statusC = STANDBY;
 check statusB = ATTENTION;
 check statusA = ATTENTION;
+check statusC = STANDBY;
 set transitionC := OPERATE_T;
 step
-check statusC = OPERATE;
 check statusB = BLOCKED;
 check statusA = BLOCKED;
+check statusC = OPERATE;
 set transitionC := OPERATE_T;
 step

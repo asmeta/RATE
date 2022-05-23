@@ -5,9 +5,12 @@ load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
 //// test name test@pair_1_3_4_1
 //// generated for (test goal): statusC=CONTR_OFF - transitionC=STANDBY_T
 check statusA = OFF;
-check statusC = CONTR_OFF;
 check statusB = OFF;
+check statusC = CONTR_OFF;
 set transitionC := STANDBY_T;
 step
+check statusA = OFF;
+check statusB = OFF;
+check statusC = CONTR_OFF;
 set transitionC := TURN_ON;
 step

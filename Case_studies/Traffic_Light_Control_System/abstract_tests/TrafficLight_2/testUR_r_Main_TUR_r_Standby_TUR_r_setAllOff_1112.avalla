@@ -4,19 +4,27 @@ load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
 
 //// test name test@UR_r_Main_TUR_r_Standby_TUR_r_setAllOff_1112
 //// generated for (test goal): UR_r_Main_TUR_r_Standby_TUR_r_setAllOff_1112: (statusC = STANDBY) and ((transitionC = TURN_OFF) and (statusA != OFF))
-check statusB = OFF;
-check statusCOperate = BLOCKED_A;
-check statusC = CONTR_OFF;
 check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+check statusB = OFF;
+check statusC = CONTR_OFF;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
 set transitionC := TURN_ON;
 step
+check statusA = ATTENTION;
+check statusCOperate = BLOCKED_A;
 check statusB = ATTENTION;
 check statusC = STANDBY;
-check statusA = ATTENTION;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
 set transitionC := TURN_OFF;
 step
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
 check statusB = OFF;
 check statusC = CONTR_OFF;
-check statusA = OFF;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
 step

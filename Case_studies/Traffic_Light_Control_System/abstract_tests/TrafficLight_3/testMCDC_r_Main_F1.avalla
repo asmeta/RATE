@@ -4,25 +4,33 @@ load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
 
 //// test name test@MCDC_r_Main_F1
 //// generated for (test goal): MCDC_r_Main_F1: statusC != CONTR_OFF
-check statusC = CONTR_OFF;
 check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
 check lightsB = ALL_OFF;
-check lightsA = ALL_OFF;
 check statusA = OFF;
+check lightsA = ALL_OFF;
 check statusB = OFF;
+set transitionA := PREPARE_PERIOD;
 set transitionC := TURN_ON;
+set transitionB := PREPARE_PERIOD;
 step
+check statusCOperate = BLOCKED_A;
 check statusC = STANDBY;
 check lightsB = BLINK_YELLOW;
-check lightsA = BLINK_YELLOW;
 check statusA = ATTENTION;
+check lightsA = BLINK_YELLOW;
 check statusB = ATTENTION;
+set transitionA := PREPARE_PERIOD;
 set transitionC := TURN_OFF;
+set transitionB := PREPARE_PERIOD;
 step
+check statusCOperate = BLOCKED_A;
 check statusC = CONTR_OFF;
 check lightsB = ALL_OFF;
-check lightsA = ALL_OFF;
 check statusA = OFF;
+check lightsA = ALL_OFF;
 check statusB = OFF;
+set transitionA := PREPARE_PERIOD;
 set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
 step

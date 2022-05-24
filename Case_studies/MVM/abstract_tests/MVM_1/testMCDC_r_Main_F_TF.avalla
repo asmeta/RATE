@@ -1,0 +1,60 @@
+scenario testMCDC_r_Main_F_TF
+
+load ./..\..\ASM\MVM_1\Ventilatore1.asm
+
+//// test name test@MCDC_r_Main_F_TF
+//// generated for (test goal): MCDC_r_Main_F_TF: not turnOFFbtn and (stopRequested and (state != MAIN_REGION_PCV_R1_EXPIRATION))
+check state = MAIN_REGION_STARTUP;
+check apneaBackupMode = false;
+check iValve = CLOSED;
+check oValve = OPEN;
+check apneaAlarm = false;
+check stopVentilation = false;
+set maxExpPausePassed := false;
+set apneaLagPassed := false;
+set rm := false;
+set maxInPausePassed := false;
+set turnOffApneaAlarm := false;
+set turnOFFbtn := false;
+set maxRmTimePassed := false;
+set minExpTimePSVPassed := false;
+set startVentilation := false;
+set flowDropPSV := false;
+set expirationDurationPassed := false;
+set expPause := false;
+set respirationMode := PSV;
+set selfTestPassed := false;
+set inPause := false;
+set maxInspTimePSVPassed := false;
+set stopRequested := true;
+set inspirationDurationPassed := false;
+set resume := false;
+set startupEnded := true;
+step
+check state = MAIN_REGION_SELFTEST;
+check apneaBackupMode = false;
+check iValve = CLOSED;
+check oValve = OPEN;
+check apneaAlarm = false;
+check stopVentilation = false;
+set maxExpPausePassed := false;
+set apneaLagPassed := false;
+set rm := false;
+set maxInPausePassed := false;
+set turnOffApneaAlarm := false;
+set turnOFFbtn := false;
+set maxRmTimePassed := false;
+set minExpTimePSVPassed := false;
+set startVentilation := false;
+set flowDropPSV := false;
+set expirationDurationPassed := false;
+set expPause := false;
+set respirationMode := PSV;
+set selfTestPassed := false;
+set inPause := false;
+set maxInspTimePSVPassed := false;
+set stopRequested := false;
+set inspirationDurationPassed := false;
+set resume := false;
+set startupEnded := false;
+step

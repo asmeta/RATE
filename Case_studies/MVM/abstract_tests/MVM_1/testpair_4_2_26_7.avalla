@@ -1,0 +1,6 @@
+scenario testpair_4_2_26_7
+
+load ./..\..\ASM\MVM_1\Ventilatore1.asm
+
+//// test name test@pair_4_2_26_7
+//// generated for (test goal): iValve=OPEN - state=MAIN_REGION_PCV_R1_INSPIRATORYPAUSE

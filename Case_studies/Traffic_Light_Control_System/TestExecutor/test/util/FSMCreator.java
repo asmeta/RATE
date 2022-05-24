@@ -65,9 +65,10 @@ public class FSMCreator {
 			if (line.startsWith("load"))
 				continue;
 			if (line.startsWith("step")) {
-				if (nStep == 0)
+				if (nStep == 0 && nTransitionsTest == 0)
 					nMessagesTest = 0;
 				nStep ++;
+				nTransitionsTest = nTransitions;
 				continue;
 			}
 			if (line.equals(""))

@@ -181,7 +181,7 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 	
 	@Test
 	public void launchOneTest() throws Exception {
-		launchTest(configToBeTested.get(0), PATH_AT + "0/");
+		launchTest(configToBeTested.get(27), PATH_AT + "3/");
 	}
 
 	public void launchTest(Configuration c, String path) throws Exception {
@@ -235,37 +235,46 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 
 					// Execute all the transitions in the composed one
 					String[] subMsg = msg.split("\\|");
+					boolean doneTransSemA = false;
+					boolean doneTransSemB = false;
+					boolean doneTransController = false;
 					for (int i = 0; i < subMsg.length; i++) {
 						switch (i) {
 						case 0:
 							// TrafficLight A
-							performActionSemaphoreA(subMsg[i]);
+							doneTransSemA = performActionSemaphoreA(subMsg[i]);
 							break;
 						case 1:
 							// TrafficLight B
-							performActionSemaphoreB(subMsg[i]);
+							doneTransSemB = performActionSemaphoreB(subMsg[i]);
 							break;
 						case 2:
 							// Controller
-							performActionController(subMsg[i], allowSafePeriod, c);
+							doneTransController = performActionController(subMsg[i], allowSafePeriod, c);
 							break;
 						}
 					}
 
 					// After performing all the transitions, check the final state
-					System.out.println("Active State Controller: " + StateGetter.getActiveStateController(statemachine)
-							+ " - Checking with " + finalState);
-					assertTrue(statemachine.isStateActive(StateGetter.getControllerStateFromString(finalState)));
-					System.out.println(
-							"Active State SemaphoreA: " + StateGetter.getActiveStateTrafficLight(statemachine, 0)
-									+ " - Checking with " + finalState);
-					assertTrue(statemachine.getTrafficLightA()
-							.isStateActive(StateGetter.getSemaphoreStateFromString(finalState, 0)));
-					System.out.println(
-							"Active State SemaphoreB: " + StateGetter.getActiveStateTrafficLight(statemachine, 1)
-									+ " - Checking with " + finalState);
-					assertTrue(statemachine.getTrafficLightB()
-							.isStateActive(StateGetter.getSemaphoreStateFromString(finalState, 1)));
+					if (doneTransController) {
+						System.out.println("Active State Controller: " + StateGetter.getActiveStateController(statemachine)
+								+ " - Checking with " + finalState);
+						assertTrue(statemachine.isStateActive(StateGetter.getControllerStateFromString(finalState)));
+					}
+					if (doneTransSemA) {
+						System.out.println(
+								"Active State SemaphoreA: " + StateGetter.getActiveStateTrafficLight(statemachine, 0)
+										+ " - Checking with " + finalState);
+						assertTrue(statemachine.getTrafficLightA()
+								.isStateActive(StateGetter.getSemaphoreStateFromString(finalState, 0)));
+					}
+					if (doneTransSemB) {
+						System.out.println(
+								"Active State SemaphoreB: " + StateGetter.getActiveStateTrafficLight(statemachine, 1)
+										+ " - Checking with " + finalState);
+						assertTrue(statemachine.getTrafficLightB()
+								.isStateActive(StateGetter.getSemaphoreStateFromString(finalState, 1)));
+					}
 					
 					// Now check the Output for the Traffic Light A
 					if (output != null ) {
@@ -290,7 +299,8 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 						if (!StateGetter.getActiveStateTrafficLight(statemachine, 1).contentEquals("MAIN_ON_MAIN_ATTENTION"))
 							assertTrue(statemachine.getTrafficLightB().lights.getYellow() == output[5]);
 					}					
-					thisInitialState = finalState;
+					if (doneTransSemA || doneTransSemB || doneTransController)
+						thisInitialState = finalState;
 				}
 			}
 
@@ -299,49 +309,61 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 		
 	}
 
-	private void performActionController(String msg, boolean allowSafePeriod, Configuration c) {
+	private boolean performActionController(String msg, boolean allowSafePeriod, Configuration c) {
 		if (msg.equals("turn_on")) {
 			System.out.println("Calling ON");
 			runOn();
+			return true;
 		}
 		if (msg.equals("operate_t")) {
 			System.out.println("Calling Operate");
 			runOperate();
+			return true;
 		}
 		if (msg.equals("standby_t")) {
 			System.out.println("Calling Standby");
 			runStandby();
+			return true;
 		}
 		if (msg.equals("turn_off")) {
 			System.out.println("Calling Off");
 			runOff();
+			return true;
 		}
 		if (msg.equals("safe_period") && allowSafePeriod) {
 			System.out.println("Calling Safe Period");
 			runSafePeriod(c);
+			return true;
 		}
+		return false;
 	}
 
-	private void performActionSemaphoreA(String msg) {
+	private boolean performActionSemaphoreA(String msg) {
 		if (msg.equals("release_period")) {
 			System.out.println("Calling Release Period on Semaphore A");
 			runReleasePeriodA();
+			return true;
 		}
 		if (msg.equals("prepare_period")) {
 			System.out.println("Calling Prepare Period on Semaphore A");
 			runPreparePeriodA();
+			return true;
 		}
+		return false;
 	}
 
-	private void performActionSemaphoreB(String msg) {
+	private boolean performActionSemaphoreB(String msg) {
 		if (msg.equals("release_period")) {
 			System.out.println("Calling Release Period on Semaphore B");
 			runReleasePeriodB();
+			return true;
 		}
 		if (msg.equals("prepare_period")) {
 			System.out.println("Calling Prepare Period on Semaphore B");
 			runPreparePeriodB();
+			return true;
 		}
+		return false;
 	}
 
 	private void runOn() {

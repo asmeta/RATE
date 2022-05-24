@@ -1,0 +1,40 @@
+scenario testpair_3_2_14_2
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@pair_3_2_14_2
+//// generated for (test goal): expirationDurationPassed=true - inspirationDurationPassed=true
+check iValve = CLOSED;
+check stopVentilation = false;
+check oValve = OPEN;
+check state = MAIN_REGION_STARTUP;
+set startVentilation := false;
+set inspirationDurationPassed := true;
+set flowDropPSV := false;
+set expirationDurationPassed := true;
+set respirationMode := PSV;
+set startupEnded := true;
+set minExpTimePSVPassed := false;
+set resume := false;
+set turnOFFbtn := false;
+set stopRequested := false;
+set selfTestPassed := false;
+set maxInspTimePSVPassed := false;
+step
+check iValve = CLOSED;
+check stopVentilation = false;
+check oValve = OPEN;
+check state = MAIN_REGION_SELFTEST;
+set startVentilation := false;
+set inspirationDurationPassed := false;
+set flowDropPSV := false;
+set expirationDurationPassed := false;
+set respirationMode := PSV;
+set startupEnded := false;
+set minExpTimePSVPassed := false;
+set resume := false;
+set turnOFFbtn := false;
+set stopRequested := false;
+set selfTestPassed := false;
+set maxInspTimePSVPassed := false;
+step

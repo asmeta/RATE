@@ -1,0 +1,6 @@
+scenario testBR_r_Main_FFTTFF4
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@BR_r_Main_FFTTFF4
+//// generated for (test goal): BR_r_Main_FFTTFF4: not turnOFFbtn and (not(stopRequested and ((state = MAIN_REGION_PCV_R1_EXPIRATION) or (state = MAIN_REGION_PSV_R1_EXPIRATION))) and ((state = MAIN_REGION_VENTILATIONOFF) and (startVentilation and ((respirationMode != PCV) and (respirationMode != PSV)))))

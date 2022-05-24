@@ -1,0 +1,40 @@
+scenario testCR_r_Main_T
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@CR_r_Main_T
+//// generated for (test goal): CR_r_Main_T: turnOFFbtn and (((iValve != CLOSED) or (oValve != OPEN)) or (state != OFF))
+check iValve = CLOSED;
+check oValve = OPEN;
+check stopVentilation = false;
+check state = MAIN_REGION_STARTUP;
+set stopRequested := false;
+set minExpTimePSVPassed := false;
+set expirationDurationPassed := false;
+set startupEnded := false;
+set respirationMode := PSV;
+set inspirationDurationPassed := false;
+set maxInspTimePSVPassed := false;
+set startVentilation := false;
+set flowDropPSV := false;
+set turnOFFbtn := true;
+set resume := false;
+set selfTestPassed := false;
+step
+check iValve = CLOSED;
+check oValve = OPEN;
+check stopVentilation = false;
+check state = OFF;
+set stopRequested := false;
+set minExpTimePSVPassed := false;
+set expirationDurationPassed := false;
+set startupEnded := false;
+set respirationMode := PSV;
+set inspirationDurationPassed := false;
+set maxInspTimePSVPassed := false;
+set startVentilation := false;
+set flowDropPSV := false;
+set turnOFFbtn := false;
+set resume := false;
+set selfTestPassed := false;
+step

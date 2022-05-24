@@ -1,0 +1,6 @@
+scenario testpair_4_1_16_6
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@pair_4_1_16_6
+//// generated for (test goal): oValve=CLOSED - state=MAIN_REGION_PCV_R1_EXPIRATORYPAUSE

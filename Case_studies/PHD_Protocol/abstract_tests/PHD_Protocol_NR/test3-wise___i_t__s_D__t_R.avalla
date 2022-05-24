@@ -3,7 +3,7 @@ scenario test3-wise___i_t__s_D__t_R
 load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@3-wise___i_t__s_D__t_R
-//// generated for (test goal): [invokeIdValid, status, transition]-->[true, DISASSOCIATING, REQ_ASSOC_ABORT]
+//// generated for (test goal): [invokeIdValid, status, transition]-->[true, DISASSOCIATING, REQ_ASSOC_REL]
 check status = UNASSOCIATED;
 check message = undef;
 set invokeIdValid := true;
@@ -27,10 +27,10 @@ step
 check status = DISASSOCIATING;
 check message = MSG_RX_RLRQ;
 set invokeIdValid := true;
-set transition := REQ_ASSOC_ABORT;
+set transition := REQ_ASSOC_REL;
 step
-check status = UNASSOCIATED;
-check message = MSG_RX_ABRT;
+check status = DISASSOCIATING;
+check message = MSG_NO_RESPONSE;
 set invokeIdValid := true;
-set transition := RX_RORS_CONFIRMED_SET;
+set transition := RX_RORS;
 step

@@ -33,4 +33,4 @@ MODULE main
 --INVAR constraints
 INVAR (!(invokeIdValid) -> ((((transition = RX_RORS_GET) | ((transition = RX_RORS_CONFIRMED_SET) | ((transition = RX_RORS_CONFIRMED_ACTION) | (((transition = RX_ROER) | (transition = RX_RORS)) | (transition = RX_RORJ))))) & (status = WAITING_FOR_CONFIG)) | ((status = OPERATING) & ((transition = RX_RORS_GET) | ((transition = RX_RORS_CONFIRMED_SET) | ((transition = RX_RORS_CONFIRMED_ACTION) | (((transition = RX_ROER) | (transition = RX_RORS)) | (transition = RX_RORJ))))))));
 --LTL properties
-LTLSPEC NAME ltl0 := G(!((((invokeIdValid = FALSE) & (message = MSG_RX_ABRT)) & (transition = RX_AARQ)) & X(TRUE)));
+LTLSPEC NAME ltl0 := G(!((((status = UNASSOCIATED) & (message = MSG_NO_RESPONSE)) & (transition = RX_ABRT)) & X(TRUE)));

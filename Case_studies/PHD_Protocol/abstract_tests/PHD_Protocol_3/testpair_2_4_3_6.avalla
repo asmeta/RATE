@@ -26,5 +26,5 @@ set transition := REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION;
 step
 check message = MSG_RX_PRST;
 check status = WAITING_FOR_CONFIG;
-set transition := RX_RORS;
+set transition := RX_AARE;
 step

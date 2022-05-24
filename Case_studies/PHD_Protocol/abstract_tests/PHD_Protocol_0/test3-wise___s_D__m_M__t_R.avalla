@@ -26,5 +26,5 @@ set transition := REQ_ASSOC_REL;
 step
 check status = DISASSOCIATING;
 check message = MSG_NO_RESPONSE;
-set transition := REQ_ASSOC_ABORT;
+set transition := RX_RLRE;
 step

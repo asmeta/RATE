@@ -12,7 +12,7 @@ step
 check message = MSG_NO_RESPONSE;
 check status = UNASSOCIATED;
 set invokeIdValid := true;
-set transition := RX_AARE;
+set transition := RX_ROER;
 step
 check message = MSG_RX_ABRT;
 check status = UNASSOCIATED;

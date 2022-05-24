@@ -4,18 +4,18 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@BR_r_Main_TF13
 //// generated for (test goal): BR_r_Main_TF13: (transition = REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION) and (status != CHECKING_CONFIG)
+check status = UNASSOCIATED;
 check message = undef;
-check status = UNASSOCIATED;
-set invokeIdValid := true;
 set transition := RX_ABRT;
+set invokeIdValid := true;
 step
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
-check status = UNASSOCIATED;
-set invokeIdValid := true;
 set transition := REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION;
-step
-check message = MSG_RX_ABRT;
-check status = UNASSOCIATED;
 set invokeIdValid := true;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_ROER;
+set invokeIdValid := true;
 step

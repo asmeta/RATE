@@ -4,18 +4,18 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@BR_r_Main_TT11
 //// generated for (test goal): BR_r_Main_TT11: (transition = REQ_ASSOC_REL) and (status = UNASSOCIATED)
+check status = UNASSOCIATED;
 check message = undef;
-check status = UNASSOCIATED;
-set invokeIdValid := true;
 set transition := RX_ABRT;
-step
-check message = MSG_NO_RESPONSE;
-check status = UNASSOCIATED;
 set invokeIdValid := true;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
 set transition := REQ_ASSOC_REL;
-step
-check message = MSG_NO_RESPONSE;
-check status = UNASSOCIATED;
 set invokeIdValid := true;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
 step

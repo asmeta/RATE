@@ -18,7 +18,7 @@ set transition := RX_ROIV;
 step
 check status = OPERATING;
 check message = MSG_RX_PRST;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := RX_AARQ;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;

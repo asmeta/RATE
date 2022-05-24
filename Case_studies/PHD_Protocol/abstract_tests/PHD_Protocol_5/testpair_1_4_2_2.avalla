@@ -18,9 +18,9 @@ set transition := RX_ROIV;
 step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_PRST;
-set transition := RX_RORS;
+set transition := REQ_ASSOC_REL;
 step
-check status = WAITING_FOR_CONFIG;
-check message = MSG_NO_RESPONSE;
+check status = DISASSOCIATING;
+check message = MSG_RX_RLRQ;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

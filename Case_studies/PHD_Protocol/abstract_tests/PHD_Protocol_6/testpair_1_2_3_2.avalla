@@ -27,5 +27,5 @@ step
 check status = DISASSOCIATING;
 check message = MSG_RX_RLRQ;
 set invokeIdValid := true;
-set transition := RX_RORS_CONFIRMED_SET;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

@@ -22,5 +22,5 @@ set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
 check status = CHECKING_CONFIG;
 check message = MSG_RX_ABRT;
-set transition := RX_ROER;
+set transition := RX_RORS_GET;
 step

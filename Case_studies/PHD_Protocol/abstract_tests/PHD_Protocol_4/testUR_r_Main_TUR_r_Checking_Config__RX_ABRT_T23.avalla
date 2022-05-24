@@ -26,5 +26,5 @@ set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
 check status = UNASSOCIATED;
-set transition := RX_RLRE;
+set transition := RX_AARQ_EXTERNAL;
 step

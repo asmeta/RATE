@@ -31,6 +31,6 @@ set invokeIdValid := true;
 step
 check message = MSG_RX_PRST;
 check status = WAITING_FOR_CONFIG;
-set transition := RX_RORS_CONFIRMED_SET;
-set invokeIdValid := false;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
 step

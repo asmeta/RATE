@@ -31,11 +31,11 @@ set invokeIdValid := true;
 step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_PRST;
-set transition := RX_RORJ;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 set invokeIdValid := true;
 step
-check status = WAITING_FOR_CONFIG;
-check message = MSG_NO_RESPONSE;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_RORS_CONFIRMED_SET;
 set invokeIdValid := true;
 step

@@ -12,15 +12,15 @@ step
 check message = MSG_NO_RESPONSE;
 check status = UNASSOCIATED;
 set invokeIdValid := true;
-set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
 check message = MSG_RX_AARE;
-check status = WAITING_FOR_CONFIG;
+check status = OPERATING;
 set invokeIdValid := true;
-set transition := RX_ROIV;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
 check message = MSG_RX_PRST;
-check status = WAITING_FOR_CONFIG;
+check status = OPERATING;
 set invokeIdValid := false;
 set transition := RX_RORS_CONFIRMED_SET;
 step

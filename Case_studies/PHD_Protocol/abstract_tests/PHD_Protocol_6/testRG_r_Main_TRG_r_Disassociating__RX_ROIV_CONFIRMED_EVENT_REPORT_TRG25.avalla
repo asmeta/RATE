@@ -27,5 +27,5 @@ step
 check message = MSG_NO_RESPONSE;
 check status = DISASSOCIATING;
 set invokeIdValid := true;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := RX_ROER;
 step

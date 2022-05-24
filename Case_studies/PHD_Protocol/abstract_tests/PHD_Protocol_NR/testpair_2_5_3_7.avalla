@@ -21,12 +21,12 @@ set invokeIdValid := true;
 step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
-set transition := RX_RORJ;
+set transition := RX_RORS;
 set invokeIdValid := true;
 step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_NO_RESPONSE;
-set transition := RX_AARQ_EXTERNAL;
+set transition := RX_AARQ_UNACCEPTABLE_CONFIGURATION;
 set invokeIdValid := true;
 step
 check status = UNASSOCIATED;

@@ -17,7 +17,7 @@ step
 check status = OPERATING;
 check message = MSG_RX_AARE;
 set invokeIdValid := false;
-set transition := RX_ROER;
+set transition := RX_RORS_GET;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;

@@ -14,5 +14,5 @@ set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
-set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+set transition := REQ_ASSOC_ABORT;
 step

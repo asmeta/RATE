@@ -14,5 +14,5 @@ set transition := RX_AARE;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
-set transition := RX_AARQ_EXTERNAL;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step

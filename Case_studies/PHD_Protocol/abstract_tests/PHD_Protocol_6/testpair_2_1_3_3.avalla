@@ -27,10 +27,10 @@ step
 check status = DISASSOCIATING;
 check message = MSG_RX_RLRE;
 set invokeIdValid := true;
-set transition := RX_RLRE;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
-check status = UNASSOCIATED;
+check status = DISASSOCIATING;
 check message = MSG_NO_RESPONSE;
 set invokeIdValid := true;
-set transition := RX_RORS;
+set transition := RX_RORS_CONFIRMED_SET;
 step

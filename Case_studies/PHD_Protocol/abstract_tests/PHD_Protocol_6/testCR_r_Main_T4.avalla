@@ -17,10 +17,10 @@ step
 check message = MSG_RX_AARE;
 check status = OPERATING;
 set invokeIdValid := true;
-set transition := RX_ROIV;
+set transition := RX_ABRT;
 step
-check message = MSG_RX_PRST;
-check status = OPERATING;
-set invokeIdValid := false;
-set transition := RX_ROER;
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

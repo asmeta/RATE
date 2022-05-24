@@ -22,10 +22,10 @@ step
 check message = MSG_RX_RLRQ;
 check status = DISASSOCIATING;
 set invokeIdValid := true;
-set transition := RX_ROER;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
-check message = MSG_RX_ABRT;
-check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+check status = DISASSOCIATING;
 set invokeIdValid := true;
-set transition := RX_ROER;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

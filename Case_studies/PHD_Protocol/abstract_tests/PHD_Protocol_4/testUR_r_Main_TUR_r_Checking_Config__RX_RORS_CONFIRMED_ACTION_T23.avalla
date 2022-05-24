@@ -26,5 +26,5 @@ set transition := RX_RORS_CONFIRMED_ACTION;
 step
 check message = MSG_NO_RESPONSE;
 check status = CHECKING_CONFIG;
-set transition := RX_RLRQ;
+set transition := RX_AARQ;
 step

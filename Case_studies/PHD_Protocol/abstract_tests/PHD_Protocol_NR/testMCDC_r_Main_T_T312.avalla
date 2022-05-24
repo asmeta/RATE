@@ -21,11 +21,11 @@ set invokeIdValid := true;
 step
 check status = OPERATING;
 check message = MSG_RX_AARE;
-set transition := RX_ROER;
+set transition := RX_RORS_CONFIRMED_SET;
 set invokeIdValid := false;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
-set transition := RX_ROER;
+set transition := RX_RORJ;
 set invokeIdValid := true;
 step

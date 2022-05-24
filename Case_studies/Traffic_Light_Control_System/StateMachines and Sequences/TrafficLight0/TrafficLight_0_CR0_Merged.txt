@@ -1,8 +1,0 @@
-Finite State Machine :
-	off|off|contr_off|,	||turn_on,	attention|attention|standby|,	none|none
-	attention|attention|standby|,	||turn_off,	off|off|contr_off|,	none|none
-Set of Sequences :
-||turn_on ||turn_off 
-
-Information of Sequences :
-0

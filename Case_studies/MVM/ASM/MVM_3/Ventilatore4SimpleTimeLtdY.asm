@@ -114,7 +114,7 @@ definitions:
 
 	domain MyTime = {0:600}
 	
-	function durationTIMER_INSPIRATION_DURATION_MS 	=  20 //settato dal dottore. valore indicativo per respiratory rate 10 e I:E 0,5
+		/*function durationTIMER_INSPIRATION_DURATION_MS 	=  20 //settato dal dottore. valore indicativo per respiratory rate 10 e I:E 0,5
     	function durationTIMER_EXPIRATION_DURATION_MS								=  40 //settato dal dottore. valore indicativo
 		function durationTIMER_MAX_INSP_TIME_PSV							=  70
 		function durationTIMER_MIN_EXP_TIME_PSV								=  10	//half of the last_inspiration_time. Shall be in the interval [0.4 : 2] sec.
@@ -125,6 +125,20 @@ definitions:
 		function durationTIMER_TRIGGERWINDOWDELAY_MS						=  10 // 0.7
 		//function durationTIMER_P_TO								=  120 
 		function durationTIMER_MIN_INSP_TIME_MS = 10 //0.3
+		* */
+		
+		
+		function durationTIMER_INSPIRATION_DURATION_MS 	=  2 //settato dal dottore. valore indicativo per respiratory rate 10 e I:E 0,5
+    	function durationTIMER_EXPIRATION_DURATION_MS								=  4 //settato dal dottore. valore indicativo
+		function durationTIMER_MAX_INSP_TIME_PSV							=  7
+		function durationTIMER_MIN_EXP_TIME_PSV								=  1	//half of the last_inspiration_time. Shall be in the interval [0.4 : 2] sec.
+		function durationTIMER_APNEALAG 									=  10
+		function durationTIMER_MAX_INS_PAUSE 								=  20//40
+		function durationTIMER_MAX_RM_TIME									=  10
+		function durationTIMER_MAX_EXP_PAUSE								=  20//60
+		function durationTIMER_TRIGGERWINDOWDELAY_MS						=  1 // 0.7
+		//function durationTIMER_P_TO								=  120 
+		function durationTIMER_MIN_INSP_TIME_MS = 1 //0.3
 	
 	
 	

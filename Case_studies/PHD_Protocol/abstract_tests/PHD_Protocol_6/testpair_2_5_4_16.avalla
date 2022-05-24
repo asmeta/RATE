@@ -6,11 +6,16 @@ load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
 //// generated for (test goal): status=UNASSOCIATED - transition=RX_RLRQ
 check status = UNASSOCIATED;
 check message = undef;
+set invokeIdValid := true;
 set transition := RX_ABRT;
 step
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
 set transition := RX_RLRQ;
 step
+check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
+set invokeIdValid := true;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

@@ -9,10 +9,14 @@ check status = UNASSOCIATED;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
-set transition := RX_AARQ;
+check status = UNASSOCIATED;
+set transition := RX_AARE;
 step
 check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
 set transition := RX_ROER;
 step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

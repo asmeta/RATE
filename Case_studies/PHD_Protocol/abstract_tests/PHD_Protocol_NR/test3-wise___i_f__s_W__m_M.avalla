@@ -4,26 +4,33 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@3-wise___i_f__s_W__m_M
 //// generated for (test goal): [invokeIdValid, status, message]-->[false, WAITING_FOR_CONFIG, MSG_NO_RESPONSE]
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
+set invokeIdValid := true;
 set transition := RX_ABRT;
 step
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
 set transition := RX_AARQ;
 step
 check status = ASSOCIATING;
+check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
 set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
-check message = MSG_RX_AARE;
 check status = WAITING_FOR_CONFIG;
-set transition := RX_RORS;
+check message = MSG_RX_AARE;
 set invokeIdValid := true;
-step
-check message = MSG_NO_RESPONSE;
 set transition := RX_RORS_CONFIRMED_SET;
-set invokeIdValid := false;
 step
-check message = MSG_RX_ABRT;
-check status = UNASSOCIATED;
+check status = WAITING_FOR_CONFIG;
+check message = MSG_NO_RESPONSE;
+set invokeIdValid := false;
 set transition := RX_ROER;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set invokeIdValid := true;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

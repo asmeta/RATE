@@ -9,6 +9,7 @@ check status = UNASSOCIATED;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
 set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
 check message = MSG_RX_AARE;
@@ -19,6 +20,7 @@ check message = MSG_NO_RESPONSE;
 check status = CHECKING_CONFIG;
 set transition := RX_ABRT;
 step
+check message = MSG_NO_RESPONSE;
 check status = UNASSOCIATED;
-set transition := RX_AARE;
+set transition := RX_AARQ_UNACCEPTABLE_CONFIGURATION;
 step

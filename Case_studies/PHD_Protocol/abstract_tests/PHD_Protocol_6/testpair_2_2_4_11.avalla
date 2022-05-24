@@ -6,16 +6,21 @@ load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
 //// generated for (test goal): status=OPERATING - transition=RX_ROIV
 check status = UNASSOCIATED;
 check message = undef;
+set invokeIdValid := true;
 set transition := RX_ABRT;
 step
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
 check status = OPERATING;
 check message = MSG_RX_AARE;
+set invokeIdValid := true;
 set transition := RX_ROIV;
 step
+check status = OPERATING;
 check message = MSG_RX_PRST;
-set transition := RX_ROER;
-set invokeIdValid := false;
+set invokeIdValid := true;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

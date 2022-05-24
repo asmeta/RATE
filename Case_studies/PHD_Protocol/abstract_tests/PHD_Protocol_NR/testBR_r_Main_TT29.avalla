@@ -1,0 +1,31 @@
+scenario testBR_r_Main_TT29
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@BR_r_Main_TT29
+//// generated for (test goal): BR_r_Main_TT29: (transition = RX_ROIV_CONFIRMED_EVENT_REPORT) and (status = WAITING_FOR_CONFIG)
+check message = undef;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
+set transition := RX_AARQ;
+step
+check message = MSG_NO_RESPONSE;
+check status = ASSOCIATING;
+set invokeIdValid := true;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set invokeIdValid := true;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
+set invokeIdValid := true;
+set transition := RX_RORJ;
+step

@@ -1,0 +1,31 @@
+scenario testpair_3_2_4_10
+
+load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
+
+//// test name test@pair_3_2_4_10
+//// generated for (test goal): message=MSG_RX_PRST - transition=RX_ROER
+check status = UNASSOCIATED;
+check message = undef;
+set invokeIdValid := true;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step
+check status = OPERATING;
+check message = MSG_RX_AARE;
+set invokeIdValid := true;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check status = OPERATING;
+check message = MSG_RX_PRST;
+set invokeIdValid := true;
+set transition := RX_ROER;
+step
+check status = OPERATING;
+check message = MSG_NO_RESPONSE;
+set invokeIdValid := false;
+set transition := RX_RORS_CONFIRMED_SET;
+step

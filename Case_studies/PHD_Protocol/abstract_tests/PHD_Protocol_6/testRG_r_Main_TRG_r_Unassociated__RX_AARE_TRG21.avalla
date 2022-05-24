@@ -6,11 +6,16 @@ load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
 //// generated for (test goal): RG_r_Main_TRG_r_Unassociated__RX_AARE_TRG21: (status = UNASSOCIATED) and ((transition = RX_AARE) and (message != MSG_RX_ABRT))
 check message = undef;
 check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_AARE;
 step
 check message = MSG_RX_ABRT;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
+set transition := RX_ROER;
 step

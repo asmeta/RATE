@@ -6,17 +6,21 @@ load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
 //// generated for (test goal): RG_r_Main_TRG_r_Waiting_For_Config__RX_RORS_TTRG22: (status = WAITING_FOR_CONFIG) and ((transition = RX_RORS) and ((invokeIdValid = true) and (message != MSG_NO_RESPONSE)))
 check message = undef;
 check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
 check message = MSG_RX_AARE;
 check status = WAITING_FOR_CONFIG;
-set transition := RX_RORS;
 set invokeIdValid := true;
+set transition := RX_RORS;
 step
 check message = MSG_NO_RESPONSE;
-set transition := RX_ROER;
+check status = WAITING_FOR_CONFIG;
 set invokeIdValid := false;
+set transition := RX_ROER;
 step

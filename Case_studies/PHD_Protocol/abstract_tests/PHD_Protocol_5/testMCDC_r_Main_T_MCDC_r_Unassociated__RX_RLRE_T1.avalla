@@ -8,8 +8,11 @@ check status = UNASSOCIATED;
 check message = undef;
 set transition := RX_ABRT;
 step
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
 set transition := RX_RLRE;
 step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

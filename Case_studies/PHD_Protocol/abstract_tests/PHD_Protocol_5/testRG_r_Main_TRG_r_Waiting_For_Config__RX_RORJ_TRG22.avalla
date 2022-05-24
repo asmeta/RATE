@@ -8,6 +8,7 @@ check status = UNASSOCIATED;
 check message = undef;
 set transition := RX_ABRT;
 step
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
 set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
@@ -15,6 +16,7 @@ check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
 set transition := RX_RORJ;
 step
+check status = WAITING_FOR_CONFIG;
 check message = MSG_NO_RESPONSE;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

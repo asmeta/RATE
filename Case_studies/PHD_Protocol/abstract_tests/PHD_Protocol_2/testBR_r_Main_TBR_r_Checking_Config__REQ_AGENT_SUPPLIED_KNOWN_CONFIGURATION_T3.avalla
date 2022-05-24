@@ -4,22 +4,23 @@ load ./..\..\ASM\PHD_Protocol_2\phd_master_flat2_v2.asm
 
 //// test name test@BR_r_Main_TBR_r_Checking_Config__REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION_T3
 //// generated for (test goal): BR_r_Main_TBR_r_Checking_Config__REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION_T3: (status = CHECKING_CONFIG) and (transition = REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION)
-check status = UNASSOCIATED;
 check message = undef;
+check status = UNASSOCIATED;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
 set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
-check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
 set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
-check status = CHECKING_CONFIG;
 check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step
-check status = OPERATING;
 check message = MSG_RX_PRST;
-set transition := RX_AARQ;
+check status = OPERATING;
+set transition := REQ_ASSOC_ABORT;
 step

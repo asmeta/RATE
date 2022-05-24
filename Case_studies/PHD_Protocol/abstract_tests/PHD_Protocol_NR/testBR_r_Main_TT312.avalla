@@ -1,0 +1,31 @@
+scenario testBR_r_Main_TT312
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@BR_r_Main_TT312
+//// generated for (test goal): BR_r_Main_TT312: ((((((transition = RX_ROER) or (transition = RX_RORJ)) or (transition = RX_RORS)) or (transition = RX_RORS_GET)) or (transition = RX_RORS_CONFIRMED_SET)) or (transition = RX_RORS_CONFIRMED_ACTION)) and (status = OPERATING)
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ;
+set invokeIdValid := true;
+step
+check status = ASSOCIATING;
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check status = OPERATING;
+check message = MSG_RX_AARE;
+set transition := RX_ROER;
+set invokeIdValid := true;
+step
+check status = OPERATING;
+check message = MSG_NO_RESPONSE;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step

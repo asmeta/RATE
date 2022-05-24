@@ -9,6 +9,7 @@ check status = UNASSOCIATED;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
 check message = MSG_RX_AARE;
@@ -17,10 +18,13 @@ set transition := REQ_ASSOC_REL;
 step
 check message = MSG_RX_RLRQ;
 check status = DISASSOCIATING;
-set transition := RX_ROIV;
-step
-check message = MSG_NO_RESPONSE;
 set transition := REQ_ASSOC_REL;
 step
-set transition := RX_AARE;
+check message = MSG_NO_RESPONSE;
+check status = DISASSOCIATING;
+set transition := REQ_ASSOC_REL;
+step
+check message = MSG_NO_RESPONSE;
+check status = DISASSOCIATING;
+set transition := REQ_ASSOC_ABORT;
 step

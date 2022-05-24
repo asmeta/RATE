@@ -1,0 +1,6 @@
+scenario BR_r_Main_FFFTTF262
+
+load ./../../../../../mvm-asmeta/asm_models/VentilatorICTSS/Ventilatore4SimpleTimeLtdY.asm
+
+//// test name test@BR_r_Main_FFFTTF262
+//// generated for (test goal): BR_r_Main_FFFTTF262: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PCV_R1_INSPIRATION) and (expiredTIMER_INSPIRATION_DURATION_MS and (mode != PCV)))))

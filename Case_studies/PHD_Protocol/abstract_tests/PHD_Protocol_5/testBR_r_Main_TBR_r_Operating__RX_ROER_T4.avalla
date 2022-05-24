@@ -4,17 +4,19 @@ load ./..\..\ASM\PHD_Protocol_5\phd_master_flat2_v5.asm
 
 //// test name test@BR_r_Main_TBR_r_Operating__RX_ROER_T4
 //// generated for (test goal): BR_r_Main_TBR_r_Operating__RX_ROER_T4: (status = OPERATING) and (transition = RX_ROER)
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
 set transition := RX_ABRT;
 step
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
-check message = MSG_RX_AARE;
 check status = OPERATING;
+check message = MSG_RX_AARE;
 set transition := RX_ROER;
 step
+check status = OPERATING;
 check message = MSG_NO_RESPONSE;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

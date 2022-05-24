@@ -4,26 +4,38 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@3-wise___s_D__m_M__t_R
 //// generated for (test goal): [status, message, transition]-->[DISASSOCIATING, MSG_NO_RESPONSE, REQ_ASSOC_REL]
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
+set invokeIdValid := true;
 set transition := RX_ABRT;
 step
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
 set transition := RX_AARQ;
 step
 check status = ASSOCIATING;
-set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
+check status = OPERATING;
 check message = MSG_RX_AARE;
-check status = WAITING_FOR_CONFIG;
+set invokeIdValid := true;
 set transition := REQ_ASSOC_REL;
 step
-check message = MSG_RX_RLRQ;
 check status = DISASSOCIATING;
+check message = MSG_RX_RLRQ;
+set invokeIdValid := true;
 set transition := RX_ROIV;
 step
+check status = DISASSOCIATING;
 check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
 set transition := REQ_ASSOC_REL;
 step
+check status = DISASSOCIATING;
+check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

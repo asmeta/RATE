@@ -7,14 +7,20 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 check status = UNASSOCIATED;
 check message = undef;
 set transition := RX_ABRT;
+set invokeIdValid := true;
 step
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
 set transition := RX_AARQ;
+set invokeIdValid := true;
 step
 check status = ASSOCIATING;
+check message = MSG_NO_RESPONSE;
 set transition := RX_ROER;
+set invokeIdValid := true;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
 step

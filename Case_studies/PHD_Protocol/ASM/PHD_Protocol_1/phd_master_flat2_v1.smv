@@ -32,4 +32,4 @@ INVAR ((status = DISASSOCIATING) -> (((transition = RX_ROER) | ((transition = RX
 INVAR ((status = OPERATING) -> ((transition = RX_ROIV) | (((transition = RX_ROER) | ((((transition = RX_RLRQ) | (((transition = RX_AARQ) | ((transition = REQ_ASSOC_REL) | (transition = REQ_ASSOC_ABORT))) | (transition = RX_AARE))) | (transition = RX_RLRE)) | (transition = RX_ABRT))) | (transition = RX_RORJ))));
 INVAR ((status = UNASSOCIATED) -> ((transition = RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION) | (((transition = RX_RLRE) | ((transition = RX_RLRQ) | ((transition = RX_AARE) | ((transition = REQ_ASSOC_REL) | (transition = REQ_ASSOC_ABORT))))) | (transition = RX_ABRT))));
 --LTL properties
-LTLSPEC NAME ltl0 := G(!((((status = UNASSOCIATED) & (message = MSG_NO_RESPONSE)) & (transition = REQ_ASSOC_REL)) & X(TRUE)));
+LTLSPEC NAME ltl0 := G(!(((message = MSG_NO_RESPONSE) & (transition = RX_ROER)) & X(TRUE)));

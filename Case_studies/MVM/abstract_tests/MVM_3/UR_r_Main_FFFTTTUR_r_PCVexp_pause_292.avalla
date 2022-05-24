@@ -1,0 +1,6 @@
+scenario UR_r_Main_FFFTTTUR_r_PCVexp_pause_292
+
+load ./../../../../../mvm-asmeta/asm_models/VentilatorICTSS/Ventilatore4SimpleTimeLtdY.asm
+
+//// test name test@UR_r_Main_FFFTTTUR_r_PCVexp_pause_292
+//// generated for (test goal): UR_r_Main_FFFTTTUR_r_PCVexp_pause_292: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PCV_R1_EXPIRATION) and (expiredTIMER_EXPIRATION_DURATION_MS and (exp_pause and (oValve != CLOSED))))))

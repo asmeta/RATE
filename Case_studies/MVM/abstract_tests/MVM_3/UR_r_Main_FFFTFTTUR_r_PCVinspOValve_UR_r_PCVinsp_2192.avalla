@@ -1,0 +1,6 @@
+scenario UR_r_Main_FFFTFTTUR_r_PCVinspOValve_UR_r_PCVinsp_2192
+
+load ./../../../../../mvm-asmeta/asm_models/VentilatorICTSS/Ventilatore4SimpleTimeLtdY.asm
+
+//// test name test@UR_r_Main_FFFTFTTUR_r_PCVinspOValve_UR_r_PCVinsp_2192
+//// generated for (test goal): UR_r_Main_FFFTFTTUR_r_PCVinspOValve_UR_r_PCVinsp_2192: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PCV_R1_EXPIRATION) and (not expiredTIMER_EXPIRATION_DURATION_MS and (expiredTIMER_TRIGGERWINDOWDELAY_MS and (dropPAW_ITS_PCV and (iValve != OPEN)))))))

@@ -6,20 +6,26 @@ load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
 //// generated for (test goal): MCDC_r_Main_T_MCDC_r_Disassociating__RX_RLRE_T5: (status = DISASSOCIATING) and (transition = RX_RLRE)
 check message = undef;
 check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
 check message = MSG_RX_AARE;
 check status = OPERATING;
+set invokeIdValid := true;
 set transition := REQ_ASSOC_REL;
 step
 check message = MSG_RX_RLRQ;
 check status = DISASSOCIATING;
+set invokeIdValid := true;
 set transition := RX_RLRE;
 step
 check message = MSG_NO_RESPONSE;
 check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_RORS_CONFIRMED_SET;
 step

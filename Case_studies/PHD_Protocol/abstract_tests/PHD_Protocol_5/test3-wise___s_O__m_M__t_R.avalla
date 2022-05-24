@@ -4,21 +4,23 @@ load ./..\..\ASM\PHD_Protocol_5\phd_master_flat2_v5.asm
 
 //// test name test@3-wise___s_O__m_M__t_R
 //// generated for (test goal): [status, message, transition]-->[OPERATING, MSG_NO_RESPONSE, REQ_ASSOC_REL]
-check status = UNASSOCIATED;
 check message = undef;
+check status = UNASSOCIATED;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
-check status = OPERATING;
 check message = MSG_RX_AARE;
-set transition := RX_RORJ;
+check status = OPERATING;
+set transition := RX_RORS_GET;
 step
 check message = MSG_NO_RESPONSE;
+check status = OPERATING;
 set transition := REQ_ASSOC_REL;
 step
-check status = DISASSOCIATING;
 check message = MSG_RX_RLRQ;
+check status = DISASSOCIATING;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

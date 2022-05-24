@@ -3,23 +3,29 @@ scenario test3-wise___i_t__s_D__t_R
 load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
 
 //// test name test@3-wise___i_t__s_D__t_R
-//// generated for (test goal): [invokeIdValid, status, transition]-->[true, DISASSOCIATING, RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION]
+//// generated for (test goal): [invokeIdValid, status, transition]-->[true, DISASSOCIATING, REQ_ASSOC_ABORT]
 check message = undef;
 check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
 check message = MSG_RX_AARE;
 check status = OPERATING;
+set invokeIdValid := true;
 set transition := REQ_ASSOC_REL;
 step
 check message = MSG_RX_RLRQ;
 check status = DISASSOCIATING;
-set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+set transition := REQ_ASSOC_ABORT;
 step
 check message = MSG_RX_ABRT;
 check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

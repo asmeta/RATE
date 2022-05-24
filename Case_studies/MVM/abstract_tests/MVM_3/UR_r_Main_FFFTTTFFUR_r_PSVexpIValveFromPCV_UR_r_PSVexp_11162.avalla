@@ -1,0 +1,6 @@
+scenario UR_r_Main_FFFTTTFFUR_r_PSVexpIValveFromPCV_UR_r_PSVexp_11162
+
+load ./../../../../../mvm-asmeta/asm_models/VentilatorICTSS/Ventilatore4SimpleTimeLtdY.asm
+
+//// test name test@UR_r_Main_FFFTTTFFUR_r_PSVexpIValveFromPCV_UR_r_PSVexp_11162
+//// generated for (test goal): UR_r_Main_FFFTTTFFUR_r_PSVexpIValveFromPCV_UR_r_PSVexp_11162: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PCV_R1_INSPIRATION) and (expiredTIMER_INSPIRATION_DURATION_MS and ((mode = PSV) and (not ins_pause and (not rm_request and (state != MAIN_REGION_PSV_R1_EXPIRATION))))))))

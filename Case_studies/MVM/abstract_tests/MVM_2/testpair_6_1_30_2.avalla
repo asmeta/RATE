@@ -1,0 +1,6 @@
+scenario testpair_6_1_30_2
+
+load ./..\..\ASM\MVM_2\Ventilatore2.asm
+
+//// test name test@pair_6_1_30_2
+//// generated for (test goal): iValve=CLOSED - state=MAIN_REGION_PSV_R1_RM

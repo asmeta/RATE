@@ -1,0 +1,6 @@
+scenario testpair_27_2_30_8
+
+load ./..\..\ASM\MVM_2\Ventilatore2.asm
+
+//// test name test@pair_27_2_30_8
+//// generated for (test goal): apneaBackupMode=true - state=MAIN_REGION_PSV_R1_EXPIRATION

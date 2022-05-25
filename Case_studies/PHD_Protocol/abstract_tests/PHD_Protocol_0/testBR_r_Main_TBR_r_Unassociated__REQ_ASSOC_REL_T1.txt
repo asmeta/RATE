@@ -1,7 +1,5 @@
 Finite State Machine :
-	unassociated,	rx_abrt,	unassociated,	no response
-	unassociated,	req_assoc_rel,	unassociated,	no response
 Set of Sequences :
-rx_abrt req_assoc_rel 
+
 Information of Sequences :
 0

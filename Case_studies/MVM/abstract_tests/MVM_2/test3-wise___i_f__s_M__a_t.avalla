@@ -1,0 +1,6 @@
+scenario test3-wise___i_f__s_M__a_t
+
+load ./..\..\ASM\MVM_2\Ventilatore2.asm
+
+//// test name test@3-wise___i_f__s_M__a_t
+//// generated for (test goal): [inspirationDurationPassed, state, apneaBackupMode]-->[false, MAIN_REGION_STARTUP, true]

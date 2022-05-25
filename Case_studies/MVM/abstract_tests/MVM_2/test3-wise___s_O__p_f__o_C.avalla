@@ -1,0 +1,6 @@
+scenario test3-wise___s_O__p_f__o_C
+
+load ./..\..\ASM\MVM_2\Ventilatore2.asm
+
+//// test name test@3-wise___s_O__p_f__o_C
+//// generated for (test goal): [state, pawGTMaxPinsp, oValve]-->[OFF, false, CLOSED]

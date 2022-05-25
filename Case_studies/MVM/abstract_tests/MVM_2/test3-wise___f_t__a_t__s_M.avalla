@@ -1,0 +1,6 @@
+scenario test3-wise___f_t__a_t__s_M
+
+load ./..\..\ASM\MVM_2\Ventilatore2.asm
+
+//// test name test@3-wise___f_t__a_t__s_M
+//// generated for (test goal): [flowDropPSV, apneaAlarm, state]-->[true, true, MAIN_REGION_STARTUP]

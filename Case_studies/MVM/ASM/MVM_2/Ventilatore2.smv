@@ -88,4 +88,4 @@ MODULE main
 				TRUE: stopVentilation;
 			esac;
 --LTL properties
-LTLSPEC NAME ltl0 := G(!((((apneaAlarm = TRUE) & (startupEnded = TRUE)) & (selfTestPassed = TRUE)) & X(TRUE)));
+LTLSPEC NAME ltl0 := G(!((((startVentilation = TRUE) & (apneaBackupMode = TRUE)) & (minExpTimePSVPassed = TRUE)) & X(TRUE)));

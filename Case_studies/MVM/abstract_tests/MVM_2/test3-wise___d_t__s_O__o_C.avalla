@@ -1,0 +1,6 @@
+scenario test3-wise___d_t__s_O__o_C
+
+load ./..\..\ASM\MVM_2\Ventilatore2.asm
+
+//// test name test@3-wise___d_t__s_O__o_C
+//// generated for (test goal): [dropPAW_ITS_PCV, state, oValve]-->[true, OFF, CLOSED]

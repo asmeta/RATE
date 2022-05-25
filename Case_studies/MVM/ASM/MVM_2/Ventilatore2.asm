@@ -52,7 +52,7 @@ signature:
 	dynamic monitored maxRmTimePassed: Boolean
 	dynamic monitored maxExpPausePassed: Boolean
 	dynamic monitored triggerWindowDelayPassed: Boolean
-	dynamic monitored pauseTimeoutPassed: Boolean
+	//dynamic monitored pauseTimeoutPassed: Boolean
 
 definitions:
 	//*************************************************

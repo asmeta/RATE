@@ -18,5 +18,5 @@ set transition := RX_RORS_CONFIRMED_ACTION;
 step
 check status = OPERATING;
 check message = MSG_NO_RESPONSE;
-set transition := RX_AARQ;
+set transition := REQ_ASSOC_ABORT;
 step

@@ -1,0 +1,26 @@
+scenario testpair_2_4_4_5
+
+load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
+
+//// test name test@pair_2_4_4_5
+//// generated for (test goal): status=WAITING_FOR_CONFIG - transition=RX_RORS_CONFIRMED_ACTION
+check status = UNASSOCIATED;
+check message = undef;
+set invokeIdValid := true;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set invokeIdValid := false;
+set transition := RX_RORS_CONFIRMED_ACTION;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set invokeIdValid := true;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

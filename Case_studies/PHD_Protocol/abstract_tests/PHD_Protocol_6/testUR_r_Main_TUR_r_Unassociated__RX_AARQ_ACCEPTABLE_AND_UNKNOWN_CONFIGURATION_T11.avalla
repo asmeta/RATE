@@ -16,6 +16,6 @@ set invokeIdValid := true;
 step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
-set invokeIdValid := true;
+set transition := RX_ROER;
+set invokeIdValid := false;
 step

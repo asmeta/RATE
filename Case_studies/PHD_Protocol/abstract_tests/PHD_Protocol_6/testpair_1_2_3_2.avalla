@@ -12,20 +12,20 @@ step
 check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
 set invokeIdValid := true;
-set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
-check status = OPERATING;
+check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
 set invokeIdValid := true;
-set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+set transition := RX_ROIV;
 step
-check status = OPERATING;
+check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_PRST;
 set invokeIdValid := true;
-set transition := REQ_ASSOC_REL;
+set transition := RX_RLRQ;
 step
-check status = DISASSOCIATING;
-check message = MSG_RX_RLRQ;
+check status = UNASSOCIATED;
+check message = MSG_RX_RLRE;
 set invokeIdValid := true;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := RX_RORS_CONFIRMED_SET;
 step

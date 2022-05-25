@@ -10,13 +10,13 @@ set transition := RX_ABRT;
 step
 check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
-set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
-check status = OPERATING;
+check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
-set transition := RX_RORS_GET;
+set transition := RX_ABRT;
 step
-check status = OPERATING;
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
-set transition := RX_AARQ;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step

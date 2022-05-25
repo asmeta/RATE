@@ -22,9 +22,9 @@ set transition := RX_ROIV;
 step
 check status = DISASSOCIATING;
 check message = MSG_NO_RESPONSE;
-set transition := REQ_ASSOC_REL;
+set transition := RX_ABRT;
 step
-check status = DISASSOCIATING;
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
-set transition := RX_AARQ;
+set transition := RX_AARE;
 step

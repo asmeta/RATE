@@ -27,7 +27,7 @@ step
 check status = DISASSOCIATING;
 check message = MSG_RX_RLRQ;
 set invokeIdValid := true;
-set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+set transition := RX_ROIV;
 step
 check status = DISASSOCIATING;
 check message = MSG_NO_RESPONSE;

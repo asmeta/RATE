@@ -22,9 +22,9 @@ set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
 check message = MSG_RX_ABRT;
 check status = CHECKING_CONFIG;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION;
 step
 check message = MSG_RX_PRST;
-check status = OPERATING;
-set transition := RX_RLRE;
+check status = WAITING_FOR_CONFIG;
+set transition := RX_RLRQ;
 step

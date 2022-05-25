@@ -22,7 +22,7 @@ step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
 set invokeIdValid := true;
-set transition := RX_RORS_CONFIRMED_SET;
+set transition := RX_RORJ;
 step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_NO_RESPONSE;
@@ -32,5 +32,5 @@ step
 check status = DISASSOCIATING;
 check message = MSG_RX_RLRQ;
 set invokeIdValid := true;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := RX_ROER;
 step

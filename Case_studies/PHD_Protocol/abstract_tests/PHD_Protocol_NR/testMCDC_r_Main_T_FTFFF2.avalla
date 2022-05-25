@@ -21,7 +21,7 @@ set invokeIdValid := true;
 step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
-set transition := REQ_ASSOC_ABORT;
+set transition := RX_AARE;
 set invokeIdValid := true;
 step
 check status = UNASSOCIATED;

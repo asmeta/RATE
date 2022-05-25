@@ -21,11 +21,11 @@ set invokeIdValid := true;
 step
 check message = MSG_RX_AARE;
 check status = WAITING_FOR_CONFIG;
-set transition := RX_RORS_GET;
-set invokeIdValid := true;
-step
-check message = MSG_NO_RESPONSE;
-check status = WAITING_FOR_CONFIG;
 set transition := RX_ROER;
 set invokeIdValid := false;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
 step

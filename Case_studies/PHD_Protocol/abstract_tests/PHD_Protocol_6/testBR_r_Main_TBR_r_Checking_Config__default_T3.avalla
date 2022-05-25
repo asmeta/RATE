@@ -22,7 +22,7 @@ step
 check message = MSG_NO_RESPONSE;
 check status = CHECKING_CONFIG;
 set invokeIdValid := true;
-set transition := RX_AARQ_UNACCEPTABLE_CONFIGURATION;
+set transition := RX_AARQ_INVALID;
 step
 check message = MSG_RX_ABRT;
 check status = UNASSOCIATED;

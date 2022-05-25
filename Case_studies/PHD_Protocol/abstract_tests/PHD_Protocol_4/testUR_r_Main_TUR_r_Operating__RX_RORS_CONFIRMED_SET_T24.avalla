@@ -18,5 +18,5 @@ set transition := RX_RORS_CONFIRMED_SET;
 step
 check message = MSG_NO_RESPONSE;
 check status = OPERATING;
-set transition := RX_RORS_CONFIRMED_SET;
+set transition := RX_ABRT;
 step

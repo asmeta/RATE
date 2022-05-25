@@ -22,5 +22,5 @@ step
 check message = MSG_RX_RLRE;
 check status = UNASSOCIATED;
 set invokeIdValid := true;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := RX_ROER;
 step

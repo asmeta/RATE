@@ -26,16 +26,16 @@ set invokeIdValid := true;
 step
 check status = DISASSOCIATING;
 check message = MSG_RX_RLRQ;
-set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+set transition := RX_ROIV;
 set invokeIdValid := true;
 step
 check status = DISASSOCIATING;
 check message = MSG_NO_RESPONSE;
-set transition := RX_RLRQ;
+set transition := REQ_ASSOC_ABORT;
 set invokeIdValid := true;
 step
-check status = DISASSOCIATING;
-check message = MSG_RX_RLRE;
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 set invokeIdValid := true;
 step

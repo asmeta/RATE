@@ -27,10 +27,10 @@ step
 check status = OPERATING;
 check message = MSG_RX_PRST;
 set transition := RX_RORS_GET;
-set invokeIdValid := true;
-step
-check status = OPERATING;
-check message = MSG_NO_RESPONSE;
-set transition := RX_RORS_CONFIRMED_SET;
 set invokeIdValid := false;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_RORS;
+set invokeIdValid := true;
 step

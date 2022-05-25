@@ -22,7 +22,7 @@ set transition := RX_RLRQ;
 step
 check status = DISASSOCIATING;
 check message = MSG_RX_RLRE;
-set transition := RX_ROIV;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
 check status = DISASSOCIATING;
 check message = MSG_NO_RESPONSE;

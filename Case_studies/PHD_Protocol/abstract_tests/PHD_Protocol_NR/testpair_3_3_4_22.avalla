@@ -31,6 +31,6 @@ set invokeIdValid := true;
 step
 check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := RX_RORS_CONFIRMED_SET;
 set invokeIdValid := true;
 step

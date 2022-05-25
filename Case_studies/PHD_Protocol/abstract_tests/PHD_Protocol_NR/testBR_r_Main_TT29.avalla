@@ -27,5 +27,5 @@ step
 check message = MSG_NO_RESPONSE;
 check status = CHECKING_CONFIG;
 set invokeIdValid := true;
-set transition := RX_RORJ;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

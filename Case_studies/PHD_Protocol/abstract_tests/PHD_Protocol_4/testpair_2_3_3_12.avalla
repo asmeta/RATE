@@ -4,27 +4,27 @@ load ./..\..\ASM\PHD_Protocol_4\phd_master_flat2_v4.asm
 
 //// test name test@pair_2_3_3_12
 //// generated for (test goal): message=MSG_RX_RLRE - transition=RX_AARQ
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
 set transition := RX_ABRT;
 step
-check message = MSG_NO_RESPONSE;
 check status = UNASSOCIATED;
-set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
+check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
-check status = OPERATING;
 set transition := REQ_ASSOC_REL;
 step
-check message = MSG_RX_RLRQ;
 check status = DISASSOCIATING;
+check message = MSG_RX_RLRQ;
 set transition := RX_RLRQ;
 step
-check message = MSG_RX_RLRE;
 check status = DISASSOCIATING;
+check message = MSG_RX_RLRE;
 set transition := RX_AARQ;
 step
-check message = MSG_RX_ABRT;
 check status = UNASSOCIATED;
-set transition := RX_AARQ_UNACCEPTABLE_CONFIGURATION;
+check message = MSG_RX_ABRT;
+set transition := RX_AARQ_EXTERNAL;
 step

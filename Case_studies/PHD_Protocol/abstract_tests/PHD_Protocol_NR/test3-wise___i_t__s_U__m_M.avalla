@@ -22,10 +22,10 @@ step
 check status = UNASSOCIATED;
 check message = MSG_RX_AARE;
 set invokeIdValid := true;
-set transition := RX_ROER;
+set transition := RX_ABRT;
 step
 check status = UNASSOCIATED;
-check message = MSG_RX_ABRT;
+check message = MSG_NO_RESPONSE;
 set invokeIdValid := true;
 set transition := RX_ROER;
 step

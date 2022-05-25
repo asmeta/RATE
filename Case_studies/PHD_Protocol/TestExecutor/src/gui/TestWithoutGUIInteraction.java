@@ -277,7 +277,7 @@ public class TestWithoutGUIInteraction {
         display.dispose();
         
         // show code coverage (the user does it when test is finishedI)
-        //MainWin.showCodeCoverage();
+//        MainWin.showCodeCoverage();
         //MainWin.changeItemsEnabled();
 	}
 	

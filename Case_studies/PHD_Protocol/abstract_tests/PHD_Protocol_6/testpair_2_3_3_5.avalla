@@ -27,10 +27,10 @@ step
 check status = CHECKING_CONFIG;
 check message = MSG_RX_ABRT;
 set invokeIdValid := true;
-set transition := REQ_ASSOC_REL;
+set transition := RX_RLRQ;
 step
-check status = DISASSOCIATING;
-check message = MSG_RX_RLRQ;
+check status = UNASSOCIATED;
+check message = MSG_RX_RLRE;
 set invokeIdValid := true;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

@@ -26,6 +26,6 @@ set invokeIdValid := true;
 step
 check status = OPERATING;
 check message = MSG_RX_PRST;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
-set invokeIdValid := true;
+set transition := RX_ROER;
+set invokeIdValid := false;
 step

@@ -22,9 +22,9 @@ set transition := RX_RLRQ;
 step
 check status = DISASSOCIATING;
 check message = MSG_RX_RLRE;
-set transition := REQ_ASSOC_REL;
+set transition := RX_AARE;
 step
-check status = DISASSOCIATING;
-check message = MSG_NO_RESPONSE;
-set transition := RX_RORJ;
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := RX_AARQ_EXTERNAL;
 step

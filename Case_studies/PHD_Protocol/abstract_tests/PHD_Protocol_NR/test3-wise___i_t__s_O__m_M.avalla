@@ -22,15 +22,15 @@ step
 check status = OPERATING;
 check message = MSG_RX_AARE;
 set invokeIdValid := true;
-set transition := RX_RORS_CONFIRMED_SET;
+set transition := RX_RORS;
 step
 check status = OPERATING;
 check message = MSG_NO_RESPONSE;
 set invokeIdValid := true;
-set transition := RX_RORS_CONFIRMED_SET;
+set transition := RX_RORS;
 step
 check status = OPERATING;
 check message = MSG_NO_RESPONSE;
-set invokeIdValid := true;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := false;
+set transition := RX_RORS_CONFIRMED_SET;
 step

@@ -18,5 +18,5 @@ set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
 step
 check status = OPERATING;
 check message = MSG_RX_PRST;
-set transition := REQ_ASSOC_ABORT;
+set transition := RX_ROER;
 step

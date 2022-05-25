@@ -16,10 +16,10 @@ set invokeIdValid := true;
 step
 check status = ASSOCIATING;
 check message = MSG_NO_RESPONSE;
-set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 set invokeIdValid := true;
 step
-check status = WAITING_FOR_CONFIG;
+check status = OPERATING;
 check message = MSG_RX_AARE;
 set transition := RX_RORS_GET;
 set invokeIdValid := false;

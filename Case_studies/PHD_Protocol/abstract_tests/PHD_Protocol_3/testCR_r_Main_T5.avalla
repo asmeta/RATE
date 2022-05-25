@@ -18,9 +18,9 @@ set transition := REQ_ASSOC_REL;
 step
 check status = DISASSOCIATING;
 check message = MSG_RX_RLRQ;
-set transition := RX_RORS;
+set transition := RX_RLRQ;
 step
-check status = UNASSOCIATED;
-check message = MSG_RX_ABRT;
-set transition := RX_AARQ_UNACCEPTABLE_CONFIGURATION;
+check status = DISASSOCIATING;
+check message = MSG_RX_RLRE;
+set transition := RX_AARE;
 step

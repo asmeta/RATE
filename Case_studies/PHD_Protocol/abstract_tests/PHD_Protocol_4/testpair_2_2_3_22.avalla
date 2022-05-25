@@ -4,23 +4,23 @@ load ./..\..\ASM\PHD_Protocol_4\phd_master_flat2_v4.asm
 
 //// test name test@pair_2_2_3_22
 //// generated for (test goal): message=MSG_RX_PRST - transition=REQ_ASSOC_REL
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
 set transition := RX_ABRT;
 step
-check message = MSG_NO_RESPONSE;
 check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
-check message = MSG_RX_AARE;
 check status = OPERATING;
+check message = MSG_RX_AARE;
 set transition := RX_ROIV;
 step
-check message = MSG_RX_PRST;
 check status = OPERATING;
+check message = MSG_RX_PRST;
 set transition := REQ_ASSOC_REL;
 step
-check message = MSG_RX_RLRQ;
 check status = DISASSOCIATING;
+check message = MSG_RX_RLRQ;
 set transition := RX_ABRT;
 step

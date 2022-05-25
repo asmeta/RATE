@@ -21,11 +21,11 @@ set invokeIdValid := true;
 step
 check status = OPERATING;
 check message = MSG_RX_AARE;
-set transition := RX_AARE;
+set transition := REQ_ASSOC_ABORT;
 set invokeIdValid := true;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
-set transition := RX_RORS_CONFIRMED_SET;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 set invokeIdValid := true;
 step

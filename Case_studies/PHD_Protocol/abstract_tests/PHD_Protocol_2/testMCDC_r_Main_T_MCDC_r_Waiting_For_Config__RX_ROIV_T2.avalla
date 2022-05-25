@@ -18,5 +18,5 @@ set transition := RX_ROIV;
 step
 check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_PRST;
-set transition := REQ_ASSOC_ABORT;
+set transition := RX_AARE;
 step

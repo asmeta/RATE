@@ -4,19 +4,19 @@ load ./..\..\ASM\PHD_Protocol_4\phd_master_flat2_v4.asm
 
 //// test name test@pair_2_5_3_19
 //// generated for (test goal): message=MSG_RX_ABRT - transition=RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
 set transition := RX_ABRT;
 step
+check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
-check status = UNASSOCIATED;
-set transition := REQ_ASSOC_ABORT;
+set transition := RX_AARE;
 step
-check message = MSG_RX_ABRT;
 check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
 set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
-check message = MSG_RX_AARE;
 check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
 set transition := RX_ABRT;
 step

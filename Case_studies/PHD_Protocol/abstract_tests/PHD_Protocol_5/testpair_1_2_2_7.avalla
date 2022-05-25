@@ -14,13 +14,13 @@ set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
 check status = OPERATING;
 check message = MSG_RX_AARE;
-set transition := RX_ROER;
+set transition := RX_RORS_GET;
 step
 check status = OPERATING;
 check message = MSG_NO_RESPONSE;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set transition := RX_RORS_CONFIRMED_SET;
 step
-check status = UNASSOCIATED;
-check message = MSG_RX_ABRT;
+check status = OPERATING;
+check message = MSG_NO_RESPONSE;
 set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

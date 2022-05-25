@@ -4,33 +4,33 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@BR_r_Main_TT59
 //// generated for (test goal): BR_r_Main_TT59: (transition = RX_ROIV_CONFIRMED_EVENT_REPORT) and (status = DISASSOCIATING)
-check status = UNASSOCIATED;
 check message = undef;
-set transition := RX_ABRT;
-set invokeIdValid := true;
-step
 check status = UNASSOCIATED;
+set invokeIdValid := true;
+set transition := RX_ABRT;
+step
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_AARQ;
-set invokeIdValid := true;
 step
+check message = MSG_NO_RESPONSE;
 check status = ASSOCIATING;
-check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
 set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
-set invokeIdValid := true;
 step
-check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set invokeIdValid := true;
 set transition := REQ_ASSOC_REL;
-set invokeIdValid := true;
 step
-check status = DISASSOCIATING;
 check message = MSG_RX_RLRQ;
-set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
-set invokeIdValid := true;
-step
 check status = DISASSOCIATING;
-check message = MSG_NO_RESPONSE;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 set invokeIdValid := true;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check message = MSG_NO_RESPONSE;
+check status = DISASSOCIATING;
+set invokeIdValid := true;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

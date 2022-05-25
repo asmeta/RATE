@@ -4,33 +4,33 @@ load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
 
 //// test name test@BR_r_Main_TT37
 //// generated for (test goal): BR_r_Main_TT37: (transition = RX_RLRQ) and (status = DISASSOCIATING)
-check status = UNASSOCIATED;
 check message = undef;
-set transition := RX_ABRT;
-set invokeIdValid := true;
-step
 check status = UNASSOCIATED;
+set invokeIdValid := true;
+set transition := RX_ABRT;
+step
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set invokeIdValid := true;
 set transition := RX_AARQ;
-set invokeIdValid := true;
 step
-check status = ASSOCIATING;
 check message = MSG_NO_RESPONSE;
+check status = ASSOCIATING;
+set invokeIdValid := true;
 set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
-set invokeIdValid := true;
 step
-check status = WAITING_FOR_CONFIG;
 check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set invokeIdValid := true;
 set transition := REQ_ASSOC_REL;
-set invokeIdValid := true;
 step
-check status = DISASSOCIATING;
 check message = MSG_RX_RLRQ;
-set transition := RX_RLRQ;
-set invokeIdValid := true;
-step
 check status = DISASSOCIATING;
-check message = MSG_RX_RLRE;
-set transition := RX_RORS_CONFIRMED_SET;
 set invokeIdValid := true;
+set transition := RX_RLRQ;
+step
+check message = MSG_RX_RLRE;
+check status = DISASSOCIATING;
+set invokeIdValid := true;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

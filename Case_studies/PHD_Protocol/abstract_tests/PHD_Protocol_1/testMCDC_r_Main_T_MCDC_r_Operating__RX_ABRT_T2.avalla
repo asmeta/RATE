@@ -18,5 +18,5 @@ set transition := RX_ABRT;
 step
 check message = MSG_NO_RESPONSE;
 check status = UNASSOCIATED;
-set transition := REQ_ASSOC_ABORT;
+set transition := RX_RLRE;
 step

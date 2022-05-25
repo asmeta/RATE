@@ -17,10 +17,10 @@ step
 check message = MSG_RX_AARE;
 check status = WAITING_FOR_CONFIG;
 set invokeIdValid := false;
-set transition := RX_ROER;
+set transition := RX_RORS_CONFIRMED_ACTION;
 step
 check message = MSG_RX_ABRT;
 check status = UNASSOCIATED;
 set invokeIdValid := true;
-set transition := RX_ROER;
+set transition := RX_RORJ;
 step

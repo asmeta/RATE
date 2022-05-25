@@ -26,7 +26,7 @@ set invokeIdValid := true;
 step
 check status = OPERATING;
 check message = MSG_RX_PRST;
-set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+set transition := RX_AARQ_EXTERNAL;
 set invokeIdValid := true;
 step
 check status = UNASSOCIATED;

@@ -16,6 +16,6 @@ set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
 check message = MSG_RX_AARE;
 check status = OPERATING;
-set invokeIdValid := false;
-set transition := RX_ROER;
+set invokeIdValid := true;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
 step

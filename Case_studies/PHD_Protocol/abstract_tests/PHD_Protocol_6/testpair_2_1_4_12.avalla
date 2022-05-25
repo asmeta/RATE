@@ -27,5 +27,5 @@ step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
 set invokeIdValid := true;
-set transition := RX_RORJ;
+set transition := RX_ROER;
 step

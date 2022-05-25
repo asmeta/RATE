@@ -14,9 +14,9 @@ set transition := RX_AARQ_UNACCEPTABLE_CONFIGURATION;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_AARE;
-set transition := REQ_ASSOC_ABORT;
+set transition := RX_AARQ_UNACCEPTABLE_CONFIGURATION;
 step
 check status = UNASSOCIATED;
-check message = MSG_RX_ABRT;
+check message = MSG_RX_AARE;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step

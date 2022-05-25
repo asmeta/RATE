@@ -22,5 +22,5 @@ set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
 check message = MSG_RX_AARE;
 check status = OPERATING;
-set transition := RX_AARQ;
+set transition := RX_RLRE;
 step

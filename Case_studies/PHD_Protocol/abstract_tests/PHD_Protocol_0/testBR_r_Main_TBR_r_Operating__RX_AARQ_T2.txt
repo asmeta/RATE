@@ -1,5 +1,0 @@
-Finite State Machine :
-Set of Sequences :
-
-Information of Sequences :
-0

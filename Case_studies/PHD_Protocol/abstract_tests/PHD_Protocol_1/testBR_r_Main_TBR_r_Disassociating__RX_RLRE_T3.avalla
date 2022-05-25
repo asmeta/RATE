@@ -22,5 +22,5 @@ set transition := RX_RLRE;
 step
 check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
-set transition := RX_RLRE;
+set transition := RX_ABRT;
 step

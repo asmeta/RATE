@@ -16,11 +16,11 @@ set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
 step
 check message = MSG_RX_AARE;
 check status = WAITING_FOR_CONFIG;
-set invokeIdValid := false;
+set invokeIdValid := true;
 set transition := RX_RORJ;
 step
-check message = MSG_RX_ABRT;
-check status = UNASSOCIATED;
-set invokeIdValid := true;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+check message = MSG_NO_RESPONSE;
+check status = WAITING_FOR_CONFIG;
+set invokeIdValid := false;
+set transition := RX_ROER;
 step

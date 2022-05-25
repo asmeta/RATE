@@ -350,7 +350,6 @@ public class TestWithoutGUIInteraction {
         int i = 0;
         while (i < MainWin.sequences.size()) {
             MainWin.completeFlags[i] = false;
-         //   MainWin.rootTreeItem.getItem(i).setImage(MainWin.level1TreeItemImage);
             MainWin.disposeAllMSC();
             MainWin.disposeCodeCoverage();
             ++i;

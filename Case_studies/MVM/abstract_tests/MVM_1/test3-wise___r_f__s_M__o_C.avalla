@@ -1,0 +1,6 @@
+scenario test3-wise___r_f__s_M__o_C
+
+load ./..\..\ASM\MVM_1\Ventilatore1.asm
+
+//// test name test@3-wise___r_f__s_M__o_C
+//// generated for (test goal): [resume, state, oValve]-->[false, MAIN_REGION_STARTUP, CLOSED]

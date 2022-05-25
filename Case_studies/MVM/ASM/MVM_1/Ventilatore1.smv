@@ -84,4 +84,4 @@ MODULE main
 				TRUE: stopVentilation;
 			esac;
 --LTL properties
-LTLSPEC NAME ltl0 := G(!((((maxInPausePassed = TRUE) & (state = MAIN_REGION_VENTILATIONOFF)) & (selfTestPassed = TRUE)) & X(TRUE)));
+LTLSPEC NAME ltl0 := G(!((((inPause = TRUE) & (startVentilation = TRUE)) & (minExpTimePSVPassed = TRUE)) & X(TRUE)));

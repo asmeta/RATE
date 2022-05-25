@@ -1,0 +1,8 @@
+Finite State Machine :
+	unassociated,	rx_abrt,	unassociated,	no response
+	unassociated,	rx_aarq_acceptable_and_known_configuration,	operating,	rx_aare
+	operating,	rx_rlre,	unassociated,	rx_abrt
+Set of Sequences :
+rx_abrt rx_aarq_acceptable_and_known_configuration rx_rlre 
+Information of Sequences :
+0

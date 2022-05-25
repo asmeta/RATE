@@ -1,0 +1,6 @@
+scenario test3-wise___s_M__o_C__m_t
+
+load ./..\..\ASM\MVM_1\Ventilatore1.asm
+
+//// test name test@3-wise___s_M__o_C__m_t
+//// generated for (test goal): [state, oValve, minExpTimePSVPassed]-->[MAIN_REGION_STARTUP, CLOSED, true]

@@ -1,0 +1,7 @@
+Finite State Machine :
+	unassociated,	rx_abrt,	unassociated,	no response
+	unassociated,	rx_aare,	unassociated,	rx_abrt
+Set of Sequences :
+rx_abrt rx_aare 
+Information of Sequences :
+0

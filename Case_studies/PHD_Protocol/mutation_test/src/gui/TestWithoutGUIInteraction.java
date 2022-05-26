@@ -3,15 +3,17 @@ package gui;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.swt.widgets.Display;
+import org.asmeta.atgt.generator.CriteriaEnum;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.Shell;
 
 public class TestWithoutGUIInteraction {
-
-	static String ASM_PHD_FOLDER = "F:\\Dati-Andrea\\GitHub\\ProTestUTA\\ASM\\newPHD\\";
 
 	public static int computeCoverage(String fileName, boolean useArera) {
 		int failed = 0;

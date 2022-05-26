@@ -5,21 +5,28 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import org.apache.commons.io.FilenameUtils;
+import org.asmeta.atgt.generator.CriteriaEnum;
 
 import com.jcraft.jsch.JSchException;
 import com.jcraft.jsch.Session;
 import com.jcraft.jsch.UserInfo;
 
 import gui.TestWithoutGUIInteraction;
+import service.FSMCreator;
 import util.MyUserInfo;
 import util.SCPManager;
 import util.SSHManager;
 
 public class TestExecutor {
 
+	// List of criteria for ALL Criteria
+	static CriteriaEnum[] allCriteria = {CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
+			CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE};
+	
 	static String testPath = "../abstract_tests/PHD_Protocol_";
 	static String level = "0";
 
@@ -190,8 +197,34 @@ public class TestExecutor {
 		myReader.close();
 		fWriterOut.close();
 	}
+	
+	
+	static int computeCoverage() throws Exception {
+		String fsmPath = "";
+		
+		// Build the FSM from multiple Avallas
+		File folder = new File(testPath + level + "/");
+		File[] listOfFiles = folder.listFiles();
+		ArrayList<String> avallaFiles = new ArrayList<String>();
+		for (File f:listOfFiles) {
+			for (CriteriaEnum ce : allCriteria) {
+				if (f.getName().startsWith("test" + ce.getAbbrvName())) {
+					avallaFiles.add(f.getAbsolutePath());
+					break;
+				}
+			}
+			
+		}
+		String[] avallaFilesList = new String[avallaFiles.size()]; 
+		avallaFilesList = avallaFiles.toArray(avallaFilesList);
+		fsmPath = FSMCreator.createFSMFromMultipleAvalla(avallaFilesList, true);
+		
+		// Open the FSM file with ProTest and run the tests
+		fsmPath = new File(fsmPath).getAbsolutePath();
+		return TestWithoutGUIInteraction.computeCoverage(fsmPath, true);
+	}
 
-	public static void main(String[] args) throws IOException, JSchException {
+	public static void main(String[] args) throws Exception {
 		int testFailures = 0;
 
 		if (!new File(outFsmPath).exists()) {
@@ -210,9 +243,7 @@ public class TestExecutor {
 
 		// Open protest in order to perform tests loading the all rule file, connect it
 		// to arera server and launch tests 
-		testFailures = TestWithoutGUIInteraction.computeCoverage(new File(testPath).getAbsolutePath(), true);
+		testFailures = computeCoverage();
 		System.out.println(testFailures);
-
 	}
-
 }

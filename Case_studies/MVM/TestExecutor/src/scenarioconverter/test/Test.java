@@ -79,7 +79,7 @@ public class Test {
 				"statechart", "MAIN_REGION__final_", out);
 		
 		// XXX Select the configuration you want to execute
-		Configuration c = filesToProcess.get(0);
+		Configuration c = filesToProcess.get(3);
 		
 		try {
 

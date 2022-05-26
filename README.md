@@ -34,3 +34,6 @@ The repository contains all the results we have obtained by applying RATE to thr
   	* ASM: the project containing ASMETA files
 		* ./MVM_X/: the ASMETA specifications for each level X
 		* ./MVM_X/scenarios: the scenarios used for manual test on the specification of level X
+		
+Many of the Eclipse projects contained into this repository depend on [atgt](https://github.com/asmeta/asmeta/tree/master/code/extensions/asmeta.atgt).
+  

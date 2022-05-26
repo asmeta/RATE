@@ -1,7 +1,9 @@
 package scenarioconverter.test;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
@@ -103,5 +105,15 @@ public class Test {
 		out.close();
 		
 		// Now compile the MVM code with the GoogleTests
+		ProcessBuilder builder = new ProcessBuilder();
+		builder.command("cmd.exe", "/c", new File("./additional_files/commands_for_building_MVM.bat").getAbsolutePath());
+		builder.directory(new File(DEBUG_PATH));
+		Process process = builder.start();
+		process.waitFor();
+		BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
+		String line = "";
+		while ((line=buf.readLine())!=null) {
+		System.out.println(line);
+		}
 	}
 }

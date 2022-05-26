@@ -30,7 +30,7 @@ The repository contains all the results we have obtained by applying RATE to thr
   	* Results: the coverage results and data analysis
   	* TestExecutor: the test executor. It receives as input the abstract tests in avalla format and executes them on the SUT
 
-  * MVM: The [Milano Ventilatore Meccanico](http://mvm.care/it/home-it/) case study 
+  * MVM: The [Milano Ventilatore Meccanico](http://mvm.care/it/home-it/) case study. The SUT is not publicly available. If you need it for your experiments, please contact us.
   	* ASM: the project containing ASMETA files
 		* ./MVM_X/: the ASMETA specifications for each level X
 		* ./MVM_X/scenarios: the scenarios used for manual test on the specification of level X

@@ -194,7 +194,7 @@ public class ScenarioConverter {
 	 */
 	private boolean startsWithAtLeasOneCriteria(String fileName, Configuration c) {
 		for (CriteriaEnum ce : c.criteria) {
-			if (fileName.startsWith("test" + ce.getAbbrvName()))
+			if (fileName.startsWith("test" + ce.getAbbrvName()) || fileName.startsWith(ce.getAbbrvName() + "_"))
 				return true;
 		}
 		return false;
@@ -424,8 +424,8 @@ public class ScenarioConverter {
 	public void convertFromFolder(String folderName, Configuration c) throws Exception {
 		assert new File(folderName).exists();
 
-		Files.walk(new File(folderName + c.level + "/").toPath()).filter(f -> f.getFileName().toString().endsWith(".avalla"))
-				.filter(f -> startsWithAtLeasOneCriteria(f.getFileName().toString(), c))
+		Files.walk(new File(folderName + c.level + "/").toPath()).filter(f -> (f.getFileName().toString().endsWith(".avalla") 
+				&& startsWithAtLeasOneCriteria(f.getFileName().toString(), c)))
 				.forEach(f -> {
 					try {
 						convert(f.toAbsolutePath().toString());

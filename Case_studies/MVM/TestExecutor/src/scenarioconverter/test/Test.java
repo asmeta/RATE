@@ -13,7 +13,7 @@ import scenarioconverter.util.Configuration;
 
 public class Test {
 
-	private static String DESTINATION_PATH = "temp/";
+	private static String DESTINATION_PATH = "../SUT/src-gen-test/";
 	private static boolean WRITE_JSON = false;
 
 	// The path of abstract tests

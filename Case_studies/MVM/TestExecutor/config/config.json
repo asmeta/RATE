@@ -1,0 +1,426 @@
+[
+  {
+    "asmName": "expiredTIMER_MIN_EXP_TIME_PSV",
+    "cName": "expiredTIMER_MIN_EXP_TIME_PSV",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "durationTIMER_APNEALAG",
+    "cName": "apnealag",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "expiredTIMER_MAX_EXP_PAUSE",
+    "cName": "expiredTIMER_MAX_EXP_PAUSE",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "start(TIMER_MIN_EXP_TIME_PSV)",
+    "cName": "start(TIMER_MIN_EXP_TIME_PSV)",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "expiredTIMER_MAX_RM_TIME",
+    "cName": "expiredTIMER_MAX_RM_TIME",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "start(TIMER_INSPIRATION_DURATION_MS)",
+    "cName": "start(TIMER_INSPIRATION_DURATION_MS)",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "start(TIMER_MIN_INSP_TIME_MS)",
+    "cName": "start(TIMER_MIN_INSP_TIME_MS)",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "start(TIMER_TRIGGERWINDOWDELAY_MS)",
+    "cName": "start(TIMER_TRIGGERWINDOWDELAY_MS)",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "expiredTIMER_MAX_INSP_TIME_PSV",
+    "cName": "expiredTIMER_MAX_INSP_TIME_PSV",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "apnea_backup_mode",
+    "cName": "apnea_backup_mode",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "expiredTIMER_MIN_INSP_TIME_MS",
+    "cName": "expiredTIMER_MIN_INSP_TIME_MS",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "apneaAlarm",
+    "cName": "apneaAlarm",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "start(TIMER_APNEALAG)",
+    "cName": "start(TIMER_APNEALAG)",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "iValve",
+    "cName": "defaultMock->getInValveStatus",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "durationTIMER_EXPIRATION_DURATION_MS",
+    "cName": "Expiration_duration_ms",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "expiredTIMER_INSPIRATION_DURATION_MS",
+    "cName": "expiredTIMER_INSPIRATION_DURATION_MS",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "start(TIMER_MAX_RM_TIME)",
+    "cName": "start(TIMER_MAX_RM_TIME)",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "expiredTIMER_APNEALAG",
+    "cName": "expiredTIMER_APNEALAG",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "durationTIMER_MAX_RM_TIME",
+    "cName": "max_rm_time",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "start(TIMER_MAX_INS_PAUSE)",
+    "cName": "start(TIMER_MAX_INS_PAUSE)",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "state",
+    "cName": "state",
+    "commandType": "STATE",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "oValve",
+    "cName": "defaultMock->getOutValveStatus",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "durationTIMER_MAX_EXP_PAUSE",
+    "cName": "max_exp_pause",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "expiredTIMER_MAX_INS_PAUSE",
+    "cName": "expiredTIMER_MAX_INS_PAUSE",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "start(TIMER_MAX_EXP_PAUSE)",
+    "cName": "start(TIMER_MAX_EXP_PAUSE)",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "durationTIMER_TRIGGERWINDOWDELAY_MS",
+    "cName": "triggerWindowDelay_ms",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "start(TIMER_EXPIRATION_DURATION_MS)",
+    "cName": "start(TIMER_EXPIRATION_DURATION_MS)",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "durationTIMER_MAX_INS_PAUSE",
+    "cName": "max_ins_pause",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "mCurrTimeSecs",
+    "cName": "mCurrTimeSecs",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "time",
+    "cName": "time",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "start(TIMER_MAX_INSP_TIME_PSV)",
+    "cName": "start(TIMER_MAX_INSP_TIME_PSV)",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "durationTIMER_MIN_EXP_TIME_PSV",
+    "cName": "(min_exp_time_psvMock->*(min_exp_time_psvMock->getBehavior()))",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "durationTIMER_MAX_INSP_TIME_PSV",
+    "cName": "max_insp_time_psv",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "durationTIMER_INSPIRATION_DURATION_MS",
+    "cName": "inspiration_duration_ms",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "expiredTIMER_TRIGGERWINDOWDELAY_MS",
+    "cName": "expiredTIMER_TRIGGERWINDOWDELAY_MS",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "expiredTIMER_EXPIRATION_DURATION_MS",
+    "cName": "expiredTIMER_EXPIRATION_DURATION_MS",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "durationTIMER_MIN_INSP_TIME_MS",
+    "cName": "min_insp_time_ms",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "stopVentilationRequested",
+    "cName": "stopVentilationReq",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "resume",
+    "cName": "resume",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "pawGTMaxPinsp",
+    "cName": "pawGTMaxPinspMock->setDefaultBehavior",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "startVentilation",
+    "cName": "startVentilation",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "ins_pause",
+    "cName": "ins_pause",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "dropPAW_ITS_PCV",
+    "cName": "dropPAW_ITS_PCVMock->setDefaultBehavior",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "selfTestPassed",
+    "cName": "selfTestPassed",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "poweroff",
+    "cName": "poweroff",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "exp_pause",
+    "cName": "exp_pause",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "stopVentilation",
+    "cName": "stopVentilation",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "rm_request",
+    "cName": "rm_request",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "turnOffApneaAlarm",
+    "cName": "turnOffApneaAlarm",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "flowDropPSV",
+    "cName": "flowDropPSVMock->setDefaultBehavior",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "dropPAW_ITS_PSV",
+    "cName": "dropPAW_ITS_PSVMock->setDefaultBehavior",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "mode",
+    "cName": "mode",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "startupEnded",
+    "cName": "startupEnded",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  }
+]

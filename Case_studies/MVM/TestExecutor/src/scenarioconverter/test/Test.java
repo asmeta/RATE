@@ -14,6 +14,7 @@ import scenarioconverter.util.Configuration;
 public class Test {
 
 	private static String DESTINATION_PATH = "../SUT/src-gen-test/";
+	private static String DEBUG_PATH = "../SUT/Debug/";
 	private static boolean WRITE_JSON = false;
 
 	// The path of abstract tests
@@ -100,5 +101,7 @@ public class Test {
 			e.printStackTrace();
 		}
 		out.close();
+		
+		// Now compile the MVM code with the GoogleTests
 	}
 }

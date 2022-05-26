@@ -177,4 +177,4 @@ MODULE main
 				TRUE: time;
 			esac;
 --LTL properties
-LTLSPEC NAME ltl0 := G(!((((dropPAW_ITS_PCV = TRUE) & (apnea_backup_mode = TRUE)) & (pawGTMaxPinsp = TRUE)) & X(TRUE)));
+LTLSPEC NAME ltl0 := G(!((((dropPAW_ITS_PCV = TRUE) & (state = MAIN_REGION_PCV_R1_EXPIRATORYPAUSE)) & (mode = PSV)) & X(TRUE)));

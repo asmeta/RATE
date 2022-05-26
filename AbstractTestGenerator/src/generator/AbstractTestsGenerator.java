@@ -164,15 +164,6 @@ public class AbstractTestsGenerator {
 			add(new Configuration(ASM_FOLDER_PHD + "6/phd_master_flat2_v6.asm", "6", CriteriaEnum.RULE_UPDATE));
 			add(new Configuration(ASM_FOLDER_PHD + "NR/phd_master_v7_1.asm", "NR", CriteriaEnum.RULE_UPDATE));
 			
-			add(new Configuration(ASM_FOLDER_PHD + "0/phd_master_flat2_v0.asm", "0", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(ASM_FOLDER_PHD + "1/phd_master_flat2_v1.asm", "1", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(ASM_FOLDER_PHD + "2/phd_master_flat2_v2.asm", "2", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(ASM_FOLDER_PHD + "3/phd_master_flat2_v3.asm", "3", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(ASM_FOLDER_PHD + "4/phd_master_flat2_v4.asm", "4", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(ASM_FOLDER_PHD + "5/phd_master_flat2_v5.asm", "5", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(ASM_FOLDER_PHD + "6/phd_master_flat2_v6.asm", "6", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(ASM_FOLDER_PHD + "NR/phd_master_v7_1.asm", "NR", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			
 			add(new Configuration(ASM_FOLDER_PHD + "0/phd_master_flat2_v0.asm", "0", CriteriaEnum.THREEWISE));
 			add(new Configuration(ASM_FOLDER_PHD + "1/phd_master_flat2_v1.asm", "1", CriteriaEnum.THREEWISE));
 			add(new Configuration(ASM_FOLDER_PHD + "2/phd_master_flat2_v2.asm", "2", CriteriaEnum.THREEWISE));
@@ -180,7 +171,16 @@ public class AbstractTestsGenerator {
 			add(new Configuration(ASM_FOLDER_PHD + "4/phd_master_flat2_v4.asm", "4", CriteriaEnum.THREEWISE));
 			add(new Configuration(ASM_FOLDER_PHD + "5/phd_master_flat2_v5.asm", "5", CriteriaEnum.THREEWISE));
 			add(new Configuration(ASM_FOLDER_PHD + "6/phd_master_flat2_v6.asm", "6", CriteriaEnum.THREEWISE));
-			add(new Configuration(ASM_FOLDER_PHD + "NR/phd_master_v7_1.asm", "NR", CriteriaEnum.THREEWISE));*/
+			add(new Configuration(ASM_FOLDER_PHD + "NR/phd_master_v7_1.asm", "NR", CriteriaEnum.THREEWISE));
+			
+			add(new Configuration(ASM_FOLDER_PHD + "0/phd_master_flat2_v0.asm", "0", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration(ASM_FOLDER_PHD + "1/phd_master_flat2_v1.asm", "1", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration(ASM_FOLDER_PHD + "2/phd_master_flat2_v2.asm", "2", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration(ASM_FOLDER_PHD + "3/phd_master_flat2_v3.asm", "3", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration(ASM_FOLDER_PHD + "4/phd_master_flat2_v4.asm", "4", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration(ASM_FOLDER_PHD + "5/phd_master_flat2_v5.asm", "5", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration(ASM_FOLDER_PHD + "6/phd_master_flat2_v6.asm", "6", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration(ASM_FOLDER_PHD + "NR/phd_master_v7_1.asm", "NR", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));*/
 			
 			//----------------------------
 			// MVM Case Study
@@ -193,7 +193,7 @@ public class AbstractTestsGenerator {
 			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.RULE_UPDATE));
 			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.THREEWISE));
 			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));*/
+					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.BASIC_RULE));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.COMBINATORIAL_ALL));
@@ -202,7 +202,7 @@ public class AbstractTestsGenerator {
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.RULE_GUARD));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.RULE_UPDATE));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.THREEWISE));
-			/*add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
+			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			
 			add(new Configuration(ASM_FOLDER_MVM + "2/Ventilatore2.asm", "2", CriteriaEnum.BASIC_RULE));
@@ -220,9 +220,9 @@ public class AbstractTestsGenerator {
 			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", CriteriaEnum.COMPLETE_RULE));
 			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", CriteriaEnum.MCDC));
 			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", CriteriaEnum.RULE_GUARD));
-			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", CriteriaEnum.RULE_UPDATE));*/
 			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", CriteriaEnum.THREEWISE));
-			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
+			/*add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));*/
 			
 		}

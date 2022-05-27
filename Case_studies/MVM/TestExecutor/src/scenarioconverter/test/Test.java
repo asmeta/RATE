@@ -106,14 +106,15 @@ public class Test {
 		
 		// Now compile the MVM code with the GoogleTests
 		ProcessBuilder builder = new ProcessBuilder();
-		builder.command("cmd.exe", "/c", new File("./additional_files/commands_for_building_MVM.bat").getAbsolutePath());
+		builder.command("cmd.exe", "/c",
+				new File("./additional_files/commands_for_building_MVM.bat").getAbsolutePath());
 		builder.directory(new File(DEBUG_PATH));
 		Process process = builder.start();
-		process.waitFor();
 		BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		String line = "";
-		while ((line=buf.readLine())!=null) {
-		System.out.println(line);
+		while ((line = buf.readLine()) != null) {
+			System.out.println(line);
 		}
+		process.waitFor();
 	}
 }

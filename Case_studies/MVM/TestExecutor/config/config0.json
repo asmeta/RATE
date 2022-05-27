@@ -1,0 +1,130 @@
+[
+  {
+    "asmName": "turnOFFbtn",
+    "cName": "poweroff",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "startupEnded",
+    "cName": "startupEnded",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "selfTestPassed",
+    "cName": "selfTestPassed",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "resume",
+    "cName": "resume",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "startVentilation",
+    "cName": "startVentilation",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "stopRequested",
+    "cName": "stopVentilation",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "respirationMode",
+    "cName": "mode",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "flowDropPSV",
+    "cName": "flowDropPSVMock-\u003esetDefaultBehavior",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },  
+  {
+    "asmName": "stopVentilation",
+    "cName": "stopVentilationReq",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },  
+  {
+    "asmName": "state",
+    "cName": "state",
+    "commandType": "STATE",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "iValve",
+    "cName": "defaultMock-\u003egetInValveStatus",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },  
+  {
+    "asmName": "oValve",
+    "cName": "defaultMock-\u003egetOutValveStatus",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "inspirationDurationPassed",
+    "cName": "inspirationDurationPassed",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "expirationDurationPassed",
+    "cName": "expirationDurationPassed",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "minExpTimePSVPassed",
+    "cName": "minExpTimePSVPassed",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },  
+  {
+    "asmName": "maxInspTimePSVPassed",
+    "cName": "maxInspTimePSVPassed",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  }
+]

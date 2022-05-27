@@ -9,24 +9,27 @@ public class Configuration {
 	public List<CriteriaEnum> criteria;
 	public boolean useMonitoring;
 	public String level;
+	public String configPath;
 	
-	public Configuration(List<CriteriaEnum> criteria, String level) {
+	public Configuration(List<CriteriaEnum> criteria, String level, String configPath) {
 		this.criteria = criteria;
 		this.useMonitoring = true;
 		this.level = level;
+		this.configPath = configPath;
 	}
 	
-	public Configuration(boolean useMonitoring, List<CriteriaEnum> criteria, String level) {
+	public Configuration(boolean useMonitoring, List<CriteriaEnum> criteria, String level, String configPath) {
 		this.criteria = criteria;
 		this.useMonitoring = useMonitoring;
 		this.level = level;
+		this.configPath = configPath;
 	}
 	
-	public Configuration(String level, CriteriaEnum ... criteria) {
-		this(Arrays.asList(criteria), level);
+	public Configuration(String level, String configPath, CriteriaEnum ... criteria) {
+		this(Arrays.asList(criteria), level, configPath);
 	}
 	
-	public Configuration(boolean useMonitoring, String level, CriteriaEnum ... criteria) {
-		this(useMonitoring,Arrays.asList(criteria), level);
+	public Configuration(boolean useMonitoring, String level, String configPath, CriteriaEnum ... criteria) {
+		this(useMonitoring,Arrays.asList(criteria), level, configPath);
 	}
 }

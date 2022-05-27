@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.asmeta.atgt.generator.CriteriaEnum;
 
+import jodd.io.StreamGobbler;
 import scenarioconverter.ScenarioConverter;
 import scenarioconverter.util.Configuration;
 
@@ -109,7 +110,9 @@ public class Test {
 		builder.command("cmd.exe", "/c",
 				new File("./additional_files/commands_for_building_MVM.bat").getAbsolutePath());
 		builder.directory(new File(DEBUG_PATH));
+		builder.inheritIO();
 		Process process = builder.start();
+		
 		BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
 		String line = "";
 		while ((line = buf.readLine()) != null) {

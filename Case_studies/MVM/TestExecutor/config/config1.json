@@ -1,0 +1,210 @@
+[
+  {
+    "asmName": "turnOFFbtn",
+    "cName": "poweroff",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "startupEnded",
+    "cName": "startupEnded",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "selfTestPassed",
+    "cName": "selfTestPassed",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "resume",
+    "cName": "resume",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "startVentilation",
+    "cName": "startVentilation",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "stopRequested",
+    "cName": "stopVentilation",
+    "commandType": "IN_EVENT",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "respirationMode",
+    "cName": "mode",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "flowDropPSV",
+    "cName": "flowDropPSVMock-\u003esetDefaultBehavior",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },    
+  {
+    "asmName": "inPause",
+    "cName": "ins_pause",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },    
+  {
+    "asmName": "expPause",
+    "cName": "exp_pause",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "turnOffApneaAlarm",
+    "cName": "turnOffApneaAlarm",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "rm",
+    "cName": "rm_request",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "stopVentilation",
+    "cName": "stopVentilationReq",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },  
+  {
+    "asmName": "state",
+    "cName": "state",
+    "commandType": "STATE",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "iValve",
+    "cName": "defaultMock-\u003egetInValveStatus",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },  
+  {
+    "asmName": "oValve",
+    "cName": "defaultMock-\u003egetOutValveStatus",
+    "commandType": "OPERATION",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "inspirationDurationPassed",
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "2000",
+    "whenFalse": "0"
+  },
+  {
+    "asmName": "expirationDurationPassed",
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "4000",
+    "whenFalse": "0"
+  },
+  {
+    "asmName": "minExpTimePSVPassed",
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "2000",
+    "whenFalse": "0"
+  },  
+  {
+    "asmName": "maxInspTimePSVPassed",
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "7000",
+    "whenFalse": "0"
+  },
+  {
+    "asmName": "apneaLagPassed",
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "7000",
+    "whenFalse": "0"
+  },
+  {
+    "asmName": "maxInPausePassed",
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "7000",
+    "whenFalse": "0"
+  },  
+  {
+    "asmName": "maxRmTimePassed",
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "7000",
+    "whenFalse": "0"
+  },
+  {
+    "asmName": "maxExpPausePassed",
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "7000",
+    "whenFalse": "0"
+  },    
+  {
+    "asmName": "apneaBackupMode",
+    "cName": "apnea_backup_mode",
+    "commandType": "VAR",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "apneaAlarm",
+    "cName": "apneaAlarm",
+    "commandType": "TBD",
+    "ignore": true,
+    "whenTrue": "",
+    "whenFalse": ""
+  }
+]

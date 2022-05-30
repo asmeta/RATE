@@ -339,7 +339,10 @@ public class ScenarioConverter {
 			// In_Events must be called using the raise + [eventName] function, only when
 			// value true is assigned
 			if (strValue.equals("true"))
-				return stateMachineVarName + "->raise" + StringUtils.capitalize(c.cName) + "();";
+				if (c.cName.contains("(") && c.cName.contains(")"))
+					return stateMachineVarName + "->raise" + StringUtils.capitalize(c.cName) + ";";
+				else
+					return stateMachineVarName + "->raise" + StringUtils.capitalize(c.cName) + "();";
 			else
 				return "";
 		case VAR:

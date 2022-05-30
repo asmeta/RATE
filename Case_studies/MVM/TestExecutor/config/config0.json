@@ -97,34 +97,34 @@
   },
   {
     "asmName": "inspirationDurationPassed",
-    "cName": "inspirationDurationPassed",
-    "commandType": "TBD",
-    "ignore": true,
-    "whenTrue": "",
-    "whenFalse": ""
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "2000",
+    "whenFalse": "0"
   },
   {
     "asmName": "expirationDurationPassed",
-    "cName": "expirationDurationPassed",
-    "commandType": "TBD",
-    "ignore": true,
-    "whenTrue": "",
-    "whenFalse": ""
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "4000",
+    "whenFalse": "0"
   },
   {
     "asmName": "minExpTimePSVPassed",
-    "cName": "minExpTimePSVPassed",
-    "commandType": "TBD",
-    "ignore": true,
-    "whenTrue": "",
-    "whenFalse": ""
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "2000",
+    "whenFalse": "0"
   },  
   {
     "asmName": "maxInspTimePSVPassed",
-    "cName": "maxInspTimePSVPassed",
-    "commandType": "TBD",
-    "ignore": true,
-    "whenTrue": "",
-    "whenFalse": ""
+    "cName": "runner->proceed_time",
+    "commandType": "BOOL_OPERATION",
+    "ignore": false,
+    "whenTrue": "7000",
+    "whenFalse": "0"
   }
 ]

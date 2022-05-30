@@ -3,4 +3,4 @@ scenario testpair_2_2_16_6
 load ./..\..\ASM\MVM_0\Ventilatore0.asm
 
 //// test name test@pair_2_2_16_6
-//// generated for (test goal): flowDropPSV=true - state=MAIN_REGION_PCV_R1_EXPIRATORYPAUSE
+//// generated for (test goal): expirationDurationPassed=true - state=MAIN_REGION_PCV_R1_EXPIRATORYPAUSE

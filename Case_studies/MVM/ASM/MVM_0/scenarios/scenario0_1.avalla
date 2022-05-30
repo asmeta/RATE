@@ -2,13 +2,13 @@ scenario scenario0_1
 load ../Ventilatore0.asm
 
 check state = MAIN_REGION_STARTUP;
-set turnOFFbtn := false;
-set stopRequested := false;
+set poweroff := false;
+set stopVentilation := false;
 set startupEnded := true;
 step
 check state = MAIN_REGION_SELFTEST;
-set turnOFFbtn := true;
-set stopRequested := false;
+set poweroff := true;
+set stopVentilation := false;
 set startupEnded := true;
 step
 check state = OFF;

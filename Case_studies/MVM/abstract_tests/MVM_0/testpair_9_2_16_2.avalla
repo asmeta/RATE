@@ -3,4 +3,4 @@ scenario testpair_9_2_16_2
 load ./..\..\ASM\MVM_0\Ventilatore0.asm
 
 //// test name test@pair_9_2_16_2
-//// generated for (test goal): turnOFFbtn=true - state=MAIN_REGION_PSV_R1_RM
+//// generated for (test goal): iValve=OPEN - state=MAIN_REGION_PSV_R1_RM

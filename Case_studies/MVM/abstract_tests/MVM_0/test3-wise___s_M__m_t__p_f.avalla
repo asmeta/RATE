@@ -1,0 +1,6 @@
+scenario test3-wise___s_M__m_t__p_f
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@3-wise___s_M__m_t__p_f
+//// generated for (test goal): [state, maxInspTimePSVPassed, poweroff]-->[MAIN_REGION_PCV_R1_INSPIRATORYPAUSE, true, false]

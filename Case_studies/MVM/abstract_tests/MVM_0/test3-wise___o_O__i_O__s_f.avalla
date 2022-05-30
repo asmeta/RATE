@@ -3,4 +3,4 @@ scenario test3-wise___o_O__i_O__s_f
 load ./..\..\ASM\MVM_0\Ventilatore0.asm
 
 //// test name test@3-wise___o_O__i_O__s_f
-//// generated for (test goal): [oValve, iValve, startVentilation]-->[OPEN, OPEN, false]
+//// generated for (test goal): [oValve, iValve, stopVentilationRequested]-->[OPEN, OPEN, false]

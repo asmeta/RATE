@@ -1,6 +1,0 @@
-scenario test3-wise___s_M__o_C__r_P
-
-load ./..\..\ASM\MVM_0\Ventilatore0.asm
-
-//// test name test@3-wise___s_M__o_C__r_P
-//// generated for (test goal): [state, oValve, respirationMode]-->[MAIN_REGION_STARTUP, CLOSED, PCV]

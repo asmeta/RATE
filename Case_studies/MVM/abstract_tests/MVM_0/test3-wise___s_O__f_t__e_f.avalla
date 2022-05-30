@@ -1,0 +1,57 @@
+scenario test3-wise___s_O__f_t__e_f
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@3-wise___s_O__f_t__e_f
+//// generated for (test goal): [state, flowDropPSV, expirationDurationPassed]-->[OFF, true, false]
+check iValve = CLOSED;
+check oValve = OPEN;
+check state = MAIN_REGION_STARTUP;
+check stopVentilationRequested = false;
+set resume := false;
+set startVentilation := false;
+set stopVentilation := false;
+set poweroff := true;
+set flowDropPSV := false;
+set inspirationDurationPassed := false;
+set maxInspTimePSVPassed := false;
+set expirationDurationPassed := false;
+set mode := PCV;
+set selfTestPassed := false;
+set minExpTimePSVPassed := false;
+set startupEnded := false;
+step
+check iValve = CLOSED;
+check oValve = OPEN;
+check state = OFF;
+check stopVentilationRequested = false;
+set resume := false;
+set startVentilation := false;
+set stopVentilation := false;
+set poweroff := true;
+set flowDropPSV := true;
+set inspirationDurationPassed := false;
+set maxInspTimePSVPassed := false;
+set expirationDurationPassed := false;
+set mode := PCV;
+set selfTestPassed := false;
+set minExpTimePSVPassed := false;
+set startupEnded := false;
+step
+check iValve = CLOSED;
+check oValve = OPEN;
+check state = OFF;
+check stopVentilationRequested = false;
+set resume := false;
+set startVentilation := false;
+set stopVentilation := false;
+set poweroff := false;
+set flowDropPSV := false;
+set inspirationDurationPassed := false;
+set maxInspTimePSVPassed := false;
+set expirationDurationPassed := false;
+set mode := PCV;
+set selfTestPassed := false;
+set minExpTimePSVPassed := false;
+set startupEnded := false;
+step

@@ -1,0 +1,91 @@
+scenario testRG_r_Main_FFTFTRG_r_PSVexp_RG17
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@RG_r_Main_FFTFTRG_r_PSVexp_RG17
+//// generated for (test goal): RG_r_Main_FFTFTRG_r_PSVexp_RG17: not poweroff and (not(stopVentilation and ((state = MAIN_REGION_PCV_R1_EXPIRATION) or (state = MAIN_REGION_PSV_R1_EXPIRATION))) and ((state = MAIN_REGION_PSV_R1_INSPIRATION) and (not flowDropPSV and (maxInspTimePSVPassed and (state != MAIN_REGION_PSV_R1_EXPIRATION)))))
+check state = MAIN_REGION_STARTUP;
+check iValve = CLOSED;
+check oValve = OPEN;
+check stopVentilationRequested = false;
+set flowDropPSV := false;
+set expirationDurationPassed := false;
+set startVentilation := false;
+set inspirationDurationPassed := false;
+set poweroff := false;
+set minExpTimePSVPassed := false;
+set selfTestPassed := false;
+set mode := PCV;
+set stopVentilation := false;
+set resume := false;
+set maxInspTimePSVPassed := false;
+set startupEnded := true;
+step
+check state = MAIN_REGION_SELFTEST;
+check iValve = CLOSED;
+check oValve = OPEN;
+check stopVentilationRequested = false;
+set flowDropPSV := false;
+set expirationDurationPassed := false;
+set startVentilation := false;
+set inspirationDurationPassed := false;
+set poweroff := false;
+set minExpTimePSVPassed := false;
+set selfTestPassed := true;
+set mode := PCV;
+set stopVentilation := false;
+set resume := false;
+set maxInspTimePSVPassed := false;
+set startupEnded := false;
+step
+check state = MAIN_REGION_VENTILATIONOFF;
+check iValve = CLOSED;
+check oValve = OPEN;
+check stopVentilationRequested = false;
+set flowDropPSV := false;
+set startVentilation := true;
+set expirationDurationPassed := false;
+set inspirationDurationPassed := false;
+set poweroff := false;
+set minExpTimePSVPassed := false;
+set selfTestPassed := false;
+set mode := PSV;
+set stopVentilation := false;
+set resume := false;
+set maxInspTimePSVPassed := false;
+set startupEnded := false;
+step
+check state = MAIN_REGION_PSV_R1_INSPIRATION;
+check iValve = OPEN;
+check oValve = CLOSED;
+check stopVentilationRequested = false;
+set flowDropPSV := false;
+set startVentilation := false;
+set expirationDurationPassed := false;
+set inspirationDurationPassed := false;
+set poweroff := false;
+set minExpTimePSVPassed := false;
+set selfTestPassed := false;
+set mode := PCV;
+set stopVentilation := false;
+set resume := false;
+set maxInspTimePSVPassed := true;
+set startupEnded := false;
+step
+check state = MAIN_REGION_PSV_R1_EXPIRATION;
+check iValve = CLOSED;
+check oValve = OPEN;
+check stopVentilationRequested = false;
+set flowDropPSV := false;
+set expirationDurationPassed := false;
+set startVentilation := false;
+set inspirationDurationPassed := false;
+set poweroff := false;
+set minExpTimePSVPassed := false;
+set selfTestPassed := false;
+set mode := PCV;
+set stopVentilation := false;
+set resume := false;
+set maxInspTimePSVPassed := false;
+set startupEnded := false;
+step

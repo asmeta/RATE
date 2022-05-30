@@ -1,6 +1,0 @@
-scenario test3-wise___s_M__t_t__s_f
-
-load ./..\..\ASM\MVM_0\Ventilatore0.asm
-
-//// test name test@3-wise___s_M__t_t__s_f
-//// generated for (test goal): [state, turnOFFbtn, startVentilation]-->[MAIN_REGION_PCV_R1_INSPIRATORYPAUSE, true, false]

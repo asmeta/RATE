@@ -3,37 +3,37 @@ scenario testMCDC_r_Main_T
 load ./..\..\ASM\MVM_0\Ventilatore0.asm
 
 //// test name test@MCDC_r_Main_T
-//// generated for (test goal): MCDC_r_Main_T: turnOFFbtn
+//// generated for (test goal): MCDC_r_Main_T: poweroff
 check state = MAIN_REGION_STARTUP;
-check oValve = OPEN;
-check stopVentilation = false;
 check iValve = CLOSED;
+check stopVentilationRequested = false;
+check oValve = OPEN;
 set startVentilation := false;
-set respirationMode := PSV;
+set poweroff := true;
 set startupEnded := false;
-set turnOFFbtn := true;
-set stopRequested := false;
+set minExpTimePSVPassed := false;
 set resume := false;
 set flowDropPSV := false;
-set minExpTimePSVPassed := false;
+set stopVentilation := false;
 set inspirationDurationPassed := false;
+set mode := PSV;
 set selfTestPassed := false;
 set maxInspTimePSVPassed := false;
 set expirationDurationPassed := false;
 step
 check state = OFF;
-check oValve = OPEN;
-check stopVentilation = false;
 check iValve = CLOSED;
+check stopVentilationRequested = false;
+check oValve = OPEN;
 set startVentilation := false;
-set respirationMode := PSV;
+set poweroff := false;
 set startupEnded := false;
-set turnOFFbtn := false;
-set stopRequested := false;
+set minExpTimePSVPassed := false;
 set resume := false;
 set flowDropPSV := false;
-set minExpTimePSVPassed := false;
+set stopVentilation := false;
 set inspirationDurationPassed := false;
+set mode := PSV;
 set selfTestPassed := false;
 set maxInspTimePSVPassed := false;
 set expirationDurationPassed := false;

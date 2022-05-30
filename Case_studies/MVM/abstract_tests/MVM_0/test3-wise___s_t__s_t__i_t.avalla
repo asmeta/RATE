@@ -1,0 +1,40 @@
+scenario test3-wise___s_t__s_t__i_t
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@3-wise___s_t__s_t__i_t
+//// generated for (test goal): [selfTestPassed, stopVentilation, inspirationDurationPassed]-->[true, true, true]
+check iValve = CLOSED;
+check oValve = OPEN;
+check state = MAIN_REGION_STARTUP;
+check stopVentilationRequested = false;
+set resume := false;
+set startVentilation := false;
+set stopVentilation := true;
+set poweroff := false;
+set flowDropPSV := false;
+set inspirationDurationPassed := true;
+set maxInspTimePSVPassed := false;
+set expirationDurationPassed := false;
+set mode := PSV;
+set selfTestPassed := true;
+set minExpTimePSVPassed := false;
+set startupEnded := true;
+step
+check iValve = CLOSED;
+check oValve = OPEN;
+check state = MAIN_REGION_SELFTEST;
+check stopVentilationRequested = false;
+set resume := false;
+set startVentilation := false;
+set stopVentilation := false;
+set poweroff := false;
+set inspirationDurationPassed := false;
+set flowDropPSV := false;
+set maxInspTimePSVPassed := false;
+set expirationDurationPassed := false;
+set mode := PSV;
+set selfTestPassed := false;
+set minExpTimePSVPassed := false;
+set startupEnded := false;
+step

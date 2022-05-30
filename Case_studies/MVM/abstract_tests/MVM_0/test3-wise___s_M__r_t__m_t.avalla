@@ -4,37 +4,37 @@ load ./..\..\ASM\MVM_0\Ventilatore0.asm
 
 //// test name test@3-wise___s_M__r_t__m_t
 //// generated for (test goal): [state, resume, maxInspTimePSVPassed]-->[MAIN_REGION_STARTUP, true, true]
-check stopVentilation = false;
 check iValve = CLOSED;
-check state = MAIN_REGION_STARTUP;
 check oValve = OPEN;
-set respirationMode := PSV;
+check state = MAIN_REGION_STARTUP;
+check stopVentilationRequested = false;
 set resume := true;
 set startVentilation := false;
-set startupEnded := false;
+set stopVentilation := false;
+set poweroff := false;
 set flowDropPSV := false;
 set inspirationDurationPassed := false;
 set maxInspTimePSVPassed := true;
 set expirationDurationPassed := false;
-set minExpTimePSVPassed := false;
+set mode := PSV;
 set selfTestPassed := false;
-set stopRequested := false;
-set turnOFFbtn := false;
+set minExpTimePSVPassed := false;
+set startupEnded := false;
 step
-check stopVentilation = false;
 check iValve = CLOSED;
-check state = MAIN_REGION_STARTUP;
 check oValve = OPEN;
-set respirationMode := PSV;
+check state = MAIN_REGION_STARTUP;
+check stopVentilationRequested = false;
 set resume := false;
 set startVentilation := false;
-set startupEnded := false;
+set stopVentilation := false;
+set poweroff := false;
 set flowDropPSV := false;
 set inspirationDurationPassed := false;
 set maxInspTimePSVPassed := false;
 set expirationDurationPassed := false;
-set minExpTimePSVPassed := false;
+set mode := PSV;
 set selfTestPassed := false;
-set stopRequested := false;
-set turnOFFbtn := false;
+set minExpTimePSVPassed := false;
+set startupEnded := false;
 step

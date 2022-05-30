@@ -18,16 +18,16 @@ signature:
 	//*************************************************
 	// FUNCTIONS
 	//*************************************************
-	dynamic monitored turnOFFbtn: Boolean
+	dynamic monitored poweroff: Boolean //turnOFFbtn
 	dynamic monitored startupEnded: Boolean
 	dynamic monitored selfTestPassed: Boolean
 	dynamic monitored resume: Boolean
 	dynamic monitored startVentilation: Boolean
-	dynamic monitored stopRequested: Boolean
-	dynamic monitored respirationMode: Modes
+	dynamic monitored stopVentilation: Boolean //stopRequested
+	dynamic monitored mode: Modes //respirationMode
 	dynamic monitored flowDropPSV: Boolean
 	
-	dynamic controlled stopVentilation: Boolean
+	dynamic controlled stopVentilationRequested: Boolean //stopVentilation
 	dynamic controlled state: States
 	dynamic controlled iValve: ValveStatus
 	dynamic controlled oValve: ValveStatus
@@ -47,12 +47,12 @@ definitions:
 			state := MAIN_REGION_SELFTEST
 
 	rule r_ventOffRequested =
-			stopVentilation := true
+			stopVentilationRequested := true
 
 	rule r_ventOff =
 		par
 			state := MAIN_REGION_VENTILATIONOFF
-			stopVentilation := false
+			stopVentilationRequested := false
 		endpar
 
 	rule r_ventOffFirstTime =
@@ -106,7 +106,7 @@ definitions:
 
 	//no deadlock: it is always possible to get back in the MAIN_REGION_VENTILATIONOFF state
 	//only exception: turn-off button is pressed
-	CTLSPEC ag(not turnOFFbtn) implies ag(ef(state=MAIN_REGION_VENTILATIONOFF))
+	CTLSPEC ag(not poweroff) implies ag(ef(state=MAIN_REGION_VENTILATIONOFF))
 
 	//once turned off, the state doesn't change anymore
 	CTLSPEC ag(state=OFF implies ag(state=OFF))
@@ -117,19 +117,19 @@ definitions:
 	main rule r_Main =
 
 	//if the button is pressed, shut down the ventilator
-	if turnOFFbtn then r_turnOff[]
+	if poweroff then r_turnOff[]
 
 		//if ventilation stop is requested and current state is an expiration
 		//go to state MAIN_REGION_VENTILATIONOFF immediately
-		else if (stopRequested and (state=MAIN_REGION_PCV_R1_EXPIRATION or state=MAIN_REGION_PSV_R1_EXPIRATION)) then r_ventOff[]
+		else if (stopVentilation and (state=MAIN_REGION_PCV_R1_EXPIRATION or state=MAIN_REGION_PSV_R1_EXPIRATION)) then r_ventOff[]
 
 		else
 
 		par
 
 		//if ventilation stop is requested and ventilation is on, 
-		//store the request in controlled function stopVentilation
-		if stopRequested and state!=MAIN_REGION_STARTUP and state!=MAIN_REGION_SELFTEST and state!=MAIN_REGION_VENTILATIONOFF then r_ventOffRequested[] endif
+		//store the request in controlled function stopVentilationRequested
+		if stopVentilation and state!=MAIN_REGION_STARTUP and state!=MAIN_REGION_SELFTEST and state!=MAIN_REGION_VENTILATIONOFF then r_ventOffRequested[] endif
 
 		//transition from startup to selftest
 		if state = MAIN_REGION_STARTUP then
@@ -144,8 +144,8 @@ definitions:
 		//start ventilation, either pcv or psv
 		if state = MAIN_REGION_VENTILATIONOFF then
 			if startVentilation	then
-				if respirationMode = PCV	then r_PCVinsp[]
-					else if respirationMode = PSV	then r_PSVinsp[] endif
+				if mode = PCV	then r_PCVinsp[]
+					else if mode = PSV	then r_PSVinsp[] endif
 				endif
 			endif
 		endif
@@ -153,15 +153,15 @@ definitions:
 		//transition from inspiration to expiration, mode change if requested
 		if state = MAIN_REGION_PCV_R1_INSPIRATION then
 			if inspirationDurationPassed	then
-				if respirationMode = PCV then r_PCVexp[]
-					else if respirationMode = PSV then r_PSVexp[] endif
+				if mode = PCV then r_PCVexp[]
+					else if mode = PSV then r_PSVexp[] endif
 				endif
 			endif
 		endif
 
 		//transition from expiration to inspiration, ventilation turned off if requested
 		if state = MAIN_REGION_PCV_R1_EXPIRATION	then
-			if stopVentilation then r_ventOff[]
+			if stopVentilationRequested then r_ventOff[]
 				else if expirationDurationPassed then r_PCVinsp[] endif
 			endif
 		endif
@@ -175,10 +175,10 @@ definitions:
 
 		//transition from expiration to inspiration, mode change if requested, ventilation turned off if requested
 		if state = MAIN_REGION_PSV_R1_EXPIRATION	then
-			if stopVentilation then r_ventOff[]
+			if stopVentilationRequested then r_ventOff[]
 			else if minExpTimePSVPassed	then
-				if respirationMode = PSV then r_PSVinsp[]
-					else if respirationMode = PCV then r_PCVinsp[] endif
+				if mode = PSV then r_PSVinsp[]
+					else if mode = PCV then r_PCVinsp[] endif
 				endif
 			endif
 			endif
@@ -193,4 +193,4 @@ default init s0:
 	function state = MAIN_REGION_STARTUP
 	function iValve = CLOSED
 	function oValve = OPEN
-	function stopVentilation = false
+	function stopVentilationRequested = false

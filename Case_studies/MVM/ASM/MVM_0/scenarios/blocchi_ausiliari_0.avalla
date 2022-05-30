@@ -4,14 +4,14 @@ load ../Ventilatore0.asm
 begin startup
 	
 check state = MAIN_REGION_STARTUP;
-set turnOFFbtn := false;
-set stopRequested := false;
+set poweroff := false;
+set stopVentilation := false;
 set startupEnded := true;
 step
 
 check state = MAIN_REGION_SELFTEST;
-set turnOFFbtn := false;
-set stopRequested := false;
+set poweroff := false;
+set stopVentilation := false;
 set startupEnded := true;
 set selfTestPassed := true;
 set resume := true;
@@ -27,10 +27,10 @@ begin pcv
 
 execblock blocchi_ausiliari_0:startup;
 
-set turnOFFbtn := false;
-set stopRequested := false;
+set poweroff := false;
+set stopVentilation := false;
 set startVentilation := true;
-set respirationMode := PCV;
+set mode := PCV;
 step
 check state = MAIN_REGION_PCV_R1_INSPIRATION;
 
@@ -42,10 +42,10 @@ begin psv
 
 execblock blocchi_ausiliari_0:startup;
 
-set turnOFFbtn := false;
-set stopRequested := false;
+set poweroff := false;
+set stopVentilation := false;
 set startVentilation := true;
-set respirationMode := PSV;
+set mode := PSV;
 step
 check state = MAIN_REGION_PSV_R1_INSPIRATION;
 

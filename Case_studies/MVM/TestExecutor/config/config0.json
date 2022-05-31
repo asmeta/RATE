@@ -1,6 +1,6 @@
 [
   {
-    "asmName": "turnOFFbtn",
+    "asmName": "poweroff",
     "cName": "poweroff",
     "commandType": "IN_EVENT",
     "ignore": false,
@@ -40,7 +40,7 @@
     "whenFalse": ""
   },
   {
-    "asmName": "stopRequested",
+    "asmName": "stopVentilation",
     "cName": "stopVentilation",
     "commandType": "IN_EVENT",
     "ignore": false,
@@ -48,7 +48,7 @@
     "whenFalse": ""
   },
   {
-    "asmName": "respirationMode",
+    "asmName": "mode",
     "cName": "mode",
     "commandType": "VAR",
     "ignore": false,
@@ -64,7 +64,7 @@
     "whenFalse": ""
   },  
   {
-    "asmName": "stopVentilation",
+    "asmName": "stopVentilationRequested",
     "cName": "stopVentilationReq",
     "commandType": "VAR",
     "ignore": false,
@@ -97,34 +97,34 @@
   },
   {
     "asmName": "inspirationDurationPassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "cName": "timeEvents[3]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "2000",
-    "whenFalse": "0"
+    "whenTrue": "",
+    "whenFalse": ""
   },
   {
     "asmName": "expirationDurationPassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "cName": "timeEvents[1]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "4000",
-    "whenFalse": "0"
+    "whenTrue": "",
+    "whenFalse": ""
   },
   {
     "asmName": "minExpTimePSVPassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "cName": "timeEvents[9] = statechart->timeEvents[10]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "2000",
-    "whenFalse": "0"
+    "whenTrue": "",
+    "whenFalse": ""
   },  
   {
     "asmName": "maxInspTimePSVPassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "cName": "timeEvents[12]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "7000",
-    "whenFalse": "0"
+    "whenTrue": "",
+    "whenFalse": ""
   }
 ]

@@ -151,78 +151,83 @@
     "whenTrue": "",
     "whenFalse": ""
   },
+  
+  
+  
+  
+  
   {
     "asmName": "inspirationDurationPassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "cName": "timeEvents[3]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "2000",
-    "whenFalse": "0"
+    "whenTrue": "",
+    "whenFalse": ""
   },
   {
     "asmName": "expirationDurationPassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "cName": "timeEvents[1]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "4000",
-    "whenFalse": "0"
+    "whenTrue": "",
+    "whenFalse": ""
   },
   {
     "asmName": "minExpTimePSVPassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "cName": "timeEvents[9] = statechart->timeEvents[10]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "2000",
-    "whenFalse": "0"
+    "whenTrue": "",
+    "whenFalse": ""
   },  
   {
     "asmName": "maxInspTimePSVPassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "cName": "timeEvents[12]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "7000",
-    "whenFalse": "0"
-  },
-  {
-    "asmName": "apneaLagPassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
-    "ignore": false,
-    "whenTrue": "7000",
-    "whenFalse": "0"
-  },
-  {
-    "asmName": "maxInPausePassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
-    "ignore": false,
-    "whenTrue": "7000",
-    "whenFalse": "0"
+    "whenTrue": "",
+    "whenFalse": ""
   },  
   {
-    "asmName": "maxRmTimePassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "asmName": "maxInPausePassed",
+    "cName": "timeEvents[13] = statechart -> timeEvents[4]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "7000",
-    "whenFalse": "0"
-  },
+    "whenTrue": "",
+    "whenFalse": ""
+  }, 
   {
     "asmName": "maxExpPausePassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "cName": "timeEvents[6] = statechart -> timeEvents[0]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "7000",
-    "whenFalse": "0"
-  },      
+    "whenTrue": "",
+    "whenFalse": ""
+  },
+  {
+    "asmName": "maxRmTimePassed",
+    "cName": "timeEvents[5] = statechart -> timeEvents[14]",
+    "commandType": "TBD",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },    
+  {
+    "asmName": "apneaLagPassed",
+    "cName": "timeEvents[7]",
+    "commandType": "TBD",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
+  },     
   {
     "asmName": "triggerWindowDelayPassed",
-    "cName": "runner->proceed_time",
-    "commandType": "BOOL_OPERATION",
+    "cName": "timeEvents[2] = statechart -> timeEvents[8]",
+    "commandType": "TBD",
     "ignore": false,
-    "whenTrue": "7000",
-    "whenFalse": "0"
-  },    
+    "whenTrue": "",
+    "whenFalse": ""
+  },   
   {
     "asmName": "apneaBackupMode",
     "cName": "apnea_backup_mode",

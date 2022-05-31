@@ -84,8 +84,8 @@ public class ScenarioConverter {
 	 */
 	public void printIncludes() {
 		// Function printing the includes directives
-		String imports = "#include <string>\r\n" + "#include \"gtest/gtest.h\"\r\n" + "#include \"" + stateMachineName
-				+ ".h\"\r\n" + "#include \"sc_runner_timed.h\"\r\n" + "#include \"sc_types.h\"\n"
+		String imports = "#include <string>\r\n" + "#include \"gtest/gtest.h\"\r\n" + "#define private public\r\n" + "#include \"" + stateMachineName
+				+ ".h\"\r\n" + "#undef private\r\n" + "#include \"sc_runner_timed.h\"\r\n" + "#include \"sc_types.h\"\n"
 				+ "using namespace std;\n";
 		out.println(imports);
 	}
@@ -252,6 +252,7 @@ public class ScenarioConverter {
 
 			result = convertLine(line);
 
+			out.println("\t" + "//" + line);
 			if (!result.equals("")) {
 				out.println("\t" + result);
 			}

@@ -1,0 +1,6 @@
+scenario testpair_15_1_17_4
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@pair_15_1_17_4
+//// generated for (test goal): startVentilation=false - state=MAIN_REGION_PSV_R1_EXPIRATORYPAUSE

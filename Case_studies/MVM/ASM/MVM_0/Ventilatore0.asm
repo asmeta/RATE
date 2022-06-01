@@ -37,6 +37,8 @@ signature:
 	dynamic monitored expirationDurationPassed: Boolean
 	dynamic monitored maxInspTimePSVPassed: Boolean
 	dynamic monitored minExpTimePSVPassed: Boolean
+	// AB: To make tests executable and correct on the real system
+	dynamic monitored minInspTimePassed: Boolean
 
 
 definitions:
@@ -168,7 +170,7 @@ definitions:
 
 		//transition from inspiration to expiration, by time or by flow drop
 		if state = MAIN_REGION_PSV_R1_INSPIRATION	then
-			if flowDropPSV then r_PSVexp[]
+			if minInspTimePassed and flowDropPSV then r_PSVexp[]
 				else if maxInspTimePSVPassed then r_PSVexp[] endif
 			endif
 		endif

@@ -3,38 +3,40 @@ scenario testpair_12_2_14_2
 load ./..\..\ASM\MVM_0\Ventilatore0.asm
 
 //// test name test@pair_12_2_14_2
-//// generated for (test goal): stopVentilation=true - startVentilation=true
-check iValve = CLOSED;
+//// generated for (test goal): selfTestPassed=true - inspirationDurationPassed=true
+check stopVentilationRequested = false;
 check oValve = OPEN;
 check state = MAIN_REGION_STARTUP;
-check stopVentilationRequested = false;
-set poweroff := false;
-set maxInspTimePSVPassed := false;
-set startupEnded := true;
-set flowDropPSV := false;
-set minExpTimePSVPassed := false;
-set mode := PSV;
-set stopVentilation := true;
-set inspirationDurationPassed := false;
-set expirationDurationPassed := false;
-set resume := false;
-set selfTestPassed := false;
-set startVentilation := true;
-step
 check iValve = CLOSED;
+set resume := false;
+set mode := PSV;
+set minExpTimePSVPassed := false;
+set inspirationDurationPassed := true;
+set minInspTimePassed := false;
+set expirationDurationPassed := false;
+set startupEnded := true;
+set startVentilation := false;
+set maxInspTimePSVPassed := false;
+set selfTestPassed := true;
+set stopVentilation := false;
+set flowDropPSV := false;
+set poweroff := false;
+step
+check stopVentilationRequested = false;
 check oValve = OPEN;
 check state = MAIN_REGION_SELFTEST;
-check stopVentilationRequested = false;
-set poweroff := false;
-set maxInspTimePSVPassed := false;
-set startupEnded := false;
-set flowDropPSV := false;
-set minExpTimePSVPassed := false;
-set mode := PSV;
-set stopVentilation := false;
-set inspirationDurationPassed := false;
-set expirationDurationPassed := false;
+check iValve = CLOSED;
 set resume := false;
-set selfTestPassed := false;
+set mode := PSV;
+set minExpTimePSVPassed := false;
+set inspirationDurationPassed := false;
+set minInspTimePassed := false;
+set expirationDurationPassed := false;
+set startupEnded := false;
 set startVentilation := false;
+set maxInspTimePSVPassed := false;
+set selfTestPassed := false;
+set stopVentilation := false;
+set flowDropPSV := false;
+set poweroff := false;
 step

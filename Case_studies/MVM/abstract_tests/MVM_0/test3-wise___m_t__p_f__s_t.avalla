@@ -1,0 +1,78 @@
+scenario test3-wise___m_t__p_f__s_t
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@3-wise___m_t__p_f__s_t
+//// generated for (test goal): [minExpTimePSVPassed, poweroff, stopVentilationRequested]-->[true, false, true]
+check oValve = OPEN;
+check stopVentilationRequested = false;
+check iValve = CLOSED;
+check state = MAIN_REGION_STARTUP;
+set flowDropPSV := false;
+set startupEnded := false;
+set mode := PCV;
+set minInspTimePassed := false;
+set minExpTimePSVPassed := false;
+set maxInspTimePSVPassed := false;
+set resume := false;
+set expirationDurationPassed := false;
+set poweroff := true;
+set selfTestPassed := false;
+set inspirationDurationPassed := false;
+set startVentilation := false;
+set stopVentilation := false;
+step
+check oValve = OPEN;
+check stopVentilationRequested = false;
+check iValve = CLOSED;
+check state = OFF;
+set flowDropPSV := false;
+set startupEnded := false;
+set mode := PCV;
+set minInspTimePassed := false;
+set minExpTimePSVPassed := false;
+set maxInspTimePSVPassed := false;
+set resume := false;
+set expirationDurationPassed := false;
+set poweroff := false;
+set selfTestPassed := false;
+set inspirationDurationPassed := false;
+set startVentilation := false;
+set stopVentilation := true;
+step
+check oValve = OPEN;
+check stopVentilationRequested = true;
+check iValve = CLOSED;
+check state = OFF;
+set flowDropPSV := false;
+set startupEnded := false;
+set mode := PCV;
+set minInspTimePassed := false;
+set minExpTimePSVPassed := true;
+set maxInspTimePSVPassed := false;
+set resume := false;
+set expirationDurationPassed := false;
+set poweroff := false;
+set selfTestPassed := false;
+set inspirationDurationPassed := false;
+set startVentilation := false;
+set stopVentilation := false;
+step
+check oValve = OPEN;
+check stopVentilationRequested = true;
+check iValve = CLOSED;
+check state = OFF;
+set flowDropPSV := false;
+set startupEnded := false;
+set mode := PCV;
+set minInspTimePassed := false;
+set minExpTimePSVPassed := false;
+set maxInspTimePSVPassed := false;
+set resume := false;
+set expirationDurationPassed := false;
+set poweroff := false;
+set selfTestPassed := false;
+set inspirationDurationPassed := false;
+set startVentilation := false;
+set stopVentilation := false;
+step

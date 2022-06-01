@@ -1,6 +1,0 @@
-scenario testpair_13_2_16_4
-
-load ./..\..\ASM\MVM_0\Ventilatore0.asm
-
-//// test name test@pair_13_2_16_4
-//// generated for (test goal): inspirationDurationPassed=true - state=MAIN_REGION_PSV_R1_EXPIRATORYPAUSE

@@ -3,38 +3,40 @@ scenario testpair_6_2_13_2
 load ./..\..\ASM\MVM_0\Ventilatore0.asm
 
 //// test name test@pair_6_2_13_2
-//// generated for (test goal): minExpTimePSVPassed=true - inspirationDurationPassed=true
-check iValve = CLOSED;
+//// generated for (test goal): resume=true - stopVentilation=true
+check stopVentilationRequested = false;
 check oValve = OPEN;
 check state = MAIN_REGION_STARTUP;
-check stopVentilationRequested = false;
-set poweroff := true;
-set maxInspTimePSVPassed := false;
-set startupEnded := false;
-set flowDropPSV := false;
-set minExpTimePSVPassed := true;
-set mode := PSV;
-set stopVentilation := false;
-set inspirationDurationPassed := true;
-set expirationDurationPassed := false;
-set resume := false;
-set selfTestPassed := false;
-set startVentilation := false;
-step
 check iValve = CLOSED;
-check oValve = OPEN;
-check state = OFF;
-check stopVentilationRequested = false;
-set poweroff := false;
-set maxInspTimePSVPassed := false;
-set startupEnded := false;
-set minExpTimePSVPassed := false;
-set flowDropPSV := false;
+set resume := true;
 set mode := PSV;
-set stopVentilation := false;
+set minExpTimePSVPassed := false;
 set inspirationDurationPassed := false;
+set minInspTimePassed := false;
 set expirationDurationPassed := false;
-set resume := false;
-set selfTestPassed := false;
+set startupEnded := true;
 set startVentilation := false;
+set maxInspTimePSVPassed := false;
+set selfTestPassed := false;
+set stopVentilation := true;
+set flowDropPSV := false;
+set poweroff := false;
+step
+check stopVentilationRequested = false;
+check oValve = OPEN;
+check state = MAIN_REGION_SELFTEST;
+check iValve = CLOSED;
+set resume := false;
+set mode := PSV;
+set minExpTimePSVPassed := false;
+set inspirationDurationPassed := false;
+set minInspTimePassed := false;
+set expirationDurationPassed := false;
+set startupEnded := false;
+set startVentilation := false;
+set maxInspTimePSVPassed := false;
+set selfTestPassed := false;
+set stopVentilation := false;
+set flowDropPSV := false;
+set poweroff := false;
 step

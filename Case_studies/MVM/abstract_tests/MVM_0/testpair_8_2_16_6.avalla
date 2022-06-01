@@ -1,6 +1,0 @@
-scenario testpair_8_2_16_6
-
-load ./..\..\ASM\MVM_0\Ventilatore0.asm
-
-//// test name test@pair_8_2_16_6
-//// generated for (test goal): poweroff=true - state=MAIN_REGION_PCV_R1_EXPIRATORYPAUSE

@@ -1,0 +1,42 @@
+scenario testpair_8_2_9_2
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@pair_8_2_9_2
+//// generated for (test goal): maxInspTimePSVPassed=true - poweroff=true
+check stopVentilationRequested = false;
+check oValve = OPEN;
+check state = MAIN_REGION_STARTUP;
+check iValve = CLOSED;
+set resume := false;
+set mode := PSV;
+set minExpTimePSVPassed := false;
+set inspirationDurationPassed := false;
+set minInspTimePassed := false;
+set expirationDurationPassed := false;
+set startupEnded := false;
+set startVentilation := false;
+set maxInspTimePSVPassed := true;
+set selfTestPassed := false;
+set stopVentilation := false;
+set flowDropPSV := false;
+set poweroff := true;
+step
+check stopVentilationRequested = false;
+check oValve = OPEN;
+check state = OFF;
+check iValve = CLOSED;
+set resume := false;
+set mode := PSV;
+set minExpTimePSVPassed := false;
+set inspirationDurationPassed := false;
+set minInspTimePassed := false;
+set expirationDurationPassed := false;
+set startupEnded := false;
+set startVentilation := false;
+set maxInspTimePSVPassed := false;
+set selfTestPassed := false;
+set stopVentilation := false;
+set flowDropPSV := false;
+set poweroff := false;
+step

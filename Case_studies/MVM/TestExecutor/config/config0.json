@@ -126,5 +126,13 @@
     "ignore": false,
     "whenTrue": "",
     "whenFalse": ""
+  },
+  {
+    "asmName": "minInspTimePassed",
+    "cName": "timeEvents[11]",
+    "commandType": "TBD",
+    "ignore": false,
+    "whenTrue": "",
+    "whenFalse": ""
   }
 ]

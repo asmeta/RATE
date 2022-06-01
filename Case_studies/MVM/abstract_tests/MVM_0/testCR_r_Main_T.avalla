@@ -4,37 +4,39 @@ load ./..\..\ASM\MVM_0\Ventilatore0.asm
 
 //// test name test@CR_r_Main_T
 //// generated for (test goal): CR_r_Main_T: poweroff and (((iValve != CLOSED) or (oValve != OPEN)) or (state != OFF))
-check oValve = OPEN;
-check iValve = CLOSED;
 check stopVentilationRequested = false;
 check state = MAIN_REGION_STARTUP;
-set minExpTimePSVPassed := false;
-set expirationDurationPassed := false;
-set mode := PSV;
-set poweroff := true;
-set inspirationDurationPassed := false;
-set maxInspTimePSVPassed := false;
-set startVentilation := false;
-set flowDropPSV := false;
-set startupEnded := false;
-set stopVentilation := false;
-set resume := false;
-set selfTestPassed := false;
-step
 check oValve = OPEN;
 check iValve = CLOSED;
-check stopVentilationRequested = false;
-check state = OFF;
+set startupEnded := false;
 set minExpTimePSVPassed := false;
-set expirationDurationPassed := false;
-set mode := PSV;
-set poweroff := false;
 set inspirationDurationPassed := false;
-set maxInspTimePSVPassed := false;
+set minInspTimePassed := false;
+set selfTestPassed := false;
+set resume := false;
 set startVentilation := false;
 set flowDropPSV := false;
-set startupEnded := false;
 set stopVentilation := false;
-set resume := false;
+set mode := PSV;
+set expirationDurationPassed := false;
+set maxInspTimePSVPassed := false;
+set poweroff := true;
+step
+check stopVentilationRequested = false;
+check state = OFF;
+check oValve = OPEN;
+check iValve = CLOSED;
+set startupEnded := false;
+set minExpTimePSVPassed := false;
+set inspirationDurationPassed := false;
+set minInspTimePassed := false;
 set selfTestPassed := false;
+set resume := false;
+set startVentilation := false;
+set flowDropPSV := false;
+set stopVentilation := false;
+set mode := PSV;
+set expirationDurationPassed := false;
+set maxInspTimePSVPassed := false;
+set poweroff := false;
 step

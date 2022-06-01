@@ -1,0 +1,6 @@
+scenario testpair_12_1_17_2
+
+load ./..\..\ASM\MVM_0\Ventilatore0.asm
+
+//// test name test@pair_12_1_17_2
+//// generated for (test goal): selfTestPassed=false - state=MAIN_REGION_PSV_R1_RM

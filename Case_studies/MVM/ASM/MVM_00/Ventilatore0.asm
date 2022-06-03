@@ -59,9 +59,9 @@ definitions:
 
 	domain MyTime = {0:600}		
 		
-	function durationTIMER_INSPIRATION_DURATION_MS 	=  2 	//settato dal dottore. valore indicativo per respiratory rate 10 e I:E 0,5
-    	function durationTIMER_EXPIRATION_DURATION_MS =  4 	//settato dal dottore. valore indicativo
-	function durationTIMER_TRIGGERWINDOWDELAY_MS =  1 	// 0.7
+	function durationTIMER_INSPIRATION_DURATION_MS 	=  20 	//settato dal dottore. valore indicativo per respiratory rate 10 e I:E 0,5
+    	function durationTIMER_EXPIRATION_DURATION_MS =  40 	//settato dal dottore. valore indicativo
+	function durationTIMER_TRIGGERWINDOWDELAY_MS =  10 	// 0.7
 	
 	/*******************************************************/	
 	function expiredTIMER_INSPIRATION_DURATION_MS  = (time >= start(TIMER_INSPIRATION_DURATION_MS) + durationTIMER_INSPIRATION_DURATION_MS)

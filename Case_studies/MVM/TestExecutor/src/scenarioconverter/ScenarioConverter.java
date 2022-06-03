@@ -30,7 +30,7 @@ public class ScenarioConverter {
 
 	public String stateName = "";
 	public static String CONFIG_PATH = "config/config.json";
-	public static int STEP_TIME = 1000;
+	public static int STEP_TIME = 100;
 	public String stateMachineName = "";
 	public String statesEnumName = "";
 	public String stateMachineVarName = "";

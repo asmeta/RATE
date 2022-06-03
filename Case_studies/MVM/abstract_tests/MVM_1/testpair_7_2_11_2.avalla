@@ -1,0 +1,62 @@
+scenario testpair_7_2_11_2
+
+load ./..\..\ASM\MVM_1\Ventilatore1.asm
+
+//// test name test@pair_7_2_11_2
+//// generated for (test goal): inspirationDurationPassed=true - expPause=true
+check apneaAlarm = false;
+check stopVentilation = false;
+check iValve = CLOSED;
+check apneaBackupMode = false;
+check state = MAIN_REGION_STARTUP;
+check oValve = OPEN;
+set turnOffApneaAlarm := false;
+set inspirationDurationPassed := true;
+set minExpTimePSVPassed := false;
+set respirationMode := PSV;
+set maxRmTimePassed := false;
+set rm := false;
+set startVentilation := false;
+set maxInspTimePSVPassed := false;
+set selfTestPassed := false;
+set expirationDurationPassed := false;
+set minInspTimePassed := false;
+set resume := false;
+set startupEnded := true;
+set maxExpPausePassed := false;
+set turnOFFbtn := false;
+set expPause := true;
+set flowDropPSV := false;
+set apneaLagPassed := false;
+set maxInPausePassed := false;
+set inPause := false;
+set stopRequested := false;
+step
+check apneaAlarm = false;
+check stopVentilation = false;
+check iValve = CLOSED;
+check apneaBackupMode = false;
+check state = MAIN_REGION_SELFTEST;
+check oValve = OPEN;
+set turnOffApneaAlarm := false;
+set inspirationDurationPassed := false;
+set minExpTimePSVPassed := false;
+set respirationMode := PSV;
+set maxRmTimePassed := false;
+set rm := false;
+set startVentilation := false;
+set maxInspTimePSVPassed := false;
+set selfTestPassed := false;
+set expirationDurationPassed := false;
+set minInspTimePassed := false;
+set resume := false;
+set startupEnded := false;
+set maxExpPausePassed := false;
+set turnOFFbtn := false;
+set expPause := false;
+set flowDropPSV := false;
+set apneaLagPassed := false;
+set maxInPausePassed := false;
+set inPause := false;
+set stopRequested := false;
+step

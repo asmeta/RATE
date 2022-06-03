@@ -334,7 +334,7 @@ definitions:
 		
 		//transition from inspiration to pause/rm/expiration
 		if state = MAIN_REGION_PSV_R1_INSPIRATION	then
-			if (minInspTimePassed and flowDropPSV) or maxInspTimePSVPassed) then
+			if (minInspTimePassed and flowDropPSV) or maxInspTimePSVPassed then
 				if inPause then r_PSVinPause[]
 					else if rm then r_PSVrm[]
 						else r_PSVexpIValve[]

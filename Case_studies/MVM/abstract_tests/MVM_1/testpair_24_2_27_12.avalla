@@ -1,0 +1,6 @@
+scenario testpair_24_2_27_12
+
+load ./..\..\ASM\MVM_1\Ventilatore1.asm
+
+//// test name test@pair_24_2_27_12
+//// generated for (test goal): apneaBackupMode=true - state=MAIN_REGION_VENTILATIONOFF

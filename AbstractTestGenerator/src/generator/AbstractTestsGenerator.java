@@ -185,24 +185,24 @@ public class AbstractTestsGenerator {
 			//----------------------------
 			// MVM Case Study
 			//----------------------------
-			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.BASIC_RULE));
+			/*add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.BASIC_RULE));
 			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.COMBINATORIAL_ALL));
 			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.COMPLETE_RULE));
 			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.MCDC));
 			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.RULE_GUARD));
 			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.RULE_UPDATE));
 			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.THREEWISE));
-			/*add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
+			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			
-			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.BASIC_RULE));
+			*/add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.BASIC_RULE));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.COMBINATORIAL_ALL));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.COMPLETE_RULE));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.MCDC));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.RULE_GUARD));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.RULE_UPDATE));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.THREEWISE));
-			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
+			/*add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			
 			add(new Configuration(ASM_FOLDER_MVM + "2/Ventilatore2.asm", "2", CriteriaEnum.BASIC_RULE));

@@ -1,0 +1,6 @@
+scenario testpair_9_2_27_12
+
+load ./..\..\ASM\MVM_1\Ventilatore1.asm
+
+//// test name test@pair_9_2_27_12
+//// generated for (test goal): stopVentilation=true - state=MAIN_REGION_VENTILATIONOFF

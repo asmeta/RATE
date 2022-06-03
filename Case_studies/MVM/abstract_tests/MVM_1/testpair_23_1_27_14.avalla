@@ -1,0 +1,6 @@
+scenario testpair_23_1_27_14
+
+load ./..\..\ASM\MVM_1\Ventilatore1.asm
+
+//// test name test@pair_23_1_27_14
+//// generated for (test goal): oValve=CLOSED - state=MAIN_REGION_STARTUP

@@ -8,8 +8,10 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.asmeta.atgt.generator.CriteriaEnum;
 import org.asmeta.atgt.generator.GenerateTestsFromFSM;
+import org.asmeta.atgt.generator.NuSMVtestGenerator;
 import org.junit.Test;
 
+import atgt.parser.asmgofer.ASMParserTest;
 import extgt.coverage.combinatorial.StdPairwiseCovBuild;
 
 public class AbstractTestsGenerator {
@@ -203,13 +205,14 @@ public class AbstractTestsGenerator {
 			
 			*/
 			
-			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.BASIC_RULE));
-			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.MCDC));
-			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_GUARD));
-			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_UPDATE));
-			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.THREEWISE));
+////			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMPLETE_RULE,CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.THREEWISE));
 			
 			/*add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", true, true, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", true, true, CriteriaEnum.COMBINATORIAL_ALL));
@@ -268,6 +271,7 @@ public class AbstractTestsGenerator {
 	@Test
 	public void generateAllAbstractTests() throws Exception {
 		Logger.getLogger(StdPairwiseCovBuild.class).setLevel(Level.ALL);
+		Logger.getLogger(NuSMVtestGenerator.class).setLevel(Level.ALL);
 		String abstract_test_folder = "";
 		
 		for (Configuration c : filesToProcess) {

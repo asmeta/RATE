@@ -1,0 +1,6 @@
+scenario testUR_r_Main_FFFTTTUR_r_PCVexpIValve_UR_r_PCVexp_21252
+
+load ./../../ASM/MVM_01/Ventilatore01.asm
+
+//// test name test@UR_r_Main_FFFTTTUR_r_PCVexpIValve_UR_r_PCVexp_21252
+//// generated for (test goal): UR_r_Main_FFFTTTUR_r_PCVexpIValve_UR_r_PCVexp_21252: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PCV_R1_INSPIRATION) and (expiredTIMER_INSPIRATION_DURATION_MS and ((mode = PCV) and (oValve != OPEN))))))

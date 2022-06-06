@@ -204,13 +204,11 @@ public class AbstractTestsGenerator {
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			
 			*/
-			
-////			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.BASIC_RULE));
 //			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMPLETE_RULE,CriteriaEnum.MCDC));
 //			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMPLETE_RULE));
 //			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.MCDC));
-//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_GUARD));
 //			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_UPDATE));
 //			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.THREEWISE));
 			

@@ -169,7 +169,7 @@ definitions:
 						//if ventilation stop is requested and ventilation is on, 
 						//store the stop request in controlled function stopVentilationRequested
 						if stopVentilation then
-							if state!=MAIN_REGION_STARTUP and state!=MAIN_REGION_SELFTEST and state!=MAIN_REGION_VENTILATIONOFF then r_ventOffRequested[] endif
+							if state!=MAIN_REGION_PCV_R1_EXPIRATION and state!=MAIN_REGION_STARTUP and state!=MAIN_REGION_SELFTEST and state!=MAIN_REGION_VENTILATIONOFF then r_ventOffRequested[] endif
 						endif
 				
 						//transition from startup to selftest

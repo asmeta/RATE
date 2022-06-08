@@ -73,7 +73,10 @@ public class Test {
 			add(new Configuration("2", "config/config2.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			add(new Configuration("3", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			add(new Configuration("NR", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration("00", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration("00", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration("01", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration("02", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			
 		}
 	};	
 
@@ -83,7 +86,7 @@ public class Test {
 				"statechart", "MAIN_REGION__final_", out);
 		
 		// XXX Select the configuration you want to execute
-		Configuration c = filesToProcess.get(40);
+		Configuration c = filesToProcess.get(42);
 		
 		try {
 			ScenarioConverter.CONFIG_PATH = c.configPath;

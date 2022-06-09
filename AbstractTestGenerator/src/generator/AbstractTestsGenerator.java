@@ -1,9 +1,16 @@
 package generator;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.asmeta.atgt.generator.CriteriaEnum;
@@ -201,22 +208,38 @@ public class AbstractTestsGenerator {
 			// MVM Case Study
 			//----------------------------
 //			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", true, true, CriteriaEnum.BASIC_RULE));
-//			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", true, true, CriteriaEnum.COMBINATORIAL_ALL));
+//			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", true, true, CriteriaEnum.COMBINATORIAL_MON));
 //			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", true, true, CriteriaEnum.COMPLETE_RULE));
 //			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", true, true, CriteriaEnum.MCDC));
 //			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", true, true, CriteriaEnum.RULE_GUARD));
 //			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", true, true, CriteriaEnum.RULE_UPDATE));
-//			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", true, true, CriteriaEnum.THREEWISE));
+//			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", true, true, CriteriaEnum.THREEWISE_MON));
 //			add(new Configuration(ASM_FOLDER_MVM + "0/Ventilatore0.asm", "0", true, true, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
-//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
 //			
-//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.BASIC_RULE));
-//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMBINATORIAL_MON));
-//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMPLETE_RULE));
-//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.MCDC));
-//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_GUARD));
-//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_UPDATE));
-//			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.THREEWISE));
+			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.THREEWISE_MON));
+			
+			add(new Configuration(ASM_FOLDER_MVM + "01/Ventilatore01.asm", "01", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_MVM + "01/Ventilatore01.asm", "01", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_MVM + "01/Ventilatore01.asm", "01", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_MVM + "01/Ventilatore01.asm", "01", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_MVM + "01/Ventilatore01.asm", "01", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_MVM + "01/Ventilatore01.asm", "01", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_MVM + "01/Ventilatore01.asm", "01", true, true, CriteriaEnum.THREEWISE_MON));
+			
+//			add(new Configuration(ASM_FOLDER_MVM + "02/Ventilatore02.asm", "02", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_MVM + "02/Ventilatore02.asm", "02", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_MVM + "02/Ventilatore02.asm", "02", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_MVM + "02/Ventilatore02.asm", "02", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_MVM + "02/Ventilatore02.asm", "02", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_MVM + "02/Ventilatore02.asm", "02", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_MVM + "02/Ventilatore02.asm", "02", true, true, CriteriaEnum.THREEWISE_MON));
 //			
 //			add(new Configuration(ASM_FOLDER_MVM + "02/Ventilatore02.asm", "02", true, true, CriteriaEnum.BASIC_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE));
 //			add(new Configuration(ASM_FOLDER_MVM + "01/Ventilatore01.asm", "01", true, true, CriteriaEnum.THREEWISE_MON));
@@ -325,6 +348,80 @@ public class AbstractTestsGenerator {
 		// Generate the abstract tests
 		modelName = c.asmPath.substring(0, c.asmPath.lastIndexOf("."));
 		new GenerateTestsFromFSM().saveAbstractTests(modelName, c.asmPath, c.useMonitoring, c.criteria, abstract_test_folder + c.level + "/", c.removeUnaskedChanges, c.removeUnChangedControlles);	
+	}
+	
+	@Test
+	public void computeStatistics() throws Exception {
+		String abstract_test_folder = "";
+		
+		for (Configuration c : filesToProcess) {
+			if (c.asmPath.contains(ASM_FOLDER_TLCS))
+				abstract_test_folder = ABSTRACT_TESTS_FOLDER_TLCS;
+			else if (c.asmPath.contains(ASM_FOLDER_PHD))
+				abstract_test_folder = ABSTRACT_TESTS_FOLDER_PHD;
+			else if (c.asmPath.contains(ASM_FOLDER_MVM))
+				abstract_test_folder = ABSTRACT_TESTS_FOLDER_MVM;
+			
+			// Find the name of the files to be checked
+			String fileOutputName = "test"
+					+ c.criteria.stream().map(n -> n.getAbbrvName()).collect(Collectors.joining("_"));
+			// Summary data
+			int numSeqs = 0;
+			float totSteps = 0;
+			int minSteps = 0;
+			int maxSteps = 0;
+			
+			System.out.println("***** CRITERION: " + fileOutputName + " *****");
+			System.out.println("***** LEVEL: " + c.level + " *****");
+			
+			Object[] files = Files.walk(new File(abstract_test_folder + c.level + "/").toPath()).filter(
+					f -> (f.getFileName().toString().startsWith(fileOutputName))).toArray();
+			
+			for (Object o : files) {
+				Path f = (Path)o;
+				int steps = countSteps(f);
+				if (steps > 0) {
+					numSeqs++;
+					totSteps += steps;
+					
+					if (steps > maxSteps)
+						maxSteps = steps;
+					
+					if (steps < minSteps || minSteps == 0)
+						minSteps = steps;
+				}
+			}
+			
+			System.out.println("# Seq: " + numSeqs);
+			System.out.println("Min steps: " + minSteps);
+			System.out.println("Max steps: " + maxSteps);
+			System.out.println("Tot steps: " + totSteps);
+			System.out.println("Avg steps: " + (totSteps / numSeqs));
+		}	
+	}
+
+	private int countSteps(Path f) {
+		int stepsCount = 0;
+		boolean foundSet = false;
+
+		try (BufferedReader br = new BufferedReader(new FileReader(f.toAbsolutePath().toString()))) 
+		{
+		    String sCurrentLine;
+		    while ((sCurrentLine = br.readLine()) != null) 
+		    {
+		    	if (sCurrentLine.startsWith("set "))
+		    		foundSet = true;
+		    	
+		    	if (sCurrentLine.startsWith("step ") || sCurrentLine.equals("step"))
+		    		stepsCount++;
+		    }
+		} 
+		catch (IOException e) 
+		{
+		    e.printStackTrace();
+		}
+		
+		return foundSet ? (1+stepsCount) : 0;
 	}
 	
 }

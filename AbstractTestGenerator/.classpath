@@ -20,5 +20,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/asmeta.atgt/atgt4asmeta.jar"/>
+	<classpathentry kind="src" path="/asmeta.emf"/>
+	<classpathentry kind="src" path="/asmeta.parser"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

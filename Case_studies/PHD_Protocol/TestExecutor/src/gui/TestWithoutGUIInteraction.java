@@ -116,23 +116,23 @@ public class TestWithoutGUIInteraction {
 			add(new Configuration(useArera, "6", CriteriaEnum.RULE_UPDATE));
 			add(new Configuration(useArera, "NR", CriteriaEnum.RULE_UPDATE));
 			
-			add(new Configuration(useArera, "0", CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "1", CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "2", CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "3", CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "4", CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "5", CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "6", CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "NR", CriteriaEnum.THREEWISE));
+			add(new Configuration(useArera, "0", CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "1", CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "2", CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "3", CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "4", CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "5", CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "6", CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "NR", CriteriaEnum.THREEWISE_ALL));
 			
-			add(new Configuration(useArera, "0", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "1", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "2", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "3", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "4", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "5", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "6", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
-			add(new Configuration(useArera, "NR", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+			add(new Configuration(useArera, "0", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "1", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "2", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "3", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "4", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "5", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "6", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(useArera, "NR", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
 		}
 	};	
 	

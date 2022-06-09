@@ -25,7 +25,7 @@ public class TestExecutor {
 
 	// List of criteria for ALL Criteria
 	static CriteriaEnum[] allCriteria = {CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
-			CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE};
+			CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL};
 	
 	static String testPath = "../abstract_tests/PHD_Protocol_";
 	static String level = "0";

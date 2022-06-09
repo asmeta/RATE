@@ -212,7 +212,8 @@ public class AbstractTestsGenerator {
 //			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.RULE_UPDATE));
 //			add(new Configuration(ASM_FOLDER_MVM + "00/Ventilatore0.asm", "00", true, true, CriteriaEnum.THREEWISE));
 			
-			add(new Configuration(ASM_FOLDER_MVM + "02/Ventilatore02.asm", "02", true, true, CriteriaEnum.BASIC_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_MVM + "02/Ventilatore02.asm", "02", true, true, CriteriaEnum.BASIC_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_MVM + "01/Ventilatore01.asm", "01", true, true, CriteriaEnum.THREEWISE_MON));
 			
 			/*add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", true, true, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(ASM_FOLDER_MVM + "1/Ventilatore1.asm", "1", true, true, CriteriaEnum.COMBINATORIAL_ALL));

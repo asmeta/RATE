@@ -65,9 +65,9 @@ public class GenerateSequencesForTrafficLight {
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight0//TrafficLight_0.asm", 3, 1, 2, CriteriaEnum.MCDC));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight0//TrafficLight_0.asm", 3, 1, 2, CriteriaEnum.RULE_GUARD));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight0//TrafficLight_0.asm", 3, 1, 2, CriteriaEnum.RULE_UPDATE));
-			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight0//TrafficLight_0.asm", 3, 1, 2, CriteriaEnum.THREEWISE));
+			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight0//TrafficLight_0.asm", 3, 1, 2, CriteriaEnum.THREEWISE_ALL));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight0//TrafficLight_0.asm", 3, 1, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
 			
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight1//TrafficLight_1.asm", 4, 2, 2, CriteriaEnum.BASIC_RULE));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight1//TrafficLight_1.asm", 4, 2, 2, CriteriaEnum.COMBINATORIAL_ALL));
@@ -75,9 +75,9 @@ public class GenerateSequencesForTrafficLight {
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight1//TrafficLight_1.asm", 4, 2, 2, CriteriaEnum.MCDC));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight1//TrafficLight_1.asm", 4, 2, 2, CriteriaEnum.RULE_GUARD));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight1//TrafficLight_1.asm", 4, 2, 2, CriteriaEnum.RULE_UPDATE));
-			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight1//TrafficLight_1.asm", 4, 2, 2, CriteriaEnum.THREEWISE));
+			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight1//TrafficLight_1.asm", 4, 2, 2, CriteriaEnum.THREEWISE_ALL));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight1//TrafficLight_1.asm", 4, 2, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
 						
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight2//TrafficLight_2.asm", 4, 3, 2, CriteriaEnum.BASIC_RULE));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight2//TrafficLight_2.asm", 4, 3, 2, CriteriaEnum.COMBINATORIAL_ALL));
@@ -85,9 +85,9 @@ public class GenerateSequencesForTrafficLight {
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight2//TrafficLight_2.asm", 4, 3, 2, CriteriaEnum.MCDC));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight2//TrafficLight_2.asm", 4, 3, 2, CriteriaEnum.RULE_GUARD));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight2//TrafficLight_2.asm", 4, 3, 2, CriteriaEnum.RULE_UPDATE));
-			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight2//TrafficLight_2.asm", 4, 3, 2, CriteriaEnum.THREEWISE));
+			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight2//TrafficLight_2.asm", 4, 3, 2, CriteriaEnum.THREEWISE_ALL));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight2//TrafficLight_2.asm", 4, 3, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
 			
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight3//TrafficLight_3.asm", 4, 3, 2, CriteriaEnum.BASIC_RULE));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight3//TrafficLight_3.asm", 4, 3, 2, CriteriaEnum.COMBINATORIAL_ALL));
@@ -95,9 +95,9 @@ public class GenerateSequencesForTrafficLight {
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight3//TrafficLight_3.asm", 4, 3, 2, CriteriaEnum.MCDC));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight3//TrafficLight_3.asm", 4, 3, 2, CriteriaEnum.RULE_GUARD));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight3//TrafficLight_3.asm", 4, 3, 2, CriteriaEnum.RULE_UPDATE));
-			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight3//TrafficLight_3.asm", 4, 3, 2, CriteriaEnum.THREEWISE));
+			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight3//TrafficLight_3.asm", 4, 3, 2, CriteriaEnum.THREEWISE_ALL));
 			add(new ConfigurationNoGUI("", ASM_TRAFFICLIGHT_FOLDER + "TrafficLight3//TrafficLight_3.asm", 4, 3, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
+					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
 			
 		}
 	};	

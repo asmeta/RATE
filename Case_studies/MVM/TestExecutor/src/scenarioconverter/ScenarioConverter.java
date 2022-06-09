@@ -194,7 +194,7 @@ public class ScenarioConverter {
 	 */
 	private boolean startsWithAtLeasOneCriteria(String fileName, Configuration c) {
 		for (CriteriaEnum ce : c.criteria) {
-			if (fileName.startsWith("test" + ce.getAbbrvName()) || fileName.startsWith(ce.getAbbrvName() + "_"))
+			if (fileName.startsWith("test" + ce.getAbbrvName()) || fileName.startsWith(ce.getAbbrvName() + "_") || fileName.startsWith("test" + ce.getAbbrvName().toLowerCase()) || fileName.startsWith(ce.getAbbrvName().toLowerCase() + "_"))
 				return true;
 		}
 		return false;
@@ -242,7 +242,7 @@ public class ScenarioConverter {
 		String line = "";
 		String result = "";
 
-		out.println("TEST_F(TestClass, " + new File(fileName).getName().substring(0, new File(fileName).getName().length() - 7) + ") {");
+		out.println("TEST_F(TestClass, " + new File(fileName).getName().substring(0, new File(fileName).getName().length() - 7).replace("-", "_") + ") {");
 		out.println("\t" + stateMachineVarName + "->enter();");
 
 		while (true) {

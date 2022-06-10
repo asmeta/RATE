@@ -26,6 +26,6 @@ set transition := REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION;
 step
 check message = MSG_RX_PRST;
 check status = WAITING_FOR_CONFIG;
-set invokeIdValid := true;
-set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := false;
+set transition := RX_ROER;
 step

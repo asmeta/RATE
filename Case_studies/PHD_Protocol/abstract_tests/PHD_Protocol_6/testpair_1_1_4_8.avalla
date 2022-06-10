@@ -1,6 +1,0 @@
-scenario testpair_1_1_4_8
-
-load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
-
-//// test name test@pair_1_1_4_8
-//// generated for (test goal): invokeIdValid=false - transition=REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION

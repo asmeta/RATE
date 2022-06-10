@@ -1,6 +1,0 @@
-scenario testpair_2_2_3_1
-
-load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
-
-//// test name test@pair_2_2_3_1
-//// generated for (test goal): status=OPERATING - message=MSG_RX_AARQ_UNACCEPTABLE_CONFIGURATION

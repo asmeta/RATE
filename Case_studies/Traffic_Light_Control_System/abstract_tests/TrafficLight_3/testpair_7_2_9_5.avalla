@@ -1,6 +1,0 @@
-scenario testpair_7_2_9_5
-
-load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
-
-//// test name test@pair_7_2_9_5
-//// generated for (test goal): statusB=RELEASED - statusCOperate=RELEASE_A

@@ -1,6 +1,0 @@
-scenario testpair_1_1_2_4
-
-load ./..\..\ASM\PHD_Protocol_2\phd_master_flat2_v2.asm
-
-//// test name test@pair_1_1_2_4
-//// generated for (test goal): status=DISASSOCIATING - message=MSG_RX_ABRT

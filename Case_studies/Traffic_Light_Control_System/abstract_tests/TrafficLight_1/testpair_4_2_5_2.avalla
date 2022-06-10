@@ -1,6 +1,0 @@
-scenario testpair_4_2_5_2
-
-load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
-
-//// test name test@pair_4_2_5_2
-//// generated for (test goal): transitionC=STANDBY_T - statusB=RELEASED

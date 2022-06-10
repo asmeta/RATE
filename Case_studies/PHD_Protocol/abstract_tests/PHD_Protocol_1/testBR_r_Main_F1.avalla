@@ -4,19 +4,19 @@ load ./..\..\ASM\PHD_Protocol_1\phd_master_flat2_v1.asm
 
 //// test name test@BR_r_Main_F1
 //// generated for (test goal): BR_r_Main_F1: status != UNASSOCIATED
-check status = UNASSOCIATED;
 check message = undef;
+check status = UNASSOCIATED;
 set transition := RX_ABRT;
 step
-check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step
-check status = OPERATING;
 check message = MSG_RX_AARE;
+check status = OPERATING;
 set transition := RX_ABRT;
 step
-check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step

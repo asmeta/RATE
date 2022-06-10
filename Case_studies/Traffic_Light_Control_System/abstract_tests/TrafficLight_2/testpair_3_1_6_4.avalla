@@ -1,6 +1,0 @@
-scenario testpair_3_1_6_4
-
-load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
-
-//// test name test@pair_3_1_6_4
-//// generated for (test goal): statusC=OPERATE - statusA=ATTENTION

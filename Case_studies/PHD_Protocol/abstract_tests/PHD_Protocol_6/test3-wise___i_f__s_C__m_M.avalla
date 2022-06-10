@@ -1,6 +1,0 @@
-scenario test3-wise___i_f__s_C__m_M
-
-load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
-
-//// test name test@3-wise___i_f__s_C__m_M
-//// generated for (test goal): [invokeIdValid, status, message]-->[false, CHECKING_CONFIG, MSG_NO_RESPONSE]

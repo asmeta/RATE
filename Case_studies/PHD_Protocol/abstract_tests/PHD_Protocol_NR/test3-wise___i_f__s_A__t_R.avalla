@@ -1,6 +1,0 @@
-scenario test3-wise___i_f__s_A__t_R
-
-load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
-
-//// test name test@3-wise___i_f__s_A__t_R
-//// generated for (test goal): [invokeIdValid, status, transition]-->[false, ASSOCIATING, REQ_ASSOC_REL]

@@ -1,6 +1,0 @@
-scenario testpair_1_1_4_22
-
-load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
-
-//// test name test@pair_1_1_4_22
-//// generated for (test goal): invokeIdValid=false - transition=REQ_ASSOC_REL

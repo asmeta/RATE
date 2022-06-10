@@ -1,6 +1,0 @@
-scenario testpair_1_3_3_1
-
-load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
-
-//// test name test@pair_1_3_3_1
-//// generated for (test goal): statusC=CONTR_OFF - statusA=BLOCKED

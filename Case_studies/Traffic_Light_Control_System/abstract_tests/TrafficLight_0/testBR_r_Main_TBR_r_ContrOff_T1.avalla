@@ -4,13 +4,13 @@ load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
 
 //// test name test@BR_r_Main_TBR_r_ContrOff_T1
 //// generated for (test goal): BR_r_Main_TBR_r_ContrOff_T1: (statusC = CONTR_OFF) and (transitionC = TURN_ON)
-check statusA = OFF;
 check statusB = OFF;
 check statusC = CONTR_OFF;
+check statusA = OFF;
 set transitionC := TURN_ON;
 step
-check statusA = ATTENTION;
 check statusB = ATTENTION;
 check statusC = STANDBY;
+check statusA = ATTENTION;
 set transitionC := TURN_ON;
 step

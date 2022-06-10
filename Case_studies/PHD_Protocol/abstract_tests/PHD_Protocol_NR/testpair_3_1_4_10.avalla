@@ -1,6 +1,0 @@
-scenario testpair_3_1_4_10
-
-load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
-
-//// test name test@pair_3_1_4_10
-//// generated for (test goal): message=MSG_RX_AARQ_UNACCEPTABLE_CONFIGURATION - transition=RX_ROER

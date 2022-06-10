@@ -10,7 +10,7 @@ set transition := RX_ABRT;
 step
 check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
-set transition := REQ_ASSOC_ABORT;
+set transition := RX_AARE;
 step
 check status = UNASSOCIATED;
 check message = MSG_RX_ABRT;
@@ -18,5 +18,5 @@ set transition := REQ_ASSOC_REL;
 step
 check status = UNASSOCIATED;
 check message = MSG_NO_RESPONSE;
-set transition := REQ_ASSOC_ABORT;
+set transition := RX_ABRT;
 step

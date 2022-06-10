@@ -1,6 +1,0 @@
-scenario test3-wise___s_R__t_T__s_B
-
-load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
-
-//// test name test@3-wise___s_R__t_T__s_B
-//// generated for (test goal): [statusCOperate, transitionC, statusA]-->[RELEASE_A, TURN_ON, BLOCKED]

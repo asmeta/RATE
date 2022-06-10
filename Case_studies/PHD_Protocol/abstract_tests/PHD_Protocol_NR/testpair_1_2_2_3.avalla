@@ -1,0 +1,21 @@
+scenario testpair_1_2_2_3
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@pair_1_2_2_3
+//// generated for (test goal): invokeIdValid=true - transition=RX_RORS_GET
+check status = UNASSOCIATED;
+check message = undef;
+set invokeIdValid := true;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set invokeIdValid := true;
+set transition := RX_RORS_GET;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set invokeIdValid := true;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

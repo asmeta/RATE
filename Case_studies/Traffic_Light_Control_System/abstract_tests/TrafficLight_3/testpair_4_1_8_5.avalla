@@ -1,6 +1,0 @@
-scenario testpair_4_1_8_5
-
-load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
-
-//// test name test@pair_4_1_8_5
-//// generated for (test goal): lightsB=YELLOW - statusA=OFF

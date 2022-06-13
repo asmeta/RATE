@@ -1,5 +1,5 @@
 scenario scenario04
-load Ventilatore0.asm
+load ../Ventilatore0.asm
 check time = 0;
 check state = MAIN_REGION_STARTUP;
 check stopVentilationRequested = false;

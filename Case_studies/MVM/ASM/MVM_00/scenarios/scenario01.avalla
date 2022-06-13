@@ -1,0 +1,10 @@
+scenario scenario01
+load Ventilatore0.asm
+check time = 0;
+set poweroff := true;
+step
+check time = 1;
+check oValve = OPEN;
+check state = OFF;
+check iValve = CLOSED;
+step

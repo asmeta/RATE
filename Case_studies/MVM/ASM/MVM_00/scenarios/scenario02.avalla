@@ -1,0 +1,22 @@
+scenario scenario02
+load Ventilatore0.asm
+check time = 0;
+check state = MAIN_REGION_STARTUP;
+check stopVentilationRequested = false;
+set poweroff := false;
+set stopVentilation := false;
+set startupEnded := true;
+step
+check time = 1;
+check state = MAIN_REGION_SELFTEST;
+check stopVentilationRequested = false;
+set poweroff := true;
+set stopVentilation := false;
+set startupEnded := true;
+step
+check time = 2;
+check state = OFF;
+check stopVentilationRequested = false;
+check oValve = OPEN;
+check iValve = CLOSED;
+step

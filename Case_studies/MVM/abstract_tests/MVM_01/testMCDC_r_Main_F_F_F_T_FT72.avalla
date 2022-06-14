@@ -1,6 +1,6 @@
 scenario testMCDC_r_Main_F_F_F_T_FT72
 
-load ./..\..\ASM\MVM_01\Ventilatore01.asm
+load ./../../ASM/MVM_01/Ventilatore01.asm
 
 //// test name test@MCDC_r_Main_F_F_F_T_FT72
 //// generated for (test goal): MCDC_r_Main_F_F_F_T_FT72: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PSV_R1_INSPIRATION) and (not(flowDropPSV and expiredTIMER_MIN_INSP_TIME_MS) and expiredTIMER_MAX_INSP_TIME_PSV))))

@@ -306,13 +306,9 @@ definitions:
 								if expiredTIMER_EXPIRATION_DURATION_MS then 
 									r_PCVinspOValve[] 
 								else 
-									if expiredTIMER_APNEALAG then 
-										r_PCVinspApnea[]
-									else 
-										if expiredTIMER_TRIGGERWINDOWDELAY_MS then
-											if dropPAW_ITS_PCV then 
-												r_PCVinspOValve[] 
-											endif
+									if expiredTIMER_TRIGGERWINDOWDELAY_MS then
+										if dropPAW_ITS_PCV then 
+											r_PCVinspOValve[] 
 										endif
 									endif
 								endif
@@ -334,8 +330,12 @@ definitions:
 								if (expiredTIMER_TRIGGERWINDOWDELAY_MS and dropPAW_ITS_PSV) then 
 									r_PSVinspOValve[]
 								else 
-									if (expiredTIMER_MIN_EXP_TIME_PSV and mode = PCV) then 
-										r_PCVinspOValve[] 
+									if expiredTIMER_APNEALAG then 
+										r_PCVinspApnea[]
+									else 
+										if (expiredTIMER_MIN_EXP_TIME_PSV and mode = PCV) then 
+											r_PCVinspOValve[] 
+										endif
 									endif
 								endif
 							endif

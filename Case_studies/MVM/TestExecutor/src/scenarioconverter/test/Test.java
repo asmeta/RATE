@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,17 +73,6 @@ public class Test {
 			add(new Configuration("1", "config/config1.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
 			add(new Configuration("2", "config/config2.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
 			add(new Configuration("3", "config/config3.json"
-//					, CriteriaEnum.BASIC_RULE
-//					, CriteriaEnum.COMBINATORIAL_MON
-					, CriteriaEnum.COMPLETE_RULE
-//					, CriteriaEnum.MCDC
-//					, CriteriaEnum.RULE_GUARD
-//					, CriteriaEnum.RULE_UPDATE
-//					, CriteriaEnum.THREEWISE_MON
-					));
-			add(new Configuration("NR", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration("00", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration("01", "config/config3.json"
 					, CriteriaEnum.BASIC_RULE
 					, CriteriaEnum.COMBINATORIAL_MON
 					, CriteriaEnum.COMPLETE_RULE
@@ -91,14 +81,33 @@ public class Test {
 					, CriteriaEnum.RULE_UPDATE
 					, CriteriaEnum.THREEWISE_MON
 					));
+			add(new Configuration("NR", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+			add(new Configuration("00", "config/config3.json" 
+//					, CriteriaEnum.BASIC_RULE
+//					, CriteriaEnum.COMBINATORIAL_MON 
+//					, CriteriaEnum.COMPLETE_RULE 
+//					, CriteriaEnum.MCDC
+//					, CriteriaEnum.RULE_GUARD 
+//					, CriteriaEnum.RULE_UPDATE 
+//					, CriteriaEnum.THREEWISE_MON
+					));
+			add(new Configuration("01", "config/config3.json"
+//					, CriteriaEnum.BASIC_RULE
+//					, CriteriaEnum.COMBINATORIAL_MON
+//					, CriteriaEnum.COMPLETE_RULE
+//					, CriteriaEnum.MCDC
+//					, CriteriaEnum.RULE_GUARD
+//					, CriteriaEnum.RULE_UPDATE
+//					, CriteriaEnum.THREEWISE_MON
+					));
 			add(new Configuration("02", "config/config3.json"
-					,CriteriaEnum.BASIC_RULE
-					,CriteriaEnum.COMBINATORIAL_MON
-					,CriteriaEnum.COMPLETE_RULE
-					,CriteriaEnum.MCDC
-					,CriteriaEnum.RULE_GUARD
-					,CriteriaEnum.RULE_UPDATE
-					,CriteriaEnum.THREEWISE_MON
+//					,CriteriaEnum.BASIC_RULE
+//					,CriteriaEnum.COMBINATORIAL_MON
+//					,CriteriaEnum.COMPLETE_RULE
+//					,CriteriaEnum.MCDC
+//					,CriteriaEnum.RULE_GUARD
+//					,CriteriaEnum.RULE_UPDATE
+//					,CriteriaEnum.THREEWISE_MON
 					));
 			
 		}
@@ -110,22 +119,42 @@ public class Test {
 				"statechart", "MAIN_REGION__final_", out);
 		
 		// XXX Select the configuration you want to execute
-		Configuration c = filesToProcess.get(41);
+		Configuration c = filesToProcess.get(42);
 		
 		try {
 			ScenarioConverter.CONFIG_PATH = c.configPath;
 			
-			// If JSON file must be written
-			if (WRITE_JSON) {
-				sc.createFunctionMappingsFromFolder(PATH_AT, c, false);
-			}
-			else {
+			if (c.criteria.size() == 0) {
+				// Manual scenarios
+				PATH_AT = "../ASM/MVM_" + c.level + "/scenarios/";
+				
 				// Prints the includes and the mock instructions
 				sc.printIncludes();
 				sc.printMock("./additional_files/mock_simple.c");
-	
-				// Convert all the files
-				sc.convertFromFolder(PATH_AT, c);
+
+				assert new File(PATH_AT).exists();
+
+				Files.walk(new File(PATH_AT).toPath()).filter(f -> (f.getFileName().toString().endsWith(".avalla")))
+						.forEach(f -> {
+							try {
+								sc.convert(f.toAbsolutePath().toString());
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+						});
+			} else {
+				// If JSON file must be written
+				if (WRITE_JSON) {
+					sc.createFunctionMappingsFromFolder(PATH_AT, c, false);
+				}
+				else {
+					// Prints the includes and the mock instructions
+					sc.printIncludes();
+					sc.printMock("./additional_files/mock_simple.c");
+		
+					// Convert all the files
+					sc.convertFromFolder(PATH_AT, c);
+				}
 			}
 
 		} catch (IOException e) {

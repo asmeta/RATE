@@ -1,6 +1,6 @@
 //// starting scenario
 //PCV -> move to PSV doctor choice
-scenario scenario4_0
+scenario scenario39
 load ../Ventilatore4SimpleTimeLtdY.asm
 check time = 0;
 check state = MAIN_REGION_STARTUP;

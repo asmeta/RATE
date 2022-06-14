@@ -1,6 +1,6 @@
 //// starting scenario
 //PSV -> move to PCV because of apnea
-scenario scenario4_1
+scenario scenario310
 load ../Ventilatore4SimpleTimeLtdY.asm
 check time = 0;
 check state = MAIN_REGION_STARTUP;

@@ -1,0 +1,75 @@
+scenario scenario36
+load ../Ventilatore4SimpleTimeLtdY.asm
+check time = 0;
+check state = MAIN_REGION_STARTUP;
+check stopVentilationRequested = false;
+set poweroff := false;
+set stopVentilation := false;
+set startupEnded := true;
+step
+check time = 1;
+check state = MAIN_REGION_SELFTEST;
+check stopVentilationRequested = false;
+set poweroff := false;
+set stopVentilation := false;
+set startupEnded := true;
+set selfTestPassed := true;
+set resume := false;
+step
+check time = 2;
+check state = MAIN_REGION_VENTILATIONOFF;
+check stopVentilationRequested = false;
+set poweroff := false;
+set stopVentilation := false;
+set startupEnded := true;
+set selfTestPassed := true;
+set resume := false;
+set startVentilation := true;
+set mode := PSV;
+step
+check time = 3;
+check state = MAIN_REGION_PSV_R1_INSPIRATION;
+check stopVentilationRequested = false;
+check start(TIMER_MIN_INSP_TIME_MS) = 2;
+check oValve = CLOSED;
+check iValve = OPEN;
+check start(TIMER_MAX_INSP_TIME_PSV) = 2;
+set poweroff := false;
+set stopVentilation := false;
+set startupEnded := true;
+set selfTestPassed := true;
+set resume := false;
+set startVentilation := true;
+set mode := PSV;
+set flowDropPSV := true;
+set pawGTMaxPinsp := true;
+step
+check time = 4;
+check state = MAIN_REGION_PSV_R1_EXPIRATION;
+check stopVentilationRequested = false;
+check start(TIMER_MIN_INSP_TIME_MS) = 2;
+check oValve = OPEN;
+check iValve = CLOSED;
+check start(TIMER_MAX_INSP_TIME_PSV) = 2;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 3;
+check start(TIMER_MIN_EXP_TIME_PSV) = 3;
+set poweroff := true;
+set stopVentilation := false;
+set startupEnded := true;
+set selfTestPassed := true;
+set resume := false;
+set startVentilation := true;
+set mode := PSV;
+set flowDropPSV := true;
+set pawGTMaxPinsp := true;
+step
+check time = 5;
+check state = OFF;
+check stopVentilationRequested = false;
+check start(TIMER_MIN_INSP_TIME_MS) = 2;
+check oValve = OPEN;
+check iValve = CLOSED;
+check start(TIMER_MAX_INSP_TIME_PSV) = 2;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 3;
+check start(TIMER_MIN_EXP_TIME_PSV) = 3;
+step

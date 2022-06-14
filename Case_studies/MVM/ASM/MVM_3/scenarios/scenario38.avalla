@@ -1,5 +1,5 @@
-scenario scenario28
-load ../Ventilatore02.asm
+scenario scenario38
+load ../Ventilatore4SimpleTimeLtdY.asm
 check time = 0;
 check state = MAIN_REGION_STARTUP;
 check stopVentilationRequested = false;

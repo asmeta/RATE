@@ -265,13 +265,13 @@ public class AbstractTestsGenerator {
 //			add(new Configuration(ASM_FOLDER_MVM + "2/Ventilatore2.asm", "2", true, true, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 //					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
 //						
-//			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.BASIC_RULE));
-//			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.COMBINATORIAL_ALL));
-//			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.COMPLETE_RULE));
-//			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.MCDC));
-//			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.RULE_GUARD));
-//			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.RULE_UPDATE));
-//			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.THREEWISE_MON));
+			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.COMBINATORIAL_ALL));
+			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.THREEWISE_MON));
 //			add(new Configuration(ASM_FOLDER_MVM + "3/Ventilatore4SimpleTimeLtdY.asm", "3", true, true, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 //					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE));
 			

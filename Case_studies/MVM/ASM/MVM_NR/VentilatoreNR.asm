@@ -76,22 +76,21 @@ signature:
 	derived expiredTIMER_MAX_EXP_PAUSE : Boolean
 	derived expiredTIMER_TRIGGERWINDOWDELAY_MS : Boolean
 	derived expiredTIMER_MIN_INSP_TIME_MS: Boolean
-	derived firstTime : Boolean
 
 definitions:
 
 	domain MyTime = {0:600}
 		
-	function durationTIMER_INSPIRATION_DURATION_MS 	=  2 
-	function durationTIMER_EXPIRATION_DURATION_MS	=  4
-	function durationTIMER_MAX_INSP_TIME_PSV		=  7
-	function durationTIMER_MIN_EXP_TIME_PSV			=  1
-	function durationTIMER_APNEALAG 				=  10
-	function durationTIMER_MAX_INS_PAUSE 			=  20
-	function durationTIMER_MAX_RM_TIME				=  10
-	function durationTIMER_MAX_EXP_PAUSE			=  20
-	function durationTIMER_TRIGGERWINDOWDELAY_MS	=  1 
-	function durationTIMER_MIN_INSP_TIME_MS 		=  1
+	function durationTIMER_INSPIRATION_DURATION_MS 	=  20 
+	function durationTIMER_EXPIRATION_DURATION_MS	=  40
+	function durationTIMER_MAX_INSP_TIME_PSV		=  70
+	function durationTIMER_MIN_EXP_TIME_PSV			=  10
+	function durationTIMER_APNEALAG 				=  100
+	function durationTIMER_MAX_INS_PAUSE 			=  200
+	function durationTIMER_MAX_RM_TIME				=  100
+	function durationTIMER_MAX_EXP_PAUSE			=  200
+	function durationTIMER_TRIGGERWINDOWDELAY_MS	=  10 
+	function durationTIMER_MIN_INSP_TIME_MS 		=  10
 	
 	/*******************************************************/	
 	function expiredTIMER_INSPIRATION_DURATION_MS  = (time >= start(TIMER_INSPIRATION_DURATION_MS) + durationTIMER_INSPIRATION_DURATION_MS)
@@ -104,8 +103,6 @@ definitions:
 	function expiredTIMER_MAX_EXP_PAUSE  = (time >= start(TIMER_MAX_EXP_PAUSE) + durationTIMER_MAX_EXP_PAUSE)
 	function expiredTIMER_TRIGGERWINDOWDELAY_MS  = (time >= start(TIMER_TRIGGERWINDOWDELAY_MS) + durationTIMER_TRIGGERWINDOWDELAY_MS)
 	function expiredTIMER_MIN_INSP_TIME_MS  = (time >= start(TIMER_MIN_INSP_TIME_MS) + durationTIMER_MIN_INSP_TIME_MS)
-	
-	function firstTime = (selfTestPassed or resume)
 	
 	/*******************************************************/
 	// restart the TIMER				
@@ -276,7 +273,7 @@ definitions:
 						endif
 						
 						// selftest ended
-						if firstTime then
+						if selfTestPassed or resume then
 							if state = MAIN_REGION_SELFTEST then state := MAIN_REGION_VENTILATIONOFF endif
 						endif
 						

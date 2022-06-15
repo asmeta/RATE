@@ -1,6 +1,8 @@
 package crossvalidation;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.PrintStream;
 import java.util.Collection;
 import java.util.Collections;
 
@@ -36,8 +38,29 @@ public class CrossvalidationTest {
 			new toAvalla(new File("temp/scenario" + counter + ".avalla"), tc, lastRefinedASM).save();
 			counter++;
 		}
+		
+		// Redirect the output
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		PrintStream ps = new PrintStream(baos);
+		// Save the old System.out!
+		PrintStream old = System.out;
+		// Tell Java to use your special stream
+		System.setOut(ps);
+		
 		// Executes all the scenarios
 		AsmetaV.execValidation("temp", false);
+		
+		// Put things back
+		System.out.flush();
+		System.setOut(old);
+		
+		// Now check if "failed" is contained into the saved string
+		if (baos.toString().contains("failed") || baos.toString().contains("FAILED"))
+			System.out.println(" ******* Crossvalidation succeded ******* ");
+		else {
+			System.out.println(baos.toString());
+			System.err.println("Crossvalilation failed");
+		}
 	}
 	
 }

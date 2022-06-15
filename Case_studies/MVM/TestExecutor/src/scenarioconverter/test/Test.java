@@ -26,62 +26,7 @@ public class Test {
 	public static List<Configuration> filesToProcess = new ArrayList<Configuration>() {
 		
 		private static final long serialVersionUID = 5014712752302397500L;
-		{			
-			add(new Configuration("0", "config/config0.json", CriteriaEnum.BASIC_RULE));
-			add(new Configuration("1", "config/config1.json", CriteriaEnum.BASIC_RULE));
-			add(new Configuration("2", "config/config2.json", CriteriaEnum.BASIC_RULE));
-			add(new Configuration("3", "config/config3.json", CriteriaEnum.BASIC_RULE));
-			add(new Configuration("NR", "config/config3.json", CriteriaEnum.BASIC_RULE));
-			
-			add(new Configuration("0", "config/config0.json", CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration("1", "config/config1.json", CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration("2", "config/config2.json", CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration("3", "config/config3.json", CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration("NR", "config/config3.json", CriteriaEnum.COMBINATORIAL_MON));
-			
-			add(new Configuration("0", "config/config0.json", CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration("1", "config/config1.json", CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration("2", "config/config2.json", CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration("3", "config/config3.json", CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration("NR", "config/config3.json", CriteriaEnum.COMPLETE_RULE));
-			
-			add(new Configuration("0", "config/config0.json", CriteriaEnum.MCDC));
-			add(new Configuration("1", "config/config1.json", CriteriaEnum.MCDC));
-			add(new Configuration("2", "config/config2.json", CriteriaEnum.MCDC));
-			add(new Configuration("3", "config/config3.json", CriteriaEnum.MCDC));
-			add(new Configuration("NR", "config/config3.json", CriteriaEnum.MCDC));
-			
-			add(new Configuration("0", "config/config0.json", CriteriaEnum.RULE_GUARD));
-			add(new Configuration("1", "config/config1.json", CriteriaEnum.RULE_GUARD));
-			add(new Configuration("2", "config/config2.json", CriteriaEnum.RULE_GUARD));
-			add(new Configuration("3", "config/config3.json", CriteriaEnum.RULE_GUARD));
-			add(new Configuration("NR", "config/config3.json", CriteriaEnum.RULE_GUARD));
-			
-			add(new Configuration("0", "config/config0.json", CriteriaEnum.RULE_UPDATE));
-			add(new Configuration("1", "config/config1.json", CriteriaEnum.RULE_UPDATE));
-			add(new Configuration("2", "config/config2.json", CriteriaEnum.RULE_UPDATE));
-			add(new Configuration("3", "config/config3.json", CriteriaEnum.RULE_UPDATE));
-			add(new Configuration("NR", "config/config3.json", CriteriaEnum.RULE_UPDATE));
-			
-			add(new Configuration("0", "config/config0.json", CriteriaEnum.THREEWISE_MON));
-			add(new Configuration("1", "config/config1.json", CriteriaEnum.THREEWISE_MON));
-			add(new Configuration("2", "config/config2.json", CriteriaEnum.THREEWISE_MON));
-			add(new Configuration("3", "config/config3.json", CriteriaEnum.THREEWISE_MON));
-			add(new Configuration("NR", "config/config3.json", CriteriaEnum.THREEWISE_MON));
-			
-			add(new Configuration("0", "config/config0.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration("1", "config/config1.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration("2", "config/config2.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration("3", "config/config3.json"
-					, CriteriaEnum.BASIC_RULE
-					, CriteriaEnum.COMBINATORIAL_MON
-					, CriteriaEnum.COMPLETE_RULE
-					, CriteriaEnum.MCDC
-					, CriteriaEnum.RULE_GUARD
-					, CriteriaEnum.RULE_UPDATE
-					, CriteriaEnum.THREEWISE_MON
-					));
-			add(new Configuration("NR", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+		{		
 			add(new Configuration("00", "config/config3.json" 
 //					, CriteriaEnum.BASIC_RULE
 //					, CriteriaEnum.COMBINATORIAL_MON 
@@ -109,6 +54,25 @@ public class Test {
 //					,CriteriaEnum.RULE_UPDATE
 //					,CriteriaEnum.THREEWISE_MON
 					));
+			add(new Configuration("03", "config/config3.json"
+					, CriteriaEnum.BASIC_RULE
+					, CriteriaEnum.COMBINATORIAL_MON
+					, CriteriaEnum.COMPLETE_RULE
+					, CriteriaEnum.MCDC
+					, CriteriaEnum.RULE_GUARD
+					, CriteriaEnum.RULE_UPDATE
+					, CriteriaEnum.THREEWISE_MON
+					));
+			add(new Configuration("NR", "config/config3.json"
+					, CriteriaEnum.BASIC_RULE
+					, CriteriaEnum.COMBINATORIAL_MON
+					, CriteriaEnum.COMPLETE_RULE
+					, CriteriaEnum.MCDC
+					, CriteriaEnum.RULE_GUARD
+					, CriteriaEnum.RULE_UPDATE
+					, CriteriaEnum.THREEWISE_MON
+					));
+			
 			
 		}
 	};	
@@ -119,7 +83,7 @@ public class Test {
 				"statechart", "MAIN_REGION__final_", out);
 		
 		// XXX Select the configuration you want to execute
-		Configuration c = filesToProcess.get(38);
+		Configuration c = filesToProcess.get(0);
 		
 		try {
 			ScenarioConverter.CONFIG_PATH = c.configPath;

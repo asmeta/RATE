@@ -17,8 +17,8 @@ public class CrossvalidationTest {
 
 	public static void main(String[] args) throws Exception {
 		// XXX: fill the two following variables for checking their equivalence 
-		String manualASM = "E:\\WorkSpaces\\MVM\\MVM_0\\VentilatoreNR.asm";
-		String lastRefinedASM = "F:\\Dati-Andrea\\GitHub\\RATE\\Case_studies\\MVM\\ASM\\MVM_3\\Ventilatore4SimpleTimeLtdY.asm";
+		String manualASM = "../Case_studies/MVM/ASM/MVM_NR/VentilatoreNR.asm";
+		String lastRefinedASM = "../Case_studies/MVM/ASM/MVM_3\\Ventilatore4SimpleTimeLtdY.asm";
 		NuSMVtestGenerator nuSMVtestGenerator = new NuSMVtestGenerator(manualASM);
 		TestGenerationWithNuSMV.useLTLandBMC = true;
 		NuSMVtestGenerator.removeUnChangedControlles = false;

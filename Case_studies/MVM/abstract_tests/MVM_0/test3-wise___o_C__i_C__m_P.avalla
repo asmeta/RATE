@@ -1,6 +1,0 @@
-scenario test3-wise___o_C__i_C__m_P
-
-load ./..\..\ASM\MVM_0\Ventilatore0.asm
-
-//// test name test@3-wise___o_C__i_C__m_P
-//// generated for (test goal): [oValve, iValve, mode]-->[CLOSED, CLOSED, PCV]

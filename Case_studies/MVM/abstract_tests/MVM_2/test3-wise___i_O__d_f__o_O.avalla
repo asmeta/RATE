@@ -1,6 +1,0 @@
-scenario test3-wise___i_O__d_f__o_O
-
-load ./..\..\ASM\MVM_2\Ventilatore2.asm
-
-//// test name test@3-wise___i_O__d_f__o_O
-//// generated for (test goal): [iValve, dropPAW_ITS_PSV, oValve]-->[OPEN, false, OPEN]

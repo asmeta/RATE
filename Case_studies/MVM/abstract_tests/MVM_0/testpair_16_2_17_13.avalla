@@ -1,6 +1,0 @@
-scenario testpair_16_2_17_13
-
-load ./..\..\ASM\MVM_0\Ventilatore0.asm
-
-//// test name test@pair_16_2_17_13
-//// generated for (test goal): stopVentilationRequested=true - state=MAIN_REGION_SELFTEST

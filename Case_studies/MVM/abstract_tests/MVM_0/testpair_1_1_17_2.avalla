@@ -1,6 +1,0 @@
-scenario testpair_1_1_17_2
-
-load ./..\..\ASM\MVM_0\Ventilatore0.asm
-
-//// test name test@pair_1_1_17_2
-//// generated for (test goal): flowDropPSV=false - state=MAIN_REGION_PSV_R1_RM

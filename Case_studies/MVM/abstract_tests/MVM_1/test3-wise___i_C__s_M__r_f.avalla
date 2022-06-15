@@ -1,6 +1,0 @@
-scenario test3-wise___i_C__s_M__r_f
-
-load ./..\..\ASM\MVM_1\Ventilatore1.asm
-
-//// test name test@3-wise___i_C__s_M__r_f
-//// generated for (test goal): [iValve, state, rm]-->[CLOSED, MAIN_REGION_PCV_R1_INSPIRATION, false]

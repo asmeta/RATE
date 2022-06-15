@@ -1,6 +1,0 @@
-scenario test3-wise___i_O__o_O__m_f
-
-load ./..\..\ASM\MVM_2\Ventilatore2.asm
-
-//// test name test@3-wise___i_O__o_O__m_f
-//// generated for (test goal): [iValve, oValve, minExpTimePSVPassed]-->[OPEN, OPEN, false]

@@ -1,6 +1,0 @@
-scenario test3-wise___m_f__i_O__o_O
-
-load ./..\..\ASM\MVM_2\Ventilatore2.asm
-
-//// test name test@3-wise___m_f__i_O__o_O
-//// generated for (test goal): [maxInPausePassed, iValve, oValve]-->[false, OPEN, OPEN]

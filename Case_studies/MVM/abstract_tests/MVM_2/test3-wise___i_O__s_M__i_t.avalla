@@ -1,6 +1,0 @@
-scenario test3-wise___i_O__s_M__i_t
-
-load ./..\..\ASM\MVM_2\Ventilatore2.asm
-
-//// test name test@3-wise___i_O__s_M__i_t
-//// generated for (test goal): [iValve, state, inPause]-->[OPEN, MAIN_REGION_STARTUP, true]

@@ -1,6 +1,0 @@
-scenario test3-wise___a_f__i_O__s_O
-
-load ./..\..\ASM\MVM_2\Ventilatore2.asm
-
-//// test name test@3-wise___a_f__i_O__s_O
-//// generated for (test goal): [apneaAlarm, iValve, state]-->[false, OPEN, OFF]

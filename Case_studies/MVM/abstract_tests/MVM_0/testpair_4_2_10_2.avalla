@@ -1,6 +1,0 @@
-scenario testpair_4_2_10_2
-
-load ./..\..\ASM\MVM_0\Ventilatore0.asm
-
-//// test name test@pair_4_2_10_2
-//// generated for (test goal): oValve=OPEN - iValve=OPEN

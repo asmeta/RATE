@@ -1,6 +1,0 @@
-scenario test3-wise___s_O__t_f__o_C
-
-load ./..\..\ASM\MVM_2\Ventilatore2.asm
-
-//// test name test@3-wise___s_O__t_f__o_C
-//// generated for (test goal): [state, triggerWindowDelayPassed, oValve]-->[OFF, false, CLOSED]

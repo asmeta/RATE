@@ -1,6 +1,0 @@
-scenario testpair_5_2_30_13
-
-load ./..\..\ASM\MVM_2\Ventilatore2.asm
-
-//// test name test@pair_5_2_30_13
-//// generated for (test goal): apneaAlarm=true - state=MAIN_REGION_SELFTEST

@@ -1,6 +1,0 @@
-scenario testpair_8_2_17_5
-
-load ./..\..\ASM\MVM_0\Ventilatore0.asm
-
-//// test name test@pair_8_2_17_5
-//// generated for (test goal): maxInspTimePSVPassed=true - state=MAIN_REGION_PSV_R1_INSPIRATORYPAUSE

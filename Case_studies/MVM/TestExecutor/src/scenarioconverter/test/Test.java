@@ -73,13 +73,13 @@ public class Test {
 			add(new Configuration("1", "config/config1.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
 			add(new Configuration("2", "config/config2.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
 			add(new Configuration("3", "config/config3.json"
-//					, CriteriaEnum.BASIC_RULE
-//					, CriteriaEnum.COMBINATORIAL_MON
-//					, CriteriaEnum.COMPLETE_RULE
-//					, CriteriaEnum.MCDC
-//					, CriteriaEnum.RULE_GUARD
-//					, CriteriaEnum.RULE_UPDATE
-//					, CriteriaEnum.THREEWISE_MON
+					, CriteriaEnum.BASIC_RULE
+					, CriteriaEnum.COMBINATORIAL_MON
+					, CriteriaEnum.COMPLETE_RULE
+					, CriteriaEnum.MCDC
+					, CriteriaEnum.RULE_GUARD
+					, CriteriaEnum.RULE_UPDATE
+					, CriteriaEnum.THREEWISE_MON
 					));
 			add(new Configuration("NR", "config/config3.json", CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
 			add(new Configuration("00", "config/config3.json" 

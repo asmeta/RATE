@@ -1,6 +1,0 @@
-scenario testRG_r_Main_TF3
-
-load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
-
-//// test name test@RG_r_Main_TF3
-//// generated for (test goal): RG_r_Main_TF3: (transition = RX_ABRT) and not((((((status = UNASSOCIATED) or (status = ASSOCIATING)) or (status = WAITING_FOR_CONFIG)) or (status = CHECKING_CONFIG)) or (status = OPERATING)) or (status = DISASSOCIATING))

@@ -1,0 +1,14 @@
+scenario testMCDC_r_Main_F4
+
+load ./..\..\ASM\PHD_Protocol_2\phd_master_flat2_v2.asm
+
+//// test name test@MCDC_r_Main_F4
+//// generated for (test goal): MCDC_r_Main_F4: status != OPERATING
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set transition := REQ_ASSOC_ABORT;
+step

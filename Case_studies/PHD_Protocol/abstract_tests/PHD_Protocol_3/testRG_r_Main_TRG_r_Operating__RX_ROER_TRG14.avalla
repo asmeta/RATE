@@ -1,6 +1,0 @@
-scenario testRG_r_Main_TRG_r_Operating__RX_ROER_TRG14
-
-load ./..\..\ASM\PHD_Protocol_3\phd_master_flat2_v3.asm
-
-//// test name test@RG_r_Main_TRG_r_Operating__RX_ROER_TRG14
-//// generated for (test goal): RG_r_Main_TRG_r_Operating__RX_ROER_TRG14: (status = OPERATING) and ((transition = RX_ROER) and (status != OPERATING))

@@ -18,5 +18,5 @@ set transition := RX_RORS;
 step
 check message = MSG_NO_RESPONSE;
 check status = WAITING_FOR_CONFIG;
-set transition := RX_ROIV;
+set transition := REQ_ASSOC_ABORT;
 step

@@ -1,0 +1,22 @@
+scenario testUR_r_Main_TUR_r_Operating__RX_RLRQ_T24
+
+load ./..\..\ASM\PHD_Protocol_2\phd_master_flat2_v2.asm
+
+//// test name test@UR_r_Main_TUR_r_Operating__RX_RLRQ_T24
+//// generated for (test goal): UR_r_Main_TUR_r_Operating__RX_RLRQ_T24: (status = OPERATING) and ((transition = RX_RLRQ) and (message != MSG_RX_RLRE))
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step
+check status = OPERATING;
+check message = MSG_RX_AARE;
+set transition := RX_RLRQ;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_RLRE;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step

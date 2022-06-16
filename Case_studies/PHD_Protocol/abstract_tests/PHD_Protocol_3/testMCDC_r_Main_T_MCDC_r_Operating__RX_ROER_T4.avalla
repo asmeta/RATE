@@ -1,0 +1,22 @@
+scenario testMCDC_r_Main_T_MCDC_r_Operating__RX_ROER_T4
+
+load ./..\..\ASM\PHD_Protocol_3\phd_master_flat2_v3.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Operating__RX_ROER_T4
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Operating__RX_ROER_T4: (status = OPERATING) and (transition = RX_ROER)
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = OPERATING;
+set transition := RX_ROER;
+step
+check message = MSG_NO_RESPONSE;
+check status = OPERATING;
+set transition := RX_RORJ;
+step

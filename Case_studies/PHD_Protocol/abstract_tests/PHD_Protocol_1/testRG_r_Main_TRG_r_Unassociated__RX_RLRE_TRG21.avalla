@@ -4,19 +4,19 @@ load ./..\..\ASM\PHD_Protocol_1\phd_master_flat2_v1.asm
 
 //// test name test@RG_r_Main_TRG_r_Unassociated__RX_RLRE_TRG21
 //// generated for (test goal): RG_r_Main_TRG_r_Unassociated__RX_RLRE_TRG21: (status = UNASSOCIATED) and ((transition = RX_RLRE) and (message != MSG_NO_RESPONSE))
-check message = undef;
 check status = UNASSOCIATED;
+check message = undef;
 set transition := RX_ABRT;
 step
-check message = MSG_NO_RESPONSE;
 check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
 set transition := RX_RLRQ;
 step
-check message = MSG_RX_ABRT;
 check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
 set transition := RX_RLRE;
 step
-check message = MSG_NO_RESPONSE;
 check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
 set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
 step

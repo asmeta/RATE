@@ -1,6 +1,0 @@
-scenario testUR_r_Main_TUR_r_Waiting_For_Config__RX_ROER_T12
-
-load ./..\..\ASM\PHD_Protocol_3\phd_master_flat2_v3.asm
-
-//// test name test@UR_r_Main_TUR_r_Waiting_For_Config__RX_ROER_T12
-//// generated for (test goal): UR_r_Main_TUR_r_Waiting_For_Config__RX_ROER_T12: (status = WAITING_FOR_CONFIG) and ((transition = RX_ROER) and (status != WAITING_FOR_CONFIG))

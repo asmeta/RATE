@@ -1,0 +1,26 @@
+scenario testMCDC_r_Main_T3
+
+load ./..\..\ASM\PHD_Protocol_3\phd_master_flat2_v3.asm
+
+//// test name test@MCDC_r_Main_T3
+//// generated for (test goal): MCDC_r_Main_T3: status = CHECKING_CONFIG
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step
+check message = MSG_RX_PRST;
+check status = OPERATING;
+set transition := RX_AARQ;
+step

@@ -1,0 +1,26 @@
+scenario testUR_r_Main_TUR_r_Disassociating__REQ_ASSOC_ABORT_T13
+
+load ./..\..\ASM\PHD_Protocol_0\phd_master_flat2_v0.asm
+
+//// test name test@UR_r_Main_TUR_r_Disassociating__REQ_ASSOC_ABORT_T13
+//// generated for (test goal): UR_r_Main_TUR_r_Disassociating__REQ_ASSOC_ABORT_T13: (status = DISASSOCIATING) and ((transition = REQ_ASSOC_ABORT) and (status != UNASSOCIATED))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = OPERATING;
+set transition := REQ_ASSOC_REL;
+step
+check message = MSG_RX_RLRQ;
+check status = DISASSOCIATING;
+set transition := REQ_ASSOC_ABORT;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step

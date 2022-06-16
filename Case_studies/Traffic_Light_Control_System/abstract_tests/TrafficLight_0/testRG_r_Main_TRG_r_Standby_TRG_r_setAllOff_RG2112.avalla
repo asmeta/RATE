@@ -1,0 +1,21 @@
+scenario testRG_r_Main_TRG_r_Standby_TRG_r_setAllOff_RG2112
+
+load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
+
+//// test name test@RG_r_Main_TRG_r_Standby_TRG_r_setAllOff_RG2112
+//// generated for (test goal): RG_r_Main_TRG_r_Standby_TRG_r_setAllOff_RG2112: (statusC = STANDBY) and ((transitionC = TURN_OFF) and (statusB != OFF))
+check statusB = OFF;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+set transitionC := TURN_ON;
+step
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusC = STANDBY;
+set transitionC := TURN_OFF;
+step
+check statusB = OFF;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+set transitionC := OPERATE_T;
+step

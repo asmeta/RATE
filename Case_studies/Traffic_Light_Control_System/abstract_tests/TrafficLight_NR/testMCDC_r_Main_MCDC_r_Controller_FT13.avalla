@@ -5,32 +5,32 @@ load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
 //// test name test@MCDC_r_Main_MCDC_r_Controller_FT13
 //// generated for (test goal): MCDC_r_Main_MCDC_r_Controller_FT13: (statusC != CONTR_OFF) and (transitionC = TURN_ON)
 check statusB = OFF;
-check lightsA = ALL_OFF;
 check lightsB = ALL_OFF;
-check statusC = CONTR_OFF;
-check statusCOperate = BLOCKED_A;
 check statusA = OFF;
+check lightsA = ALL_OFF;
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+set transitionC := TURN_ON;
 set transitionB := PREPARE_PERIOD;
 set transitionA := PREPARE_PERIOD;
-set transitionC := TURN_ON;
 step
 check statusB = ATTENTION;
-check lightsA = BLINK_YELLOW;
 check lightsB = BLINK_YELLOW;
-check statusC = STANDBY;
-check statusCOperate = BLOCKED_A;
 check statusA = ATTENTION;
+check lightsA = BLINK_YELLOW;
+check statusCOperate = BLOCKED_A;
+check statusC = STANDBY;
+set transitionC := TURN_ON;
 set transitionB := PREPARE_PERIOD;
 set transitionA := PREPARE_PERIOD;
-set transitionC := TURN_ON;
 step
 check statusB = ATTENTION;
-check lightsA = BLINK_YELLOW;
 check lightsB = BLINK_YELLOW;
-check statusC = STANDBY;
-check statusCOperate = BLOCKED_A;
 check statusA = ATTENTION;
-set transitionB := PREPARE_PERIOD;
-set transitionA := PREPARE_PERIOD;
+check lightsA = BLINK_YELLOW;
+check statusCOperate = BLOCKED_A;
+check statusC = STANDBY;
 set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+set transitionA := PREPARE_PERIOD;
 step

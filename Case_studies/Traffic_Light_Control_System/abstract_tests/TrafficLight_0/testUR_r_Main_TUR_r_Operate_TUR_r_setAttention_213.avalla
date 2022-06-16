@@ -1,0 +1,26 @@
+scenario testUR_r_Main_TUR_r_Operate_TUR_r_setAttention_213
+
+load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
+
+//// test name test@UR_r_Main_TUR_r_Operate_TUR_r_setAttention_213
+//// generated for (test goal): UR_r_Main_TUR_r_Operate_TUR_r_setAttention_213: (statusC = OPERATE) and ((transitionC = STANDBY_T) and (statusB != ATTENTION))
+check statusB = OFF;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+set transitionC := TURN_ON;
+step
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusC = STANDBY;
+set transitionC := OPERATE_T;
+step
+check statusB = BLOCKED;
+check statusA = BLOCKED;
+check statusC = OPERATE;
+set transitionC := STANDBY_T;
+step
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusC = STANDBY;
+set transitionC := OPERATE_T;
+step

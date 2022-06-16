@@ -1,0 +1,26 @@
+scenario testBR_r_Main_F3
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@BR_r_Main_F3
+//// generated for (test goal): BR_r_Main_F3: statusC != OPERATE
+check lightsB = ALL_OFF;
+check statusC = CONTR_OFF;
+check lightsA = ALL_OFF;
+check statusB = OFF;
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := TURN_ON;
+set transitionA := RELEASE_PERIOD;
+set transitionB := RELEASE_PERIOD;
+step
+check lightsB = BLINK_YELLOW;
+check statusC = STANDBY;
+check lightsA = BLINK_YELLOW;
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusCOperate = BLOCKED_A;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+set transitionB := RELEASE_PERIOD;
+step

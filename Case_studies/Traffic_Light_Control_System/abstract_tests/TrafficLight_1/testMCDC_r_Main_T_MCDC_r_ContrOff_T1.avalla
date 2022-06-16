@@ -1,0 +1,20 @@
+scenario testMCDC_r_Main_T_MCDC_r_ContrOff_T1
+
+load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_ContrOff_T1
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_ContrOff_T1: (statusC = CONTR_OFF) and (transitionC = TURN_ON)
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check statusA = OFF;
+set transitionC := TURN_ON;
+set transitionA := RELEASE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+step

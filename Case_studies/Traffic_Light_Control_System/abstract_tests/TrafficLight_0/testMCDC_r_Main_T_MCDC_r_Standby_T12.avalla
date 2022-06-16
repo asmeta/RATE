@@ -1,0 +1,21 @@
+scenario testMCDC_r_Main_T_MCDC_r_Standby_T12
+
+load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Standby_T12
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Standby_T12: (statusC = STANDBY) and (transitionC = TURN_OFF)
+check statusB = OFF;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+set transitionC := TURN_ON;
+step
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusC = STANDBY;
+set transitionC := TURN_OFF;
+step
+check statusB = OFF;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+set transitionC := OPERATE_T;
+step

@@ -1,0 +1,21 @@
+scenario testRG_r_Main_TRG_r_Standby_TRG222
+
+load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
+
+//// test name test@RG_r_Main_TRG_r_Standby_TRG222
+//// generated for (test goal): RG_r_Main_TRG_r_Standby_TRG222: (statusC = STANDBY) and ((transitionC = OPERATE_T) and (statusC != OPERATE))
+check statusB = OFF;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+set transitionC := TURN_ON;
+step
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusC = STANDBY;
+set transitionC := OPERATE_T;
+step
+check statusB = BLOCKED;
+check statusA = BLOCKED;
+check statusC = OPERATE;
+set transitionC := OPERATE_T;
+step

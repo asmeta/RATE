@@ -1,0 +1,26 @@
+scenario testBR_r_Main_BR_r_Controller_F43
+
+load ./..\..\ASM\TrafficLight_NR\TrafficLight_4.asm
+
+//// test name test@BR_r_Main_BR_r_Controller_F43
+//// generated for (test goal): BR_r_Main_BR_r_Controller_F43: not((statusC = OPERATE) and (transitionC = STANDBY_T))
+check statusB = OFF;
+check lightsB = ALL_OFF;
+check statusA = OFF;
+check lightsA = ALL_OFF;
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+set transitionC := TURN_ON;
+set transitionB := RELEASE_PERIOD;
+set transitionA := RELEASE_PERIOD;
+step
+check statusB = ATTENTION;
+check lightsB = BLINK_YELLOW;
+check statusA = ATTENTION;
+check lightsA = BLINK_YELLOW;
+check statusCOperate = BLOCKED_A;
+check statusC = STANDBY;
+set transitionC := OPERATE_T;
+set transitionB := RELEASE_PERIOD;
+set transitionA := RELEASE_PERIOD;
+step

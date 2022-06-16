@@ -1,0 +1,62 @@
+scenario testRG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_TRG_r_blockedB_TRG243
+
+load ./..\..\ASM\TrafficLight_2\TrafficLight_2.asm
+
+//// test name test@RG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_TRG_r_blockedB_TRG243
+//// generated for (test goal): RG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_TRG_r_blockedB_TRG243: (statusC = OPERATE) and ((transitionC != STANDBY_T) and ((statusCOperate = BLOCKED_B) and ((transitionC = SAFE_PERIOD) and (statusCOperate != RELEASE_B))))
+check statusA = OFF;
+check statusB = OFF;
+check statusC = CONTR_OFF;
+check statusCOperate = BLOCKED_A;
+set transitionA := PREPARE_PERIOD;
+set transitionC := TURN_ON;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = ATTENTION;
+check statusB = ATTENTION;
+check statusC = STANDBY;
+check statusCOperate = BLOCKED_A;
+set transitionA := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check statusB = BLOCKED;
+check statusC = OPERATE;
+check statusCOperate = BLOCKED_A;
+set transitionA := PREPARE_PERIOD;
+set transitionC := SAFE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = RELEASED;
+check statusB = BLOCKED;
+check statusCOperate = RELEASE_A;
+check statusC = OPERATE;
+set transitionA := RELEASE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = PREPARE_BLOCK;
+check statusB = BLOCKED;
+check statusCOperate = RELEASED_A;
+check statusC = OPERATE;
+set transitionA := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check statusB = BLOCKED;
+check statusCOperate = BLOCKED_B;
+check statusC = OPERATE;
+set transitionA := PREPARE_PERIOD;
+set transitionC := SAFE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check statusA = BLOCKED;
+check statusB = RELEASED;
+check statusCOperate = RELEASE_B;
+check statusC = OPERATE;
+set transitionA := PREPARE_PERIOD;
+set transitionC := OPERATE_T;
+set transitionB := PREPARE_PERIOD;
+step

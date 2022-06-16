@@ -5,17 +5,17 @@ load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
 //// test name test@BR_r_Main_TBR_r_Standby_T12
 //// generated for (test goal): BR_r_Main_TBR_r_Standby_T12: (statusC = STANDBY) and (transitionC = TURN_OFF)
 check statusB = OFF;
-check statusC = CONTR_OFF;
 check statusA = OFF;
+check statusC = CONTR_OFF;
 set transitionC := TURN_ON;
 step
 check statusB = ATTENTION;
-check statusC = STANDBY;
 check statusA = ATTENTION;
+check statusC = STANDBY;
 set transitionC := TURN_OFF;
 step
 check statusB = OFF;
-check statusC = CONTR_OFF;
 check statusA = OFF;
+check statusC = CONTR_OFF;
 set transitionC := OPERATE_T;
 step

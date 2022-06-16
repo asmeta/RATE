@@ -1,0 +1,26 @@
+scenario testMCDC_r_Main_F3
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@MCDC_r_Main_F3
+//// generated for (test goal): MCDC_r_Main_F3: statusC != OPERATE
+check lightsB = ALL_OFF;
+check statusC = CONTR_OFF;
+check lightsA = ALL_OFF;
+check statusB = OFF;
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+set transitionB := RELEASE_PERIOD;
+step
+check lightsB = ALL_OFF;
+check statusC = CONTR_OFF;
+check lightsA = ALL_OFF;
+check statusB = OFF;
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+set transitionB := RELEASE_PERIOD;
+step

@@ -1,0 +1,21 @@
+scenario testBR_r_Main_F1
+
+load ./..\..\ASM\TrafficLight_0\TrafficLight_0.asm
+
+//// test name test@BR_r_Main_F1
+//// generated for (test goal): BR_r_Main_F1: statusC != CONTR_OFF
+check statusB = OFF;
+check statusA = OFF;
+check statusC = CONTR_OFF;
+set transitionC := TURN_ON;
+step
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusC = STANDBY;
+set transitionC := OPERATE_T;
+step
+check statusB = BLOCKED;
+check statusA = BLOCKED;
+check statusC = OPERATE;
+set transitionC := OPERATE_T;
+step

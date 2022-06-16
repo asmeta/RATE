@@ -1,0 +1,27 @@
+scenario testRG_r_Main_TRG_r_Standby_TRG_r_setAllOff_RG1112
+
+load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
+
+//// test name test@RG_r_Main_TRG_r_Standby_TRG_r_setAllOff_RG1112
+//// generated for (test goal): RG_r_Main_TRG_r_Standby_TRG_r_setAllOff_RG1112: (statusC = STANDBY) and ((transitionC = TURN_OFF) and (statusA != OFF))
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check statusA = OFF;
+set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+set transitionC := TURN_OFF;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check statusA = OFF;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step

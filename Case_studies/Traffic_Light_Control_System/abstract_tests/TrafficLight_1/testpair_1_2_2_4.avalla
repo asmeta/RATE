@@ -6,15 +6,15 @@ load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
 //// generated for (test goal): transitionA=RELEASE_PERIOD - transitionC=TURN_OFF
 check statusCOperate = BLOCKED_A;
 check statusC = CONTR_OFF;
-check statusA = OFF;
 check statusB = OFF;
-set transitionA := RELEASE_PERIOD;
+check statusA = OFF;
 set transitionC := TURN_OFF;
+set transitionA := RELEASE_PERIOD;
 step
 check statusCOperate = BLOCKED_A;
 check statusC = CONTR_OFF;
-check statusA = OFF;
 check statusB = OFF;
-set transitionA := RELEASE_PERIOD;
+check statusA = OFF;
 set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
 step

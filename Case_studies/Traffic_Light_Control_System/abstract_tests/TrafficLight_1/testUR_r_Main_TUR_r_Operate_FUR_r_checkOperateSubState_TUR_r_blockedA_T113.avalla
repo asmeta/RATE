@@ -1,0 +1,34 @@
+scenario testUR_r_Main_TUR_r_Operate_FUR_r_checkOperateSubState_TUR_r_blockedA_T113
+
+load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
+
+//// test name test@UR_r_Main_TUR_r_Operate_FUR_r_checkOperateSubState_TUR_r_blockedA_T113
+//// generated for (test goal): UR_r_Main_TUR_r_Operate_FUR_r_checkOperateSubState_TUR_r_blockedA_T113: (statusC = OPERATE) and (not(transitionC = STANDBY_T) and ((statusCOperate = BLOCKED_A) and ((transitionC = SAFE_PERIOD) and (statusA != RELEASED))))
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check statusA = OFF;
+set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check statusA = BLOCKED;
+set transitionC := SAFE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = RELEASE_A;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check statusA = RELEASED;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step

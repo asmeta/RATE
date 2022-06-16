@@ -1,0 +1,27 @@
+scenario testMCDC_r_Main_T_MCDC_r_Standby_F12
+
+load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Standby_F12
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Standby_F12: (statusC = STANDBY) and (transitionC != TURN_OFF)
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check statusA = OFF;
+set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check statusA = BLOCKED;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step

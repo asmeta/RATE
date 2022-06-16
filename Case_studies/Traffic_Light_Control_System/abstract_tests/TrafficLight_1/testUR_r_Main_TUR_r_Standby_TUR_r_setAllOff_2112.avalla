@@ -1,0 +1,27 @@
+scenario testUR_r_Main_TUR_r_Standby_TUR_r_setAllOff_2112
+
+load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
+
+//// test name test@UR_r_Main_TUR_r_Standby_TUR_r_setAllOff_2112
+//// generated for (test goal): UR_r_Main_TUR_r_Standby_TUR_r_setAllOff_2112: (statusC = STANDBY) and ((transitionC = TURN_OFF) and (statusB != OFF))
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check statusA = OFF;
+set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+set transitionC := TURN_OFF;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check statusA = OFF;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step

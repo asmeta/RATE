@@ -1,0 +1,76 @@
+scenario testRG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_TRG_r_blockedB_TRG243
+
+load ./..\..\ASM\TrafficLight_3\TrafficLight_3.asm
+
+//// test name test@RG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_TRG_r_blockedB_TRG243
+//// generated for (test goal): RG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_TRG_r_blockedB_TRG243: (statusC = OPERATE) and ((transitionC != STANDBY_T) and ((statusCOperate = BLOCKED_B) and ((transitionC = SAFE_PERIOD) and (statusB != RELEASED))))
+check lightsB = ALL_OFF;
+check statusC = CONTR_OFF;
+check lightsA = ALL_OFF;
+check statusB = OFF;
+check statusA = OFF;
+check statusCOperate = BLOCKED_A;
+set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check lightsB = BLINK_YELLOW;
+check statusC = STANDBY;
+check lightsA = BLINK_YELLOW;
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+check statusCOperate = BLOCKED_A;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check lightsB = RED;
+check statusC = OPERATE;
+check lightsA = RED;
+check statusB = BLOCKED;
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_A;
+set transitionC := SAFE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check lightsB = RED;
+check lightsA = GREEN;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check statusA = RELEASED;
+check statusCOperate = RELEASE_A;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check lightsB = RED;
+check lightsA = YELLOW;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check statusA = PREPARE_BLOCK;
+check statusCOperate = RELEASED_A;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check lightsB = RED;
+check lightsA = RED;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check statusA = BLOCKED;
+check statusCOperate = BLOCKED_B;
+set transitionC := SAFE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step
+check lightsB = GREEN;
+check statusC = OPERATE;
+check lightsA = RED;
+check statusB = RELEASED;
+check statusCOperate = RELEASE_B;
+check statusA = BLOCKED;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+set transitionB := PREPARE_PERIOD;
+step

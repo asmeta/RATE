@@ -1,0 +1,41 @@
+scenario testRG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_F13
+
+load ./..\..\ASM\TrafficLight_1\TrafficLight_1.asm
+
+//// test name test@RG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_F13
+//// generated for (test goal): RG_r_Main_TRG_r_Operate_FRG_r_checkOperateSubState_F13: (statusC = OPERATE) and ((transitionC != STANDBY_T) and (statusCOperate != BLOCKED_A))
+check statusCOperate = BLOCKED_A;
+check statusC = CONTR_OFF;
+check statusB = OFF;
+check statusA = OFF;
+set transitionC := TURN_ON;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = STANDBY;
+check statusB = ATTENTION;
+check statusA = ATTENTION;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = BLOCKED_A;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check statusA = BLOCKED;
+set transitionC := SAFE_PERIOD;
+set transitionA := PREPARE_PERIOD;
+step
+check statusCOperate = RELEASE_A;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check statusA = RELEASED;
+set transitionC := OPERATE_T;
+set transitionA := RELEASE_PERIOD;
+step
+check statusCOperate = RELEASED_A;
+check statusC = OPERATE;
+check statusB = BLOCKED;
+check statusA = PREPARE_BLOCK;
+set transitionC := OPERATE_T;
+set transitionA := PREPARE_PERIOD;
+step

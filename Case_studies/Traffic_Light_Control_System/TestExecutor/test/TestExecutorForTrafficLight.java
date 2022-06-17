@@ -6,6 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.asmeta.atgt.generator.CriteriaEnum;
@@ -65,38 +66,43 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 //			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.RULE_GUARD));
 //			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.RULE_UPDATE));
 //			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, new CriteriaEnum[0]));
 			
-			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.BASIC_RULE));
-			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.MCDC));
-			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.RULE_GUARD));
-			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.RULE_UPDATE));
-			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
 			
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.BASIC_RULE));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.MCDC));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.RULE_GUARD));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.RULE_UPDATE));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-						
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.BASIC_RULE));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.MCDC));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.RULE_GUARD));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.RULE_UPDATE));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.MCDC));
+//			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, new CriteriaEnum[0]));
+			
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.MCDC));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, new CriteriaEnum[0]));
+			
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.MCDC));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, new CriteriaEnum[0]));
 			
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.COMBINATORIAL_MON));
@@ -150,11 +156,19 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 
 	private void testAllLevelX(String level) throws Exception {
 		for (Configuration c : configToBeTested) {
-			if (c.level.equals(level)) {
-				String path = PATH_AT + c.level + "/";
-				
-				// Execute tests
+			String path = "";
+			if (c.criteria.size() == 0) {
+				// Manual scenarios
+				path = "../ASM/TrafficLight_" + level + "/scenarios/";
 				launchTest(c, path);
+				return;
+			} else {
+				// ATGT abstract tests
+				if (c.level.equals(level)) {
+					path = PATH_AT + c.level + "/";
+					// Execute tests
+					launchTest(c, path);
+				}
 			}
 		}
 	}
@@ -181,7 +195,17 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 	
 	@Test
 	public void launchOneTest() throws Exception {
-		launchTest(configToBeTested.get(27), PATH_AT + "3/");
+		Configuration c = configToBeTested.get(27);
+		String path = "";
+		if (c.criteria.size() == 0) {
+			// Manual scenarios
+			path = "../ASM/TrafficLight_" + c.level + "/scenarios/";
+		} else {
+			// ATGT abstract tests
+			path = PATH_AT + c.level + "/";
+		}
+		// Execute tests
+		launchTest(c, path);
 	}
 
 	public void launchTest(Configuration c, String path) throws Exception {
@@ -192,18 +216,25 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 		File[] listOfFiles = folder.listFiles();
 		ArrayList<String> avallaFiles = new ArrayList<String>();
 		for (File f:listOfFiles) {
-			for (CriteriaEnum ce : c.criteria) {
-				String abbrvName = ce.getAbbrvName();
-				
-				if (abbrvName.equals("2WISE"))
-					abbrvName = "pair";
-				if (abbrvName.equals("3-WISEw all") || abbrvName.equals("3-WISEmon"))
-					abbrvName = "3-wise";
-				
-				if (f.getName().startsWith("test" + abbrvName)) {
-					avallaFiles.add(f.getAbsolutePath());
-					break;
+			// If criteria are specified
+			if (c.criteria.size() > 0) {
+				for (CriteriaEnum ce : c.criteria) {
+					String abbrvName = ce.getAbbrvName();
+					
+					if (abbrvName.equals("2WISE"))
+						abbrvName = "pair";
+					if (abbrvName.equals("3-WISEw all") || abbrvName.equals("3-WISEmon"))
+						abbrvName = "3-wise";
+					
+					if (f.getName().startsWith("test" + abbrvName)) {
+						avallaFiles.add(f.getAbsolutePath());
+						break;
+					}
 				}
+			}
+			else {
+				// Manual tests
+				avallaFiles.add(f.getAbsolutePath());
 			}
 			
 		}

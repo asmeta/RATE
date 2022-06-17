@@ -90,27 +90,27 @@ public class AbstractTestsGenerator {
 //					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
 //			add(new Configuration(ASM_FOLDER_TLCS + "NR/TrafficLight_4.asm", false, "NR", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
 //					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			
+//			
 			//----------------------------
 			// PHD Case Study
 			//----------------------------
-			add(new Configuration(ASM_FOLDER_PHD + "0/phd_master_flat2_v0.asm", false, "0", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(ASM_FOLDER_PHD + "1/phd_master_flat2_v1.asm", false, "1", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(ASM_FOLDER_PHD + "2/phd_master_flat2_v2.asm", false, "2", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(ASM_FOLDER_PHD + "3/phd_master_flat2_v3.asm", false, "3", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(ASM_FOLDER_PHD + "4/phd_master_flat2_v4.asm", false, "4", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(ASM_FOLDER_PHD + "5/phd_master_flat2_v5.asm", false, "5", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(ASM_FOLDER_PHD + "6/phd_master_flat2_v6.asm", false, "6", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(ASM_FOLDER_PHD + "NR/phd_master_v7_1.asm", false, "NR", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
-					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			
+//			add(new Configuration(ASM_FOLDER_PHD + "0/phd_master_flat2_v0.asm", false, "0", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(ASM_FOLDER_PHD + "1/phd_master_flat2_v1.asm", false, "1", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(ASM_FOLDER_PHD + "2/phd_master_flat2_v2.asm", false, "2", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(ASM_FOLDER_PHD + "3/phd_master_flat2_v3.asm", false, "3", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(ASM_FOLDER_PHD + "4/phd_master_flat2_v4.asm", false, "4", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(ASM_FOLDER_PHD + "5/phd_master_flat2_v5.asm", false, "5", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(ASM_FOLDER_PHD + "6/phd_master_flat2_v6.asm", false, "6", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(ASM_FOLDER_PHD + "NR/phd_master_v7_1.asm", false, "NR", false, false, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON, 
+//					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
+//			
 			//----------------------------
 			// MVM Case Study
 			//----------------------------	
@@ -243,6 +243,15 @@ public class AbstractTestsGenerator {
 		}	
 	}
 	
+	private String getAbbrvName(CriteriaEnum c) {
+		String abbrvName = c.getAbbrvName();
+		if (abbrvName.equals("2WISE"))
+			abbrvName = "pair";
+		if (abbrvName.equals("3-WISEw all") || abbrvName.equals("3-WISEmon"))
+			abbrvName = "3-wise";
+		return abbrvName;
+	}
+	
 	@Test
 	public void computeStatistics() throws Exception {
 		String abstract_test_folder = "";
@@ -256,7 +265,7 @@ public class AbstractTestsGenerator {
 				abstract_test_folder = ABSTRACT_TESTS_FOLDER_MVM;
 			
 			// Find the name of the files to be checked
-			String criteria = c.criteria.stream().map(n -> n.getAbbrvName()).collect(Collectors.joining("_"));
+			String criteria = c.criteria.stream().map(n -> getAbbrvName(n)).collect(Collectors.joining("_"));
 			String fileOutputName = "test"
 					+ criteria;
 			// Summary data
@@ -366,7 +375,7 @@ public class AbstractTestsGenerator {
 		    e.printStackTrace();
 		}
 		
-		return foundSet ? (1+stepsCount) : 0;
+		return foundSet ? (stepsCount - 1) : 0;
 	}
 	
 }

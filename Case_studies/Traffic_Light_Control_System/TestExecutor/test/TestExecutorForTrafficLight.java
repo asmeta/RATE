@@ -58,13 +58,13 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 		
 		private static final long serialVersionUID = 5014712752302397500L;
 		{
-			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.BASIC_RULE));
-			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.MCDC));
-			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.RULE_GUARD));
-			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.RULE_UPDATE));
-			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.MCDC));
+//			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.THREEWISE_MON));
 			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
 			
@@ -207,6 +207,12 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 			}
 			
 		}
+		
+		if (avallaFiles.size() == 0) {
+			System.out.println("No abstract tests found");
+			return;
+		}
+		
 		String[] avallaFilesList = new String[avallaFiles.size()]; 
 		avallaFilesList = avallaFiles.toArray(avallaFilesList);
 		fsm = FSMCreator.getContentFSMFromMultipleAvalla(avallaFilesList, true, c.nMessages, c.nTransitions, c.nStatuses);

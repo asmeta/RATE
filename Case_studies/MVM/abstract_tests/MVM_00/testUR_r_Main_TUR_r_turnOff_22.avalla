@@ -1,0 +1,52 @@
+scenario testUR_r_Main_TUR_r_turnOff_22
+
+load ./../../ASM/MVM_00/Ventilatore0.asm
+
+//// test name test@UR_r_Main_TUR_r_turnOff_22
+//// generated for (test goal): UR_r_Main_TUR_r_turnOff_22: poweroff and (oValve != OPEN)
+check durationTIMER_INSPIRATION_DURATION_MS = 20;
+check expiredTIMER_EXPIRATION_DURATION_MS = false;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 0;
+check expiredTIMER_INSPIRATION_DURATION_MS = false;
+check start(TIMER_EXPIRATION_DURATION_MS) = 0;
+check durationTIMER_TRIGGERWINDOWDELAY_MS = 10;
+check oValve = OPEN;
+check stopVentilationRequested = false;
+check time = 0;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+check durationTIMER_EXPIRATION_DURATION_MS = 40;
+check iValve = CLOSED;
+check start(TIMER_INSPIRATION_DURATION_MS) = 0;
+check state = MAIN_REGION_STARTUP;
+set poweroff := false;
+set startupEnded := true;
+set stopVentilation := false;
+step
+check time = 1;
+check state = MAIN_REGION_SELFTEST;
+set poweroff := false;
+set selfTestPassed := true;
+set resume := false;
+set stopVentilation := false;
+step
+check time = 2;
+check state = MAIN_REGION_VENTILATIONOFF;
+set poweroff := false;
+set startVentilation := true;
+set mode := PCV;
+set stopVentilation := false;
+step
+check oValve = CLOSED;
+check time = 3;
+check iValve = OPEN;
+check start(TIMER_INSPIRATION_DURATION_MS) = 2;
+check state = MAIN_REGION_PCV_R1_INSPIRATION;
+set poweroff := true;
+step
+check oValve = OPEN;
+check time = 4;
+check iValve = CLOSED;
+check state = OFF;
+set poweroff := false;
+set stopVentilation := false;
+step

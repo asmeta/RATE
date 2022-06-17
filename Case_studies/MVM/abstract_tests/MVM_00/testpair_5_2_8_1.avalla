@@ -1,0 +1,27 @@
+scenario testpair_5_2_8_1
+
+load ./../../ASM/MVM_00/Ventilatore0.asm
+
+//// test name test@pair_5_2_8_1
+//// generated for (test goal): poweroff=true - startVentilation=false
+check durationTIMER_INSPIRATION_DURATION_MS = 20;
+check expiredTIMER_EXPIRATION_DURATION_MS = false;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 0;
+check expiredTIMER_INSPIRATION_DURATION_MS = false;
+check start(TIMER_EXPIRATION_DURATION_MS) = 0;
+check durationTIMER_TRIGGERWINDOWDELAY_MS = 10;
+check oValve = OPEN;
+check stopVentilationRequested = false;
+check time = 0;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+check durationTIMER_EXPIRATION_DURATION_MS = 40;
+check iValve = CLOSED;
+check start(TIMER_INSPIRATION_DURATION_MS) = 0;
+check state = MAIN_REGION_STARTUP;
+set poweroff := true;
+step
+check time = 1;
+check state = OFF;
+set poweroff := false;
+set stopVentilation := false;
+step

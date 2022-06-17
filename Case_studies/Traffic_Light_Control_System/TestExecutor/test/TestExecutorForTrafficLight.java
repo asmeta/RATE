@@ -102,7 +102,7 @@ public class TestExecutorForTrafficLight extends TwoWayTrafficControl {
 //			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.THREEWISE_MON));
 //			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_MON,
 //					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_MON));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, new CriteriaEnum[0]));
+//			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, new CriteriaEnum[0]));
 			
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.COMBINATORIAL_MON));

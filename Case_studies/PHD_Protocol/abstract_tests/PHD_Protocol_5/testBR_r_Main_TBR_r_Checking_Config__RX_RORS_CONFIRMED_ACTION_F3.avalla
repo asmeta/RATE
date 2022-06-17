@@ -1,0 +1,26 @@
+scenario testBR_r_Main_TBR_r_Checking_Config__RX_RORS_CONFIRMED_ACTION_F3
+
+load ./..\..\ASM\PHD_Protocol_5\phd_master_flat2_v5.asm
+
+//// test name test@BR_r_Main_TBR_r_Checking_Config__RX_RORS_CONFIRMED_ACTION_F3
+//// generated for (test goal): BR_r_Main_TBR_r_Checking_Config__RX_RORS_CONFIRMED_ACTION_F3: (status = CHECKING_CONFIG) and (transition != RX_RORS_CONFIRMED_ACTION)
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check status = CHECKING_CONFIG;
+check message = MSG_NO_RESPONSE;
+set transition := RX_RORS_GET;
+step
+check status = CHECKING_CONFIG;
+check message = MSG_NO_RESPONSE;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

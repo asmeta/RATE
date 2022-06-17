@@ -1,0 +1,6 @@
+scenario testpair_1_1_2_20
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@pair_1_1_2_20
+//// generated for (test goal): invokeIdValid=false - transition=RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION

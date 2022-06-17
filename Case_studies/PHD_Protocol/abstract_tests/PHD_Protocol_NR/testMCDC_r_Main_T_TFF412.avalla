@@ -1,0 +1,36 @@
+scenario testMCDC_r_Main_T_TFF412
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@MCDC_r_Main_T_TFF412
+//// generated for (test goal): MCDC_r_Main_T_TFF412: ((((((transition = RX_ROER) or (transition = RX_RORJ)) or (transition = RX_RORS)) or (transition = RX_RORS_GET)) or (transition = RX_RORS_CONFIRMED_SET)) or (transition = RX_RORS_CONFIRMED_ACTION)) and (((status = DISASSOCIATING) and (status != UNASSOCIATED)) and (status != ASSOCIATING))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = ASSOCIATING;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check message = MSG_RX_AARE;
+check status = OPERATING;
+set transition := REQ_ASSOC_REL;
+set invokeIdValid := true;
+step
+check message = MSG_RX_RLRQ;
+check status = DISASSOCIATING;
+set transition := RX_ROER;
+set invokeIdValid := true;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step

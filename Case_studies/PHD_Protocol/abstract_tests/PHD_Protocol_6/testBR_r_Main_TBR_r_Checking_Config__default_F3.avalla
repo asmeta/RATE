@@ -1,0 +1,31 @@
+scenario testBR_r_Main_TBR_r_Checking_Config__default_F3
+
+load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
+
+//// test name test@BR_r_Main_TBR_r_Checking_Config__default_F3
+//// generated for (test goal): BR_r_Main_TBR_r_Checking_Config__default_F3: (status = CHECKING_CONFIG) and not((((((((((((((((not(transition = REQ_ASSOC_REL) and not(transition = REQ_ASSOC_ABORT)) and not(transition = RX_AARQ)) and not(transition = RX_AARE)) and not(transition = RX_RLRQ)) and not(transition = RX_RLRE)) and not(transition = RX_ABRT)) and not(transition = RX_ROIV_CONFIRMED_EVENT_REPORT)) and not(transition = RX_ROIV)) and not(transition = RX_ROER)) and not(transition = RX_RORJ)) and not(transition = REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION)) and not(transition = REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION)) and not(transition = RX_RORS)) and not(transition = RX_RORS_CONFIRMED_ACTION)) and not(transition = RX_RORS_CONFIRMED_SET)) and not(transition = RX_RORS_GET))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+set invokeIdValid := true;
+step
+check message = MSG_RX_ABRT;
+check status = CHECKING_CONFIG;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step

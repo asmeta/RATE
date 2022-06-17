@@ -1,0 +1,21 @@
+scenario testMCDC_r_Main_T_FF31
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@MCDC_r_Main_T_FF31
+//// generated for (test goal): MCDC_r_Main_T_FF31: (transition = REQ_ASSOC_REL) and (not((status = WAITING_FOR_CONFIG) or (status = CHECKING_CONFIG)) and (status != OPERATING))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := REQ_ASSOC_REL;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step

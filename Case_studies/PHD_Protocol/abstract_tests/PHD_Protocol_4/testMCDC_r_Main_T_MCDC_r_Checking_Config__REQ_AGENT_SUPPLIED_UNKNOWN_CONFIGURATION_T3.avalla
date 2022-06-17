@@ -1,0 +1,26 @@
+scenario testMCDC_r_Main_T_MCDC_r_Checking_Config__REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION_T3
+
+load ./..\..\ASM\PHD_Protocol_4\phd_master_flat2_v4.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Checking_Config__REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION_T3
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Checking_Config__REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION_T3: (status = CHECKING_CONFIG) and (transition = REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION)
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check status = CHECKING_CONFIG;
+check message = MSG_NO_RESPONSE;
+set transition := REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_PRST;
+set transition := RX_RORS_GET;
+step

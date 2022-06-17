@@ -30,4 +30,4 @@ MODULE main
 				TRUE: status;
 			esac;
 --LTL properties
-LTLSPEC NAME ltl0 := G(!(((status = DISASSOCIATING) & ((transition = RX_ROIV_CONFIRMED_EVENT_REPORT) & (status != DISASSOCIATING))) & X(TRUE)));
+LTLSPEC NAME ltl0 := G(!(((status = DISASSOCIATING) & ((((((((((((!(transition = REQ_ASSOC_REL) & !(transition = REQ_ASSOC_ABORT)) & !(transition = RX_AARQ)) & !(transition = RX_AARE)) & !(transition = RX_RLRQ)) & !(transition = RX_RLRE)) & !(transition = RX_ABRT)) & !(transition = RX_ROIV)) & !(transition = RX_ROER)) & !(transition = RX_RORJ)) & !(transition = RX_RORS)) & !(transition = RX_ROIV_CONFIRMED_EVENT_REPORT)) & (message != MSG_RX_ABRT))) & X(TRUE)));

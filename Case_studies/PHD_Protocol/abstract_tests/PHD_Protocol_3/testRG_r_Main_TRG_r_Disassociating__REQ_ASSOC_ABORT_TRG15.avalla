@@ -1,0 +1,26 @@
+scenario testRG_r_Main_TRG_r_Disassociating__REQ_ASSOC_ABORT_TRG15
+
+load ./..\..\ASM\PHD_Protocol_3\phd_master_flat2_v3.asm
+
+//// test name test@RG_r_Main_TRG_r_Disassociating__REQ_ASSOC_ABORT_TRG15
+//// generated for (test goal): RG_r_Main_TRG_r_Disassociating__REQ_ASSOC_ABORT_TRG15: (status = DISASSOCIATING) and ((transition = REQ_ASSOC_ABORT) and (status != UNASSOCIATED))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := REQ_ASSOC_REL;
+step
+check message = MSG_RX_RLRQ;
+check status = DISASSOCIATING;
+set transition := REQ_ASSOC_ABORT;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := REQ_ASSOC_ABORT;
+step

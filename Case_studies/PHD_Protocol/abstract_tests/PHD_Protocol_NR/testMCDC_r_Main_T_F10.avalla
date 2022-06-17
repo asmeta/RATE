@@ -1,0 +1,26 @@
+scenario testMCDC_r_Main_T_F10
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@MCDC_r_Main_T_F10
+//// generated for (test goal): MCDC_r_Main_T_F10: (transition = RX_AARQ) and (status != UNASSOCIATED)
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = ASSOCIATING;
+set transition := RX_AARQ;
+set invokeIdValid := true;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step

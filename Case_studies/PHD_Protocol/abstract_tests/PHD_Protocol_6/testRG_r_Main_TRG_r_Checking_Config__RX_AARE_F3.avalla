@@ -1,0 +1,31 @@
+scenario testRG_r_Main_TRG_r_Checking_Config__RX_AARE_F3
+
+load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
+
+//// test name test@RG_r_Main_TRG_r_Checking_Config__RX_AARE_F3
+//// generated for (test goal): RG_r_Main_TRG_r_Checking_Config__RX_AARE_F3: (status = CHECKING_CONFIG) and (transition != RX_AARE)
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
+set transition := RX_RLRE;
+set invokeIdValid := true;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := RX_RORS_CONFIRMED_SET;
+set invokeIdValid := true;
+step

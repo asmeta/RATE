@@ -1,0 +1,31 @@
+scenario testUR_r_Main_TUR_r_Checking_Config__REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION_T13
+
+load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
+
+//// test name test@UR_r_Main_TUR_r_Checking_Config__REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION_T13
+//// generated for (test goal): UR_r_Main_TUR_r_Checking_Config__REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION_T13: (status = CHECKING_CONFIG) and ((transition = REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION) and (status != OPERATING))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check message = MSG_RX_PRST;
+check status = OPERATING;
+set transition := RX_ROER;
+set invokeIdValid := false;
+step

@@ -1,0 +1,31 @@
+scenario testUR_r_Main_TUR_r_Disassociating__RX_ABRT_T15
+
+load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
+
+//// test name test@UR_r_Main_TUR_r_Disassociating__RX_ABRT_T15
+//// generated for (test goal): UR_r_Main_TUR_r_Disassociating__RX_ABRT_T15: (status = DISASSOCIATING) and ((transition = RX_ABRT) and (status != UNASSOCIATED))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := REQ_ASSOC_REL;
+set invokeIdValid := true;
+step
+check message = MSG_RX_RLRQ;
+check status = DISASSOCIATING;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_ROER;
+set invokeIdValid := true;
+step

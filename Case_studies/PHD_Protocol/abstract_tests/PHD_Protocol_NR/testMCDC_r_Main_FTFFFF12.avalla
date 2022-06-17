@@ -1,0 +1,21 @@
+scenario testMCDC_r_Main_FTFFFF12
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@MCDC_r_Main_FTFFFF12
+//// generated for (test goal): MCDC_r_Main_FTFFFF12: (((((transition != RX_ROER) and (transition = RX_RORJ)) and (transition != RX_RORS)) and (transition != RX_RORS_GET)) and (transition != RX_RORS_CONFIRMED_SET)) and (transition != RX_RORS_CONFIRMED_ACTION)
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_RORJ;
+set invokeIdValid := true;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step

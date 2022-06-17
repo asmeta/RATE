@@ -1,0 +1,21 @@
+scenario testMCDC_r_Main_T_F29
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@MCDC_r_Main_T_F29
+//// generated for (test goal): MCDC_r_Main_T_F29: (transition = RX_ROIV_CONFIRMED_EVENT_REPORT) and (status != WAITING_FOR_CONFIG)
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+set invokeIdValid := true;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step

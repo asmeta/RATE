@@ -1,0 +1,26 @@
+scenario testMCDC_r_Main_T_MCDC_r_Checking_Config__default_TTTTTTT3
+
+load ./..\..\ASM\PHD_Protocol_5\phd_master_flat2_v5.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Checking_Config__default_TTTTTTT3
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Checking_Config__default_TTTTTTT3: (status = CHECKING_CONFIG) and ((((((((((((((((not(transition = REQ_ASSOC_REL) and not(transition = REQ_ASSOC_ABORT)) and not(transition = RX_AARQ)) and not(transition = RX_AARE)) and not(transition = RX_RLRQ)) and not(transition = RX_RLRE)) and not(transition = RX_ABRT)) and not(transition = RX_ROIV_CONFIRMED_EVENT_REPORT)) and not(transition = RX_ROIV)) and not(transition = RX_ROER)) and not(transition = RX_RORJ)) and (transition = REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION)) and not(transition = REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION)) and not(transition = RX_RORS)) and not(transition = RX_RORS_CONFIRMED_ACTION)) and not(transition = RX_RORS_CONFIRMED_SET)) and not(transition = RX_RORS_GET))
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check status = CHECKING_CONFIG;
+check message = MSG_NO_RESPONSE;
+set transition := REQ_AGENT_SUPPLIED_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_PRST;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

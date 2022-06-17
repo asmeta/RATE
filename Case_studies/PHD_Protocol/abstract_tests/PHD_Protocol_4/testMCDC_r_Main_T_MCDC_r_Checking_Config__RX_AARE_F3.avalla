@@ -1,0 +1,26 @@
+scenario testMCDC_r_Main_T_MCDC_r_Checking_Config__RX_AARE_F3
+
+load ./..\..\ASM\PHD_Protocol_4\phd_master_flat2_v4.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Checking_Config__RX_AARE_F3
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Checking_Config__RX_AARE_F3: (status = CHECKING_CONFIG) and (transition != RX_AARE)
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check status = WAITING_FOR_CONFIG;
+check message = MSG_RX_AARE;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check status = CHECKING_CONFIG;
+check message = MSG_NO_RESPONSE;
+set transition := RX_RORS_CONFIRMED_SET;
+step
+check status = CHECKING_CONFIG;
+check message = MSG_NO_RESPONSE;
+set transition := RX_ABRT;
+step

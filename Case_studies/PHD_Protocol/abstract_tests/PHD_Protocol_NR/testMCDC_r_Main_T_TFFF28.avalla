@@ -1,0 +1,26 @@
+scenario testMCDC_r_Main_T_TFFF28
+
+load ./..\..\ASM\PHD_Protocol_NR\phd_master_v7_1.asm
+
+//// test name test@MCDC_r_Main_T_TFFF28
+//// generated for (test goal): MCDC_r_Main_T_TFFF28: (transition = RX_RLRE) and ((((status = ASSOCIATING) and (status != WAITING_FOR_CONFIG)) and (status != CHECKING_CONFIG)) and (status != OPERATING))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = ASSOCIATING;
+set transition := RX_RLRE;
+set invokeIdValid := true;
+step
+check message = MSG_RX_ABRT;
+check status = UNASSOCIATED;
+set transition := RX_ROER;
+set invokeIdValid := true;
+step

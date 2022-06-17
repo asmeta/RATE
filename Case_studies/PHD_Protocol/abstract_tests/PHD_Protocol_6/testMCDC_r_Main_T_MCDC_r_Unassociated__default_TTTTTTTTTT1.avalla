@@ -1,0 +1,21 @@
+scenario testMCDC_r_Main_T_MCDC_r_Unassociated__default_TTTTTTTTTT1
+
+load ./..\..\ASM\PHD_Protocol_6\phd_master_flat2_v6.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Unassociated__default_TTTTTTTTTT1
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Unassociated__default_TTTTTTTTTT1: (status = UNASSOCIATED) and (((((((((((not(transition = REQ_ASSOC_REL) and not(transition = REQ_ASSOC_ABORT)) and not(transition = RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION)) and (transition = RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION)) and not(transition = RX_AARQ_UNACCEPTABLE_CONFIGURATION)) and not(transition = RX_AARE)) and not(transition = RX_RLRQ)) and not(transition = RX_RLRE)) and not(transition = RX_ABRT)) and not(transition = RX_ROIV_CONFIRMED_EVENT_REPORT)) and not(transition = RX_AARQ_INVALID)) and not(transition = RX_AARQ_EXTERNAL))
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+set invokeIdValid := true;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+set invokeIdValid := true;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := RX_ROER;
+set invokeIdValid := false;
+step

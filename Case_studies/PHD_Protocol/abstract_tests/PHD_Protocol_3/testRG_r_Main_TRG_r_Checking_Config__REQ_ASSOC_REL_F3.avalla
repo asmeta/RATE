@@ -1,0 +1,26 @@
+scenario testRG_r_Main_TRG_r_Checking_Config__REQ_ASSOC_REL_F3
+
+load ./..\..\ASM\PHD_Protocol_3\phd_master_flat2_v3.asm
+
+//// test name test@RG_r_Main_TRG_r_Checking_Config__REQ_ASSOC_REL_F3
+//// generated for (test goal): RG_r_Main_TRG_r_Checking_Config__REQ_ASSOC_REL_F3: (status = CHECKING_CONFIG) and (transition != REQ_ASSOC_REL)
+check message = undef;
+check status = UNASSOCIATED;
+set transition := RX_ABRT;
+step
+check message = MSG_NO_RESPONSE;
+check status = UNASSOCIATED;
+set transition := RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION;
+step
+check message = MSG_RX_AARE;
+check status = WAITING_FOR_CONFIG;
+set transition := RX_ROIV_CONFIRMED_EVENT_REPORT;
+step
+check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
+set transition := RX_RORJ;
+step
+check message = MSG_NO_RESPONSE;
+check status = CHECKING_CONFIG;
+set transition := REQ_ASSOC_ABORT;
+step

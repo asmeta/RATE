@@ -1,0 +1,22 @@
+scenario testMCDC_r_Main_T_MCDC_r_Operating__default_TFTTTT4
+
+load ./..\..\ASM\PHD_Protocol_5\phd_master_flat2_v5.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Operating__default_TFTTTT4
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Operating__default_TFTTTT4: (status = OPERATING) and ((((((((((((((not(transition = REQ_ASSOC_REL) and not(transition = REQ_ASSOC_ABORT)) and not(transition = RX_AARQ)) and not(transition = RX_AARE)) and not(transition = RX_RLRQ)) and not(transition = RX_RLRE)) and not(transition = RX_ABRT)) and not(transition = RX_ROER)) and not(transition = RX_RORJ)) and not(transition = RX_RORS)) and (transition != RX_RORS_CONFIRMED_ACTION)) and not(transition = RX_RORS_CONFIRMED_SET)) and not(transition = RX_RORS_GET)) and not(transition = RX_ROIV)) and not(transition = RX_ROIV_CONFIRMED_EVENT_REPORT))
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set transition := RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION;
+step
+check status = OPERATING;
+check message = MSG_RX_AARE;
+set transition := RX_AARQ_INVALID;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

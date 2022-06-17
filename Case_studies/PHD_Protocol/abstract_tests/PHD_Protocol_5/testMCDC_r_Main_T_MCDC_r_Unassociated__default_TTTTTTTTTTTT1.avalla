@@ -1,0 +1,18 @@
+scenario testMCDC_r_Main_T_MCDC_r_Unassociated__default_TTTTTTTTTTTT1
+
+load ./..\..\ASM\PHD_Protocol_5\phd_master_flat2_v5.asm
+
+//// test name test@MCDC_r_Main_T_MCDC_r_Unassociated__default_TTTTTTTTTTTT1
+//// generated for (test goal): MCDC_r_Main_T_MCDC_r_Unassociated__default_TTTTTTTTTTTT1: (status = UNASSOCIATED) and (((((((((((not(transition = REQ_ASSOC_REL) and (transition = REQ_ASSOC_ABORT)) and not(transition = RX_AARQ_ACCEPTABLE_AND_KNOWN_CONFIGURATION)) and not(transition = RX_AARQ_ACCEPTABLE_AND_UNKNOWN_CONFIGURATION)) and not(transition = RX_AARQ_UNACCEPTABLE_CONFIGURATION)) and not(transition = RX_AARE)) and not(transition = RX_RLRQ)) and not(transition = RX_RLRE)) and not(transition = RX_ABRT)) and not(transition = RX_ROIV_CONFIRMED_EVENT_REPORT)) and not(transition = RX_AARQ_INVALID)) and not(transition = RX_AARQ_EXTERNAL))
+check status = UNASSOCIATED;
+check message = undef;
+set transition := RX_ABRT;
+step
+check status = UNASSOCIATED;
+check message = MSG_NO_RESPONSE;
+set transition := REQ_ASSOC_ABORT;
+step
+check status = UNASSOCIATED;
+check message = MSG_RX_ABRT;
+set transition := REQ_AGENT_SUPPLIED_KNOWN_CONFIGURATION;
+step

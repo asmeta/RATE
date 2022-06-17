@@ -2,6 +2,7 @@ package scenarioconverter.test;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -14,7 +15,7 @@ import org.asmeta.atgt.generator.CriteriaEnum;
 import scenarioconverter.ScenarioConverter;
 import scenarioconverter.util.Configuration;
 
-public class Test {
+public class CompileAndExecuteTest {
 
 	private static String DESTINATION_PATH = "../SUT/src-gen-test/";
 	private static String DEBUG_PATH = "../SUT/Debug/";
@@ -76,15 +77,27 @@ public class Test {
 			
 		}
 	};	
-
+	
 	public static void main(String[] args) throws Exception {
+		// Now compile the MVM code with the GoogleTests
+		executeBat("build_gtest.bat");
+		executeBat("build_MVM.bat");
+		// XXX Select the configuration you want to execute
+		//Configuration c = filesToProcess.get(0);
+		List<Boolean> failures = new ArrayList<>();
+		for(Configuration c: filesToProcess) {
+			failures.add(executeTest(c));
+			break;
+		}
+		System.out.println(failures);
+	}
+
+	static boolean executeTest(Configuration c) throws FileNotFoundException, Exception, IOException, InterruptedException {
+		
 		PrintWriter out = new PrintWriter(new File(DESTINATION_PATH + "test.cpp"));
+		
 		ScenarioConverter sc = new ScenarioConverter("state", "MVMStateMachineCore", "MVMStateMachineCoreStates",
 				"statechart", "MAIN_REGION__final_", out);
-		
-		// XXX Select the configuration you want to execute
-		Configuration c = filesToProcess.get(0);
-		
 		try {
 			ScenarioConverter.CONFIG_PATH = c.configPath;
 			
@@ -126,19 +139,34 @@ public class Test {
 		}
 		out.close();
 		
-		// Now compile the MVM code with the GoogleTests
+		boolean failed = executeBat("build_and_exec_test.bat");
+		return failed;
+	}
+
+	static boolean executeBat(String batfile) {
 		ProcessBuilder builder = new ProcessBuilder();
 		builder.command("cmd.exe", "/c",
-				new File("./additional_files/commands_for_building_MVM.bat").getAbsolutePath());
+				new File("./additional_files/"+batfile).getAbsolutePath());
 		builder.directory(new File(DEBUG_PATH));
 		builder.inheritIO();
-		Process process = builder.start();
-		
-		BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
-		String line = "";
-		while ((line = buf.readLine()) != null) {
-			System.out.println(line);
+		boolean failed = false;
+		try {
+			Process process = builder.start();
+			BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
+			String line = "";		
+			while ((line = buf.readLine()) != null) {
+				System.out.println(line);
+				if (line.startsWith("[  FAILED  ]")) failed = true;
+			}
+			process.waitFor();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		process.waitFor();
+		
+		return failed;
 	}
 }

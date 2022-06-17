@@ -1,0 +1,27 @@
+scenario testUR_r_Main_TUR_r_turnOff_32
+
+load ./../../ASM/MVM_00/Ventilatore0.asm
+
+//// test name test@UR_r_Main_TUR_r_turnOff_32
+//// generated for (test goal): UR_r_Main_TUR_r_turnOff_32: poweroff and (state != OFF)
+check durationTIMER_INSPIRATION_DURATION_MS = 20;
+check expiredTIMER_EXPIRATION_DURATION_MS = false;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 0;
+check expiredTIMER_INSPIRATION_DURATION_MS = false;
+check start(TIMER_EXPIRATION_DURATION_MS) = 0;
+check durationTIMER_TRIGGERWINDOWDELAY_MS = 10;
+check oValve = OPEN;
+check stopVentilationRequested = false;
+check time = 0;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+check durationTIMER_EXPIRATION_DURATION_MS = 40;
+check iValve = CLOSED;
+check start(TIMER_INSPIRATION_DURATION_MS) = 0;
+check state = MAIN_REGION_STARTUP;
+set poweroff := true;
+step
+check time = 1;
+check state = OFF;
+set poweroff := false;
+set stopVentilation := false;
+step

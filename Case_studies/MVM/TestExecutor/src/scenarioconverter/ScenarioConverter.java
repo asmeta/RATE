@@ -194,7 +194,14 @@ public class ScenarioConverter {
 	 */
 	private boolean startsWithAtLeasOneCriteria(String fileName, Configuration c) {
 		for (CriteriaEnum ce : c.criteria) {
-			if (fileName.startsWith("test" + ce.getAbbrvName()) || fileName.startsWith(ce.getAbbrvName() + "_") || fileName.startsWith("test" + ce.getAbbrvName().toLowerCase()) || fileName.startsWith(ce.getAbbrvName().toLowerCase() + "_"))
+			String abbrvName = ce.getAbbrvName();
+			
+			if (abbrvName.equals("2WISE"))
+				abbrvName = "pair";
+			if (abbrvName.equals("3-WISEw all") || abbrvName.equals("3-WISEmon"))
+				abbrvName = "3-wise";
+			
+			if (fileName.startsWith("test" + abbrvName) || fileName.startsWith(abbrvName + "_") || fileName.startsWith("test" + abbrvName.toLowerCase()) || fileName.startsWith(abbrvName.toLowerCase() + "_"))
 				return true;
 		}
 		return false;

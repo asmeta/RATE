@@ -140,7 +140,7 @@ public class TestWithoutGUIInteraction {
 	public void testComputeCoverage() throws Exception {
 		// XXX select configuration to execute (only one at a time!!)
 		Logger.getLogger(StdPairwiseCovBuild.class).setLevel(Level.ALL);
-		Configuration c = filesToProcess.get(15);
+		Configuration c = filesToProcess.get(0);
 		String path = PATH_AT + c.level + "/";		
 		testComputeCoverage(c, path);
 	}

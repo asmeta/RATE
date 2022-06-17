@@ -1,0 +1,31 @@
+scenario testpair_2_1_9_2
+
+load ./../../ASM/MVM_00/Ventilatore0.asm
+
+//// test name test@pair_2_1_9_2
+//// generated for (test goal): dropPAW_ITS_PCV=false - pawGTMaxPinsp=true
+check durationTIMER_INSPIRATION_DURATION_MS = 20;
+check expiredTIMER_EXPIRATION_DURATION_MS = false;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 0;
+check expiredTIMER_INSPIRATION_DURATION_MS = false;
+check start(TIMER_EXPIRATION_DURATION_MS) = 0;
+check durationTIMER_TRIGGERWINDOWDELAY_MS = 10;
+check oValve = OPEN;
+check stopVentilationRequested = false;
+check time = 0;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+check durationTIMER_EXPIRATION_DURATION_MS = 40;
+check iValve = CLOSED;
+check start(TIMER_INSPIRATION_DURATION_MS) = 0;
+check state = MAIN_REGION_STARTUP;
+set poweroff := false;
+set startupEnded := true;
+set stopVentilation := false;
+step
+check time = 1;
+check state = MAIN_REGION_SELFTEST;
+set poweroff := false;
+set selfTestPassed := false;
+set resume := false;
+set stopVentilation := false;
+step

@@ -1,0 +1,40 @@
+scenario test3-wise___s_f__d_t__p_t
+
+load ./../../ASM/MVM_01/Ventilatore01.asm
+
+//// test name test@3-wise___s_f__d_t__p_t
+//// generated for (test goal): [stopVentilation, dropPAW_ITS_PSV, pawGTMaxPinsp]-->[false, true, true]
+check durationTIMER_INSPIRATION_DURATION_MS = 20;
+check state = MAIN_REGION_STARTUP;
+check iValve = CLOSED;
+check start(TIMER_EXPIRATION_DURATION_MS) = 0;
+check time = 0;
+check stopVentilationRequested = false;
+check expiredTIMER_EXPIRATION_DURATION_MS = false;
+check oValve = OPEN;
+check durationTIMER_MAX_INSP_TIME_PSV = 70;
+check start(TIMER_MAX_INSP_TIME_PSV) = 0;
+check durationTIMER_MIN_INSP_TIME_MS = 10;
+check expiredTIMER_MAX_INSP_TIME_PSV = false;
+check durationTIMER_EXPIRATION_DURATION_MS = 40;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 0;
+check start(TIMER_MIN_EXP_TIME_PSV) = 0;
+check durationTIMER_MIN_EXP_TIME_PSV = 10;
+check expiredTIMER_MIN_EXP_TIME_PSV = false;
+check expiredTIMER_INSPIRATION_DURATION_MS = false;
+check expiredTIMER_MIN_INSP_TIME_MS = false;
+check start(TIMER_MIN_INSP_TIME_MS) = 0;
+check durationTIMER_TRIGGERWINDOWDELAY_MS = 10;
+check start(TIMER_INSPIRATION_DURATION_MS) = 0;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+set startupEnded := true;
+set poweroff := false;
+set stopVentilation := false;
+step
+check state = MAIN_REGION_SELFTEST;
+check time = 1;
+set poweroff := false;
+set selfTestPassed := false;
+set stopVentilation := false;
+set resume := false;
+step

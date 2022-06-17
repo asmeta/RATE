@@ -140,7 +140,7 @@ public class TestWithoutGUIInteraction {
 	public void testComputeCoverage() throws Exception {
 		// XXX select configuration to execute (only one at a time!!)
 		Logger.getLogger(StdPairwiseCovBuild.class).setLevel(Level.ALL);
-		Configuration c = filesToProcess.get(6);
+		Configuration c = filesToProcess.get(15);
 		String path = PATH_AT + c.level + "/";		
 		testComputeCoverage(c, path);
 	}
@@ -210,7 +210,15 @@ public class TestWithoutGUIInteraction {
 		ArrayList<String> avallaFiles = new ArrayList<String>();
 		for (File f:listOfFiles) {
 			for (CriteriaEnum ce : c.criteria) {
-				if (f.getName().startsWith("test" + ce.getAbbrvName())) {
+				
+				String abbrvName = ce.getAbbrvName();
+				
+				if (abbrvName.equals("2WISE"))
+					abbrvName = "pair";
+				if (abbrvName.equals("3-WISEw all") || abbrvName.equals("3-WISEmon"))
+					abbrvName = "3-wise";
+				
+				if (f.getName().startsWith("test" + abbrvName)) {
 					avallaFiles.add(f.getAbsolutePath());
 					break;
 				}

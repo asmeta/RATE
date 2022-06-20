@@ -27,7 +27,7 @@ import scenarioconverter.util.Configuration;
 public class MutationTest {
 
 	private static final String path = "../SUT/src-gen/MVMStateMachineCore.cpp";
-	static final String backupCpp = "../SUT/src-gen/MVMStateMachineCore_backup_cpp";
+	static final String backupCpp = "../SUT/src-gen/MVMStateMachineCore2.cpp";
 	static Charset charset = StandardCharsets.UTF_8;
 
 	@Test
@@ -71,12 +71,16 @@ public class MutationTest {
 			// run the tests
 			Map<Configuration, Boolean> failures = runTests();
 			for (Entry<Configuration, Boolean> e : failures.entrySet()) {
-				if (e.getValue()) {
-					mutationKilled.put(e.getKey(), mutationKilled.get(e.getKey()) + 1);
+				Boolean fails = e.getValue();
+				if (fails) {
+					Configuration conf = e.getKey();
+					mutationKilled.put(conf, mutationKilled.get(conf) + 1);
 				}
+				System.err.println("failures" + failures + " mutationKilled " + mutationKilled);
 			}
 		} 
 		//
+		System.out.println("number of mutations " + numMutation);
 		System.out.println(mutationKilled);
 	}
 
@@ -84,10 +88,14 @@ public class MutationTest {
 	private static Map<Configuration, Boolean> runTests()
 			throws FileNotFoundException, IOException, InterruptedException, Exception {
 		Map<Configuration, Boolean> failures = new HashMap<>();
-		for (Configuration c : CompileAndExecuteTest.filesToProcess) {
+		List<Configuration> filesToProcess = CompileAndExecuteTest.filesToProcess;
+		for (int i = 0; i < filesToProcess.size(); i++) {
+			Configuration c = filesToProcess.get(i);
 			// compile
 			boolean executeTest = CompileAndExecuteTest.executeTest(c);
 			failures.put(c, executeTest);
+			// stop after the first two
+			if (i>1) break;
 		}
 		return failures;
 	}

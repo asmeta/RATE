@@ -28,53 +28,17 @@ public class CompileAndExecuteTest {
 		
 		private static final long serialVersionUID = 5014712752302397500L;
 		{		
-			add(new Configuration("00", "config/config3.json" 
-//					, CriteriaEnum.BASIC_RULE
-//					, CriteriaEnum.COMBINATORIAL_MON 
-//					, CriteriaEnum.COMPLETE_RULE 
-//					, CriteriaEnum.MCDC
-//					, CriteriaEnum.RULE_GUARD 
-//					, CriteriaEnum.RULE_UPDATE 
-//					, CriteriaEnum.THREEWISE_MON
-					));
-			add(new Configuration("01", "config/config3.json"
-//					, CriteriaEnum.BASIC_RULE
-//					, CriteriaEnum.COMBINATORIAL_MON
-//					, CriteriaEnum.COMPLETE_RULE
-//					, CriteriaEnum.MCDC
-//					, CriteriaEnum.RULE_GUARD
-//					, CriteriaEnum.RULE_UPDATE
-//					, CriteriaEnum.THREEWISE_MON
-					));
-			add(new Configuration("02", "config/config3.json"
-//					,CriteriaEnum.BASIC_RULE
-//					,CriteriaEnum.COMBINATORIAL_MON
-//					,CriteriaEnum.COMPLETE_RULE
-//					,CriteriaEnum.MCDC
-//					,CriteriaEnum.RULE_GUARD
-//					,CriteriaEnum.RULE_UPDATE
-//					,CriteriaEnum.THREEWISE_MON
-					));
-			add(new Configuration("03", "config/config3.json"
-					, CriteriaEnum.BASIC_RULE
-					, CriteriaEnum.COMBINATORIAL_MON
-					, CriteriaEnum.COMPLETE_RULE
-					, CriteriaEnum.MCDC
-					, CriteriaEnum.RULE_GUARD
-					, CriteriaEnum.RULE_UPDATE
-					, CriteriaEnum.THREEWISE_MON
-					));
-			add(new Configuration("NR", "config/config3.json"
-					, CriteriaEnum.BASIC_RULE
-					, CriteriaEnum.COMBINATORIAL_MON
-					, CriteriaEnum.COMPLETE_RULE
-					, CriteriaEnum.MCDC
-					, CriteriaEnum.RULE_GUARD
-					, CriteriaEnum.RULE_UPDATE
-					, CriteriaEnum.THREEWISE_MON
-					));
-			
-			
+			// level 0
+			//(new Configuration("00", "config/config3.json", Configuration.MANUAL_TEST));
+			add(new Configuration("00", "config/config3.json", Configuration.ALL_CRITERIA));
+			// level 1
+			add(new Configuration("01", "config/config3.json", Configuration.MANUAL_TEST));
+			add(new Configuration("01", "config/config3.json", Configuration.ALL_CRITERIA));
+			// level 2
+			add(new Configuration("02", "config/config3.json", Configuration.MANUAL_TEST));
+			add(new Configuration("02", "config/config3.json", Configuration.ALL_CRITERIA));
+			add(new Configuration("03", "config/config3.json", Configuration.ALL_CRITERIA));
+			add(new Configuration("NR", "config/config3.json", Configuration.ALL_CRITERIA));
 		}
 	};	
 	
@@ -100,8 +64,7 @@ public class CompileAndExecuteTest {
 				"statechart", "MAIN_REGION__final_", out);
 		try {
 			ScenarioConverter.CONFIG_PATH = c.configPath;
-			
-			if (c.criteria.size() == 0) {
+			if (c.criteria == Configuration.MANUAL_TEST) {
 				// Manual scenarios
 				PATH_AT = "../ASM/MVM_" + c.level + "/scenarios/";
 				

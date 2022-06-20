@@ -29,7 +29,7 @@ public class CompileAndExecuteTest {
 		private static final long serialVersionUID = 5014712752302397500L;
 		{		
 			// level 0
-			//(new Configuration("00", "config/config3.json", Configuration.MANUAL_TEST));
+			add(new Configuration("00", "config/config3.json", Configuration.MANUAL_TEST));
 			add(new Configuration("00", "config/config3.json", Configuration.ALL_CRITERIA));
 			// level 1
 			add(new Configuration("01", "config/config3.json", Configuration.MANUAL_TEST));
@@ -103,6 +103,7 @@ public class CompileAndExecuteTest {
 		out.close();
 		
 		boolean failed = executeBat("build_and_exec_test.bat");
+		System.err.println("+++ " + failed);
 		return failed;
 	}
 
@@ -118,7 +119,8 @@ public class CompileAndExecuteTest {
 			BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
 			String line = "";		
 			while ((line = buf.readLine()) != null) {
-				System.out.println(line);
+				System.out.println("$$$" + line);
+				// [  FAILED  ]
 				if (line.startsWith("[  FAILED  ]")) failed = true;
 			}
 			process.waitFor();

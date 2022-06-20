@@ -97,6 +97,7 @@ public class MutationTest {
 			// stop after the first two
 			if (i>1) break;
 		}
+		System.err.println("***** " + failures);
 		return failures;
 	}
 

@@ -26,6 +26,7 @@ import scenarioconverter.util.Configuration;
 
 public class MutationTest {
 
+	private static final int MAX_NUM_MUTATIONS = 5;
 	private static final String path = "../SUT/src-gen/MVMStateMachineCore.cpp";
 	static final String backupCpp = "../SUT/src-gen/MVMStateMachineCore2.cpp";
 	static Charset charset = StandardCharsets.UTF_8;
@@ -60,7 +61,7 @@ public class MutationTest {
 				System.out.println("commenting around " + sb.toString().substring(pos - 10, pos + 10));
 				pos++;
 			}
-			if (++numMutation > 5) {
+			if (++numMutation > MAX_NUM_MUTATIONS) {
 				System.out.println("mutations max number reached");
 				break;
 			}
@@ -95,7 +96,7 @@ public class MutationTest {
 			boolean executeTest = CompileAndExecuteTest.executeTest(c);
 			failures.put(c, executeTest);
 			// stop after the first two
-			if (i>1) break;
+			// if (i>1) break;
 		}
 		System.err.println("***** " + failures);
 		return failures;

@@ -37,8 +37,10 @@ public class CompileAndExecuteTest {
 			// level 2
 			add(new Configuration("02", "config/config3.json", Configuration.MANUAL_TEST));
 			add(new Configuration("02", "config/config3.json", Configuration.ALL_CRITERIA));
+			// level 3
+			add(new Configuration("03", "config/config3.json", Configuration.MANUAL_TEST));
 			add(new Configuration("03", "config/config3.json", Configuration.ALL_CRITERIA));
-			add(new Configuration("NR", "config/config3.json", Configuration.ALL_CRITERIA));
+			//add(new Configuration("NR", "config/config3.json", Configuration.ALL_CRITERIA));
 		}
 	};	
 	
@@ -51,7 +53,7 @@ public class CompileAndExecuteTest {
 		List<Boolean> failures = new ArrayList<>();
 		for(Configuration c: filesToProcess) {
 			failures.add(executeTest(c));
-			break;
+			//break;
 		}
 		System.out.println(failures);
 	}
@@ -112,14 +114,15 @@ public class CompileAndExecuteTest {
 		builder.command("cmd.exe", "/c",
 				new File("./additional_files/"+batfile).getAbsolutePath());
 		builder.directory(new File(DEBUG_PATH));
-		builder.inheritIO();
+		// comment this to have a separate IO for this process
+		//builder.inheritIO();
 		boolean failed = false;
 		try {
 			Process process = builder.start();
 			BufferedReader buf = new BufferedReader(new InputStreamReader(process.getInputStream()));
 			String line = "";		
 			while ((line = buf.readLine()) != null) {
-				System.out.println("$$$" + line);
+				System.out.println(line);
 				// [  FAILED  ]
 				if (line.startsWith("[  FAILED  ]")) failed = true;
 			}
@@ -130,8 +133,7 @@ public class CompileAndExecuteTest {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}		
 		return failed;
 	}
 }

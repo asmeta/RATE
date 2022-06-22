@@ -1,0 +1,141 @@
+scenario testUR_r_Main_FFFTFFTUR_r_PCVinspOValve_UR_r_PCVinsp_2192
+
+load ./../../ASM/MVM_02/Ventilatore02.asm
+
+//// test name test@UR_r_Main_FFFTFFTUR_r_PCVinspOValve_UR_r_PCVinsp_2192
+//// generated for (test goal): UR_r_Main_FFFTFFTUR_r_PCVinspOValve_UR_r_PCVinsp_2192: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PSV_R1_EXPIRATION) and (not(expiredTIMER_TRIGGERWINDOWDELAY_MS and dropPAW_ITS_PSV) and (not expiredTIMER_APNEALAG and ((expiredTIMER_MIN_EXP_TIME_PSV and (mode = PCV)) and (iValve != OPEN)))))))
+check durationTIMER_TRIGGERWINDOWDELAY_MS = 10;
+check durationTIMER_MIN_EXP_TIME_PSV = 10;
+check start(TIMER_EXPIRATION_DURATION_MS) = 0;
+check start(TIMER_APNEALAG) = 0;
+check iValve = CLOSED;
+check expiredTIMER_MAX_INSP_TIME_PSV = false;
+check expiredTIMER_MIN_EXP_TIME_PSV = false;
+check oValve = OPEN;
+check durationTIMER_INSPIRATION_DURATION_MS = 20;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+check durationTIMER_APNEALAG = 100;
+check apnea_backup_mode = false;
+check start(TIMER_MAX_INSP_TIME_PSV) = 0;
+check state = MAIN_REGION_STARTUP;
+check expiredTIMER_APNEALAG = false;
+check stopVentilationRequested = false;
+check expiredTIMER_EXPIRATION_DURATION_MS = false;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 0;
+check durationTIMER_MIN_INSP_TIME_MS = 10;
+check expiredTIMER_MIN_INSP_TIME_MS = false;
+check start(TIMER_MIN_EXP_TIME_PSV) = 0;
+check durationTIMER_MAX_INSP_TIME_PSV = 70;
+check start(TIMER_MIN_INSP_TIME_MS) = 0;
+check apneaAlarm = false;
+check durationTIMER_EXPIRATION_DURATION_MS = 40;
+check time = 0;
+check start(TIMER_INSPIRATION_DURATION_MS) = 0;
+check expiredTIMER_INSPIRATION_DURATION_MS = false;
+set stopVentilation := false;
+set poweroff := false;
+set startupEnded := true;
+step
+check state = MAIN_REGION_SELFTEST;
+check time = 1;
+set selfTestPassed := true;
+set stopVentilation := false;
+set resume := false;
+set poweroff := false;
+step
+check state = MAIN_REGION_VENTILATIONOFF;
+check time = 2;
+set stopVentilation := true;
+set mode := PSV;
+set startVentilation := true;
+set poweroff := false;
+step
+check iValve = OPEN;
+check oValve = CLOSED;
+check start(TIMER_MAX_INSP_TIME_PSV) = 2;
+check state = MAIN_REGION_PSV_R1_INSPIRATION;
+check start(TIMER_MIN_INSP_TIME_MS) = 2;
+check time = 3;
+set stopVentilation := false;
+set pawGTMaxPinsp := true;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check start(TIMER_APNEALAG) = 3;
+check iValve = CLOSED;
+check oValve = OPEN;
+check state = MAIN_REGION_PSV_R1_EXPIRATION;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 3;
+check start(TIMER_MIN_EXP_TIME_PSV) = 3;
+check time = 4;
+set stopVentilation := false;
+set mode := PCV;
+set dropPAW_ITS_PSV := false;
+set poweroff := false;
+step
+check time = 5;
+set stopVentilation := false;
+set mode := PCV;
+set dropPAW_ITS_PSV := false;
+set poweroff := false;
+step
+check time = 6;
+set stopVentilation := false;
+set mode := PCV;
+set dropPAW_ITS_PSV := false;
+set poweroff := false;
+step
+check time = 7;
+set stopVentilation := false;
+set mode := PCV;
+set dropPAW_ITS_PSV := false;
+set poweroff := false;
+step
+check time = 8;
+set stopVentilation := false;
+set mode := PCV;
+set dropPAW_ITS_PSV := false;
+set poweroff := false;
+step
+check time = 9;
+set stopVentilation := false;
+set mode := PCV;
+set dropPAW_ITS_PSV := false;
+set poweroff := false;
+step
+check time = 10;
+set stopVentilation := false;
+set mode := PCV;
+set dropPAW_ITS_PSV := false;
+set poweroff := false;
+step
+check time = 11;
+set stopVentilation := false;
+set mode := PCV;
+set dropPAW_ITS_PSV := false;
+set poweroff := false;
+step
+check expiredTIMER_MIN_INSP_TIME_MS = true;
+check time = 12;
+set stopVentilation := false;
+set mode := PCV;
+set dropPAW_ITS_PSV := false;
+set poweroff := false;
+step
+check expiredTIMER_MIN_EXP_TIME_PSV = true;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = true;
+check time = 13;
+set stopVentilation := false;
+set mode := PCV;
+set dropPAW_ITS_PSV := false;
+set poweroff := false;
+step
+check iValve = OPEN;
+check oValve = CLOSED;
+check state = MAIN_REGION_PCV_R1_INSPIRATION;
+check time = 14;
+check start(TIMER_INSPIRATION_DURATION_MS) = 13;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+step

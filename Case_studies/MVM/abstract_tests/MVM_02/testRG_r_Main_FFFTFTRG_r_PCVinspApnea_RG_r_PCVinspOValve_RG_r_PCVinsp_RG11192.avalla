@@ -1,0 +1,6 @@
+scenario testRG_r_Main_FFFTFTRG_r_PCVinspApnea_RG_r_PCVinspOValve_RG_r_PCVinsp_RG11192
+
+load ./../../ASM/MVM_02/Ventilatore02.asm
+
+//// test name test@RG_r_Main_FFFTFTRG_r_PCVinspApnea_RG_r_PCVinspOValve_RG_r_PCVinsp_RG11192
+//// generated for (test goal): RG_r_Main_FFFTFTRG_r_PCVinspApnea_RG_r_PCVinspOValve_RG_r_PCVinsp_RG11192: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PSV_R1_EXPIRATION) and (not(expiredTIMER_TRIGGERWINDOWDELAY_MS and dropPAW_ITS_PSV) and (expiredTIMER_APNEALAG and (state != MAIN_REGION_PCV_R1_INSPIRATION))))))

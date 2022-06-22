@@ -1,6 +1,0 @@
-scenario testUR_r_Main_FFFTFTUR_r_PCVinspApnea_UR_r_PCVinspOValve_UR_r_PCVinsp_11172
-
-load ./..\..\ASM\MVM_02\Ventilatore02.asm
-
-//// test name test@UR_r_Main_FFFTFTUR_r_PCVinspApnea_UR_r_PCVinspOValve_UR_r_PCVinsp_11172
-//// generated for (test goal): UR_r_Main_FFFTFTUR_r_PCVinspApnea_UR_r_PCVinspOValve_UR_r_PCVinsp_11172: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PCV_R1_EXPIRATION) and (not expiredTIMER_EXPIRATION_DURATION_MS and (expiredTIMER_APNEALAG and (state != MAIN_REGION_PCV_R1_INSPIRATION))))))

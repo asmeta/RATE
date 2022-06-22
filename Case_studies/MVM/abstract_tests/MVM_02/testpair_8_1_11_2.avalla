@@ -1,0 +1,43 @@
+scenario testpair_8_1_11_2
+
+load ./../../ASM/MVM_02/Ventilatore02.asm
+
+//// test name test@pair_8_1_11_2
+//// generated for (test goal): startupEnded=false - startVentilation=true
+check durationTIMER_TRIGGERWINDOWDELAY_MS = 10;
+check durationTIMER_MIN_EXP_TIME_PSV = 10;
+check start(TIMER_EXPIRATION_DURATION_MS) = 0;
+check start(TIMER_APNEALAG) = 0;
+check iValve = CLOSED;
+check expiredTIMER_MAX_INSP_TIME_PSV = false;
+check expiredTIMER_MIN_EXP_TIME_PSV = false;
+check oValve = OPEN;
+check durationTIMER_INSPIRATION_DURATION_MS = 20;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+check durationTIMER_APNEALAG = 100;
+check apnea_backup_mode = false;
+check start(TIMER_MAX_INSP_TIME_PSV) = 0;
+check state = MAIN_REGION_STARTUP;
+check expiredTIMER_APNEALAG = false;
+check stopVentilationRequested = false;
+check expiredTIMER_EXPIRATION_DURATION_MS = false;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 0;
+check durationTIMER_MIN_INSP_TIME_MS = 10;
+check expiredTIMER_MIN_INSP_TIME_MS = false;
+check start(TIMER_MIN_EXP_TIME_PSV) = 0;
+check durationTIMER_MAX_INSP_TIME_PSV = 70;
+check start(TIMER_MIN_INSP_TIME_MS) = 0;
+check apneaAlarm = false;
+check durationTIMER_EXPIRATION_DURATION_MS = 40;
+check time = 0;
+check start(TIMER_INSPIRATION_DURATION_MS) = 0;
+check expiredTIMER_INSPIRATION_DURATION_MS = false;
+set stopVentilation := false;
+set poweroff := false;
+set startupEnded := false;
+step
+check time = 1;
+set stopVentilation := false;
+set poweroff := false;
+set startupEnded := false;
+step

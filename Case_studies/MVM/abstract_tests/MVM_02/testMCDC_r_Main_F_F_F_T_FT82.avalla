@@ -1,6 +1,495 @@
 scenario testMCDC_r_Main_F_F_F_T_FT82
 
-load ./..\..\ASM\MVM_02\Ventilatore02.asm
+load ./../../ASM/MVM_02/Ventilatore02.asm
 
 //// test name test@MCDC_r_Main_F_F_F_T_FT82
 //// generated for (test goal): MCDC_r_Main_F_F_F_T_FT82: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PSV_R1_INSPIRATION) and (not(flowDropPSV and expiredTIMER_MIN_INSP_TIME_MS) and expiredTIMER_MAX_INSP_TIME_PSV))))
+check durationTIMER_TRIGGERWINDOWDELAY_MS = 10;
+check durationTIMER_MIN_EXP_TIME_PSV = 10;
+check start(TIMER_EXPIRATION_DURATION_MS) = 0;
+check start(TIMER_APNEALAG) = 0;
+check iValve = CLOSED;
+check expiredTIMER_MAX_INSP_TIME_PSV = false;
+check expiredTIMER_MIN_EXP_TIME_PSV = false;
+check oValve = OPEN;
+check durationTIMER_INSPIRATION_DURATION_MS = 20;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+check durationTIMER_APNEALAG = 100;
+check apnea_backup_mode = false;
+check start(TIMER_MAX_INSP_TIME_PSV) = 0;
+check state = MAIN_REGION_STARTUP;
+check expiredTIMER_APNEALAG = false;
+check stopVentilationRequested = false;
+check expiredTIMER_EXPIRATION_DURATION_MS = false;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 0;
+check durationTIMER_MIN_INSP_TIME_MS = 10;
+check expiredTIMER_MIN_INSP_TIME_MS = false;
+check start(TIMER_MIN_EXP_TIME_PSV) = 0;
+check durationTIMER_MAX_INSP_TIME_PSV = 70;
+check start(TIMER_MIN_INSP_TIME_MS) = 0;
+check apneaAlarm = false;
+check durationTIMER_EXPIRATION_DURATION_MS = 40;
+check time = 0;
+check start(TIMER_INSPIRATION_DURATION_MS) = 0;
+check expiredTIMER_INSPIRATION_DURATION_MS = false;
+set stopVentilation := false;
+set poweroff := false;
+set startupEnded := true;
+step
+check state = MAIN_REGION_SELFTEST;
+check time = 1;
+set selfTestPassed := false;
+set stopVentilation := false;
+set resume := true;
+set poweroff := false;
+step
+check state = MAIN_REGION_VENTILATIONOFF;
+check time = 2;
+set stopVentilation := true;
+set mode := PSV;
+set startVentilation := true;
+set poweroff := false;
+step
+check iValve = OPEN;
+check oValve = CLOSED;
+check start(TIMER_MAX_INSP_TIME_PSV) = 2;
+check state = MAIN_REGION_PSV_R1_INSPIRATION;
+check start(TIMER_MIN_INSP_TIME_MS) = 2;
+check time = 3;
+set stopVentilation := true;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check stopVentilationRequested = true;
+check time = 4;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 5;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 6;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 7;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 8;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 9;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check expiredTIMER_MIN_EXP_TIME_PSV = true;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = true;
+check time = 10;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 11;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check expiredTIMER_MIN_INSP_TIME_MS = true;
+check time = 12;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 13;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 14;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 15;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 16;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 17;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 18;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 19;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 20;
+check expiredTIMER_INSPIRATION_DURATION_MS = true;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 21;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 22;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 23;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 24;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 25;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 26;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 27;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 28;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 29;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 30;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 31;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 32;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 33;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 34;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 35;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 36;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 37;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 38;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 39;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check expiredTIMER_EXPIRATION_DURATION_MS = true;
+check time = 40;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 41;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 42;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 43;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 44;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 45;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 46;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 47;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 48;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 49;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 50;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 51;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 52;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 53;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 54;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 55;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 56;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 57;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 58;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 59;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 60;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 61;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 62;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 63;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 64;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 65;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 66;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 67;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 68;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 69;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 70;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check time = 71;
+set stopVentilation := false;
+set pawGTMaxPinsp := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check expiredTIMER_MAX_INSP_TIME_PSV = true;
+check time = 72;
+set stopVentilation := false;
+set poweroff := false;
+set flowDropPSV := false;
+step
+check start(TIMER_APNEALAG) = 72;
+check iValve = CLOSED;
+check expiredTIMER_MIN_EXP_TIME_PSV = false;
+check oValve = OPEN;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+check state = MAIN_REGION_PSV_R1_EXPIRATION;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 72;
+check start(TIMER_MIN_EXP_TIME_PSV) = 72;
+check time = 73;
+set stopVentilation := false;
+set poweroff := false;
+step

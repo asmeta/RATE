@@ -1,1 +1,3 @@
 SUT/*
+!SUT/.project
+!SUT/.cproject

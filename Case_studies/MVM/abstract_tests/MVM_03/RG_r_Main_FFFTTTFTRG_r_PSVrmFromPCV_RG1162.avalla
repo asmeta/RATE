@@ -1,6 +1,0 @@
-scenario RG_r_Main_FFFTTTFTRG_r_PSVrmFromPCV_RG1162
-
-load ./../../../../../mvm-asmeta/asm_models/VentilatorICTSS/Ventilatore4SimpleTimeLtdY.asm
-
-//// test name test@RG_r_Main_FFFTTTFTRG_r_PSVrmFromPCV_RG1162
-//// generated for (test goal): RG_r_Main_FFFTTTFTRG_r_PSVrmFromPCV_RG1162: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PCV_R1_INSPIRATION) and (expiredTIMER_INSPIRATION_DURATION_MS and ((mode = PSV) and (not ins_pause and (rm_request and (state != MAIN_REGION_PSV_R1_RM))))))))

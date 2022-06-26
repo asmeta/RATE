@@ -1,6 +1,0 @@
-scenario RG_r_Main_FFFTTRG_r_PCVinsp_RG2102
-
-load ./../../../../../mvm-asmeta/asm_models/VentilatorICTSS/Ventilatore4SimpleTimeLtdY.asm
-
-//// test name test@RG_r_Main_FFFTTRG_r_PCVinsp_RG2102
-//// generated for (test goal): RG_r_Main_FFFTTRG_r_PCVinsp_RG2102: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PCV_R1_EXPIRATORYPAUSE) and (expiredTIMER_MAX_EXP_PAUSE and (iValve != OPEN)))))

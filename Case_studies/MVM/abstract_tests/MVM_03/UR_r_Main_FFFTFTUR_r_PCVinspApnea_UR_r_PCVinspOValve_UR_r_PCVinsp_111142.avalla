@@ -1,6 +1,0 @@
-scenario UR_r_Main_FFFTFTUR_r_PCVinspApnea_UR_r_PCVinspOValve_UR_r_PCVinsp_111142
-
-load ./../../../../../mvm-asmeta/asm_models/VentilatorICTSS/Ventilatore4SimpleTimeLtdY.asm
-
-//// test name test@UR_r_Main_FFFTFTUR_r_PCVinspApnea_UR_r_PCVinspOValve_UR_r_PCVinsp_111142
-//// generated for (test goal): UR_r_Main_FFFTFTUR_r_PCVinspApnea_UR_r_PCVinspOValve_UR_r_PCVinsp_111142: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PSV_R1_EXPIRATION) and (not(expiredTIMER_TRIGGERWINDOWDELAY_MS and dropPAW_ITS_PSV) and (expiredTIMER_APNEALAG and (state != MAIN_REGION_PCV_R1_INSPIRATION))))))

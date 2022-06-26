@@ -1,0 +1,285 @@
+scenario testBR_r_Main_FFFTFF102
+
+load ./../../ASM/MVM_03/Ventilatore4SimpleTimeLtdY.asm
+
+//// test name test@BR_r_Main_FFFTFF102
+//// generated for (test goal): BR_r_Main_FFFTFF102: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PCV_R1_EXPIRATORYPAUSE) and (not expiredTIMER_MAX_EXP_PAUSE and exp_pause))))
+check apneaAlarm = false;
+check oValve = OPEN;
+check iValve = CLOSED;
+check durationTIMER_MIN_EXP_TIME_PSV = 10;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+check start(TIMER_EXPIRATION_DURATION_MS) = 0;
+check durationTIMER_MAX_INSP_TIME_PSV = 70;
+check expiredTIMER_MAX_EXP_PAUSE = false;
+check expiredTIMER_MIN_EXP_TIME_PSV = false;
+check expiredTIMER_APNEALAG = false;
+check durationTIMER_INSPIRATION_DURATION_MS = 20;
+check apnea_backup_mode = false;
+check expiredTIMER_MAX_INS_PAUSE = false;
+check state = MAIN_REGION_STARTUP;
+check durationTIMER_MAX_INS_PAUSE = 200;
+check time = 0;
+check durationTIMER_MAX_EXP_PAUSE = 200;
+check durationTIMER_EXPIRATION_DURATION_MS = 40;
+check start(TIMER_MAX_EXP_PAUSE) = 0;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 0;
+check expiredTIMER_INSPIRATION_DURATION_MS = false;
+check start(TIMER_MIN_INSP_TIME_MS) = 0;
+check start(TIMER_MAX_RM_TIME) = 0;
+check start(TIMER_APNEALAG) = 0;
+check expiredTIMER_MAX_INSP_TIME_PSV = false;
+check start(TIMER_MAX_INS_PAUSE) = 0;
+check durationTIMER_APNEALAG = 100;
+check expiredTIMER_MAX_RM_TIME = false;
+check durationTIMER_TRIGGERWINDOWDELAY_MS = 10;
+check expiredTIMER_EXPIRATION_DURATION_MS = false;
+check start(TIMER_MAX_INSP_TIME_PSV) = 0;
+check durationTIMER_MAX_RM_TIME = 100;
+check stopVentilationRequested = false;
+check start(TIMER_MIN_EXP_TIME_PSV) = 0;
+check durationTIMER_MIN_INSP_TIME_MS = 10;
+check start(TIMER_INSPIRATION_DURATION_MS) = 0;
+check expiredTIMER_MIN_INSP_TIME_MS = false;
+set startupEnded := true;
+set poweroff := false;
+set stopVentilation := false;
+step
+check state = MAIN_REGION_SELFTEST;
+check time = 1;
+set selfTestPassed := false;
+set poweroff := false;
+set stopVentilation := false;
+set resume := true;
+step
+check state = MAIN_REGION_VENTILATIONOFF;
+check time = 2;
+set startVentilation := true;
+set poweroff := false;
+set stopVentilation := false;
+set mode := PCV;
+step
+check oValve = CLOSED;
+check iValve = OPEN;
+check state = MAIN_REGION_PCV_R1_INSPIRATION;
+check time = 3;
+check start(TIMER_INSPIRATION_DURATION_MS) = 2;
+set pawGTMaxPinsp := true;
+set poweroff := false;
+set stopVentilation := false;
+step
+check oValve = OPEN;
+check iValve = CLOSED;
+check start(TIMER_EXPIRATION_DURATION_MS) = 3;
+check state = MAIN_REGION_PCV_R1_EXPIRATION;
+check time = 4;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 3;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 5;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 6;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 7;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 8;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 9;
+set poweroff := false;
+set stopVentilation := false;
+step
+check expiredTIMER_MIN_EXP_TIME_PSV = true;
+check time = 10;
+check expiredTIMER_MIN_INSP_TIME_MS = true;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 11;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 12;
+set poweroff := false;
+set stopVentilation := false;
+step
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = true;
+check time = 13;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 14;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 15;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 16;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 17;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 18;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 19;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 20;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 21;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 22;
+check expiredTIMER_INSPIRATION_DURATION_MS = true;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 23;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 24;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 25;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 26;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 27;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 28;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 29;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 30;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 31;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 32;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 33;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 34;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 35;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 36;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 37;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 38;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 39;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 40;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 41;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 42;
+set dropPAW_ITS_PCV := false;
+set poweroff := false;
+set stopVentilation := false;
+step
+check time = 43;
+check expiredTIMER_EXPIRATION_DURATION_MS = true;
+set poweroff := false;
+set stopVentilation := false;
+set exp_pause := true;
+step
+check oValve = CLOSED;
+check state = MAIN_REGION_PCV_R1_EXPIRATORYPAUSE;
+check time = 44;
+check start(TIMER_MAX_EXP_PAUSE) = 43;
+set poweroff := false;
+set stopVentilation := true;
+set exp_pause := true;
+step
+check time = 45;
+check stopVentilationRequested = true;
+set poweroff := false;
+set stopVentilation := false;
+set exp_pause := false;
+step

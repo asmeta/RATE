@@ -9,12 +9,12 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
-import org.asmeta.atgt.generator.CriteriaEnum;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -23,6 +23,7 @@ import com.google.gson.stream.JsonReader;
 
 import scenarioconverter.util.Command;
 import scenarioconverter.util.Configuration;
+import scenarioconverter.util.CriteriaEnum;
 import scenarioconverter.util.FunctionType;
 import scenarioconverter.util.UtilityFunctions;
 
@@ -195,11 +196,11 @@ public class ScenarioConverter {
 	private boolean startsWithAtLeasOneCriteria(String fileName, Configuration c) {
 		for (CriteriaEnum ce : c.criteria) {
 			String abbrvName = ce.getAbbrvName();
-			
+/*			
 			if (abbrvName.equals("2WISE"))
 				abbrvName = "pair";
 			if (abbrvName.equals("3-WISEw all") || abbrvName.equals("3-WISEmon"))
-				abbrvName = "3-wise";
+				abbrvName = "3-wise";*/
 			
 			if (fileName.startsWith("test" + abbrvName) || fileName.startsWith(abbrvName + "_") || fileName.startsWith("test" + abbrvName.toLowerCase()) || fileName.startsWith(abbrvName.toLowerCase() + "_"))
 				return true;
@@ -433,9 +434,10 @@ public class ScenarioConverter {
 	 * @throws Exception
 	 */
 	public void convertFromFolder(String folderName, Configuration c) throws Exception {
-		assert new File(folderName).exists();
+		assert new File(folderName).exists() : Path.of(folderName).normalize() + " not found";
+		assert new File(folderName).isDirectory() : Path.of(folderName).normalize() + " is not a directory";
 
-		Files.walk(new File(folderName + c.level + "/").toPath()).filter(f -> (f.getFileName().toString().endsWith(".avalla") 
+		Files.walk(new File(folderName).toPath()).filter(f -> (f.getFileName().toString().endsWith(".avalla") 
 				&& startsWithAtLeasOneCriteria(f.getFileName().toString(), c)))
 				.forEach(f -> {
 					try {

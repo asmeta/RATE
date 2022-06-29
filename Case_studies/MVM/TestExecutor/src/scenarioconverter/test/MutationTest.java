@@ -1,35 +1,33 @@
 package scenarioconverter.test;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.asmeta.atgt.generator.CriteriaEnum;
 import org.junit.Test;
 
-import scenarioconverter.ScenarioConverter;
 import scenarioconverter.util.Configuration;
 
 public class MutationTest {
 
-	private static final int MAX_NUM_MUTATIONS = 5;
+	private static final String SEARCH_FOR = "\texseq_";
+	private static final int MAX_NUM_MUTATIONS = 100;
 	private static final String path = "../SUT/src-gen/MVMStateMachineCore.cpp";
 	static final String backupCpp = "../SUT/src-gen/MVMStateMachineCore2.cpp";
 	static Charset charset = StandardCharsets.UTF_8;
+	
+	public static void main(String[] args) throws FileNotFoundException, IOException, InterruptedException, Exception {
+		new MutationTest().mutate();
+	}
+	
 
 	@Test
 	public void mutate() throws FileNotFoundException, IOException, InterruptedException, Exception {
@@ -52,7 +50,7 @@ public class MutationTest {
 		int numMutation = 0;
 		for(;;){
 			StringBuffer sb = new StringBuffer(content);
-			pos = MutationTest.insertComment("\texseq_", sb, pos);
+			pos = MutationTest.insertComment(SEARCH_FOR, sb, pos);
 			if (pos == -1) {
 				System.out.println("no more mutations");
 				break;

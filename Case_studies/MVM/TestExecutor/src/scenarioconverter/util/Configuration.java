@@ -5,10 +5,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.asmeta.atgt.generator.CriteriaEnum;
-
 public class Configuration {
-
+	
 	public List<CriteriaEnum> criteria;
 	public boolean useMonitoring;
 	public String level;

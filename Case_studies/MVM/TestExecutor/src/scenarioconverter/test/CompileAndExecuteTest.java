@@ -10,8 +10,6 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.asmeta.atgt.generator.CriteriaEnum;
-
 import scenarioconverter.ScenarioConverter;
 import scenarioconverter.util.Configuration;
 
@@ -21,24 +19,21 @@ public class CompileAndExecuteTest {
 	private static String DEBUG_PATH = "../SUT/Debug/";
 	private static boolean WRITE_JSON = false;
 
-	// The path of abstract tests
-	private static String PATH_AT = "../abstract_tests/MVM_";
-
 	public static List<Configuration> filesToProcess = new ArrayList<Configuration>() {
 		
 		private static final long serialVersionUID = 5014712752302397500L;
 		{		
 			// level 0
-			add(new Configuration("00", "config/config3.json", Configuration.MANUAL_TEST));
+//			add(new Configuration("00", "config/config3.json", Configuration.MANUAL_TEST));
 			add(new Configuration("00", "config/config3.json", Configuration.ALL_CRITERIA));
-			// level 1
-			add(new Configuration("01", "config/config3.json", Configuration.MANUAL_TEST));
+//			// level 1
+//			add(new Configuration("01", "config/config3.json", Configuration.MANUAL_TEST));
 			add(new Configuration("01", "config/config3.json", Configuration.ALL_CRITERIA));
-			// level 2
-			add(new Configuration("02", "config/config3.json", Configuration.MANUAL_TEST));
+//			// level 2
+//			add(new Configuration("02", "config/config3.json", Configuration.MANUAL_TEST));
 			add(new Configuration("02", "config/config3.json", Configuration.ALL_CRITERIA));
-			// level 3
-			add(new Configuration("03", "config/config3.json", Configuration.MANUAL_TEST));
+//			// level 3
+//			add(new Configuration("03", "config/config3.json", Configuration.MANUAL_TEST));
 			add(new Configuration("03", "config/config3.json", Configuration.ALL_CRITERIA));
 			//add(new Configuration("NR", "config/config3.json", Configuration.ALL_CRITERIA));
 		}
@@ -59,6 +54,9 @@ public class CompileAndExecuteTest {
 	}
 
 	static boolean executeTest(Configuration c) throws FileNotFoundException, Exception, IOException, InterruptedException {
+		
+		// The path of abstract tests
+		String PATH_AT;
 		
 		PrintWriter out = new PrintWriter(new File(DESTINATION_PATH + "test.cpp"));
 		
@@ -85,15 +83,18 @@ public class CompileAndExecuteTest {
 							}
 						});
 			} else {
+				PATH_AT = "../abstract_tests/MVM_" + c.level;
+				assert new File(PATH_AT).exists();
+				assert new File(PATH_AT).isDirectory();
+				// in futuro potrebbe essere anche un solo criterio o cose simili
+				assert c.criteria == Configuration.ALL_CRITERIA;
 				// If JSON file must be written
 				if (WRITE_JSON) {
 					sc.createFunctionMappingsFromFolder(PATH_AT, c, false);
-				}
-				else {
+				} else {
 					// Prints the includes and the mock instructions
 					sc.printIncludes();
 					sc.printMock("./additional_files/mock_simple.c");
-		
 					// Convert all the files
 					sc.convertFromFolder(PATH_AT, c);
 				}
@@ -110,6 +111,7 @@ public class CompileAndExecuteTest {
 	}
 
 	static boolean executeBat(String batfile) {
+		System.out.println("executing bath file " + batfile);
 		ProcessBuilder builder = new ProcessBuilder();
 		builder.command("cmd.exe", "/c",
 				new File("./additional_files/"+batfile).getAbsolutePath());

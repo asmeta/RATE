@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.asmeta.atgt.generator.CriteriaEnum;
@@ -28,18 +29,18 @@ public class CompileAndExecuteTest {
 		
 		private static final long serialVersionUID = 5014712752302397500L;
 		{		
-			// level 0
-			add(new Configuration("00", "config/config3.json", Configuration.MANUAL_TEST));
-			add(new Configuration("00", "config/config3.json", Configuration.ALL_CRITERIA));
-			// level 1
-			add(new Configuration("01", "config/config3.json", Configuration.MANUAL_TEST));
-			add(new Configuration("01", "config/config3.json", Configuration.ALL_CRITERIA));
-			// level 2
-			add(new Configuration("02", "config/config3.json", Configuration.MANUAL_TEST));
+//			// level 0
+//			add(new Configuration("00", "config/config3.json", Configuration.MANUAL_TEST));
+//			add(new Configuration("00", "config/config3.json", Configuration.ALL_CRITERIA));
+//			// level 1
+//			add(new Configuration("01", "config/config3.json", Configuration.MANUAL_TEST));
+//			add(new Configuration("01", "config/config3.json", Configuration.ALL_CRITERIA));
+//			// level 2
+//			add(new Configuration("02", "config/config3.json", Configuration.MANUAL_TEST));
 			add(new Configuration("02", "config/config3.json", Configuration.ALL_CRITERIA));
-			// level 3
-			add(new Configuration("03", "config/config3.json", Configuration.MANUAL_TEST));
-			add(new Configuration("03", "config/config3.json", Configuration.ALL_CRITERIA));
+//			// level 3
+//			add(new Configuration("03", "config/config3.json", Configuration.MANUAL_TEST));
+//			add(new Configuration("03", "config/config3.json", Configuration.ALL_CRITERIA));
 			//add(new Configuration("NR", "config/config3.json", Configuration.ALL_CRITERIA));
 		}
 	};	
@@ -85,6 +86,9 @@ public class CompileAndExecuteTest {
 							}
 						});
 			} else {
+				// Abstract tests
+				PATH_AT = "../abstract_tests/MVM_";
+				
 				// If JSON file must be written
 				if (WRITE_JSON) {
 					sc.createFunctionMappingsFromFolder(PATH_AT, c, false);
@@ -104,7 +108,8 @@ public class CompileAndExecuteTest {
 		}
 		out.close();
 		
-		boolean failed = executeBat("build_and_exec_test.bat");
+//		boolean failed = executeBat("build_and_exec_test.bat");
+		boolean failed = executeBat("commands_for_building_MVM.bat");
 		System.err.println("+++ " + failed);
 		return failed;
 	}

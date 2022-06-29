@@ -433,7 +433,7 @@ public class ScenarioConverter {
 	 * @throws Exception
 	 */
 	public void convertFromFolder(String folderName, Configuration c) throws Exception {
-		assert new File(folderName).exists();
+		assert new File(folderName + c.level + "/").exists() : folderName + " does not exist";
 
 		Files.walk(new File(folderName + c.level + "/").toPath()).filter(f -> (f.getFileName().toString().endsWith(".avalla") 
 				&& startsWithAtLeasOneCriteria(f.getFileName().toString(), c)))

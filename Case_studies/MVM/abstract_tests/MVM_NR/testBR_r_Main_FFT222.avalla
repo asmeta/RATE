@@ -1,0 +1,6 @@
+scenario testBR_r_Main_FFT222
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@BR_r_Main_FFT222
+//// generated for (test goal): BR_r_Main_FFT222: not poweroff and (not(stopVentilationRequested or stopVentilation) and ((expiredTIMER_APNEALAG and not(expiredTIMER_TRIGGERWINDOWDELAY_MS and dropPAW_ITS_PSV)) and (state = MAIN_REGION_PSV_R1_EXPIRATION)))

@@ -26,7 +26,7 @@ import scenarioconverter.util.Configuration;
 
 public class MutationTest {
 
-	private static final int MAX_NUM_MUTATIONS = 5;
+	private static final int MAX_NUM_MUTATIONS = 64;
 	private static final String path = "../SUT/src-gen/MVMStateMachineCore.cpp";
 	static final String backupCpp = "../SUT/src-gen/MVMStateMachineCore2.cpp";
 	static Charset charset = StandardCharsets.UTF_8;

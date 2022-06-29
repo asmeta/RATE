@@ -1,0 +1,6 @@
+scenario testBR_r_Main_FFTBR_r_exp_pause_T1232
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@BR_r_Main_FFTBR_r_exp_pause_T1232
+//// generated for (test goal): BR_r_Main_FFTBR_r_exp_pause_T1232: not poweroff and (not(stopVentilationRequested or stopVentilation) and ((((((expiredTIMER_MIN_EXP_TIME_PSV and (mode = PSV)) and exp_pause) and not expiredTIMER_APNEALAG) and not(expiredTIMER_TRIGGERWINDOWDELAY_MS and dropPAW_ITS_PSV)) and (state = MAIN_REGION_PSV_R1_EXPIRATION)) and (mode = PCV)))

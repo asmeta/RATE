@@ -1,8 +1,8 @@
 :: delete the old files for the coverage
 :: forse da spostare prima??? 
-::DEL /S /Q *.gcda
-::DEL /S /Q *.gcno
-::DEL /S /Q *.gcov
+DEL /S /Q *.gcda
+DEL /S /Q *.gcno
+DEL /S /Q *.gcov
 :: compile the test
 ::g++ --coverage -lgcov -fprofile-arcs -ftest-coverage -I"..\src" -I"..\src-gen" -I"..\googletest" -I"..\googletest\include" -I"..\src-gen-test" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src-gen-test/test.d" -MT"src-gen-test/test.o" -o "src-gen-test/test.o" "../src-gen-test/test.cpp"
 g++ -I"..\src" -I"..\src-gen" -I"..\googletest" -I"..\googletest\include" -I"..\src-gen-test" -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src-gen-test/test.d" -MT"src-gen-test/test.o" -o "src-gen-test/test.o" "../src-gen-test/test.cpp"

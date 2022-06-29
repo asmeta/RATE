@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import scenarioconverter.ScenarioConverter;
@@ -34,7 +35,7 @@ public class CompileAndExecuteTest {
 			add(new Configuration("02", "config/config3.json", Configuration.ALL_CRITERIA));
 //			// level 3
 //			add(new Configuration("03", "config/config3.json", Configuration.MANUAL_TEST));
-			add(new Configuration("03", "config/config3.json", Configuration.ALL_CRITERIA));
+//			add(new Configuration("03", "config/config3.json", Configuration.ALL_CRITERIA));
 			//add(new Configuration("NR", "config/config3.json", Configuration.ALL_CRITERIA));
 		}
 	};	
@@ -83,6 +84,7 @@ public class CompileAndExecuteTest {
 							}
 						});
 			} else {
+				// Abstract tests
 				PATH_AT = "../abstract_tests/MVM_" + c.level;
 				assert new File(PATH_AT).exists();
 				assert new File(PATH_AT).isDirectory();
@@ -105,7 +107,8 @@ public class CompileAndExecuteTest {
 		}
 		out.close();
 		
-		boolean failed = executeBat("build_and_exec_test.bat");
+//		boolean failed = executeBat("build_and_exec_test.bat");
+		boolean failed = executeBat("commands_for_building_MVM.bat");
 		System.err.println("+++ " + failed);
 		return failed;
 	}

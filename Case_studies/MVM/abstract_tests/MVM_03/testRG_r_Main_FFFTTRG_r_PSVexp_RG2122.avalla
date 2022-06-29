@@ -1,0 +1,6 @@
+scenario testRG_r_Main_FFFTTRG_r_PSVexp_RG2122
+
+load ./../../ASM/MVM_03/Ventilatore4SimpleTimeLtdY.asm
+
+//// test name test@RG_r_Main_FFFTTRG_r_PSVexp_RG2122
+//// generated for (test goal): RG_r_Main_FFFTTRG_r_PSVexp_RG2122: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PSV_R1_INSPIRATORYPAUSE) and (expiredTIMER_MAX_INS_PAUSE and (oValve != OPEN)))))

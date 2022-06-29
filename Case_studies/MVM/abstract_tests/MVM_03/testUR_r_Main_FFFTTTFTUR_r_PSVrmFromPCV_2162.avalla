@@ -1,0 +1,6 @@
+scenario testUR_r_Main_FFFTTTFTUR_r_PSVrmFromPCV_2162
+
+load ./../../ASM/MVM_03/Ventilatore4SimpleTimeLtdY.asm
+
+//// test name test@UR_r_Main_FFFTTTFTUR_r_PSVrmFromPCV_2162
+//// generated for (test goal): UR_r_Main_FFFTTTFTUR_r_PSVrmFromPCV_2162: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and ((state = MAIN_REGION_PCV_R1_INSPIRATION) and (expiredTIMER_INSPIRATION_DURATION_MS and ((mode = PSV) and (not ins_pause and (rm_request and (apnea_backup_mode != false))))))))

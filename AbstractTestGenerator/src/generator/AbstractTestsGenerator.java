@@ -146,13 +146,13 @@ public class AbstractTestsGenerator {
 //			add(new Configuration(ASM_FOLDER_MVM + "03/Ventilatore4SimpleTimeLtdY.asm", "03", true, true, CriteriaEnum.RULE_UPDATE));
 //			add(new Configuration(ASM_FOLDER_MVM + "03/Ventilatore4SimpleTimeLtdY.asm", "03", true, true, CriteriaEnum.THREEWISE_MON));		
 //			
-//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.BASIC_RULE));
-//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.COMBINATORIAL_MON));
-//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.COMPLETE_RULE));
-//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", false, false, CriteriaEnum.MCDC));
-//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.RULE_GUARD));
-//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.RULE_UPDATE));
-//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.THREEWISE_MON));
+			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", false, false, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.THREEWISE_MON));
 		}
 	};	
 	
@@ -200,7 +200,8 @@ public class AbstractTestsGenerator {
 //		String ex = ASM_FOLDER_MVM + "00/Ventilatore0.asm";
 //		String ex = ASM_FOLDER_MVM + "01/Ventilatore01.asm";
 //		String ex = ASM_FOLDER_MVM + "02/Ventilatore02.asm";
-		String ex = ASM_FOLDER_MVM + "03/Ventilatore4SimpleTimeLtdY.asm";
+//		String ex = ASM_FOLDER_MVM + "03/Ventilatore4SimpleTimeLtdY.asm";
+		String ex = ASM_FOLDER_MVM + "NR/VentilatoreNR.asm";
 		AsmCoverage ct = buildCT(ex);
 		for (int i = 0; i < 9; i++) {
 			System.out.println(ct.getChildAt(i).getName() + ": " + ((AsmCoverage) ct.getChildAt(i)).getNumberofTPs());

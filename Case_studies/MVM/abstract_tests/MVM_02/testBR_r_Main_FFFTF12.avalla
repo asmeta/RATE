@@ -1,6 +1,6 @@
 scenario testBR_r_Main_FFFTF12
 
-load ./..\..\ASM\MVM_02\Ventilatore02.asm
+load ./../../ASM/MVM_02/Ventilatore02.asm
 
 //// test name test@BR_r_Main_FFFTF12
 //// generated for (test goal): BR_r_Main_FFFTF12: not poweroff and (not((state = MAIN_REGION_PCV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (not((state = MAIN_REGION_PSV_R1_EXPIRATION) and (stopVentilationRequested or stopVentilation)) and (apneaAlarm and not((turnOffApneaAlarm = true) and ((state = MAIN_REGION_PCV_R1_INSPIRATION) or (state = MAIN_REGION_PCV_R1_EXPIRATION))))))

@@ -21,12 +21,13 @@
 				<version>1.7.6</version>
 				<configuration>
 					<targetClasses>
-						<param>TrafficLight</param>
-						<param>TwoWayTrafficControl</param>
+						<param>system.TrafficLight</param>
+						<param>system.TwoWayTrafficControl</param>
 					</targetClasses>
 					<targetTests>
-						<param>TestExecutorForPit</param>
+						<param>system.TestExecutorForPit.*</param>
 					</targetTests>
+					<testPlugin>junit</testPlugin>
 				</configuration>
 			</plugin>
 		</plugins>

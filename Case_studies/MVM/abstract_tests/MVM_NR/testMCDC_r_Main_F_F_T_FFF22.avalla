@@ -1,0 +1,6 @@
+scenario testMCDC_r_Main_F_F_T_FFF22
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@MCDC_r_Main_F_F_T_FFF22
+//// generated for (test goal): MCDC_r_Main_F_F_T_FFF22: not poweroff and (not(stopVentilationRequested or stopVentilation) and (stopVentilation and ((not(((((((state = MAIN_REGION_PCV_R1_INSPIRATION) or (state = MAIN_REGION_PCV_R1_EXPIRATION)) or (state = MAIN_REGION_PSV_R1_INSPIRATION)) or (state = MAIN_REGION_PCV_R1_INSPIRATORYPAUSE)) or (state = MAIN_REGION_PCV_R1_EXPIRATORYPAUSE)) or (state = MAIN_REGION_PSV_R1_INSPIRATORYPAUSE)) or (state = MAIN_REGION_PSV_R1_EXPIRATORYPAUSE)) and (state != MAIN_REGION_PCV_R1_RM)) and (state != MAIN_REGION_PSV_R1_RM))))

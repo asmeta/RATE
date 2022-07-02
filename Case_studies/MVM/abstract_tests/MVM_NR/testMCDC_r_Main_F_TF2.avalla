@@ -1,0 +1,6 @@
+scenario testMCDC_r_Main_F_TF2
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@MCDC_r_Main_F_TF2
+//// generated for (test goal): MCDC_r_Main_F_TF2: not poweroff and (stopVentilationRequested and not stopVentilation)

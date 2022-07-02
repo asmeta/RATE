@@ -1,0 +1,6 @@
+scenario testMCDC_r_Main_F_F_TTFT222
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@MCDC_r_Main_F_F_TTFT222
+//// generated for (test goal): MCDC_r_Main_F_F_TTFT222: not poweroff and (not(stopVentilationRequested or stopVentilation) and ((expiredTIMER_APNEALAG and (expiredTIMER_TRIGGERWINDOWDELAY_MS and not dropPAW_ITS_PSV)) and (state = MAIN_REGION_PSV_R1_EXPIRATION)))

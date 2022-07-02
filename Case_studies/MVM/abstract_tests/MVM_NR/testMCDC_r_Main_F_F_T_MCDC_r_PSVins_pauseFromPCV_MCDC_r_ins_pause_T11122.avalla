@@ -1,0 +1,6 @@
+scenario testMCDC_r_Main_F_F_T_MCDC_r_PSVins_pauseFromPCV_MCDC_r_ins_pause_T11122
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@MCDC_r_Main_F_F_T_MCDC_r_PSVins_pauseFromPCV_MCDC_r_ins_pause_T11122
+//// generated for (test goal): MCDC_r_Main_F_F_T_MCDC_r_PSVins_pauseFromPCV_MCDC_r_ins_pause_T11122: not poweroff and (not(stopVentilationRequested or stopVentilation) and ((((ins_pause and (mode = PSV)) and expiredTIMER_INSPIRATION_DURATION_MS) and (state = MAIN_REGION_PCV_R1_INSPIRATION)) and (mode = PCV)))

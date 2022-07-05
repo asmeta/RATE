@@ -1,0 +1,6 @@
+scenario testUR_r_Main_FTTUR_r_ventOffPCV_22
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@UR_r_Main_FTTUR_r_ventOffPCV_22
+//// generated for (test goal): UR_r_Main_FTTUR_r_ventOffPCV_22: not poweroff and ((stopVentilationRequested or stopVentilation) and ((state = MAIN_REGION_PCV_R1_EXPIRATION) and (apnea_backup_mode != false)))

@@ -1,0 +1,6 @@
+scenario testUR_r_Main_FFTTUR_r_PCVinsp_UR_r_inspiration_21272
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@UR_r_Main_FFTTUR_r_PCVinsp_UR_r_inspiration_21272
+//// generated for (test goal): UR_r_Main_FFTTUR_r_PCVinsp_UR_r_inspiration_21272: not poweroff and (not(stopVentilationRequested or stopVentilation) and ((expiredTIMER_MAX_EXP_PAUSE or not exp_pause) and ((state = MAIN_REGION_PCV_R1_EXPIRATORYPAUSE) and (oValve != CLOSED))))

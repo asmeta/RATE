@@ -1,0 +1,76 @@
+scenario test3-wise___r_f__i_t__e_f
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@3-wise___r_f__i_t__e_f
+//// generated for (test goal): [rm_request, ins_pause, exp_pause]-->[false, true, false]
+check durationTIMER_MAX_RM_TIME = 100;
+check durationTIMER_INSPIRATION_DURATION_MS = 20;
+check durationTIMER_EXPIRATION_DURATION_MS = 40;
+check expiredTIMER_TRIGGERWINDOWDELAY_MS = false;
+check apneaAlarm = false;
+check durationTIMER_MAX_INS_PAUSE = 200;
+check start(TIMER_EXPIRATION_DURATION_MS) = 0;
+check expiredTIMER_MAX_INSP_TIME_PSV = false;
+check durationTIMER_MAX_EXP_PAUSE = 200;
+check durationTIMER_APNEALAG = 100;
+check expiredTIMER_MAX_INS_PAUSE = false;
+check expiredTIMER_MIN_INSP_TIME_MS = false;
+check start(TIMER_MAX_EXP_PAUSE) = 0;
+check start(TIMER_TRIGGERWINDOWDELAY_MS) = 0;
+check expiredTIMER_APNEALAG = false;
+check iValve = CLOSED;
+check apnea_backup_mode = false;
+check durationTIMER_TRIGGERWINDOWDELAY_MS = 10;
+check start(TIMER_MIN_INSP_TIME_MS) = 0;
+check state = MAIN_REGION_STARTUP;
+check start(TIMER_MAX_RM_TIME) = 0;
+check durationTIMER_MIN_EXP_TIME_PSV = 10;
+check time = 0;
+check stopVentilationRequested = false;
+check durationTIMER_MAX_INSP_TIME_PSV = 70;
+check start(TIMER_APNEALAG) = 0;
+check expiredTIMER_MAX_RM_TIME = false;
+check start(TIMER_MAX_INS_PAUSE) = 0;
+check expiredTIMER_MIN_EXP_TIME_PSV = false;
+check start(TIMER_MAX_INSP_TIME_PSV) = 0;
+check durationTIMER_MIN_INSP_TIME_MS = 10;
+check expiredTIMER_INSPIRATION_DURATION_MS = false;
+check start(TIMER_MIN_EXP_TIME_PSV) = 0;
+check expiredTIMER_EXPIRATION_DURATION_MS = false;
+check start(TIMER_INSPIRATION_DURATION_MS) = 0;
+check oValve = OPEN;
+check expiredTIMER_MAX_EXP_PAUSE = false;
+set ins_pause := true;
+set flowDropPSV := false;
+set resume := false;
+set mode := PSV;
+set pawGTMaxPinsp := false;
+set selfTestPassed := false;
+set stopVentilation := false;
+set rm_request := false;
+set poweroff := false;
+set dropPAW_ITS_PSV := false;
+set startupEnded := false;
+set dropPAW_ITS_PCV := false;
+set turnOffApneaAlarm := false;
+set startVentilation := false;
+set exp_pause := false;
+step
+check time = 1;
+set ins_pause := false;
+set flowDropPSV := false;
+set resume := false;
+set mode := PSV;
+set pawGTMaxPinsp := false;
+set selfTestPassed := false;
+set stopVentilation := false;
+set rm_request := false;
+set poweroff := false;
+set dropPAW_ITS_PSV := false;
+set startupEnded := false;
+set dropPAW_ITS_PCV := false;
+set turnOffApneaAlarm := false;
+set startVentilation := false;
+set exp_pause := false;
+step

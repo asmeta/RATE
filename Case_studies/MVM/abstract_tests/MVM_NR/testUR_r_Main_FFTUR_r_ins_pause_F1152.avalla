@@ -1,0 +1,6 @@
+scenario testUR_r_Main_FFTUR_r_ins_pause_F1152
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@UR_r_Main_FFTUR_r_ins_pause_F1152
+//// generated for (test goal): UR_r_Main_FFTUR_r_ins_pause_F1152: not poweroff and (not(stopVentilationRequested or stopVentilation) and ((((ins_pause and (mode = PCV)) and expiredTIMER_INSPIRATION_DURATION_MS) and (state = MAIN_REGION_PCV_R1_INSPIRATION)) and (not(mode = PCV) and (state != MAIN_REGION_PSV_R1_INSPIRATORYPAUSE))))

@@ -1,0 +1,6 @@
+scenario testRG_r_Main_FFTRG_r_PCVinspApnea_RG3222
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@RG_r_Main_FFTRG_r_PCVinspApnea_RG3222
+//// generated for (test goal): RG_r_Main_FFTRG_r_PCVinspApnea_RG3222: not poweroff and (not(stopVentilationRequested or stopVentilation) and (((expiredTIMER_APNEALAG and not(expiredTIMER_TRIGGERWINDOWDELAY_MS and dropPAW_ITS_PSV)) and (state = MAIN_REGION_PSV_R1_EXPIRATION)) and (apnea_backup_mode != true)))

@@ -1,0 +1,6 @@
+scenario testRG_r_Main_FFTTRG_r_PSVinsp_RG_r_inspiration_RG21172
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@RG_r_Main_FFTTRG_r_PSVinsp_RG_r_inspiration_RG21172
+//// generated for (test goal): RG_r_Main_FFTTRG_r_PSVinsp_RG_r_inspiration_RG21172: not poweroff and (not(stopVentilationRequested or stopVentilation) and ((expiredTIMER_MAX_EXP_PAUSE or not exp_pause) and ((state = MAIN_REGION_PSV_R1_EXPIRATORYPAUSE) and (oValve != CLOSED))))

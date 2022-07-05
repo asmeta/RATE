@@ -1,0 +1,6 @@
+scenario testRG_r_Main_FFTTRG_r_PCVexp_RG_r_expiration_RG11282
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@RG_r_Main_FFTTRG_r_PCVexp_RG_r_expiration_RG11282
+//// generated for (test goal): RG_r_Main_FFTTRG_r_PCVexp_RG_r_expiration_RG11282: not poweroff and (not(stopVentilationRequested or stopVentilation) and ((expiredTIMER_MAX_INS_PAUSE or not ins_pause) and ((state = MAIN_REGION_PCV_R1_INSPIRATORYPAUSE) and (iValve != CLOSED))))

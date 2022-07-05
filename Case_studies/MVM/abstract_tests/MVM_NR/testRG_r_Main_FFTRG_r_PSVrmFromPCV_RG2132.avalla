@@ -1,0 +1,6 @@
+scenario testRG_r_Main_FFTRG_r_PSVrmFromPCV_RG2132
+
+load ./../../ASM/MVM_NR/VentilatoreNR.asm
+
+//// test name test@RG_r_Main_FFTRG_r_PSVrmFromPCV_RG2132
+//// generated for (test goal): RG_r_Main_FFTRG_r_PSVrmFromPCV_RG2132: not poweroff and (not(stopVentilationRequested or stopVentilation) and (((((rm_request and not ins_pause) and (mode = PSV)) and expiredTIMER_INSPIRATION_DURATION_MS) and (state = MAIN_REGION_PCV_R1_INSPIRATION)) and (apnea_backup_mode != false)))

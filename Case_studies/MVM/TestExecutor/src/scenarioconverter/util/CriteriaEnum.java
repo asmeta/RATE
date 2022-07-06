@@ -4,7 +4,7 @@ public enum CriteriaEnum{
 	BASIC_RULE("BasicRule","BR"), 
 	COMPLETE_RULE("CompleteRule","CR"),
 	RULE_GUARD("RuleGuard","RG"),
-	RULE_UPDATE("RuleUpdate","RU"),
+	RULE_UPDATE("RuleUpdate","UR"),
 	MCDC("MCDC","MCDC"),
 	// combinatorial
 	COMBINATORIAL_MON("pairwise monitored", "pair"),

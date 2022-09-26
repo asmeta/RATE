@@ -1,0 +1,6 @@
+scenario testBR_r_Main_TT5
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@BR_r_Main_TT5
+//// generated for (test goal): BR_r_Main_TT5: (not requestSatisfied and (systemTime < 24)) and ((((redLed = ON) and not((systemTime - drawerTimer) >= tenMinutes)) and opened) and not openSwitch)

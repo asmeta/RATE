@@ -1,0 +1,20 @@
+scenario testCR_r_Main_T
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@CR_r_Main_T
+//// generated for (test goal): CR_r_Main_T: (not requestSatisfied and (systemTime < 24)) and (((systemTime != ((systemTime + 1) % 24)) or (((((redLed = ON) and not((systemTime - drawerTimer) >= tenMinutes)) and opened) and not openSwitch) and ((((redLed != OFF) or (outMess != NONE)) or (drawerTimer != systemTime)) or (requestSatisfied != true)))) or ((((redLed = ON) and not opened) and openSwitch) and ((redLed != BLINKING) or (outMess != CLOSE_DRAWER_IN_10_MIN))))
+check requestSatisfied = false;
+check opened = false;
+check drawerTimer = 0;
+check tenMinutes = 1;
+check redLed = OFF;
+check logMess = NONE;
+check time_consumption = 1;
+check outMess = NONE;
+check systemTime = 0;
+set openSwitch := false;
+step
+check systemTime = 1;
+set openSwitch := false;
+step

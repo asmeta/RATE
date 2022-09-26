@@ -1,0 +1,6 @@
+scenario testBR_r_Main_TTF7
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@BR_r_Main_TTF7
+//// generated for (test goal): BR_r_Main_TTF7: (not requestSatisfied and (systemTime < 24)) and ((redLed = ON) and ((systemTime - drawerTimer) < tenMinutes))

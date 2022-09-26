@@ -1,0 +1,42 @@
+scenario testBR_r_Main_TTFTF8
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@BR_r_Main_TTFTF8
+//// generated for (test goal): BR_r_Main_TTFTF8: (not requestSatisfied and (systemTime < 24)) and ((redLed = BLINKING) and (not(not openSwitch and opened) and (((systemTime - drawerTimer) > tenMinutes) and not openSwitch)))
+check time_consumption = 1;
+check systemTime = 0;
+check logMess = NONE;
+check tenMinutes = 1;
+check redLed = OFF;
+check requestSatisfied = false;
+check drawerTimer = 0;
+check outMess = NONE;
+check opened = false;
+set openSwitch := false;
+step
+check systemTime = 1;
+set openSwitch := false;
+step
+check systemTime = 2;
+check redLed = ON;
+check drawerTimer = 1;
+check outMess = TAKE_PILL;
+set openSwitch := false;
+step
+check systemTime = 3;
+check redLed = BLINKING;
+check drawerTimer = 2;
+check outMess = TAKE_PILL_IN_10_MIN;
+set openSwitch := false;
+step
+check systemTime = 4;
+set openSwitch := false;
+step
+check systemTime = 5;
+check logMess = PILL_MISSED;
+check redLed = OFF;
+check requestSatisfied = true;
+check drawerTimer = 4;
+check outMess = NONE;
+step

@@ -1,0 +1,21 @@
+scenario testBR_r_Main_TT2
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@BR_r_Main_TT2
+//// generated for (test goal): BR_r_Main_TT2: (not requestSatisfied and (systemTime < 24)) and (not opened and openSwitch)
+check time_consumption = 1;
+check systemTime = 0;
+check logMess = NONE;
+check tenMinutes = 1;
+check redLed = OFF;
+check requestSatisfied = false;
+check drawerTimer = 0;
+check outMess = NONE;
+check opened = false;
+set openSwitch := true;
+step
+check systemTime = 1;
+check opened = true;
+set openSwitch := false;
+step

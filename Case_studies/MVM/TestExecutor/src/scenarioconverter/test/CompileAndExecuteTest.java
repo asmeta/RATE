@@ -13,6 +13,7 @@ import java.util.List;
 
 import scenarioconverter.ScenarioConverter;
 import scenarioconverter.util.Configuration;
+import scenarioconverter.util.CriteriaEnum;
 
 public class CompileAndExecuteTest {
 
@@ -26,24 +27,25 @@ public class CompileAndExecuteTest {
 		{		
 			// level 0
 //			add(new Configuration("00", "config/config3.json", Configuration.MANUAL_TEST));
-			add(new Configuration("00", "config/config3.json", Configuration.ALL_CRITERIA));
+//			add(new Configuration("00", "config/config3.json", Configuration.ALL_CRITERIA));
 //			// level 1
 //			add(new Configuration("01", "config/config3.json", Configuration.MANUAL_TEST));
-			add(new Configuration("01", "config/config3.json", Configuration.ALL_CRITERIA));
+//			add(new Configuration("01", "config/config3.json", Configuration.ALL_CRITERIA));
 //			// level 2
 //			add(new Configuration("02", "config/config3.json", Configuration.MANUAL_TEST));
-			add(new Configuration("02", "config/config3.json", Configuration.ALL_CRITERIA));
+//			add(new Configuration("02", "config/config3.json", Configuration.ALL_CRITERIA));
 //			// level 3
 //			add(new Configuration("03", "config/config3.json", Configuration.MANUAL_TEST));
 //			add(new Configuration("03", "config/config3.json", Configuration.ALL_CRITERIA));
-			//add(new Configuration("NR", "config/config3.json", Configuration.ALL_CRITERIA));
+			
+			add(new Configuration("NR", "config/config3.json", Configuration.ALL_CRITERIA));
 		}
 	};	
 	
 	public static void main(String[] args) throws Exception {
 		// Now compile the MVM code with the GoogleTests
-		executeBat("build_gtest.bat");
-		executeBat("build_MVM.bat");
+		// executeBat("build_gtest.bat");
+		// executeBat("build_MVM.bat");
 		// XXX Select the configuration you want to execute
 		//Configuration c = filesToProcess.get(0);
 		List<Boolean> failures = new ArrayList<>();

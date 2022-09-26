@@ -13,7 +13,7 @@ MODULE main
 		time_consumption: {-2147483647, 0, 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 22, 23, 3, 4, 5, 6, 7, 8, 9}; --controlled
 	DEFINE
 		tenMinutes := 1;
-	CONSTANTS OUTMESSAGES_UNDEF, CLOSE_DRAWER_IN_10_MIN, DRAWER_NOT_CLOSED, NONE, PILL_MISSED, TAKE_PILL, TAKE_PILL_IN_10_MIN, LEDLIGHTS_UNDEF, BLINKING, OFF, ON;
+	CONSTANTS LEDLIGHTS_UNDEF, BLINKING, OFF, ON, OUTMESSAGES_UNDEF, CLOSE_DRAWER_IN_10_MIN, DRAWER_NOT_CLOSED, NONE, PILL_MISSED, TAKE_PILL, TAKE_PILL_IN_10_MIN;
 	ASSIGN
 		init(drawerTimer) := 0;
 		init(logMess) := NONE;
@@ -67,4 +67,4 @@ MODULE main
 			esac;
 		next(time_consumption) := time_consumption;
 --LTL properties
-LTLSPEC NAME ltl0 := G(!(((! requestSatisfied & (systemTime < 24)) & ((((redLed = ON) & !((systemTime - drawerTimer) >= tenMinutes)) & opened) & ! openSwitch)) & X(TRUE)));
+LTLSPEC NAME ltl0 := G(!(((! requestSatisfied & (systemTime < 24)) & ((redLed = ON) & (((systemTime - drawerTimer) >= tenMinutes) & (opened & ((redLed != BLINKING) & (outMess = CLOSE_DRAWER_IN_10_MIN)))))) & X(TRUE)));

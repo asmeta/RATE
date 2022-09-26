@@ -1,0 +1,6 @@
+scenario testMCDC_r_Main_T_T_T_MCDC_r_pillToBeTaken_F14
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@MCDC_r_Main_T_T_T_MCDC_r_pillToBeTaken_F14
+//// generated for (test goal): MCDC_r_Main_T_T_T_MCDC_r_pillToBeTaken_F14: (not requestSatisfied and (systemTime < 24)) and ((redLed = OFF) and (((time_consumption <= systemTime) and not requestSatisfied) and (redLed = ON)))

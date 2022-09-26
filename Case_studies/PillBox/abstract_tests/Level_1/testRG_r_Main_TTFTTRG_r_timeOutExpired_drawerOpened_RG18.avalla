@@ -1,0 +1,43 @@
+scenario testRG_r_Main_TTFTTRG_r_timeOutExpired_drawerOpened_RG18
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@RG_r_Main_TTFTTRG_r_timeOutExpired_drawerOpened_RG18
+//// generated for (test goal): RG_r_Main_TTFTTRG_r_timeOutExpired_drawerOpened_RG18: (not requestSatisfied and (systemTime < 24)) and ((redLed = BLINKING) and (not(not openSwitch and opened) and (((systemTime - drawerTimer) > tenMinutes) and (openSwitch and (redLed != OFF)))))
+check logMess = NONE;
+check tenMinutes = 1;
+check redLed = OFF;
+check opened = false;
+check systemTime = 0;
+check time_consumption = 1;
+check drawerTimer = 0;
+check outMess = NONE;
+check requestSatisfied = false;
+set openSwitch := false;
+step
+check systemTime = 1;
+set openSwitch := true;
+step
+check redLed = ON;
+check opened = true;
+check systemTime = 2;
+check drawerTimer = 1;
+check outMess = TAKE_PILL;
+set openSwitch := true;
+step
+check redLed = BLINKING;
+check systemTime = 3;
+check drawerTimer = 2;
+check outMess = CLOSE_DRAWER_IN_10_MIN;
+set openSwitch := true;
+step
+check systemTime = 4;
+set openSwitch := true;
+step
+check logMess = DRAWER_NOT_CLOSED;
+check redLed = OFF;
+check systemTime = 5;
+check drawerTimer = 4;
+check outMess = NONE;
+check requestSatisfied = true;
+step

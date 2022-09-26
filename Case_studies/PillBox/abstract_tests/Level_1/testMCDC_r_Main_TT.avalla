@@ -1,0 +1,41 @@
+scenario testMCDC_r_Main_TT
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@MCDC_r_Main_TT
+//// generated for (test goal): MCDC_r_Main_TT: requestSatisfied and (systemTime < 24)
+check systemTime = 0;
+check requestSatisfied = false;
+check tenMinutes = 1;
+check redLed = OFF;
+check time_consumption = 1;
+check logMess = NONE;
+check opened = false;
+check outMess = NONE;
+check drawerTimer = 0;
+set openSwitch := false;
+step
+check systemTime = 1;
+set openSwitch := false;
+step
+check systemTime = 2;
+check redLed = ON;
+check outMess = TAKE_PILL;
+check drawerTimer = 1;
+set openSwitch := true;
+step
+check systemTime = 3;
+check redLed = BLINKING;
+check opened = true;
+check outMess = CLOSE_DRAWER_IN_10_MIN;
+check drawerTimer = 2;
+set openSwitch := false;
+step
+check systemTime = 4;
+check requestSatisfied = true;
+check redLed = OFF;
+check opened = false;
+check outMess = NONE;
+check drawerTimer = 3;
+step
+step

@@ -1,0 +1,6 @@
+scenario testRG_r_Main_TTTFTRG_r_takeInTimeout_F17
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@RG_r_Main_TTTFTRG_r_takeInTimeout_F17
+//// generated for (test goal): RG_r_Main_TTTFTRG_r_takeInTimeout_F17: (not requestSatisfied and (systemTime < 24)) and ((redLed = ON) and (((systemTime - drawerTimer) >= tenMinutes) and (not opened and (not openSwitch and not((redLed != BLINKING) and (outMess != TAKE_PILL_IN_10_MIN))))))

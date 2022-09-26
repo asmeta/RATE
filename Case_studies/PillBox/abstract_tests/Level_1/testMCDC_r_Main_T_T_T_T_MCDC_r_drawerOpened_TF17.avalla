@@ -1,0 +1,6 @@
+scenario testMCDC_r_Main_T_T_T_T_MCDC_r_drawerOpened_TF17
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@MCDC_r_Main_T_T_T_T_MCDC_r_drawerOpened_TF17
+//// generated for (test goal): MCDC_r_Main_T_T_T_T_MCDC_r_drawerOpened_TF17: (not requestSatisfied and (systemTime < 24)) and ((redLed = ON) and (((systemTime - drawerTimer) >= tenMinutes) and (opened and ((redLed != BLINKING) and (outMess = CLOSE_DRAWER_IN_10_MIN)))))

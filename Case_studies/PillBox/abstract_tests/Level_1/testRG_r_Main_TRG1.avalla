@@ -1,0 +1,20 @@
+scenario testRG_r_Main_TRG1
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@RG_r_Main_TRG1
+//// generated for (test goal): RG_r_Main_TRG1: (not requestSatisfied and (systemTime < 24)) and (systemTime != ((systemTime + 1) % 24))
+check logMess = NONE;
+check tenMinutes = 1;
+check redLed = OFF;
+check opened = false;
+check systemTime = 0;
+check time_consumption = 1;
+check drawerTimer = 0;
+check outMess = NONE;
+check requestSatisfied = false;
+set openSwitch := false;
+step
+check systemTime = 1;
+set openSwitch := false;
+step

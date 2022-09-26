@@ -74,6 +74,10 @@ public class AbstractTestsGenerator {
 	static String ABSTRACT_TESTS_FOLDER_MVM = "../Case_studies/MVM/abstract_tests/MVM_";
 	static String ASM_FOLDER_PILLBOX = "../Case_studies/PillBox/ASM/Level_";
 	static String ABSTRACT_TESTS_FOLDER_PILLBOX = "../Case_studies/PillBox/abstract_tests/Level_";
+	static String ASM_FOLDER_CARSYSTEM = "../Case_studies/CarSystem/ASM/CarSystem";
+	static String ABSTRACT_TESTS_FOLDER_CARSYSTEM = "../Case_studies/CarSystem/abstract_tests/CarSystem";
+	static String ASM_FOLDER_HEMO = "../Case_studies/Hemodialysis/ASM/Level_";
+	static String ABSTRACT_TESTS_FOLDER_HEMO = "../Case_studies/Hemodialysis/abstract_tests/Level_";
 
 	List<Configuration> filesToProcess = new ArrayList<Configuration>() {
 		
@@ -166,31 +170,149 @@ public class AbstractTestsGenerator {
 //			add(new Configuration(ASM_FOLDER_PILLBOX + "0/pillbox_0.asm", "0", true, true, CriteriaEnum.RULE_GUARD));
 //			add(new Configuration(ASM_FOLDER_PILLBOX + "0/pillbox_0.asm", "0", true, true, CriteriaEnum.RULE_UPDATE));
 //			add(new Configuration(ASM_FOLDER_PILLBOX + "0/pillbox_0.asm", "0", true, true, CriteriaEnum.THREEWISE_MON));
+//			
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.THREEWISE_MON));
+//			
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.THREEWISE_MON));
+//			
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.THREEWISE_MON));	
+//			
+			//----------------------------
+			// CarSystem Case Study
+			//----------------------------	
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "001/CarSystem001main.asm", "001", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "001/CarSystem001main.asm", "001", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "001/CarSystem001main.asm", "001", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "001/CarSystem001main.asm", "001", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "001/CarSystem001main.asm", "001", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "001/CarSystem001main.asm", "001", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "001/CarSystem001main.asm", "001", true, true, CriteriaEnum.THREEWISE_MON));
+//			
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "002/CarSystem002main.asm", "002", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "002/CarSystem002main.asm", "002", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "002/CarSystem002main.asm", "002", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "002/CarSystem002main.asm", "002", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "002/CarSystem002main.asm", "002", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "002/CarSystem002main.asm", "002", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "002/CarSystem002main.asm", "002", true, true, CriteriaEnum.THREEWISE_MON));
+//			
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "003/CarSystem003main.asm", "003", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "003/CarSystem003main.asm", "003", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "003/CarSystem003main.asm", "003", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "003/CarSystem003main.asm", "003", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "003/CarSystem003main.asm", "003", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "003/CarSystem003main.asm", "003", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "003/CarSystem003main.asm", "003", true, true, CriteriaEnum.THREEWISE_MON));
+//
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "004/CarSystem004main.asm", "004", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "004/CarSystem004main.asm", "004", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "004/CarSystem004main.asm", "004", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "004/CarSystem004main.asm", "004", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "004/CarSystem004main.asm", "004", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "004/CarSystem004main.asm", "004", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "004/CarSystem004main.asm", "004", true, true, CriteriaEnum.THREEWISE_MON));
+//			
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "005/CarSystem005main.asm", "005", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "005/CarSystem005main.asm", "005", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "005/CarSystem005main.asm", "005", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "005/CarSystem005main.asm", "005", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "005/CarSystem005main.asm", "005", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "005/CarSystem005main.asm", "005", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "005/CarSystem005main.asm", "005", true, true, CriteriaEnum.THREEWISE_MON));
+//			
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "006/CarSystem006main.asm", "006", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "006/CarSystem006main.asm", "006", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "006/CarSystem006main.asm", "006", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "006/CarSystem006main.asm", "006", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "006/CarSystem006main.asm", "006", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "006/CarSystem006main.asm", "006", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "006/CarSystem006main.asm", "006", true, true, CriteriaEnum.THREEWISE_MON));
+//
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "007/CarSystem007main.asm", "007", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "007/CarSystem007main.asm", "007", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "007/CarSystem007main.asm", "007", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "007/CarSystem007main.asm", "007", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "007/CarSystem007main.asm", "007", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "007/CarSystem007main.asm", "007", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "007/CarSystem007main.asm", "007", true, true, CriteriaEnum.THREEWISE_MON));
+//			
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "008/CarSystem008main.asm", "008", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "008/CarSystem008main.asm", "008", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "008/CarSystem008main.asm", "008", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "008/CarSystem008main.asm", "008", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "008/CarSystem008main.asm", "008", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "008/CarSystem008main.asm", "008", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "008/CarSystem008main.asm", "008", true, true, CriteriaEnum.THREEWISE_MON));
+//			
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "009/CarSystem009main.asm", "009", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "009/CarSystem009main.asm", "009", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "009/CarSystem009main.asm", "009", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "009/CarSystem009main.asm", "009", true, true, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "009/CarSystem009main.asm", "009", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "009/CarSystem009main.asm", "009", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_CARSYSTEM + "009/CarSystem009main.asm", "009", true, true, CriteriaEnum.THREEWISE_MON));
+//		
+			//----------------------------
+			// Hemodialysis Case Study
+			//----------------------------	
+			add(new Configuration(ASM_FOLDER_HEMO + "0/Hemodialysis_GM.asm", "0", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_HEMO + "0/Hemodialysis_GM.asm", "0", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_HEMO + "0/Hemodialysis_GM.asm", "0", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_HEMO + "0/Hemodialysis_GM.asm", "0", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_HEMO + "0/Hemodialysis_GM.asm", "0", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_HEMO + "0/Hemodialysis_GM.asm", "0", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_HEMO + "0/Hemodialysis_GM.asm", "0", true, true, CriteriaEnum.THREEWISE_MON));
 			
-			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.BASIC_RULE));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.MCDC));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.RULE_GUARD));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.RULE_UPDATE));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.THREEWISE_MON));
+			add(new Configuration(ASM_FOLDER_HEMO + "1/Hemodialysis_ref1_par.asm", "1", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_HEMO + "1/Hemodialysis_ref1_par.asm", "1", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_HEMO + "1/Hemodialysis_ref1_par.asm", "1", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_HEMO + "1/Hemodialysis_ref1_par.asm", "1", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_HEMO + "1/Hemodialysis_ref1_par.asm", "1", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_HEMO + "1/Hemodialysis_ref1_par.asm", "1", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_HEMO + "1/Hemodialysis_ref1_par.asm", "1", true, true, CriteriaEnum.THREEWISE_MON));
+		
+			add(new Configuration(ASM_FOLDER_HEMO + "2/Hemodialysis_ref2_par.asm", "2", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_HEMO + "2/Hemodialysis_ref2_par.asm", "2", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_HEMO + "2/Hemodialysis_ref2_par.asm", "2", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_HEMO + "2/Hemodialysis_ref2_par.asm", "2", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_HEMO + "2/Hemodialysis_ref2_par.asm", "2", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_HEMO + "2/Hemodialysis_ref2_par.asm", "2", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_HEMO + "2/Hemodialysis_ref2_par.asm", "2", true, true, CriteriaEnum.THREEWISE_MON));
 			
-			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.BASIC_RULE));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.MCDC));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.RULE_GUARD));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.RULE_UPDATE));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.THREEWISE_MON));
+			add(new Configuration(ASM_FOLDER_HEMO + "3/Hemodialysis_ref3_par.asm", "3", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_HEMO + "3/Hemodialysis_ref3_par.asm", "3", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_HEMO + "3/Hemodialysis_ref3_par.asm", "3", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_HEMO + "3/Hemodialysis_ref3_par.asm", "3", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_HEMO + "3/Hemodialysis_ref3_par.asm", "3", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_HEMO + "3/Hemodialysis_ref3_par.asm", "3", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_HEMO + "3/Hemodialysis_ref3_par.asm", "3", true, true, CriteriaEnum.THREEWISE_MON));
 			
-			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.BASIC_RULE));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.MCDC));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.RULE_GUARD));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.RULE_UPDATE));
-			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.THREEWISE_MON));		
-
+			add(new Configuration(ASM_FOLDER_HEMO + "4/Hemodialysis_ref4_par.asm", "4", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_HEMO + "4/Hemodialysis_ref4_par.asm", "4", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_HEMO + "4/Hemodialysis_ref4_par.asm", "4", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_HEMO + "4/Hemodialysis_ref4_par.asm", "4", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_HEMO + "4/Hemodialysis_ref4_par.asm", "4", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_HEMO + "4/Hemodialysis_ref4_par.asm", "4", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_HEMO + "4/Hemodialysis_ref4_par.asm", "4", true, true, CriteriaEnum.THREEWISE_MON));
+			
 		}
 	};	
 	
@@ -209,6 +331,10 @@ public class AbstractTestsGenerator {
 			abstract_test_folder = ABSTRACT_TESTS_FOLDER_MVM;
 		else if (c.asmPath.contains(ASM_FOLDER_PILLBOX))
 			abstract_test_folder = ABSTRACT_TESTS_FOLDER_PILLBOX;
+		else if (c.asmPath.contains(ASM_FOLDER_CARSYSTEM))
+			abstract_test_folder = ASM_FOLDER_CARSYSTEM;
+		else if (c.asmPath.contains(ASM_FOLDER_HEMO))
+			abstract_test_folder = ASM_FOLDER_HEMO;
 		
 		generateAbstractTests(c, abstract_test_folder);	
 	}
@@ -232,6 +358,10 @@ public class AbstractTestsGenerator {
 				abstract_test_folder = ABSTRACT_TESTS_FOLDER_MVM;
 			else if (c.asmPath.contains(ASM_FOLDER_PILLBOX))
 				abstract_test_folder = ABSTRACT_TESTS_FOLDER_PILLBOX;
+			else if (c.asmPath.contains(ASM_FOLDER_CARSYSTEM))
+				abstract_test_folder = ASM_FOLDER_CARSYSTEM;
+			else if (c.asmPath.contains(ASM_FOLDER_HEMO))
+				abstract_test_folder = ASM_FOLDER_HEMO;
 			
 			generateAbstractTests(c, abstract_test_folder);	
 		}	

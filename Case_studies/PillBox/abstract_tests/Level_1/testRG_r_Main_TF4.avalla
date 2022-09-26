@@ -1,0 +1,34 @@
+scenario testRG_r_Main_TF4
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@RG_r_Main_TF4
+//// generated for (test goal): RG_r_Main_TF4: (not requestSatisfied and (systemTime < 24)) and (redLed != OFF)
+check logMess = NONE;
+check tenMinutes = 1;
+check redLed = OFF;
+check opened = false;
+check systemTime = 0;
+check time_consumption = 1;
+check drawerTimer = 0;
+check outMess = NONE;
+check requestSatisfied = false;
+set openSwitch := false;
+step
+check systemTime = 1;
+set openSwitch := true;
+step
+check redLed = ON;
+check opened = true;
+check systemTime = 2;
+check drawerTimer = 1;
+check outMess = TAKE_PILL;
+set openSwitch := false;
+step
+check redLed = BLINKING;
+check opened = false;
+check systemTime = 3;
+check drawerTimer = 2;
+check outMess = CLOSE_DRAWER_IN_10_MIN;
+set openSwitch := false;
+step

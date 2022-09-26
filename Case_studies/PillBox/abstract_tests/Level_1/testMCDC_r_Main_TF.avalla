@@ -1,0 +1,6 @@
+scenario testMCDC_r_Main_TF
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@MCDC_r_Main_TF
+//// generated for (test goal): MCDC_r_Main_TF: not requestSatisfied and (systemTime >= 24)

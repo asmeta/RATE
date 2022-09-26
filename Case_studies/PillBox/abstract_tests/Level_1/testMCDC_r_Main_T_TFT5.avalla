@@ -1,0 +1,6 @@
+scenario testMCDC_r_Main_T_TFT5
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@MCDC_r_Main_T_TFT5
+//// generated for (test goal): MCDC_r_Main_T_TFT5: (not requestSatisfied and (systemTime < 24)) and ((((redLed = ON) and not((systemTime - drawerTimer) >= tenMinutes)) and not opened) and not openSwitch)

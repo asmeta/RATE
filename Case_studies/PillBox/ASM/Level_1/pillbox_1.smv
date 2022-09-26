@@ -67,4 +67,4 @@ MODULE main
 			esac;
 		next(time_consumption) := time_consumption;
 --LTL properties
-LTLSPEC NAME ltl0 := G(!(((! requestSatisfied & (systemTime < 24)) & ((redLed = ON) & (((systemTime - drawerTimer) >= tenMinutes) & (opened & ((redLed != BLINKING) & (outMess = CLOSE_DRAWER_IN_10_MIN)))))) & X(TRUE)));
+LTLSPEC NAME ltl0 := G(!(((! requestSatisfied & (systemTime < 24)) & (((((redLed = ON) & !((systemTime - drawerTimer) >= tenMinutes)) & opened) & ! openSwitch) & (outMess != NONE))) & X(TRUE)));

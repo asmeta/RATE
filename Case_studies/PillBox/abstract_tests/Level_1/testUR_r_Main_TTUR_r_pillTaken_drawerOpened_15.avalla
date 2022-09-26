@@ -1,0 +1,6 @@
+scenario testUR_r_Main_TTUR_r_pillTaken_drawerOpened_15
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@UR_r_Main_TTUR_r_pillTaken_drawerOpened_15
+//// generated for (test goal): UR_r_Main_TTUR_r_pillTaken_drawerOpened_15: (not requestSatisfied and (systemTime < 24)) and (((((redLed = ON) and not((systemTime - drawerTimer) >= tenMinutes)) and opened) and not openSwitch) and (redLed != OFF))

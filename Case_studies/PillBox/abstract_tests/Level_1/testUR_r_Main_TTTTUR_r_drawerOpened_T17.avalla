@@ -1,0 +1,34 @@
+scenario testUR_r_Main_TTTTUR_r_drawerOpened_T17
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@UR_r_Main_TTTTUR_r_drawerOpened_T17
+//// generated for (test goal): UR_r_Main_TTTTUR_r_drawerOpened_T17: (not requestSatisfied and (systemTime < 24)) and ((redLed = ON) and (((systemTime - drawerTimer) >= tenMinutes) and (opened and (((redLed != BLINKING) and (outMess != CLOSE_DRAWER_IN_10_MIN)) and (drawerTimer != systemTime)))))
+check systemTime = 0;
+check tenMinutes = 1;
+check opened = false;
+check outMess = NONE;
+check logMess = NONE;
+check redLed = OFF;
+check requestSatisfied = false;
+check drawerTimer = 0;
+check time_consumption = 1;
+set openSwitch := false;
+step
+check systemTime = 1;
+set openSwitch := true;
+step
+check systemTime = 2;
+check opened = true;
+check outMess = TAKE_PILL;
+check redLed = ON;
+check drawerTimer = 1;
+set openSwitch := false;
+step
+check systemTime = 3;
+check opened = false;
+check outMess = CLOSE_DRAWER_IN_10_MIN;
+check redLed = BLINKING;
+check drawerTimer = 2;
+set openSwitch := false;
+step

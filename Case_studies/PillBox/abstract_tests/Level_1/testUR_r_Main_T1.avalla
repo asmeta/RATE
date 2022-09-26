@@ -1,0 +1,20 @@
+scenario testUR_r_Main_T1
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@UR_r_Main_T1
+//// generated for (test goal): UR_r_Main_T1: (not requestSatisfied and (systemTime < 24)) and (systemTime != ((systemTime + 1) % 24))
+check systemTime = 0;
+check tenMinutes = 1;
+check opened = false;
+check outMess = NONE;
+check logMess = NONE;
+check redLed = OFF;
+check requestSatisfied = false;
+check drawerTimer = 0;
+check time_consumption = 1;
+set openSwitch := false;
+step
+check systemTime = 1;
+set openSwitch := false;
+step

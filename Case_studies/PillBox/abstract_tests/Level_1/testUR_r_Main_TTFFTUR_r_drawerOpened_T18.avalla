@@ -1,0 +1,6 @@
+scenario testUR_r_Main_TTFFTUR_r_drawerOpened_T18
+
+load ./..\..\ASM\Level_1\pillbox_1.asm
+
+//// test name test@UR_r_Main_TTFFTUR_r_drawerOpened_T18
+//// generated for (test goal): UR_r_Main_TTFFTUR_r_drawerOpened_T18: (not requestSatisfied and (systemTime < 24)) and ((redLed = BLINKING) and (not(not openSwitch and opened) and (not((systemTime - drawerTimer) > tenMinutes) and (openSwitch and (((redLed != BLINKING) and (outMess != CLOSE_DRAWER_IN_10_MIN)) and (drawerTimer != systemTime))))))

@@ -1,0 +1,36 @@
+scenario testRG_r_Main_TFTTRG_r_timeOutExpired_drawerOpened_RG17
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@RG_r_Main_TFTTRG_r_timeOutExpired_drawerOpened_RG17
+//// generated for (test goal): RG_r_Main_TFTTRG_r_timeOutExpired_drawerOpened_RG17: (redLed = BLINKING) and (not(not openSwitch and opened) and (timeDiffOver600 and (openSwitch and (redLed != OFF))))
+check logMess = NONE;
+check opened = false;
+check outMess = NONE;
+check redLed = OFF;
+set takeThePill := false;
+set timeDiffOver600 := false;
+set openSwitch := false;
+step
+set takeThePill := true;
+set timeDiffOver600 := false;
+set openSwitch := false;
+step
+check outMess = TAKE_PILL;
+check redLed = ON;
+set timeDiffOver600 := true;
+set openSwitch := false;
+step
+check outMess = TAKE_PILL_IN_10_MIN;
+check redLed = BLINKING;
+set timeDiffOver600 := true;
+set openSwitch := true;
+step
+check logMess = DRAWER_NOT_CLOSED;
+check opened = true;
+check outMess = NONE;
+check redLed = OFF;
+set takeThePill := false;
+set timeDiffOver600 := false;
+set openSwitch := false;
+step

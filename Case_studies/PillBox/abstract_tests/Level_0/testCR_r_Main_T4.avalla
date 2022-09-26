@@ -1,0 +1,31 @@
+scenario testCR_r_Main_T4
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@CR_r_Main_T4
+//// generated for (test goal): CR_r_Main_T4: ((((redLed = ON) and not timeDiffOver600) and opened) and not openSwitch) and ((redLed != OFF) or (outMess != NONE))
+check outMess = NONE;
+check opened = false;
+check redLed = OFF;
+check logMess = NONE;
+set openSwitch := false;
+set takeThePill := false;
+set timeDiffOver600 := false;
+step
+set openSwitch := true;
+set takeThePill := true;
+set timeDiffOver600 := false;
+step
+check outMess = TAKE_PILL;
+check opened = true;
+check redLed = ON;
+set openSwitch := false;
+set timeDiffOver600 := false;
+step
+check outMess = NONE;
+check opened = false;
+check redLed = OFF;
+set openSwitch := false;
+set takeThePill := false;
+set timeDiffOver600 := false;
+step

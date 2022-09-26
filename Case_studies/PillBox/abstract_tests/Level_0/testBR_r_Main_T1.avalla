@@ -1,0 +1,19 @@
+scenario testBR_r_Main_T1
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@BR_r_Main_T1
+//// generated for (test goal): BR_r_Main_T1: not opened and openSwitch
+check logMess = NONE;
+check outMess = NONE;
+check redLed = OFF;
+check opened = false;
+set openSwitch := true;
+set takeThePill := false;
+set timeDiffOver600 := false;
+step
+check opened = true;
+set openSwitch := false;
+set takeThePill := false;
+set timeDiffOver600 := false;
+step

@@ -1,0 +1,23 @@
+scenario testRG_r_Main_TTRG_r_pillToBeTaken_RG13
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@RG_r_Main_TTRG_r_pillToBeTaken_RG13
+//// generated for (test goal): RG_r_Main_TTRG_r_pillToBeTaken_RG13: (redLed = OFF) and (takeThePill and (redLed != ON))
+check logMess = NONE;
+check opened = false;
+check outMess = NONE;
+check redLed = OFF;
+set takeThePill := false;
+set timeDiffOver600 := false;
+set openSwitch := false;
+step
+set takeThePill := true;
+set timeDiffOver600 := false;
+set openSwitch := false;
+step
+check outMess = TAKE_PILL;
+check redLed = ON;
+set timeDiffOver600 := false;
+set openSwitch := false;
+step

@@ -1,0 +1,37 @@
+scenario testBR_r_Main_TFTF7
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@BR_r_Main_TFTF7
+//// generated for (test goal): BR_r_Main_TFTF7: (redLed = BLINKING) and (not(not openSwitch and opened) and (timeDiffOver600 and not openSwitch))
+check logMess = NONE;
+check outMess = NONE;
+check redLed = OFF;
+check opened = false;
+set openSwitch := false;
+set takeThePill := false;
+set timeDiffOver600 := false;
+step
+set openSwitch := true;
+set takeThePill := true;
+set timeDiffOver600 := false;
+step
+check outMess = TAKE_PILL;
+check redLed = ON;
+check opened = true;
+set openSwitch := false;
+set timeDiffOver600 := true;
+step
+check outMess = CLOSE_DRAWER_IN_10_MIN;
+check redLed = BLINKING;
+check opened = false;
+set openSwitch := false;
+set timeDiffOver600 := true;
+step
+check logMess = PILL_MISSED;
+check outMess = NONE;
+check redLed = OFF;
+set openSwitch := false;
+set takeThePill := false;
+set timeDiffOver600 := false;
+step

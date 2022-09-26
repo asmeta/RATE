@@ -1,0 +1,26 @@
+scenario testMCDC_r_Main_TFT4
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@MCDC_r_Main_TFT4
+//// generated for (test goal): MCDC_r_Main_TFT4: (((redLed = ON) and not timeDiffOver600) and not opened) and not openSwitch
+check logMess = NONE;
+check outMess = NONE;
+check opened = false;
+check redLed = OFF;
+set timeDiffOver600 := false;
+set openSwitch := false;
+set takeThePill := false;
+step
+set timeDiffOver600 := false;
+set openSwitch := false;
+set takeThePill := true;
+step
+check outMess = TAKE_PILL;
+check redLed = ON;
+set timeDiffOver600 := false;
+set openSwitch := false;
+step
+set timeDiffOver600 := false;
+set openSwitch := false;
+step

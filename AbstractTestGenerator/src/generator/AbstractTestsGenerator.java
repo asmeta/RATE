@@ -72,6 +72,8 @@ public class AbstractTestsGenerator {
 	static String ABSTRACT_TESTS_FOLDER_PHD = "../Case_studies/PHD_Protocol/abstract_tests/PHD_Protocol_";
 	static String ASM_FOLDER_MVM = "../Case_studies/MVM/ASM/MVM_";
 	static String ABSTRACT_TESTS_FOLDER_MVM = "../Case_studies/MVM/abstract_tests/MVM_";
+	static String ASM_FOLDER_PILLBOX = "../Case_studies/PillBox/ASM/Level_";
+	static String ABSTRACT_TESTS_FOLDER_PILLBOX = "../Case_studies/PillBox/abstract_tests/Level_";
 
 	List<Configuration> filesToProcess = new ArrayList<Configuration>() {
 		
@@ -146,13 +148,49 @@ public class AbstractTestsGenerator {
 //			add(new Configuration(ASM_FOLDER_MVM + "03/Ventilatore4SimpleTimeLtdY.asm", "03", true, true, CriteriaEnum.RULE_UPDATE));
 //			add(new Configuration(ASM_FOLDER_MVM + "03/Ventilatore4SimpleTimeLtdY.asm", "03", true, true, CriteriaEnum.THREEWISE_MON));		
 //			
-			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.BASIC_RULE));
-			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.COMBINATORIAL_MON));
-			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.COMPLETE_RULE));
-			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", false, false, CriteriaEnum.MCDC));
-			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.RULE_GUARD));
-			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.RULE_UPDATE));
-			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.THREEWISE_MON));
+//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.BASIC_RULE));
+//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.COMBINATORIAL_MON));
+//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.COMPLETE_RULE));
+//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", false, false, CriteriaEnum.MCDC));
+//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.RULE_GUARD));
+//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.RULE_UPDATE));
+//			add(new Configuration(ASM_FOLDER_MVM + "NR/VentilatoreNR.asm", "NR", true, true, CriteriaEnum.THREEWISE_MON));
+			
+			//----------------------------
+			// PillBox Case Study
+			//----------------------------	
+			add(new Configuration(ASM_FOLDER_PILLBOX + "0/pillbox_0.asm", "0", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "0/pillbox_0.asm", "0", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "0/pillbox_0.asm", "0", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "0/pillbox_0.asm", "0", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "0/pillbox_0.asm", "0", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "0/pillbox_0.asm", "0", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "0/pillbox_0.asm", "0", true, true, CriteriaEnum.THREEWISE_MON));
+			
+			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "1/pillbox_1.asm", "1", true, true, CriteriaEnum.THREEWISE_MON));
+			
+			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.COMBINATORIAL_MON));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "2/pillbox_2.asm", "2", true, true, CriteriaEnum.THREEWISE_MON));
+			
+			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.BASIC_RULE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.COMBINATORIAL_ALL));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.COMPLETE_RULE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.MCDC));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.RULE_GUARD));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.RULE_UPDATE));
+			add(new Configuration(ASM_FOLDER_PILLBOX + "3/pillbox_FULL.asm", "3", true, true, CriteriaEnum.THREEWISE_MON));		
+
 		}
 	};	
 	
@@ -169,6 +207,8 @@ public class AbstractTestsGenerator {
 			abstract_test_folder = ABSTRACT_TESTS_FOLDER_PHD;
 		else if (c.asmPath.contains(ASM_FOLDER_MVM))
 			abstract_test_folder = ABSTRACT_TESTS_FOLDER_MVM;
+		else if (c.asmPath.contains(ASM_FOLDER_PILLBOX))
+			abstract_test_folder = ABSTRACT_TESTS_FOLDER_PILLBOX;
 		
 		generateAbstractTests(c, abstract_test_folder);	
 	}
@@ -190,6 +230,8 @@ public class AbstractTestsGenerator {
 				abstract_test_folder = ABSTRACT_TESTS_FOLDER_PHD;
 			else if (c.asmPath.contains(ASM_FOLDER_MVM))
 				abstract_test_folder = ABSTRACT_TESTS_FOLDER_MVM;
+			else if (c.asmPath.contains(ASM_FOLDER_PILLBOX))
+				abstract_test_folder = ABSTRACT_TESTS_FOLDER_PILLBOX;
 			
 			generateAbstractTests(c, abstract_test_folder);	
 		}	

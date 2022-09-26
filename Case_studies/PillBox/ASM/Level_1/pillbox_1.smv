@@ -1,0 +1,70 @@
+--file ..\Case_studies\PillBox\ASM\Level_1\pillbox_1.smv
+-- options: flatten? false
+MODULE main
+	VAR
+		drawerTimer: {-2147483647, 0, 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 22, 23, 3, 4, 5, 6, 7, 8, 9}; --controlled
+		logMess: {CLOSE_DRAWER_IN_10_MIN, DRAWER_NOT_CLOSED, NONE, OUTMESSAGES_UNDEF, PILL_MISSED, TAKE_PILL, TAKE_PILL_IN_10_MIN}; --controlled
+		openSwitch: boolean; --monitored
+		opened: boolean; --controlled
+		outMess: {CLOSE_DRAWER_IN_10_MIN, DRAWER_NOT_CLOSED, NONE, OUTMESSAGES_UNDEF, PILL_MISSED, TAKE_PILL, TAKE_PILL_IN_10_MIN}; --controlled
+		redLed: {BLINKING, LEDLIGHTS_UNDEF, OFF, ON}; --controlled
+		requestSatisfied: boolean; --controlled
+		systemTime: {-2147483647, 0, 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 22, 23, 3, 4, 5, 6, 7, 8, 9}; --controlled
+		time_consumption: {-2147483647, 0, 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 22, 23, 3, 4, 5, 6, 7, 8, 9}; --controlled
+	DEFINE
+		tenMinutes := 1;
+	CONSTANTS OUTMESSAGES_UNDEF, CLOSE_DRAWER_IN_10_MIN, DRAWER_NOT_CLOSED, NONE, PILL_MISSED, TAKE_PILL, TAKE_PILL_IN_10_MIN, LEDLIGHTS_UNDEF, BLINKING, OFF, ON;
+	ASSIGN
+		init(drawerTimer) := 0;
+		init(logMess) := NONE;
+		init(opened) := FALSE;
+		init(outMess) := NONE;
+		init(redLed) := OFF;
+		init(requestSatisfied) := FALSE;
+		init(systemTime) := 0;
+		init(time_consumption) := 1;
+		next(drawerTimer) :=
+			case
+				(((((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & !(openSwitch) & ((systemTime - drawerTimer) > tenMinutes) & (redLed = BLINKING)) | ((((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & openSwitch & ((systemTime - drawerTimer) > tenMinutes) & (redLed = BLINKING)) | ((((systemTime < 24) & !(requestSatisfied)) & (redLed = BLINKING) & (!(openSwitch) & opened)) | (((((systemTime - drawerTimer) >= tenMinutes) & ((systemTime < 24) & !(requestSatisfied)) & ((outMess != CLOSE_DRAWER_IN_10_MIN) & (redLed != BLINKING)) & (redLed = ON) & opened) | ((((systemTime < 24) & !(requestSatisfied)) & ((outMess != CLOSE_DRAWER_IN_10_MIN) & (redLed != BLINKING)) & (openSwitch & ((redLed = ON) & !(opened)))) | ((((systemTime < 24) & !(requestSatisfied)) & (!(openSwitch) & ((!((systemTime - drawerTimer) >= tenMinutes) & (redLed = ON)) & opened))) | (((systemTime < 24) & !(requestSatisfied)) & (redLed != ON) & ((time_consumption <= systemTime) & !(requestSatisfied)) & (redLed = OFF))))) | (((systemTime - drawerTimer) >= tenMinutes) & ((systemTime < 24) & !(requestSatisfied)) & !(openSwitch) & (redLed = ON) & ((redLed != BLINKING) & (outMess != TAKE_PILL_IN_10_MIN)) & !(opened)))))) | (!((systemTime - drawerTimer) > tenMinutes) & ((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & openSwitch & ((outMess != CLOSE_DRAWER_IN_10_MIN) & (redLed != BLINKING)) & (redLed = BLINKING))) & systemTime in {-2147483647, 0, 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 22, 23, 3, 4, 5, 6, 7, 8, 9}: systemTime;
+				TRUE: drawerTimer;
+			esac;
+		next(logMess) :=
+			case
+				(((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & !(openSwitch) & ((systemTime - drawerTimer) > tenMinutes) & (redLed = BLINKING)): PILL_MISSED;
+				(((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & openSwitch & ((systemTime - drawerTimer) > tenMinutes) & (redLed = BLINKING)): DRAWER_NOT_CLOSED;
+				TRUE: logMess;
+			esac;
+		next(opened) :=
+			case
+				(((systemTime < 24) & !(requestSatisfied)) & (!(openSwitch) & opened)): FALSE;
+				(((systemTime < 24) & !(requestSatisfied)) & (openSwitch & !(opened))): TRUE;
+				TRUE: opened;
+			esac;
+		next(outMess) :=
+			case
+				(((((systemTime < 24) & !(requestSatisfied)) & (openSwitch & ((redLed = ON) & !(opened)))) | (((systemTime - drawerTimer) >= tenMinutes) & ((systemTime < 24) & !(requestSatisfied)) & (redLed = ON) & opened)) | (!((systemTime - drawerTimer) > tenMinutes) & ((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & openSwitch & (redLed = BLINKING))): CLOSE_DRAWER_IN_10_MIN;
+				(((systemTime < 24) & !(requestSatisfied)) & ((time_consumption <= systemTime) & !(requestSatisfied)) & (redLed = OFF)): TAKE_PILL;
+				(((systemTime - drawerTimer) >= tenMinutes) & ((systemTime < 24) & !(requestSatisfied)) & !(openSwitch) & (redLed = ON) & !(opened)): TAKE_PILL_IN_10_MIN;
+				((((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & !(openSwitch) & ((systemTime - drawerTimer) > tenMinutes) & (redLed = BLINKING)) | (((((systemTime < 24) & !(requestSatisfied)) & (!(openSwitch) & ((!((systemTime - drawerTimer) >= tenMinutes) & (redLed = ON)) & opened))) | (((systemTime < 24) & !(requestSatisfied)) & (redLed = BLINKING) & (!(openSwitch) & opened))) | (((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & openSwitch & ((systemTime - drawerTimer) > tenMinutes) & (redLed = BLINKING)))): NONE;
+				TRUE: outMess;
+			esac;
+		next(redLed) :=
+			case
+				((((((systemTime < 24) & !(requestSatisfied)) & (openSwitch & ((redLed = ON) & !(opened)))) | (((systemTime - drawerTimer) >= tenMinutes) & ((systemTime < 24) & !(requestSatisfied)) & (redLed = ON) & opened)) | (((systemTime - drawerTimer) >= tenMinutes) & ((systemTime < 24) & !(requestSatisfied)) & !(openSwitch) & (redLed = ON) & !(opened))) | (!((systemTime - drawerTimer) > tenMinutes) & ((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & openSwitch & (redLed = BLINKING))): BLINKING;
+				(((systemTime < 24) & !(requestSatisfied)) & ((time_consumption <= systemTime) & !(requestSatisfied)) & (redLed = OFF)): ON;
+				((((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & !(openSwitch) & ((systemTime - drawerTimer) > tenMinutes) & (redLed = BLINKING)) | (((((systemTime < 24) & !(requestSatisfied)) & (!(openSwitch) & ((!((systemTime - drawerTimer) >= tenMinutes) & (redLed = ON)) & opened))) | (((systemTime < 24) & !(requestSatisfied)) & (redLed = BLINKING) & (!(openSwitch) & opened))) | (((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & openSwitch & ((systemTime - drawerTimer) > tenMinutes) & (redLed = BLINKING)))): OFF;
+				TRUE: redLed;
+			esac;
+		next(requestSatisfied) :=
+			case
+				((((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & !(openSwitch) & ((systemTime - drawerTimer) > tenMinutes) & (redLed = BLINKING)) | (((((systemTime < 24) & !(requestSatisfied)) & (!(openSwitch) & ((!((systemTime - drawerTimer) >= tenMinutes) & (redLed = ON)) & opened))) | (((systemTime < 24) & !(requestSatisfied)) & (redLed = BLINKING) & (!(openSwitch) & opened))) | (((systemTime < 24) & !(requestSatisfied)) & !(!(openSwitch) & opened) & openSwitch & ((systemTime - drawerTimer) > tenMinutes) & (redLed = BLINKING)))): TRUE;
+				TRUE: requestSatisfied;
+			esac;
+		next(systemTime) :=
+			case
+				((systemTime < 24) & !(requestSatisfied)) & ((systemTime + 1) mod 24) in {-2147483647, 0, 1, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 2, 20, 21, 22, 23, 3, 4, 5, 6, 7, 8, 9}: ((systemTime + 1) mod 24);
+				TRUE: systemTime;
+			esac;
+		next(time_consumption) := time_consumption;
+--LTL properties
+LTLSPEC NAME ltl0 := G(!(((! requestSatisfied & (systemTime < 24)) & ((((redLed = ON) & !((systemTime - drawerTimer) >= tenMinutes)) & opened) & ! openSwitch)) & X(TRUE)));

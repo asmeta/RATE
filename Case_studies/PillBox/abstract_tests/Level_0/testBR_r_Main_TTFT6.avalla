@@ -1,0 +1,28 @@
+scenario testBR_r_Main_TTFT6
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@BR_r_Main_TTFT6
+//// generated for (test goal): BR_r_Main_TTFT6: (redLed = ON) and (timeDiffOver600 and (not opened and not openSwitch))
+check logMess = NONE;
+check outMess = NONE;
+check redLed = OFF;
+check opened = false;
+set openSwitch := false;
+set takeThePill := false;
+set timeDiffOver600 := false;
+step
+set openSwitch := false;
+set takeThePill := true;
+set timeDiffOver600 := false;
+step
+check outMess = TAKE_PILL;
+check redLed = ON;
+set openSwitch := false;
+set timeDiffOver600 := true;
+step
+check outMess = TAKE_PILL_IN_10_MIN;
+check redLed = BLINKING;
+set openSwitch := false;
+set timeDiffOver600 := false;
+step

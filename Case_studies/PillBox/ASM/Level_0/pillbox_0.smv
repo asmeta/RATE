@@ -1,0 +1,48 @@
+--file ..\Case_studies\PillBox\ASM\Level_0\pillbox_0.smv
+-- options: flatten? false
+MODULE main
+	VAR
+		logMess: {CLOSE_DRAWER_IN_10_MIN, DRAWER_NOT_CLOSED, NONE, OUTMESSAGES_UNDEF, PILL_MISSED, TAKE_PILL, TAKE_PILL_IN_10_MIN}; --controlled
+		openSwitch: boolean; --monitored
+		opened: boolean; --controlled
+		outMess: {CLOSE_DRAWER_IN_10_MIN, DRAWER_NOT_CLOSED, NONE, OUTMESSAGES_UNDEF, PILL_MISSED, TAKE_PILL, TAKE_PILL_IN_10_MIN}; --controlled
+		redLed: {BLINKING, LEDLIGHTS_UNDEF, OFF, ON}; --controlled
+		takeThePill: boolean; --monitored
+		timeDiffOver600: boolean; --monitored
+	CONSTANTS OUTMESSAGES_UNDEF, CLOSE_DRAWER_IN_10_MIN, DRAWER_NOT_CLOSED, NONE, PILL_MISSED, TAKE_PILL, TAKE_PILL_IN_10_MIN, LEDLIGHTS_UNDEF, BLINKING, OFF, ON;
+	ASSIGN
+		init(logMess) := NONE;
+		init(opened) := FALSE;
+		init(outMess) := NONE;
+		init(redLed) := OFF;
+		init(takeThePill) := FALSE;
+		init(timeDiffOver600) := FALSE;
+		next(logMess) :=
+			case
+				(!(!(openSwitch) & opened) & openSwitch & (redLed = BLINKING) & timeDiffOver600): DRAWER_NOT_CLOSED;
+				(!(!(openSwitch) & opened) & !(openSwitch) & (redLed = BLINKING) & timeDiffOver600): PILL_MISSED;
+				TRUE: logMess;
+			esac;
+		next(opened) :=
+			case
+				(openSwitch & !(opened)): TRUE;
+				(!(openSwitch) & opened): FALSE;
+				TRUE: opened;
+			esac;
+		next(outMess) :=
+			case
+				(!(openSwitch) & (redLed = ON) & timeDiffOver600 & !(opened)): TAKE_PILL_IN_10_MIN;
+				((!(!(openSwitch) & opened) & openSwitch & (redLed = BLINKING) & !(timeDiffOver600)) | ((openSwitch & ((redLed = ON) & !(opened))) | ((redLed = ON) & timeDiffOver600 & opened))): CLOSE_DRAWER_IN_10_MIN;
+				((redLed = OFF) & takeThePill): TAKE_PILL;
+				((!(!(openSwitch) & opened) & !(openSwitch) & (redLed = BLINKING) & timeDiffOver600) | ((!(!(openSwitch) & opened) & openSwitch & (redLed = BLINKING) & timeDiffOver600) | (((redLed = BLINKING) & (!(openSwitch) & opened)) | (!(openSwitch) & (opened & ((redLed = ON) & !(timeDiffOver600))))))): NONE;
+				TRUE: outMess;
+			esac;
+		next(redLed) :=
+			case
+				(((!(openSwitch) & (redLed = ON) & timeDiffOver600 & !(opened)) | ((openSwitch & ((redLed = ON) & !(opened))) | ((redLed = ON) & timeDiffOver600 & opened))) | (!(!(openSwitch) & opened) & openSwitch & (redLed = BLINKING) & !(timeDiffOver600))): BLINKING;
+				((redLed = OFF) & takeThePill): ON;
+				((!(!(openSwitch) & opened) & !(openSwitch) & (redLed = BLINKING) & timeDiffOver600) | ((!(!(openSwitch) & opened) & openSwitch & (redLed = BLINKING) & timeDiffOver600) | (((redLed = BLINKING) & (!(openSwitch) & opened)) | (!(openSwitch) & (opened & ((redLed = ON) & !(timeDiffOver600))))))): OFF;
+				TRUE: redLed;
+			esac;
+--LTL properties
+LTLSPEC NAME ltl0 := G(!((((timeDiffOver600 = TRUE) & (openSwitch = TRUE)) & (takeThePill = TRUE)) & X(TRUE)));

@@ -1,0 +1,29 @@
+scenario testMCDC_r_Main_F3
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@MCDC_r_Main_F3
+//// generated for (test goal): MCDC_r_Main_F3: redLed != OFF
+check logMess = NONE;
+check outMess = NONE;
+check opened = false;
+check redLed = OFF;
+set timeDiffOver600 := false;
+set openSwitch := false;
+set takeThePill := false;
+step
+set timeDiffOver600 := false;
+set openSwitch := false;
+set takeThePill := true;
+step
+check outMess = TAKE_PILL;
+check redLed = ON;
+set timeDiffOver600 := false;
+set openSwitch := true;
+step
+check outMess = CLOSE_DRAWER_IN_10_MIN;
+check opened = true;
+check redLed = BLINKING;
+set timeDiffOver600 := false;
+set openSwitch := false;
+step

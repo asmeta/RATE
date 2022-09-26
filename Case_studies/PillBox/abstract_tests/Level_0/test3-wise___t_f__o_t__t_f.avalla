@@ -1,0 +1,19 @@
+scenario test3-wise___t_f__o_t__t_f
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@3-wise___t_f__o_t__t_f
+//// generated for (test goal): [timeDiffOver600, openSwitch, takeThePill]-->[false, true, false]
+check opened = false;
+check redLed = OFF;
+check logMess = NONE;
+check outMess = NONE;
+set openSwitch := true;
+set takeThePill := false;
+set timeDiffOver600 := false;
+step
+check opened = true;
+set openSwitch := false;
+set takeThePill := false;
+set timeDiffOver600 := false;
+step

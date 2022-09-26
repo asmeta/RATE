@@ -1,0 +1,23 @@
+scenario testMCDC_r_Main_TT1
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@MCDC_r_Main_TT1
+//// generated for (test goal): MCDC_r_Main_TT1: opened and openSwitch
+check logMess = NONE;
+check outMess = NONE;
+check opened = false;
+check redLed = OFF;
+set timeDiffOver600 := false;
+set openSwitch := true;
+set takeThePill := false;
+step
+check opened = true;
+set timeDiffOver600 := false;
+set openSwitch := true;
+set takeThePill := false;
+step
+set timeDiffOver600 := false;
+set openSwitch := false;
+set takeThePill := false;
+step

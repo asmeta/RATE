@@ -1,0 +1,6 @@
+scenario testUR_r_Main_TFFTUR_r_drawerOpened_17
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@UR_r_Main_TFFTUR_r_drawerOpened_17
+//// generated for (test goal): UR_r_Main_TFFTUR_r_drawerOpened_17: (redLed = BLINKING) and (not(not openSwitch and opened) and (not timeDiffOver600 and (openSwitch and (redLed != BLINKING))))

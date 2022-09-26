@@ -1,0 +1,29 @@
+scenario testCR_r_Main_T5
+
+load ./..\..\ASM\Level_0\pillbox_0.asm
+
+//// test name test@CR_r_Main_T5
+//// generated for (test goal): CR_r_Main_T5: (((redLed = ON) and not opened) and openSwitch) and ((redLed != BLINKING) or (outMess != CLOSE_DRAWER_IN_10_MIN))
+check outMess = NONE;
+check opened = false;
+check redLed = OFF;
+check logMess = NONE;
+set openSwitch := false;
+set takeThePill := false;
+set timeDiffOver600 := false;
+step
+set takeThePill := true;
+set openSwitch := false;
+set timeDiffOver600 := false;
+step
+check outMess = TAKE_PILL;
+check redLed = ON;
+set openSwitch := true;
+set timeDiffOver600 := false;
+step
+check outMess = CLOSE_DRAWER_IN_10_MIN;
+check opened = true;
+check redLed = BLINKING;
+set openSwitch := false;
+set timeDiffOver600 := false;
+step

@@ -95,8 +95,6 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	
 	private final State[] stateVector = new State[1];
 	
-	private int nextStateIndex;
-	
 	private ITimerService timerService;
 	
 	private final boolean[] timeEvents = new boolean[3];
@@ -141,9 +139,27 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 		
 		lights.setGreen(false);
 		
-		config.setReleasePeriod(6);
+		config.setReleasePeriod(6l);
 		
-		config.setPreparePeriod(2);
+		config.setPreparePeriod(2l);
+		
+		isExecuting = false;
+	}
+	
+	public void runCycle() {
+		if (timerService == null) {
+			throw new IllegalStateException("Timer service must be set.");
+		}
+		
+		
+		if (getIsExecuting()) {
+			return;
+		}
+		isExecuting = true;
+		
+		swapInEvents();
+		
+		microStep();
 		
 		isExecuting = false;
 	}
@@ -158,6 +174,7 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 			return;
 		}
 		isExecuting = true;
+		
 		enterSequence_main_default();
 		isExecuting = false;
 	}
@@ -167,43 +184,8 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 			return;
 		}
 		isExecuting = true;
+		
 		exitSequence_main();
-		isExecuting = false;
-	}
-	
-	public void runCycle() {
-		if (timerService == null) {
-			throw new IllegalStateException("Timer service must be set.");
-		}
-		
-		
-		if (getIsExecuting()) {
-			return;
-		}
-		isExecuting = true;
-		swapInEvents();
-		for (nextStateIndex = 0; nextStateIndex < stateVector.length; nextStateIndex++) {
-			switch (stateVector[nextStateIndex]) {
-			case MAIN_OFF:
-				main_Off_react(true);
-				break;
-			case MAIN_ON_MAIN_BLOCKED:
-				main_On_main_Blocked_react(true);
-				break;
-			case MAIN_ON_MAIN_RELEASED:
-				main_On_main_Released_react(true);
-				break;
-			case MAIN_ON_MAIN_ATTENTION:
-				main_On_main_Attention_react(true);
-				break;
-			case MAIN_ON_MAIN_PREPAREBLOCK:
-				main_On_main_PrepareBlock_react(true);
-				break;
-			default:
-				// $NULLSTATE$
-			}
-		}
-		
 		isExecuting = false;
 	}
 	
@@ -259,6 +241,28 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 		timeEvents[2] = false;
 	}
 	
+	private void microStep() {
+		switch (stateVector[0]) {
+		case MAIN_OFF:
+			main_Off_react(-1l);
+			break;
+		case MAIN_ON_MAIN_BLOCKED:
+			main_On_main_Blocked_react(-1l);
+			break;
+		case MAIN_ON_MAIN_RELEASED:
+			main_On_main_Released_react(-1l);
+			break;
+		case MAIN_ON_MAIN_ATTENTION:
+			main_On_main_Attention_react(-1l);
+			break;
+		case MAIN_ON_MAIN_PREPAREBLOCK:
+			main_On_main_PrepareBlock_react(-1l);
+			break;
+		default:
+			break;
+		}
+	}
+	
 	/**
 	* Returns true if the given state is currently active otherwise false.
 	*/
@@ -302,6 +306,7 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	public Config config() {
 		return config;
 	}
+	
 	
 	private boolean switchOn;
 	
@@ -384,7 +389,7 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	
 	/* Entry action for state 'Released'. */
 	private void entryAction_main_On_main_Released() {
-		timerService.setTimer(this, 0, (config.getReleasePeriod() * 1000), false);
+		timerService.setTimer(this, 0, (config.getReleasePeriod() * 1000l), false);
 		
 		lights.setGreen(oN);
 		
@@ -393,14 +398,14 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	
 	/* Entry action for state 'Attention'. */
 	private void entryAction_main_On_main_Attention() {
-		timerService.setTimer(this, 1, 500, true);
+		timerService.setTimer(this, 1, 500l, true);
 		
 		lights.setYellow(oN);
 	}
 	
 	/* Entry action for state 'PrepareBlock'. */
 	private void entryAction_main_On_main_PrepareBlock() {
-		timerService.setTimer(this, 2, (config.getPreparePeriod() * 1000), false);
+		timerService.setTimer(this, 2, (config.getPreparePeriod() * 1000l), false);
 		
 		lights.setYellow(oN);
 	}
@@ -434,7 +439,6 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	/* 'default' enter sequence for state Off */
 	private void enterSequence_main_Off_default() {
 		entryAction_main_Off();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_OFF;
 	}
 	
@@ -446,28 +450,24 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	/* 'default' enter sequence for state Blocked */
 	private void enterSequence_main_On_main_Blocked_default() {
 		entryAction_main_On_main_Blocked();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_ON_MAIN_BLOCKED;
 	}
 	
 	/* 'default' enter sequence for state Released */
 	private void enterSequence_main_On_main_Released_default() {
 		entryAction_main_On_main_Released();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_ON_MAIN_RELEASED;
 	}
 	
 	/* 'default' enter sequence for state Attention */
 	private void enterSequence_main_On_main_Attention_default() {
 		entryAction_main_On_main_Attention();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_ON_MAIN_ATTENTION;
 	}
 	
 	/* 'default' enter sequence for state PrepareBlock */
 	private void enterSequence_main_On_main_PrepareBlock_default() {
 		entryAction_main_On_main_PrepareBlock();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_ON_MAIN_PREPAREBLOCK;
 	}
 	
@@ -483,7 +483,6 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	
 	/* Default exit sequence for state Off */
 	private void exitSequence_main_Off() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 	}
 	
@@ -494,7 +493,6 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	
 	/* Default exit sequence for state Blocked */
 	private void exitSequence_main_On_main_Blocked() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 		
 		exitAction_main_On_main_Blocked();
@@ -502,7 +500,6 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	
 	/* Default exit sequence for state Released */
 	private void exitSequence_main_On_main_Released() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 		
 		exitAction_main_On_main_Released();
@@ -510,7 +507,6 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	
 	/* Default exit sequence for state Attention */
 	private void exitSequence_main_On_main_Attention() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 		
 		exitAction_main_On_main_Attention();
@@ -518,7 +514,6 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 	
 	/* Default exit sequence for state PrepareBlock */
 	private void exitSequence_main_On_main_PrepareBlock() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 		
 		exitAction_main_On_main_PrepareBlock();
@@ -577,114 +572,135 @@ public class TrafficLight implements IStatemachine, ITimed, ICycleBased {
 		enterSequence_main_On_main_Attention_default();
 	}
 	
-	private boolean react() {
-		return false;
+	private long react(long transitioned_before) {
+		return transitioned_before;
 	}
 	
-	private boolean main_Off_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_Off_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (react()==false) {
-				if (current.iface.switchOn) {
-					exitSequence_main_Off();
-					enterSequence_main_On_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.iface.switchOn) {
+				exitSequence_main_Off();
+				enterSequence_main_On_default();
+				react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_On_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_On_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (react()==false) {
-				if (current.iface.switchOff) {
-					exitSequence_main_On();
-					enterSequence_main_Off_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.iface.switchOff) {
+				exitSequence_main_On();
+				enterSequence_main_Off_default();
+				react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_On_main_Blocked_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_On_main_Blocked_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (main_On_react(try_transition)==false) {
-				if (current.iface.release) {
+		if (transitioned_after<0l) {
+			if (current.iface.release) {
+				exitSequence_main_On_main_Blocked();
+				enterSequence_main_On_main_Released_default();
+				main_On_react(0l);
+				
+				transitioned_after = 0l;
+			} else {
+				if (current.iface.attention) {
 					exitSequence_main_On_main_Blocked();
-					enterSequence_main_On_main_Released_default();
-				} else {
-					if (current.iface.attention) {
-						exitSequence_main_On_main_Blocked();
-						enterSequence_main_On_main_Attention_default();
-					} else {
-						did_transition = false;
-					}
+					enterSequence_main_On_main_Attention_default();
+					main_On_react(0l);
+					
+					transitioned_after = 0l;
 				}
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = main_On_react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_On_main_Released_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_On_main_Released_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (main_On_react(try_transition)==false) {
-				if (current.timeEvents.trafficLight_main_On_main_Released_time_event_0) {
-					exitSequence_main_On_main_Released();
-					enterSequence_main_On_main_PrepareBlock_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.timeEvents.trafficLight_main_On_main_Released_time_event_0) {
+				exitSequence_main_On_main_Released();
+				current.timeEvents.trafficLight_main_On_main_Released_time_event_0 = false;
+				enterSequence_main_On_main_PrepareBlock_default();
+				main_On_react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = main_On_react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_On_main_Attention_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_On_main_Attention_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (main_On_react(try_transition)==false) {
-				if (current.iface.block) {
-					exitSequence_main_On_main_Attention();
-					enterSequence_main_On_main_Blocked_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.iface.block) {
+				exitSequence_main_On_main_Attention();
+				enterSequence_main_On_main_Blocked_default();
+				main_On_react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		if (did_transition==false) {
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
 			if (current.timeEvents.trafficLight_main_On_main_Attention_time_event_0) {
 				lights.setYellow(!lights.yellow);
 			}
+			transitioned_after = main_On_react(transitioned_before);
 		}
-		return did_transition;
+		return transitioned_after;
 	}
 	
-	private boolean main_On_main_PrepareBlock_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_On_main_PrepareBlock_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (main_On_react(try_transition)==false) {
-				if (current.timeEvents.trafficLight_main_On_main_PrepareBlock_time_event_0) {
-					exitSequence_main_On_main_PrepareBlock();
-					enterSequence_main_On_main_Blocked_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.timeEvents.trafficLight_main_On_main_PrepareBlock_time_event_0) {
+				exitSequence_main_On_main_PrepareBlock();
+				current.timeEvents.trafficLight_main_On_main_PrepareBlock_time_event_0 = false;
+				enterSequence_main_On_main_Blocked_default();
+				main_On_react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = main_On_react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
 }

@@ -43,8 +43,6 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	
 	private final State[] stateVector = new State[1];
 	
-	private int nextStateIndex;
-	
 	private ITimerService timerService;
 	
 	private final boolean[] timeEvents = new boolean[2];
@@ -75,7 +73,25 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 		
 		setTrafficLightB(null);
 		
-		setSafePeriod(10);
+		setSafePeriod(10l);
+		
+		isExecuting = false;
+	}
+	
+	public void runCycle() {
+		if (timerService == null) {
+			throw new IllegalStateException("Timer service must be set.");
+		}
+		
+		
+		if (getIsExecuting()) {
+			return;
+		}
+		isExecuting = true;
+		
+		swapInEvents();
+		
+		microStep();
 		
 		isExecuting = false;
 	}
@@ -90,6 +106,7 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 			return;
 		}
 		isExecuting = true;
+		
 		enterSequence_main_default();
 		isExecuting = false;
 	}
@@ -99,52 +116,8 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 			return;
 		}
 		isExecuting = true;
+		
 		exitSequence_main();
-		isExecuting = false;
-	}
-	
-	public void runCycle() {
-		if (timerService == null) {
-			throw new IllegalStateException("Timer service must be set.");
-		}
-		
-		
-		if (getIsExecuting()) {
-			return;
-		}
-		isExecuting = true;
-		swapInEvents();
-		for (nextStateIndex = 0; nextStateIndex < stateVector.length; nextStateIndex++) {
-			switch (stateVector[nextStateIndex]) {
-			case MAIN_OFF:
-				main_Off_react(true);
-				break;
-			case MAIN_STANDBY:
-				main_Standby_react(true);
-				break;
-			case MAIN_OPERATE_R_ALL_BLOCKED_BEFORE_B:
-				main_Operate_r_all_blocked_before_B_react(true);
-				break;
-			case MAIN_OPERATE_R_RELEASE_B:
-				main_Operate_r_Release_B_react(true);
-				break;
-			case MAIN_OPERATE_R_B_RELEASED:
-				main_Operate_r_B_Released_react(true);
-				break;
-			case MAIN_OPERATE_R_ALL_BLOCKED_BEFORE_A:
-				main_Operate_r_all_blocked_before_A_react(true);
-				break;
-			case MAIN_OPERATE_R_RELEASE_A:
-				main_Operate_r_Release_A_react(true);
-				break;
-			case MAIN_OPERATE_R_A_RELEASED:
-				main_Operate_r_A_Released_react(true);
-				break;
-			default:
-				// $NULLSTATE$
-			}
-		}
-		
 		isExecuting = false;
 	}
 	
@@ -208,6 +181,37 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 		timeEvents[1] = false;
 	}
 	
+	private void microStep() {
+		switch (stateVector[0]) {
+		case MAIN_OFF:
+			main_Off_react(-1l);
+			break;
+		case MAIN_STANDBY:
+			main_Standby_react(-1l);
+			break;
+		case MAIN_OPERATE_R_ALL_BLOCKED_BEFORE_B:
+			main_Operate_r_all_blocked_before_B_react(-1l);
+			break;
+		case MAIN_OPERATE_R_RELEASE_B:
+			main_Operate_r_Release_B_react(-1l);
+			break;
+		case MAIN_OPERATE_R_B_RELEASED:
+			main_Operate_r_B_Released_react(-1l);
+			break;
+		case MAIN_OPERATE_R_ALL_BLOCKED_BEFORE_A:
+			main_Operate_r_all_blocked_before_A_react(-1l);
+			break;
+		case MAIN_OPERATE_R_RELEASE_A:
+			main_Operate_r_Release_A_react(-1l);
+			break;
+		case MAIN_OPERATE_R_A_RELEASED:
+			main_Operate_r_A_Released_react(-1l);
+			break;
+		default:
+			break;
+		}
+	}
+	
 	/**
 	* Returns true if the given state is currently active otherwise false.
 	*/
@@ -249,6 +253,7 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	public void raiseTimeEvent(int eventID) {
 		timeEvents[eventID] = true;
 	}
+	
 	
 	protected void raiseTrafficLightB_released() {
 		trafficLightB_released = true;
@@ -383,28 +388,14 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	
 	/* Entry action for state 'Standby'. */
 	private void entryAction_main_Standby() {
-		// Andrea Bombarda: Code Fix
-		getTrafficLightA().raiseSwitchOff();
-		getTrafficLightA().runCycle();
-		getTrafficLightA().raiseSwitchOn();
-		getTrafficLightA().runCycle();
-		// ---- END Code Fix
-		
 		getTrafficLightA().raiseAttention();
-		
-		// Andrea Bombarda: Code Fix
-		getTrafficLightB().raiseSwitchOff();
-		getTrafficLightB().runCycle();
-		getTrafficLightB().raiseSwitchOn();
-		getTrafficLightB().runCycle();
-		// ---- END Code Fix
 		
 		getTrafficLightB().raiseAttention();
 	}
 	
 	/* Entry action for state 'all blocked before B'. */
 	private void entryAction_main_Operate_r_all_blocked_before_B() {
-		timerService.setTimer(this, 0, (getSafePeriod() * 1000), false);
+		timerService.setTimer(this, 0, (getSafePeriod() * 1000l), false);
 		
 		getTrafficLightA().raiseBlock();
 		
@@ -418,7 +409,7 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	
 	/* Entry action for state 'all blocked before A'. */
 	private void entryAction_main_Operate_r_all_blocked_before_A() {
-		timerService.setTimer(this, 1, (getSafePeriod() * 1000), false);
+		timerService.setTimer(this, 1, (getSafePeriod() * 1000l), false);
 		
 		getTrafficLightA().raiseBlock();
 		
@@ -450,14 +441,12 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	/* 'default' enter sequence for state Off */
 	private void enterSequence_main_Off_default() {
 		entryAction_main_Off();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_OFF;
 	}
 	
 	/* 'default' enter sequence for state Standby */
 	private void enterSequence_main_Standby_default() {
 		entryAction_main_Standby();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_STANDBY;
 	}
 	
@@ -469,40 +458,34 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	/* 'default' enter sequence for state all blocked before B */
 	private void enterSequence_main_Operate_r_all_blocked_before_B_default() {
 		entryAction_main_Operate_r_all_blocked_before_B();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_OPERATE_R_ALL_BLOCKED_BEFORE_B;
 	}
 	
 	/* 'default' enter sequence for state Release B */
 	private void enterSequence_main_Operate_r_Release_B_default() {
 		entryAction_main_Operate_r_Release_B();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_OPERATE_R_RELEASE_B;
 	}
 	
 	/* 'default' enter sequence for state B Released */
 	private void enterSequence_main_Operate_r_B_Released_default() {
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_OPERATE_R_B_RELEASED;
 	}
 	
 	/* 'default' enter sequence for state all blocked before A */
 	private void enterSequence_main_Operate_r_all_blocked_before_A_default() {
 		entryAction_main_Operate_r_all_blocked_before_A();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_OPERATE_R_ALL_BLOCKED_BEFORE_A;
 	}
 	
 	/* 'default' enter sequence for state Release A */
 	private void enterSequence_main_Operate_r_Release_A_default() {
 		entryAction_main_Operate_r_Release_A();
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_OPERATE_R_RELEASE_A;
 	}
 	
 	/* 'default' enter sequence for state A Released */
 	private void enterSequence_main_Operate_r_A_Released_default() {
-		nextStateIndex = 0;
 		stateVector[0] = State.MAIN_OPERATE_R_A_RELEASED;
 	}
 	
@@ -518,7 +501,6 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	
 	/* Default exit sequence for state Off */
 	private void exitSequence_main_Off() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 		
 		exitAction_main_Off();
@@ -526,7 +508,6 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	
 	/* Default exit sequence for state Standby */
 	private void exitSequence_main_Standby() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 	}
 	
@@ -537,7 +518,6 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	
 	/* Default exit sequence for state all blocked before B */
 	private void exitSequence_main_Operate_r_all_blocked_before_B() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 		
 		exitAction_main_Operate_r_all_blocked_before_B();
@@ -545,19 +525,16 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	
 	/* Default exit sequence for state Release B */
 	private void exitSequence_main_Operate_r_Release_B() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 	}
 	
 	/* Default exit sequence for state B Released */
 	private void exitSequence_main_Operate_r_B_Released() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 	}
 	
 	/* Default exit sequence for state all blocked before A */
 	private void exitSequence_main_Operate_r_all_blocked_before_A() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 		
 		exitAction_main_Operate_r_all_blocked_before_A();
@@ -565,13 +542,11 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 	
 	/* Default exit sequence for state Release A */
 	private void exitSequence_main_Operate_r_Release_A() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 	}
 	
 	/* Default exit sequence for state A Released */
 	private void exitSequence_main_Operate_r_A_Released() {
-		nextStateIndex = 0;
 		stateVector[0] = State.$NULLSTATE$;
 	}
 	
@@ -643,157 +618,189 @@ public class TwoWayTrafficControl implements IStatemachine, ITimed, ICycleBased 
 		enterSequence_main_Operate_r_all_blocked_before_A_default();
 	}
 	
-	private boolean react() {
-		return false;
+	private long react(long transitioned_before) {
+		return transitioned_before;
 	}
 	
-	private boolean main_Off_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_Off_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (react()==false) {
-				if (current.iface.on) {
-					exitSequence_main_Off();
-					enterSequence_main_Standby_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.iface.on) {
+				exitSequence_main_Off();
+				enterSequence_main_Standby_default();
+				react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_Standby_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_Standby_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (react()==false) {
-				if (current.iface.off) {
+		if (transitioned_after<0l) {
+			if (current.iface.off) {
+				exitSequence_main_Standby();
+				enterSequence_main_Off_default();
+				react(0l);
+				
+				transitioned_after = 0l;
+			} else {
+				if (current.iface.operate) {
 					exitSequence_main_Standby();
-					enterSequence_main_Off_default();
-				} else {
-					if (current.iface.operate) {
-						exitSequence_main_Standby();
-						enterSequence_main_Operate_default();
-					} else {
-						did_transition = false;
-					}
+					enterSequence_main_Operate_default();
+					react(0l);
+					
+					transitioned_after = 0l;
 				}
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_Operate_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_Operate_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (react()==false) {
-				if (current.iface.standby) {
-					exitSequence_main_Operate();
-					enterSequence_main_Standby_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.iface.standby) {
+				exitSequence_main_Operate();
+				enterSequence_main_Standby_default();
+				react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_Operate_r_all_blocked_before_B_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_Operate_r_all_blocked_before_B_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (main_Operate_react(try_transition)==false) {
-				if (current.timeEvents.twoWayTrafficControl_main_Operate_r_all_blocked_before_B_time_event_0) {
-					exitSequence_main_Operate_r_all_blocked_before_B();
-					enterSequence_main_Operate_r_Release_B_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.timeEvents.twoWayTrafficControl_main_Operate_r_all_blocked_before_B_time_event_0) {
+				exitSequence_main_Operate_r_all_blocked_before_B();
+				current.timeEvents.twoWayTrafficControl_main_Operate_r_all_blocked_before_B_time_event_0 = false;
+				enterSequence_main_Operate_r_Release_B_default();
+				main_Operate_react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = main_Operate_react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_Operate_r_Release_B_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_Operate_r_Release_B_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (main_Operate_react(try_transition)==false) {
-				if (current.shadow.trafficLightB_released) {
-					exitSequence_main_Operate_r_Release_B();
-					enterSequence_main_Operate_r_B_Released_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.shadow.trafficLightB_released) {
+				exitSequence_main_Operate_r_Release_B();
+				enterSequence_main_Operate_r_B_Released_default();
+				main_Operate_react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = main_Operate_react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_Operate_r_B_Released_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_Operate_r_B_Released_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (main_Operate_react(try_transition)==false) {
-				if (current.shadow.trafficLightB_blocked) {
-					exitSequence_main_Operate_r_B_Released();
-					enterSequence_main_Operate_r_all_blocked_before_A_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.shadow.trafficLightB_blocked) {
+				exitSequence_main_Operate_r_B_Released();
+				enterSequence_main_Operate_r_all_blocked_before_A_default();
+				main_Operate_react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = main_Operate_react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_Operate_r_all_blocked_before_A_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_Operate_r_all_blocked_before_A_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (main_Operate_react(try_transition)==false) {
-				if (current.timeEvents.twoWayTrafficControl_main_Operate_r_all_blocked_before_A_time_event_0) {
-					exitSequence_main_Operate_r_all_blocked_before_A();
-					enterSequence_main_Operate_r_Release_A_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.timeEvents.twoWayTrafficControl_main_Operate_r_all_blocked_before_A_time_event_0) {
+				exitSequence_main_Operate_r_all_blocked_before_A();
+				current.timeEvents.twoWayTrafficControl_main_Operate_r_all_blocked_before_A_time_event_0 = false;
+				enterSequence_main_Operate_r_Release_A_default();
+				main_Operate_react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = main_Operate_react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_Operate_r_Release_A_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_Operate_r_Release_A_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (main_Operate_react(try_transition)==false) {
-				if (current.shadow.trafficLightA_released) {
-					exitSequence_main_Operate_r_Release_A();
-					enterSequence_main_Operate_r_A_Released_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.shadow.trafficLightA_released) {
+				exitSequence_main_Operate_r_Release_A();
+				enterSequence_main_Operate_r_A_Released_default();
+				main_Operate_react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = main_Operate_react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
-	private boolean main_Operate_r_A_Released_react(boolean try_transition) {
-		boolean did_transition = try_transition;
+	private long main_Operate_r_A_Released_react(long transitioned_before) {
+		long transitioned_after = transitioned_before;
 		
-		if (try_transition) {
-			if (main_Operate_react(try_transition)==false) {
-				if (current.shadow.trafficLightA_blocked) {
-					exitSequence_main_Operate_r_A_Released();
-					enterSequence_main_Operate_r_all_blocked_before_B_default();
-				} else {
-					did_transition = false;
-				}
+		if (transitioned_after<0l) {
+			if (current.shadow.trafficLightA_blocked) {
+				exitSequence_main_Operate_r_A_Released();
+				enterSequence_main_Operate_r_all_blocked_before_B_default();
+				main_Operate_react(0l);
+				
+				transitioned_after = 0l;
 			}
 		}
-		return did_transition;
+		/* If no transition was taken then execute local reactions */
+		if (transitioned_after==transitioned_before) {
+			transitioned_after = main_Operate_react(transitioned_before);
+		}
+		return transitioned_after;
 	}
 	
 }

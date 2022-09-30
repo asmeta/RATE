@@ -28,6 +28,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 	
 	// The path of abstract tests
 	private static String PATH_AT = "../abstract_tests/TrafficLight_";
+	private static String MANUAL_PATH_AT = "../ASM/TrafficLight_";
 	
 	class Configuration {
 		int nTrafficLights;

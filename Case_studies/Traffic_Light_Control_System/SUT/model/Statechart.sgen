@@ -7,7 +7,7 @@ GeneratorModel for yakindu::java {
 	statechart TrafficLight {
 
 		feature Outlet {
-			targetProject = PROJECT
+			targetProject = "TLCS_SUT"
 			targetFolder = FOLDER
 			libraryTargetFolder = "src"
 		}
@@ -16,7 +16,7 @@ GeneratorModel for yakindu::java {
 	statechart TwoWayTrafficControl {
 
 		feature Outlet {
-			targetProject = PROJECT
+			targetProject = "TLCS_SUT"
 			targetFolder = FOLDER
 			libraryTargetFolder = "src"
 		}

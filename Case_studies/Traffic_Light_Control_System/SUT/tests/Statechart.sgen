@@ -7,7 +7,7 @@ GeneratorModel for sctunit::java {
 	test TwoWayTrafficControlTest {
 
 		feature Outlet {
-			targetProject = PROJECT
+			targetProject = "TLCS_SUT"
 			targetFolder = FOLDER
 		}
 	}

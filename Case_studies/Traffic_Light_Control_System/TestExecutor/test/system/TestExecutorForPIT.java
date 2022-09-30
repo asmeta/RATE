@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import org.asmeta.atgt.generator.CriteriaEnum;
@@ -68,6 +69,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.THREEWISE_ALL));
 			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, null));
 			
 			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.COMBINATORIAL_ALL));
@@ -78,6 +80,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.THREEWISE_ALL));
 			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, null));
 			
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.COMBINATORIAL_ALL));
@@ -88,7 +91,8 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.THREEWISE_ALL));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
-						
+			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, null));			
+			
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.COMBINATORIAL_ALL));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.COMPLETE_RULE));
@@ -98,6 +102,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.THREEWISE_ALL));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, null));
 			
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.COMBINATORIAL_ALL));
@@ -108,6 +113,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.THREEWISE_ALL));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
+			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, null));
 		}
 	};
 	
@@ -152,7 +158,14 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 	private void testAllLevelX(String level) throws Exception {
 		for (Configuration c : configToBeTested) {
 			if (c.level.equals(level)) {
-				String path = PATH_AT + c.level + "/";
+				String path;
+				if (c.criteria != null) {
+					// Use abstract tests automatically generated
+					path = PATH_AT + c.level + "/";
+				} else {
+					// Use manual abstract tests
+					path = MANUAL_PATH_AT + c.level + "/scenarios/";
+				}
 				
 				// Execute tests
 				launchTest(c, path);
@@ -194,10 +207,18 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 		File[] listOfFiles = folder.listFiles();
 		ArrayList<String> avallaFiles = new ArrayList<String>();
 		for (File f:listOfFiles) {
-			for (CriteriaEnum ce : c.criteria) {
-				if (f.getName().startsWith("test" + ce.getAbbrvName())) {
+			if (c.criteria != null) {
+				// Use the abstract tests
+				for (CriteriaEnum ce : c.criteria) {
+					if (f.getName().startsWith("test" + ce.getAbbrvName())) {
+						avallaFiles.add(f.getAbsolutePath());
+						break;
+					}
+				}
+			} else {
+				// Use manual tests
+				if (f.getName().endsWith(".avalla")) {
 					avallaFiles.add(f.getAbsolutePath());
-					break;
 				}
 			}
 			

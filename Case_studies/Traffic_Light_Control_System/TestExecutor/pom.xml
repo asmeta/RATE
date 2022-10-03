@@ -25,7 +25,7 @@
 						<param>system.TwoWayTrafficControl</param>
 					</targetClasses>
 					<targetTests>
-						<param>system.TestExecutorForPit.*</param>
+						<param>system.TestExecutorForPIT.launchOneTest</param>
 					</targetTests>
 					<testPlugin>junit</testPlugin>
 				</configuration>
@@ -50,6 +50,11 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
-
+		<dependency>
+		    <groupId>org.hamcrest</groupId>
+		    <artifactId>hamcrest-core</artifactId>
+		    <version>2.2</version>
+		    <scope>test</scope>
+		</dependency>
 	</dependencies>
 </project>

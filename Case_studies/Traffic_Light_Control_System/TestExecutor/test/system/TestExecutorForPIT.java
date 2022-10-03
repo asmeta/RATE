@@ -1,4 +1,5 @@
 package system;
+
 import static org.junit.Assert.*;
 
 import java.io.BufferedWriter;
@@ -6,7 +7,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import org.asmeta.atgt.generator.CriteriaEnum;
@@ -30,6 +30,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 	// The path of abstract tests
 	private static String PATH_AT = "../abstract_tests/TrafficLight_";
 	private static String MANUAL_PATH_AT = "../ASM/TrafficLight_";
+	private static CriteriaEnum[] EMPTY_CRITERIA_LIST = {};
 	
 	class Configuration {
 		int nTrafficLights;
@@ -69,7 +70,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.THREEWISE_ALL));
 			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
-			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, null));
+			add(new Configuration(1, "off|off|contr_off|", "0", 3, 1, 0, EMPTY_CRITERIA_LIST));
 			
 			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.COMBINATORIAL_ALL));
@@ -80,7 +81,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.THREEWISE_ALL));
 			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
-			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, null));
+			add(new Configuration(1, "off|off|contr_off|blocked_a", "1", 4, 2, 0, EMPTY_CRITERIA_LIST));
 			
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.COMBINATORIAL_ALL));
@@ -91,7 +92,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.THREEWISE_ALL));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, null));			
+			add(new Configuration(2, "off|off|contr_off|blocked_a", "2", 4, 3, 0, EMPTY_CRITERIA_LIST));
 			
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.COMBINATORIAL_ALL));
@@ -102,7 +103,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.THREEWISE_ALL));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, null));
+			add(new Configuration(2, "off|off|contr_off|blocked_a", "3", 4, 3, 2, EMPTY_CRITERIA_LIST));
 			
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.BASIC_RULE));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.COMBINATORIAL_ALL));
@@ -113,7 +114,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.THREEWISE_ALL));
 			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, CriteriaEnum.BASIC_RULE, CriteriaEnum.COMBINATORIAL_ALL,
 					CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL));
-			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, null));
+			add(new Configuration(2, "off|off|contr_off|blocked_a", "NR", 4, 3, 2, EMPTY_CRITERIA_LIST));
 		}
 	};
 	
@@ -150,53 +151,63 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 				statemachine.getTrafficLightB().isStateActive(StateGetter.getSemaphoreStateFromString(c.initialState, 1)));
 	}
 
-	@Test
-	public void testAllLevel0() throws Exception {
-		testAllLevelX("0");
-	}
+//	@Test
+//	public void testAllLevel0() throws Exception {
+//		testAllLevelX("0");
+//	}
+//
+//	private void testAllLevelX(String level) throws Exception {
+//		for (Configuration c : configToBeTested) {
+//			if (c.level.equals(level)) {
+//				String path;
+//				if (c.criteria.size() > 0) {
+//					// Use abstract tests automatically generated
+//					path = PATH_AT + c.level + "/";
+//				} else {
+//					// Use manual abstract tests
+//					path = MANUAL_PATH_AT + c.level + "/scenarios/";
+//				}
+//				
+//				// Execute tests
+//				launchTest(c, path);
+//			}
+//		}
+//	}
 
-	private void testAllLevelX(String level) throws Exception {
-		for (Configuration c : configToBeTested) {
-			if (c.level.equals(level)) {
-				String path;
-				if (c.criteria != null) {
-					// Use abstract tests automatically generated
-					path = PATH_AT + c.level + "/";
-				} else {
-					// Use manual abstract tests
-					path = MANUAL_PATH_AT + c.level + "/scenarios/";
-				}
-				
-				// Execute tests
-				launchTest(c, path);
-			}
-		}
-	}
-
-	@Test
-	public void testAllLevel1() throws Exception {
-		testAllLevelX("1");
-	}
-
-	@Test
-	public void testAllLevel2() throws Exception {
-		testAllLevelX("2");
-	}
-	
-	@Test
-	public void testAllLevel3() throws Exception {
-		testAllLevelX("3");
-	}
-	
-	@Test
-	public void testAllLevelNR() throws Exception {
-		testAllLevelX("NR");
-	}
+//	@Test
+//	public void testAllLevel1() throws Exception {
+//		testAllLevelX("1");
+//	}
+//
+//	@Test
+//	public void testAllLevel2() throws Exception {
+//		testAllLevelX("2");
+//	}
+//	
+//	@Test
+//	public void testAllLevel3() throws Exception {
+//		testAllLevelX("3");
+//	}
+//	
+//	@Test
+//	public void testAllLevelNR() throws Exception {
+//		testAllLevelX("NR");
+//	}
 	
 	@Test
 	public void launchOneTest() throws Exception {
-		TestExecutorForPIT.Configuration configuration = configToBeTested.get(0);
-		launchTest(configuration, PATH_AT + configuration.level + "/");
+		TestExecutorForPIT.Configuration configuration = configToBeTested.get(44);
+		
+		String path;
+		if (configuration.criteria.size() > 0) {
+			// Use abstract tests automatically generated
+			path = PATH_AT + configuration.level + "/";
+		} else {
+			// Use manual abstract tests
+			path = MANUAL_PATH_AT + configuration.level + "/scenarios/";
+		}
+		
+		launchTest(configuration, path);
 	}
 
 	public void launchTest(Configuration c, String path) throws Exception {
@@ -207,7 +218,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 		File[] listOfFiles = folder.listFiles();
 		ArrayList<String> avallaFiles = new ArrayList<String>();
 		for (File f:listOfFiles) {
-			if (c.criteria != null) {
+			if (c.criteria.size() > 0) {
 				// Use the abstract tests
 				for (CriteriaEnum ce : c.criteria) {
 					if (f.getName().startsWith("test" + ce.getAbbrvName())) {
@@ -248,7 +259,7 @@ public class TestExecutorForPIT extends TwoWayTrafficControl {
 			// Fetch all the messages
 			for (String msg : v) {
 
-				// Check if it the row of the sequence -> It must contain "|"
+				// Check if it is the row of the sequence -> It must contain "|"
 				if (msg.indexOf("|") >= 0) {
 
 					// Get the final state

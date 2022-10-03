@@ -1,6 +1,5 @@
-import java.util.ArrayList;
 
-import trafficlightcontroller.test.util.FSMEntry;
+import java.util.ArrayList;
 
 public class StateGetter {
 	
@@ -43,8 +42,8 @@ public class StateGetter {
 	}
 
 
-	public static String getFinalState(String initialState, String msg, ArrayList<FSMEntry> entries) {
-		for (FSMEntry entry : entries) {
+	public static String getFinalState(String initialState, String msg, ArrayList<trafficlightcontroller.test.util.FSMEntry> entries) {
+		for (trafficlightcontroller.test.util.FSMEntry entry : entries) {
 			if (entry.getStateFrom().equals(initialState) && entry.getReceivedMessage().equals(msg))
 				return entry.getStateTo();
 		}

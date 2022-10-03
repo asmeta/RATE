@@ -14,8 +14,6 @@ import java.util.stream.Collectors;
 
 import org.hamcrest.Condition.Step;
 
-import util.FSMEntry;
-
 /**
  * Class that creates the FSM starting from an Avalla Scenario File
  * 

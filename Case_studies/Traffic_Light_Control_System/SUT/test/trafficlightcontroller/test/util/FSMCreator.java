@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 
 import org.hamcrest.Condition.Step;
 
+import util.FSMEntry;
+
 /**
  * Class that creates the FSM starting from an Avalla Scenario File
  * 
@@ -70,9 +72,10 @@ public class FSMCreator {
 			if (line.startsWith("load"))
 				continue;
 			if (line.startsWith("step")) {
-				if (nStep == 0)
+				if (nStep == 0 && nTransitionsTest == 0)
 					nMessagesTest = 0;
 				nStep ++;
+				nTransitionsTest = nTransitions;
 				continue;
 			}
 			if (line.equals(""))
@@ -259,6 +262,53 @@ public class FSMCreator {
 		fout.write(content);
 		fout.close();
 		return fsmPath;
+	}
+	
+	public static String getContentFSMFromMultipleAvalla(String[] fileNames, boolean useMonitoring, int nMessages, int nTransitions, int nStatuses) throws Exception {
+		ArrayList<String> paths = new ArrayList<String>();
+		HashSet<FSMEntry> entries = new HashSet<FSMEntry>();
+		HashSet<String> sequenceList = new HashSet<String>();
+		String content = "Finite State Machine :\n";
+
+		// Create all the single files
+		for (String file : fileNames) {
+			paths.add(createFSMFromAvalla(file, nMessages, nTransitions, nStatuses));
+		}
+
+		// Merge all the sequences and all the state tables
+		for (String file : paths) {
+			FileReader reader = new FileReader(file);
+			BufferedReader fin = new BufferedReader(reader);
+			String line = "";
+			while ((line = fin.readLine()) != null) {
+				if (line.startsWith("Finite State Machine"))
+					continue;
+				if (line.startsWith("Set of Sequences :"))
+					continue;
+				if (line.startsWith("Information of Sequences :"))
+					break;
+				if (line.startsWith("\t")) {
+					// state table row
+					String[] splittedLine = line.split("\t");
+					entries.add(new FSMEntry(splittedLine[1].replace(",", ""), splittedLine[2].replace(",", ""),
+							splittedLine[3].replace(",", ""), splittedLine[4].replace(",", "")));
+				} else if (!line.equals("")) {
+					// sequence row
+					sequenceList.add(line + "\n");
+				}
+			}
+			fin.close();
+			reader.close();
+			
+			// Delete the temp file
+			File f = new File(file);
+			f.delete();
+		}
+		ArrayList<FSMEntry> list = new ArrayList<FSMEntry>(entries);
+		content += printFSMTable(list) + "Set of Sequences :\n" + sequenceList.stream().collect(Collectors.joining(""))
+				+ "\nInformation of Sequences :\n0";
+
+		return content;
 	}
 
 }

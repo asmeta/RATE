@@ -63,12 +63,13 @@ public class TestWithoutGUIInteraction {
 			if (display.readAndDispatch())
 				continue;
 			display.sleep();
+			
+			// record the number of failed tests
+			failed = (MainWin.text.getText().contains(" 0 sequences failed")) ? 0 : 1;
 		}
 
-		// record the number of failed tests
-		failed = MainWin.undoneSeqsNum;
-
 		display.dispose();
+		MainWin.exitProgram();
 		return failed;
 	}
 

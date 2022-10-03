@@ -28,7 +28,9 @@ public class TestExecutor {
 			CriteriaEnum.COMPLETE_RULE, CriteriaEnum.MCDC, CriteriaEnum.RULE_GUARD, CriteriaEnum.RULE_UPDATE, CriteriaEnum.THREEWISE_ALL};
 	
 	static String testPath = "../abstract_tests/PHD_Protocol_";
+	static String testPathManual= "../ASM/PHD_Protocol_";
 	static String level = "0";
+	static Boolean useManualScenarios = true;
 
 	// Connection data
 	static String userName = "bombarda";
@@ -136,6 +138,18 @@ public class TestExecutor {
 		}
 		return fsm;
 	}
+	
+	/**
+	 * Applies the mutation required
+	 * 
+	 * @param fsm the fsm to be muted
+	 * @param i the index of the mutation to be applied
+	 * @return the muted fsm
+	 */
+	public static String applyMutations(String fsm, int i) {
+		fsm = fsm.replace(mutations[i][0], mutations[i][1]);
+		return fsm;
+	}
 
 	/**
 	 * Save the new muted file and load it to arera server
@@ -199,8 +213,21 @@ public class TestExecutor {
 	}
 	
 	
-	static int computeCoverage() throws Exception {
+	static int computeCoverage(String fsmPath) throws Exception {	
+		// Open the FSM file with ProTest and run the tests
+		fsmPath = new File(fsmPath).getAbsolutePath();
+		return TestWithoutGUIInteraction.computeCoverage(fsmPath, true);
+	}
+
+	private static String buidTestCases() throws Exception {
 		String fsmPath = "";
+		String currentTestPath = "";
+		
+		if (!useManualScenarios) {
+			currentTestPath = testPath + level + "/";
+		} else {
+			currentTestPath = testPathManual + level + "/scenarios/"; 
+		}
 		
 		// Build the FSM from multiple Avallas
 		File folder = new File(testPath + level + "/");
@@ -218,32 +245,33 @@ public class TestExecutor {
 		String[] avallaFilesList = new String[avallaFiles.size()]; 
 		avallaFilesList = avallaFiles.toArray(avallaFilesList);
 		fsmPath = FSMCreator.createFSMFromMultipleAvalla(avallaFilesList, true);
-		
-		// Open the FSM file with ProTest and run the tests
-		fsmPath = new File(fsmPath).getAbsolutePath();
-		return TestWithoutGUIInteraction.computeCoverage(fsmPath, true);
+		return fsmPath;
 	}
 
 	public static void main(String[] args) throws Exception {
 		int testFailures = 0;
-
-		if (!new File(outFsmPath).exists()) {
-			// Read the FSM from the original file
-			String fsm = readFSM();
-
-			// Apply the mutations
-			fsm = applyMutations(fsm);
-
-			// Save the new file and load it on arera server
-			loadFile(fsm);
-
-			// Compile the new version of the PHD protocol
-			compilePHD();
+		String fsmPath = "";
+		fsmPath = buidTestCases();
+		
+		for (int i=0; i<15; i++) {
+			//if (!new File(outFsmPath).exists()) {
+				// Read the FSM from the original file
+				String fsm = readFSM();
+	
+				// Apply the mutations
+				fsm = applyMutations(fsm, i);
+	
+				// Save the new file and load it on arera server
+				loadFile(fsm);
+	
+				// Compile the new version of the PHD protocol
+				compilePHD();
+			//}
+	
+			// Open protest in order to perform tests loading the all rule file, connect it
+			// to arera server and launch tests 
+			testFailures = computeCoverage(fsmPath);
+			System.out.println("Failed?: " + testFailures);
 		}
-
-		// Open protest in order to perform tests loading the all rule file, connect it
-		// to arera server and launch tests 
-		testFailures = computeCoverage();
-		System.out.println(testFailures);
 	}
 }

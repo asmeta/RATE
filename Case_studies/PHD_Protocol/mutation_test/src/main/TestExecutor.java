@@ -230,7 +230,7 @@ public class TestExecutor {
 		}
 		
 		// Build the FSM from multiple Avallas
-		File folder = new File(testPath + level + "/");
+		File folder = new File(currentTestPath);
 		File[] listOfFiles = folder.listFiles();
 		ArrayList<String> avallaFiles = new ArrayList<String>();
 		for (File f:listOfFiles) {

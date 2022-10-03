@@ -234,13 +234,16 @@ public class TestExecutor {
 		File[] listOfFiles = folder.listFiles();
 		ArrayList<String> avallaFiles = new ArrayList<String>();
 		for (File f:listOfFiles) {
-			for (CriteriaEnum ce : allCriteria) {
-				if (f.getName().startsWith("test" + ce.getAbbrvName())) {
-					avallaFiles.add(f.getAbsolutePath());
-					break;
+			if (!useManualScenarios) {
+				for (CriteriaEnum ce : allCriteria) {
+					if (f.getName().startsWith("test" + ce.getAbbrvName())) {
+						avallaFiles.add(f.getAbsolutePath());
+						break;
+					}
 				}
+			} else {
+				avallaFiles.add(f.getAbsolutePath());
 			}
-			
 		}
 		String[] avallaFilesList = new String[avallaFiles.size()]; 
 		avallaFilesList = avallaFiles.toArray(avallaFilesList);
@@ -254,20 +257,18 @@ public class TestExecutor {
 		fsmPath = buidTestCases();
 		
 		for (int i=0; i<15; i++) {
-			//if (!new File(outFsmPath).exists()) {
-				// Read the FSM from the original file
-				String fsm = readFSM();
-	
-				// Apply the mutations
-				fsm = applyMutations(fsm, i);
-	
-				// Save the new file and load it on arera server
-				loadFile(fsm);
-	
-				// Compile the new version of the PHD protocol
-				compilePHD();
-			//}
-	
+			// Read the FSM from the original file
+			String fsm = readFSM();
+
+			// Apply the mutations
+			fsm = applyMutations(fsm, i);
+
+			// Save the new file and load it on arera server
+			loadFile(fsm);
+
+			// Compile the new version of the PHD protocol
+			compilePHD();
+				
 			// Open protest in order to perform tests loading the all rule file, connect it
 			// to arera server and launch tests 
 			testFailures = computeCoverage(fsmPath);

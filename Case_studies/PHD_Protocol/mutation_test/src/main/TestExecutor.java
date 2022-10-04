@@ -29,7 +29,7 @@ public class TestExecutor {
 	
 	static String testPath = "../abstract_tests/PHD_Protocol_";
 	static String testPathManual= "../ASM/PHD_Protocol_";
-	static String level = "0";
+	static String level = "2";
 	static Boolean useManualScenarios = true;
 
 	// Connection data
@@ -272,7 +272,7 @@ public class TestExecutor {
 			// Open protest in order to perform tests loading the all rule file, connect it
 			// to arera server and launch tests 
 			testFailures = computeCoverage(fsmPath);
-			System.out.println("Failed?: " + testFailures);
+			System.out.println("Mutation " + (i+1) + " - Failed?: " + testFailures);
 		}
 	}
 }

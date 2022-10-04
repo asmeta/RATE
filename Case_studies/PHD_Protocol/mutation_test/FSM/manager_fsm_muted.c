@@ -13,7 +13,7 @@
 // START HERE
 
 static FsmTransitionRule IEEE11073_20601_manager_state_table[] = {
-{fsm_state_disconnected,	fsm_evt_ind_transport_connection,				fsm_state_unassociated,		NULL},
+{fsm_state_disconnected,	fsm_evt_ind_transport_connection,				fsm_state_unassociated,		&communication_disconnect_tx},
 {fsm_state_unassociated,	fsm_evt_ind_transport_disconnect,				fsm_state_disconnected,		&communication_disconnect_tx},
 {fsm_state_unassociated,	fsm_evt_req_assoc_rel,						fsm_state_unassociated,		NULL},
 {fsm_state_unassociated,	fsm_evt_req_assoc_abort,					fsm_state_unassociated,         &communication_abort_undefined_reason_tx},
@@ -43,7 +43,7 @@ static FsmTransitionRule IEEE11073_20601_manager_state_table[] = {
 {fsm_state_waiting_for_config,	fsm_evt_rx_roiv_confirmed_set,					fsm_state_waiting_for_config,	NULL},
 {fsm_state_waiting_for_config,	fsm_evt_rx_roiv_action,						fsm_state_waiting_for_config,	NULL},
 {fsm_state_waiting_for_config,	fsm_evt_rx_roiv_confirmed_action,				fsm_state_waiting_for_config,	NULL},
-{fsm_state_waiting_for_config,	fsm_evt_rx_rors,						fsm_state_waiting_for_config,	&communication_roer_tx},
+{fsm_state_waiting_for_config,	fsm_evt_rx_rors,						fsm_state_waiting_for_config,	&communication_check_invoke_id_abort_tx},
 {fsm_state_waiting_for_config,	fsm_evt_rx_roer,						fsm_state_waiting_for_config,	&communication_check_invoke_id_abort_tx},
 {fsm_state_waiting_for_config,	fsm_evt_rx_rorj,						fsm_state_waiting_for_config,	&communication_check_invoke_id_abort_tx},
 {fsm_state_waiting_for_config,	fsm_evt_req_agent_supplied_unknown_configuration,		fsm_state_unassociated,		&communication_abort_undefined_reason_tx},

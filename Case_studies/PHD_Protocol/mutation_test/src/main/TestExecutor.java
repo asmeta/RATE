@@ -29,8 +29,8 @@ public class TestExecutor {
 	
 	static String testPath = "../abstract_tests/PHD_Protocol_";
 	static String testPathManual= "../ASM/PHD_Protocol_";
-	static String level = "2";
-	static Boolean useManualScenarios = true;
+	static String level = "NR";
+	static Boolean useManualScenarios = false;
 
 	// Connection data
 	static String userName = "bombarda";
@@ -256,7 +256,9 @@ public class TestExecutor {
 		String fsmPath = "";
 		fsmPath = buidTestCases();
 		
-		for (int i=0; i<15; i++) {
+		int[] toCheck = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 14};
+		
+		for (int i : toCheck) {
 			// Read the FSM from the original file
 			String fsm = readFSM();
 

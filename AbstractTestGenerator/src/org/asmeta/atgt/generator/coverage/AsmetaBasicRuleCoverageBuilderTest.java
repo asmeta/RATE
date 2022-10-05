@@ -16,7 +16,9 @@ import org.junit.Test;
 
 import atgt.coverage.AsmCoverage;
 
-public class AsmetaBasicRuleVisitorTest {
+
+// coverage come asmeta 
+public class AsmetaBasicRuleCoverageBuilderTest {
 
 	@Test
 	public void testGetTPTreePillBox() throws Exception {
@@ -28,9 +30,7 @@ public class AsmetaBasicRuleVisitorTest {
 	 */
 	private void generateCoverageFor(String ex) throws Exception {
 		asmeta.AsmCollection asms = ASMParser.setUpReadAsm(new File(ex));
-		
-		
-		AsmetaBasicRuleVisitor tpbuilder = new AsmetaBasicRuleVisitor();
+		AsmetaBasicRuleCoverageBuilder tpbuilder = new AsmetaBasicRuleCoverageBuilder();
 		AsmCoverage tp = tpbuilder.getTPTree(new AsmetaAsSpec(asms));
 		tp.allTPs().forEach(x -> System.out.println(x.getCondition()));
 	}

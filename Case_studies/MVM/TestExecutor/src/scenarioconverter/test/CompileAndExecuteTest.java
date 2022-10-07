@@ -29,7 +29,7 @@ public class CompileAndExecuteTest {
 //			add(new Configuration("00", "config/config3.json", Configuration.MANUAL_TEST));
 //			add(new Configuration("00", "config/config3.json", Configuration.ALL_CRITERIA));
 //			// level 1
-//			add(new Configuration("01", "config/config3.json", Configuration.MANUAL_TEST));
+			add(new Configuration("01", "config/config3.json", Configuration.MANUAL_TEST));
 //			add(new Configuration("01", "config/config3.json", Configuration.ALL_CRITERIA));
 //			// level 2
 //			add(new Configuration("02", "config/config3.json", Configuration.MANUAL_TEST));
@@ -37,8 +37,9 @@ public class CompileAndExecuteTest {
 //			// level 3
 //			add(new Configuration("03", "config/config3.json", Configuration.MANUAL_TEST));
 //			add(new Configuration("03", "config/config3.json", Configuration.ALL_CRITERIA));
-			
-			add(new Configuration("NR", "config/config3.json", Configuration.ALL_CRITERIA));
+//			// level NR
+//			add(new Configuration("NR", "config/config3.json", Configuration.MANUAL_TEST));
+//			add(new Configuration("NR", "config/config3.json", Configuration.ALL_CRITERIA));
 		}
 	};	
 	

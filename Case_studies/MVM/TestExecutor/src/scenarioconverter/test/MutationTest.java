@@ -18,8 +18,9 @@ import scenarioconverter.util.Configuration;
 
 public class MutationTest {
 
-	private static final String SEARCH_FOR = "\texseq_";
-	private static final int MAX_NUM_MUTATIONS = 100;
+	private static String[] SEARCH_FOR = {"\texseq_", "\tenseq_", "\treact_"};
+	//private static final String SEARCH_FOR = "\texseq_";
+	private static final int MAX_NUM_MUTATIONS = 1000;
 	private static final String path = "../SUT/src-gen/MVMStateMachineCore.cpp";
 	static final String backupCpp = "../SUT/src-gen/MVMStateMachineCore2.cpp";
 	static Charset charset = StandardCharsets.UTF_8;
@@ -46,38 +47,40 @@ public class MutationTest {
 		assert original.exists();
 		String content = new String(Files.readAllBytes(original.toPath()), charset);
 		// applica una mutazione alla volta
-		int pos = 0;
 		int numMutation = 0;
-		for(;;){
-			StringBuffer sb = new StringBuffer(content);
-			pos = MutationTest.insertComment(SEARCH_FOR, sb, pos);
-			if (pos == -1) {
-				System.out.println("no more mutations");
-				break;
-			}
-			else {
-				System.out.println("commenting around " + sb.toString().substring(pos - 10, pos + 10));
-				pos++;
-			}
-			if (++numMutation > MAX_NUM_MUTATIONS) {
-				System.out.println("mutations max number reached");
-				break;
-			}
-			// save to file
-			Files.write(Paths.get(path), sb.toString().getBytes());
-			// build the mutated machine
-			CompileAndExecuteTest.executeBat("build_MVM.bat");
-			// run the tests
-			Map<Configuration, Boolean> failures = runTests();
-			for (Entry<Configuration, Boolean> e : failures.entrySet()) {
-				Boolean fails = e.getValue();
-				if (fails) {
-					Configuration conf = e.getKey();
-					mutationKilled.put(conf, mutationKilled.get(conf) + 1);
+		for (int i=0; i<SEARCH_FOR.length; i++) {
+			int pos = 0;
+			for(;;){
+				StringBuffer sb = new StringBuffer(content);
+				pos = MutationTest.insertComment(SEARCH_FOR[i], sb, pos);
+				if (pos == -1) {
+					System.out.println("no more mutations");
+					break;
 				}
-				System.err.println("failures" + failures + " mutationKilled " + mutationKilled);
-			}
-		} 
+				else {
+					System.out.println("commenting around " + sb.toString().substring(pos - 10, pos + 10));
+					pos++;
+				}
+				if (++numMutation > MAX_NUM_MUTATIONS) {
+					System.out.println("mutations max number reached");
+					break;
+				}
+				// save to file
+				Files.write(Paths.get(path), sb.toString().getBytes());
+				// build the mutated machine
+				// CompileAndExecuteTest.executeBat("build_MVM.bat");
+				// run the tests
+				Map<Configuration, Boolean> failures = runTests();
+				for (Entry<Configuration, Boolean> e : failures.entrySet()) {
+					Boolean fails = e.getValue();
+					if (fails) {
+						Configuration conf = e.getKey();
+						mutationKilled.put(conf, mutationKilled.get(conf) + 1);
+					}
+					System.err.println("failures" + failures + " mutationKilled " + mutationKilled);
+				}
+			} 
+		}
 		//
 		System.out.println("number of mutations " + numMutation);
 		System.out.println(mutationKilled);

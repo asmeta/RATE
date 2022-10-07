@@ -6,8 +6,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/asmeta.atgt"/>
-	<classpathentry kind="src" path="/asmeta.atgt.test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>
@@ -18,8 +16,13 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/asmeta.atgt/atgt4asmeta.jar"/>
-	<classpathentry kind="src" path="/asmeta.emf"/>
 	<classpathentry kind="src" path="/asmeta.parser"/>
+	<classpathentry kind="src" path="/asmeta.emf"/>
+	<classpathentry kind="src" path="/asmeta.atgt.test"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/asmeta.atgt"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/atgt"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cov_combinatorial"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/cov_mcdc"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/tglib"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

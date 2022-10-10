@@ -288,6 +288,11 @@ class TestClass : public ::testing::Test{
 			false,
 			100
 		);
+
+		// TODO: Remember to modify the sc_runner_timed.cpp file and comment
+		//  && i_timer->tsi == statemachine in the unsetTimer method
+		// https://stackoverflow.com/questions/11253100/multiple-inheritance-pointer-comparison
+
 		statechart->setTimerService(runner);
 	}
 	virtual void TearDown() {

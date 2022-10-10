@@ -81,9 +81,7 @@ public class CompileAndExecuteTest {
 				assert new File(PATH_AT).exists();
 
 				Files.walk(new File(PATH_AT).toPath()).filter(f -> (
-						f.getFileName().toString().endsWith(".avalla"))
-						&& f.getFileName().toString().endsWith("12.avalla")
-						)
+						f.getFileName().toString().endsWith(".avalla")))
 						.forEach(f -> {
 							try {
 								sc.convert(f.toAbsolutePath().toString());
